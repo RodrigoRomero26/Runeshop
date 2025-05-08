@@ -1,0 +1,39 @@
+.principalContainerHeader{
+    display: flex;
+    justify-content: center;
+    padding: 0 20px;
+    background-color: white;
+    width: 100%;
+}
+
+.containerButtonsHeader{
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    gap: 20px;
+}
+.containerFilterButtonsHeader{
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+.containerFilterButtonsHeader button {
+    background: none;
+    border: none;
+    font-family: 'Mali', cursive;
+    font-weight: 400;
+    font-size: 40px;
+    line-height: 100%;
+    letter-spacing: 0;
+    text-align: center;
+    color: #f28d8d;
+    cursor: pointer;
+    transition: transform 0.2s ease, color 0.2s ease;
+  }
+  
+  .containerFilterButtonsHeader button:hover {
+    transform: scale(1.05);
+    color: #e47070;
+  }
+  
