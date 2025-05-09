@@ -7,7 +7,10 @@ export const Header = () => {
 				<div className={styles.containerFilterButtonsHeader}>
 					<button>Destacado</button>
 					<button>Hombres</button>
-					<button>RuneShop</button>
+					<div className={styles.principalButton}>
+						<button>RuneShop</button>
+					</div>
+
 					<button>Mujeres</button>
 					<button>Niños</button>
 				</div>
