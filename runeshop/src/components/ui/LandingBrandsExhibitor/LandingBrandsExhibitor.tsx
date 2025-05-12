@@ -1,6 +1,18 @@
 import styles from "./LandingBrandsExhibitor.module.css";
 
 export const LandingBrandsExhibitor = () => {
+
+	const brands = [
+		{ name: "adidas", image: "src/components/ui/LandingBrandsExhibitor/logos/adidas.png" },
+		{ name: "puma", image: "src/components/ui/LandingBrandsExhibitor/logos/puma.png" },
+		{ name: "nike", image: "src/components/ui/LandingBrandsExhibitor/logos/nike.png" },
+		{ name: "reebok", image: "src/components/ui/LandingBrandsExhibitor/logos/reebok.png" },
+	];
+
+	const handleClick = (brand: string) => {
+		console.log(`/marca/${brand}`);
+	};
+
 	return (
 		<div className={styles.principalContainerLandingBrandsExhibitor}>
 			<div className={styles.dataContainerLandingBrandsExhibitor}>
@@ -8,27 +20,13 @@ export const LandingBrandsExhibitor = () => {
 					<h1>Marcas</h1>
 				</div>
 				<div className={styles.brandsExhibitorContainer}>
-					<div className={styles.brandExposerContainer}>
-						<button className={styles.logoButton}>
-							<img src="src\components\ui\LandingBrandsExhibitor\logos\adidas.png" alt="Adidas" />
-							
-						</button>
-					</div>
-					<div className={styles.brandExposerContainer}>
-						<button className={styles.logoButton}>
-							<img src="src\components\ui\LandingBrandsExhibitor\logos\puma.png" alt="Puma" />
-						</button>
-					</div>
-					<div className={styles.brandExposerContainer}>
-						<button className={styles.logoButton}>
-							<img src="src\components\ui\LandingBrandsExhibitor\logos\nike.png" alt="Nike" />
-						</button>
-					</div>
-					<div className={styles.brandExposerContainer}>
-						<button className={styles.logoButton}>
-							<img src="src\components\ui\LandingBrandsExhibitor\logos\reebok.png" alt="Reebok" />
-						</button>
-					</div>
+					{brands.map((brand) => (
+						<div key={brand.name} className={styles.brandExposerContainer}>
+							<button className={styles.logoButton} onClick={() => handleClick(brand.name)}>
+								<img src={brand.image} alt={brand.name} />
+							</button>
+						</div>
+					))}
 				</div>
 			</div>
 		</div>
