@@ -20,6 +20,7 @@
 	height: 80%;
 	align-self: flex-end;
 	background-color: lightpink;
+	box-shadow: 8px 8px 8px 8px rgba(0, 0, 0, 0.25);
 }
 
 .aboutUsDataContainerFooter {
@@ -31,7 +32,6 @@
 	height: 90%;
 	font-family: "Mali", cursive;
 }
-
 
 .contactUsContainerFooter {
 	background-color: lightblue;
@@ -45,13 +45,13 @@
 }
 
 .contactUsWhereAreWe {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: flex-start;
-  width: 33%;
-  height: 100%;
-  padding-left: 24px; 
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: flex-start;
+	width: 33%;
+	height: 100%;
+	padding-left: 24px;
 }
 .contactUsReserveRights {
 	display: flex;
@@ -63,27 +63,27 @@
 }
 
 .contactUsSocialMedia {
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-end;
-  align-items: flex-end;      
-  width: 33%;
-  height: 100%;              
-  gap: 8px;                  
-  padding-right: 16px;       
-  padding-bottom: 8px;        
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-end;
+	align-items: flex-end;
+	width: 33%;
+	height: 100%;
+	gap: 8px;
+	padding-right: 16px;
+	padding-bottom: 8px;
 }
 .logoButton {
-  background: none;
-  border: none;
-  padding: 0;
-  cursor: pointer;
+	background: none;
+	border: none;
+	padding: 0;
+	cursor: pointer;
 }
 
 .logoButton img {
-  width: 30px;              
-  height: 30px;
-  object-fit: contain;
+	width: 30px;
+	height: 30px;
+	object-fit: contain;
 }
 
 /* Responsive */
@@ -121,7 +121,6 @@
 	.contactUsReserveRights {
 		width: 100%;
 		height: 30%;
-		
 	}
 	.contactUsSocialMedia {
 		width: 100%;
@@ -133,5 +132,4 @@
 		width: 20px;
 		height: 5vh;
 	}
-
 }

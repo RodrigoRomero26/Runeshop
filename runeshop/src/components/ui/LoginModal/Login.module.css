@@ -1,0 +1,74 @@
+.principalContainerLogin{
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 40%;
+    height: 50%;
+    padding: 20px;
+    background-color: #FAEDD8;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+}
+
+.containerDataLogin{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: "Mali", cursive;
+}
+
+.containerTitleLogin{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.containerInputLogin{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.containerInputLogin input{
+    width: 80%;
+    padding: 10px;
+    margin: 5px 0;
+    border: 1px solid #FF9999;
+    border-radius: 4px;
+}
+
+.containerInputLogin input:focus{
+    outline: none;
+    border-color: #FF9999;
+}
+
+.containerButtonLogin{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 60%;
+    margin-top: 20px;
+
+}
+
+.containerButtonLogin button{
+    padding: 10px 20px;
+    background-color: #FF9999;
+    border: none;
+    border-radius: 4px;
+    color: white;
+    cursor: pointer;
+    font-family: "Mali", cursive;
+}
+
+.containerRegisterLogin button{
+    background: none;
+    border: none;
+    color: #FF9999;
+    cursor: pointer;
+    font-family: "Mali", cursive;
+    text-decoration: underline;
+}

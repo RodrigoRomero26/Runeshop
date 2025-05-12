@@ -1,8 +1,15 @@
 import { useState } from "react";
 import styles from "./Header.module.css";
+import { Login } from "../LoginModal/Login";
 
 export const Header = () => {
 	const [menuOpen, setMenuOpen] = useState(false);
+	const [loginOpen, setLoginOpen] = useState(false);
+
+	const handleCloseLogin = () => {
+		setLoginOpen(false);
+	};
+
 
 	return (
 		<div className={styles.principalContainerHeader}>
@@ -26,7 +33,7 @@ export const Header = () => {
 					<button onClick={() => console.log("/carrito")}>
 						<span className="material-symbols-outlined">shopping_cart</span>
 					</button>
-					<button onClick={() => console.log("/perfil")}>
+					<button onClick={() => setLoginOpen(true)}>
 						<span className="material-symbols-outlined">account_circle</span>
 					</button>
 				</div>
@@ -40,6 +47,9 @@ export const Header = () => {
 					<button onClick={() => console.log("/categoria/ninos")}>Niños</button>
 				</div>
 			)}
+
+			{loginOpen && (
+				<Login onCloseLogin={handleCloseLogin}/>)}
 		</div>
 	);
 };
