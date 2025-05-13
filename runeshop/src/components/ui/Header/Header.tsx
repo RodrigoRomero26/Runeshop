@@ -1,15 +1,20 @@
 import { useState } from "react";
 import styles from "./Header.module.css";
 import { Login } from "../LoginModal/Login";
+import { Cart } from "../CartModal/Cart";
 
 export const Header = () => {
 	const [menuOpen, setMenuOpen] = useState(false);
 	const [loginOpen, setLoginOpen] = useState(false);
+	const [cartOpen, setCartOpen] = useState(false);
 
 	const handleCloseLogin = () => {
 		setLoginOpen(false);
 	};
 
+	const handleCloseCart = () => {
+		setCartOpen(false);
+	};
 
 	return (
 		<div className={styles.principalContainerHeader}>
@@ -30,7 +35,7 @@ export const Header = () => {
 					<button onClick={() => console.log("/categoria/ninos")}>Niños</button>
 				</div>
 				<div className={styles.containerFilterUserButtonsHeader}>
-					<button onClick={() => console.log("/carrito")}>
+					<button onClick={() => setCartOpen(true)}>
 						<span className="material-symbols-outlined">shopping_cart</span>
 					</button>
 					<button onClick={() => setLoginOpen(true)}>
@@ -50,6 +55,10 @@ export const Header = () => {
 
 			{loginOpen && (
 				<Login onCloseLogin={handleCloseLogin}/>)}
+
+			{cartOpen && (
+				<Cart onCloseCart={handleCloseCart} />
+			)}
 		</div>
 	);
 };

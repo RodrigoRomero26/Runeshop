@@ -1,32 +1,46 @@
-import type { FC } from "react";
+import { useState, type FC } from "react";
 import styles from "./Login.module.css";
+import { Register } from "../RegisterModal/Register";
 
 interface loginProps {
-    onCloseLogin: () => void;
+  onCloseLogin: () => void;
 }
 
 export const Login: FC<loginProps> = ({ onCloseLogin }) => {
-    return (
-        <div className={styles.principalContainerLogin}>
-            <div className={styles.containerDataLogin}>
-                <div className={styles.containerTitleLogin}>
-                    <span className="material-symbols-outlined">person</span>
-                    <h1>Iniciar Sesión</h1>
-                </div>
-                <div className={styles.containerInputLogin}>
-                    <input type="text" placeholder="Correo electrónico" />
-                    <input type="password" placeholder="Contraseña" />
-                </div>
-                <div className={styles.containerButtonLogin}>
-                    <button>Acceder</button>
-                    <button onClick={onCloseLogin}>Cancelar</button>
-                </div>
-                <div className={styles.containerRegisterLogin}>
-                    <p>
-                        ¿No tienes cuenta? <button>Registrate</button>
-                    </p>
-                </div>
-            </div>
+    const [registerOpen, setRegisterOpen] = useState(false);
+
+    const handleCloseRegister = () => {
+		setRegisterOpen(false);
+	};
+
+  return (
+    <div className={styles.overlay}>
+      <div className={styles.principalContainerLogin}>
+        <div className={styles.containerDataLogin}>
+          <div className={styles.containerTitleLogin}>
+            <span className="material-symbols-outlined">person</span>
+            <h1>Iniciar Sesión</h1>
+          </div>
+          <div className={styles.containerInputLogin}>
+            <input type="text" placeholder="Correo electrónico" />
+            <input type="password" placeholder="Contraseña" />
+          </div>
+          <div className={styles.containerButtonLogin}>
+            <button>Acceder</button>
+            <button onClick={onCloseLogin}>Cancelar</button>
+          </div>
+          <div className={styles.containerRegisterLogin}>
+            <p>
+              ¿No tienes cuenta? <button onClick={()=> setRegisterOpen(true)}>Registrate</button>
+            </p>
+          </div>
         </div>
-    );
+
+        {registerOpen && (
+          <Register onCloseRegister={handleCloseRegister} />
+        )}
+        
+      </div>
+    </div>
+  );
 };
