@@ -14,7 +14,7 @@
     left: 50%;
     transform: translate(-50%, -50%);
     width: 30vw;
-    height: 50vh;
+    height: 70vh;
     padding: 20px;
     background-color: #FAEDD8;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -79,8 +79,8 @@
 /* Responsive */
 @media (max-width: 440px) {
     .principalContainerRegister{
-        width: 70vw;
-        height: 40vh;
+        width: 75vw;
+        height: 60vh;
     }
     .containerInputRegister input{
         width: 60vw;

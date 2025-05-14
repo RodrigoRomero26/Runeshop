@@ -83,11 +83,12 @@
 @media (max-width: 760px) {
 
 	.principalContainerHeader {
-		height: 10vh;
+		height: 8vh;
 	}
 	
 	.containerFilterButtonsHeader {
 		display: none;
+		height: 8vh;
 	}
 
 	.menuIconMobile {

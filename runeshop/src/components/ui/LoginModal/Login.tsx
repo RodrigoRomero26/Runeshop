@@ -22,7 +22,7 @@ export const Login: FC<loginProps> = ({ onCloseLogin }) => {
             <h1>Iniciar Sesión</h1>
           </div>
           <div className={styles.containerInputLogin}>
-            <input type="text" placeholder="Correo electrónico" />
+            <input type="text" placeholder="Nombre de usuario" />
             <input type="password" placeholder="Contraseña" />
           </div>
           <div className={styles.containerButtonLogin}>

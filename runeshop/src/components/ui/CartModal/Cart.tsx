@@ -1,9 +1,11 @@
-import type { FC } from "react";
+import { useState, type FC } from "react";
 import styles from "./Cart.module.css";
 
 interface cartProps {
   onCloseCart: () => void;
 }
+
+// Corregir como cerrar el carro al tocar fuera del modal
 
 export const Cart: FC<cartProps> = ({ onCloseCart }) => {
   return (

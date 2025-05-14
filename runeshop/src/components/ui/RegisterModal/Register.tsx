@@ -15,10 +15,13 @@ export const Register: FC<registerProps> = ({ onCloseRegister }) => {
                         <h1>Registrar usuario</h1>
                     </div>
                     <div className={styles.containerInputRegister}>
+                        <input type="text" name="user" placeholder="Nombre de usuario" />
                         <input type="text" name="name" placeholder="Nombre" />
-                        <input type="text" placeholder="Correo electrónico" />
-                        <input type="password" placeholder="Contraseña" />
-                        <input type="password" placeholder="Confirmar Contraseña" />
+                        <input type="text" name="lastName" placeholder="Apellido" />
+                        <input type="text" name="mail" placeholder="Correo electrónico" />
+                        <input type="number" name="dni" placeholder="DNI" />
+                        <input type="password" name="password" placeholder="Contraseña" />
+                        <input type="password" name="confirmPassword" placeholder="Confirmar Contraseña" />
                     </div>
                     <div className={styles.containerButtonRegister}>
                         <button>Registrarse</button>
