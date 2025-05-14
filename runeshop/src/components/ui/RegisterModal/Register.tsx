@@ -15,7 +15,7 @@ export const Register: FC<registerProps> = ({ onCloseRegister }) => {
                         <h1>Registrar usuario</h1>
                     </div>
                     <div className={styles.containerInputRegister}>
-                        <input type="text" placeholder="Nombre" />
+                        <input type="text" name="name" placeholder="Nombre" />
                         <input type="text" placeholder="Correo electrónico" />
                         <input type="password" placeholder="Contraseña" />
                         <input type="password" placeholder="Confirmar Contraseña" />

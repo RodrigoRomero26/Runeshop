@@ -1,7 +1,6 @@
 import styles from "./LandingBrandsExhibitor.module.css";
 
 export const LandingBrandsExhibitor = () => {
-
 	const brands = [
 		{ name: "adidas", image: "src/components/ui/LandingBrandsExhibitor/logos/adidas.png" },
 		{ name: "puma", image: "src/components/ui/LandingBrandsExhibitor/logos/puma.png" },
