@@ -89,7 +89,7 @@
 @media (max-width: 440px) {
     .principalContainerLogin{
         width: 70vw;
-        height: 35vh;
+        height: auto;
     }
     .containerInputLogin input{
         width: 60vw;

@@ -1,11 +1,12 @@
-import { LandingScreen } from "./components/Screens/LandingScreen/LandingScreen";
+import { appRouter } from "./routes/appRouter.tsx";
+import { BrowserRouter as Router } from "react-router-dom";
 
 function App() {
-	return (
-		<>
-			<LandingScreen />
-		</>
-	);
+  return (
+    <Router>
+      {appRouter()}
+    </Router>
+  );
 }
 
 export default App;

@@ -3,6 +3,7 @@ import styles from "./UserProfileScreen.module.css";
 export const UserProfileScreen = () => {
 	return (
 		<div className={styles.principalContainerUserProfile}>
+            <h1>Mi perfil</h1>
 			<div className={styles.dataContainerUserProfile}>
                 <div className={styles.userDataForm}>
                 <span className="material-symbols-outlined">account_circle</span>

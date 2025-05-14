@@ -13,7 +13,7 @@
     top: 0%;
     right: 0%;
     width: 20vw;
-    height: 15vh;
+    height: auto;
     padding: 20px;
     background-color: #FAEDD8;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -23,7 +23,7 @@
 .containerDataCart{
     display: flex;
     flex-direction: column;
-    align-items: left;
+    align-items: flex-start;
 }
 
 .containerTitleCart{
@@ -37,10 +37,94 @@
 .containerProductsCart{
     display: flex;
     flex-direction: column;
-    align-items: left;
+    align-items: stretch;
     margin-bottom: 10px;
-    background-color: #FFE5BC;
     border-radius: 4px;
+}
+
+.containerProductCart{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #FFE5BC;
+    width: 20vw;
+    height: auto;
+    margin-bottom: 10px;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.containerImageProductCart{
+    width: 30%;
+    height: 100%;
+    padding: 5px;
+}
+
+.containerImageProductCart img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 4px;
+}
+
+.containerInfoProductCart{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 13vw;
+}
+
+.buttonDelete{
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+.containerInfoProductCart h2{
+    margin: 0;
+    padding: 5px;
+    background-color: #FFE5BC;
+    font-family: "Mali", cursive;
+    color: #FF9999;
+    font-size: 1rem;
+}
+
+.containerInfoProductCart button{
+    background-color: #FFE5BC;
+    color: #FF9999;
+    border: none;
+    border-radius: 4px;
+    padding: 5px 10px;
+    cursor: pointer;
+    font-family: "Mali", cursive;
+}
+
+.containerAmountProductCart {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    margin-top: 10px;
+}
+.containerAmountProductCart button{
+    background-color:#FFE5BC;
+    color: #FF9999;
+    border: none;
+    border-radius: 4px;
+    padding: 5px;
+    cursor: pointer;
+    font-family: "Mali", cursive;
+}
+.containerProductCart p{
+    margin: 0;
+    padding: 10px;
+    background-color: #FFE5BC;
+    font-family: "Mali", cursive;
+    color: #FF9999;
 }
 
 .containerButtonYTotalCart{
@@ -83,20 +167,65 @@
     font-size: 1.2em;
 }
 
+/* Responsive */
 @media (max-width: 440px) {
     .overlay{
-      
         margin-top: 8vh;
     }
+
     .principalContainerCart{
         position: absolute;
         right: 0;
         top: 0;
         width: 60vw;
-        height: 10vh;
+        height: auto;
     }
+
+    .containerProductCart{
+        width: 60vw;
+    }
+
+    .containerImageProductCart{
+        width: 100%;
+        height: 100%;
+        padding: 5px;
+    }
+
+    .containerInfoProductCart{
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        width: 100%;
+        justify-content: center;
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    .containerButtonYTotalCart{
+        height: 8vh;
+        gap:8vw;
+    }
+
+    .containerButtonYTotalCart p{
+        align-self: center;
+        gap: 10px;
+    };
+
     .containerButtonCart{
-        width: 30vw;
+        width: 25vw;
     }
     .containerTitleCart{
         font-size: 0.5rem;

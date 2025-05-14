@@ -1,17 +1,23 @@
 import { useState, type FC } from "react";
 import styles from "./Login.module.css";
 import { Register } from "../RegisterModal/Register";
+import { useNavigate } from "react-router";
 
 interface loginProps {
   onCloseLogin: () => void;
 }
 
 export const Login: FC<loginProps> = ({ onCloseLogin }) => {
-    const [registerOpen, setRegisterOpen] = useState(false);
+  const [registerOpen, setRegisterOpen] = useState(false);
+  const navigate = useNavigate();
 
-    const handleCloseRegister = () => {
-		setRegisterOpen(false);
-	};
+  const handleCloseRegister = () => {
+    setRegisterOpen(false);
+  };
+
+  const handleLogin = () => {
+    navigate("/userProfile");
+  }
 
   return (
     <div className={styles.overlay}>
@@ -26,20 +32,18 @@ export const Login: FC<loginProps> = ({ onCloseLogin }) => {
             <input type="password" placeholder="Contraseña" />
           </div>
           <div className={styles.containerButtonLogin}>
-            <button>Acceder</button>
+            <button onClick={handleLogin}>Acceder</button>
             <button onClick={onCloseLogin}>Cancelar</button>
           </div>
           <div className={styles.containerRegisterLogin}>
             <p>
-              ¿No tienes cuenta? <button onClick={()=> setRegisterOpen(true)}>Registrate</button>
+              ¿No tienes cuenta?{" "}
+              <button onClick={() => setRegisterOpen(true)}>Registrate</button>
             </p>
           </div>
         </div>
 
-        {registerOpen && (
-          <Register onCloseRegister={handleCloseRegister} />
-        )}
-        
+        {registerOpen && <Register onCloseRegister={handleCloseRegister} />}
       </div>
     </div>
   );
