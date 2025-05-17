@@ -1,0 +1,140 @@
+.principalContainerUserProfile {
+  height: 55vh;
+  margin-top: 5vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.dataContainerUserProfile {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  background-color: #f6e8e8;
+  height: 50vh;
+  width: 90vw;
+}
+
+.userDataForm {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 30px;
+}
+
+.userIconForm {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background-color: #ffe5bc;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.userIconForm span {
+  font-size: 6rem;
+  color: #2f2f2f;
+}
+
+.userDataFormInputs {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.userDataFormInputs input {
+  width: 25vw;
+  padding: 10px;
+  margin: 4px 0;
+  background-color: #fec1c1;
+  border: 1px solid #ff9999;
+  border-radius: 4px;
+}
+
+.userDataFormInputs input::placeholder {
+  background: #fec1c1;
+  font-family: "Mali", cursive;
+  color: #faeae4;
+}
+
+.userAdressesForm {
+  padding-left: 20px;
+  border-left: 2px dashed #ff9999;
+  height: 90%;
+  padding-top: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.userAdressesForm h2 {
+  font-family: "Mali", cursive;
+  color: #ff9999;
+}
+
+.userAdressesInformation{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: start;
+    gap: 5px;
+    background-color: #ffe5bc;
+    padding: 20px;
+    border-radius: 4px;
+    box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.25);
+    max-height: 25vh;
+    overflow-y: auto;
+}
+
+.userAdresses{
+    display: grid;
+    grid-template-columns: 3fr 0.5fr;
+    align-items: center;
+    gap: 20px;
+    padding: 10px;
+    justify-items: start;
+    max-width: 70vh;
+}
+
+.userAdresses p{
+    font-family: "Mali", cursive;
+    color: #ff9999;
+}
+
+.userAdressesButtons{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+}
+
+.userAdressesButtons button{
+    padding: 5px;
+    background-color: #ff9999;
+    border: none;
+    border-radius: 4px;
+    color: #fff;
+    cursor: pointer;
+}
+
+.userAdressesButtons span{
+    font-size: 1rem;
+}
+
+.userAdressesAddButton button{
+    padding: 10px 10px;
+    background-color: #ffe5bc;
+    border: none;
+    border-radius: 4px;
+    color: #ff9999;
+    cursor: pointer;
+    font-family: "Mali", cursive;
+    box-shadow: 10px 10px 10px -5px rgba(0, 0, 0, 0.25);
+}
