@@ -60,8 +60,12 @@
 	text-align: center;
 	color: #f28d8d;
 	cursor: pointer;
-
 	transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.containerFilterUserButtonsHeader button:hover {
+	transform: scale(1.05);
+	color: #e47070;
 }
 
 .menuIconMobile {

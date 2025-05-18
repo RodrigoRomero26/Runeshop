@@ -2,11 +2,14 @@ import { useState } from "react";
 import styles from "./Header.module.css";
 import { Login } from "../LoginModal/Login";
 import { Cart } from "../CartModal/Cart";
+import { useNavigate } from "react-router";
 
 export const Header = () => {
 	const [menuOpen, setMenuOpen] = useState(false);
 	const [loginOpen, setLoginOpen] = useState(false);
 	const [cartOpen, setCartOpen] = useState(false);
+
+	const navigate = useNavigate();
 
 	const handleCloseLogin = () => {
 		setLoginOpen(false);
@@ -29,7 +32,7 @@ export const Header = () => {
 					<button onClick={() => console.log("/descuento")}>Descuentos</button>
 					<button onClick={() => console.log("/categoria/hombres")}>Hombres</button>
 					<div className={styles.principalButton}>
-						<button onClick={() => console.log("/")}>RuneShop</button>
+						<button onClick={() => navigate("/")}>RuneShop</button>
 					</div>
 					<button onClick={() => console.log("/categoria/mujeres")}>Mujeres</button>
 					<button onClick={() => console.log("/categoria/ninos")}>Niños</button>

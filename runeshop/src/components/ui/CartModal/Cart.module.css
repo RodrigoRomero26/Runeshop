@@ -1,233 +1,119 @@
-.overlay{
-    position: fixed;
-    top: 0px;
-    left: 0;
-    width: 100%;
-    height: 90%;
-    margin-top: 10vh;
-    z-index: 999;
+.overlay {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 90%;
+	margin-top: 10vh;
+	z-index: 999;
+	display: flex;
+	justify-content: flex-end;
 }
 
-.principalContainerCart{
-    position: absolute;
-    top: 0%;
-    right: 0%;
-    width: 20vw;
-    height: auto;
-    padding: 20px;
-    background-color: #FAEDD8;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    z-index: 1000;
+.principalContainerCart {
+	width: 20vw;
+	height: 60vh;
+	background-color: #faedd8;
+	box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	padding: 20px;
+	overflow: hidden;
+	border-radius: 8px;
 }
 
-.containerDataCart{
+.containerDataCart {
+	display: flex;
+	flex-direction: column;
+	height: 100%;
+}
+
+.containerTitleCart {
+	margin-bottom: 10px;
+	color: #ff9999;
+	font-family: "Mali", cursive;
+}
+
+.containerProductsCart {
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
-}
-
-.containerTitleCart{
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 20px;
-    color: #FF9999;
-    font-family: "Mali", cursive;
-}
-
-.containerProductsCart{
-    display: flex;
-    flex-direction: column;
-    align-items: stretch;
-    margin-bottom: 10px;
-    border-radius: 4px;
-}
-
-.containerProductCart{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: #FFE5BC;
-    width: 20vw;
-    height: auto;
-    margin-bottom: 10px;
-    flex-direction: row;
-    flex-wrap: wrap;
-}
-
-.containerImageProductCart{
-    width: 30%;
-    height: 100%;
-    padding: 5px;
-}
-
-.containerImageProductCart img{
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    border-radius: 4px;
-}
-
-.containerInfoProductCart{
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    width: 13vw;
-}
-
-.buttonDelete{
-    position: absolute;
-    top: 5px;
-    right: 5px;
-    background-color: transparent;
-    border: none;
-    cursor: pointer;
-}
-
-.containerInfoProductCart h2{
-    margin: 0;
-    padding: 5px;
-    background-color: #FFE5BC;
-    font-family: "Mali", cursive;
-    color: #FF9999;
-    font-size: 1rem;
-}
-
-.containerInfoProductCart button{
-    background-color: #FFE5BC;
-    color: #FF9999;
-    border: none;
-    border-radius: 4px;
-    padding: 5px 10px;
-    cursor: pointer;
-    font-family: "Mali", cursive;
-}
-
-.containerAmountProductCart {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: flex-start;
-    margin-top: 10px;
-}
-.containerAmountProductCart button{
-    background-color:#FFE5BC;
-    color: #FF9999;
-    border: none;
-    border-radius: 4px;
-    padding: 5px;
-    cursor: pointer;
-    font-family: "Mali", cursive;
-}
-.containerProductCart p{
-    margin: 0;
-    padding: 10px;
-    background-color: #FFE5BC;
-    font-family: "Mali", cursive;
-    color: #FF9999;
-}
-
-.containerButtonYTotalCart{
-    display: flex;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    font-family: "Mali", cursive;
-    color: #FF9999;
-    justify-content: space-around;
-}
-
-.containerButtonYTotalCart button{
-    background-color: #FF9999;
-    border: none;
-    border-radius: 4px;
-    padding: 10px 20px;
-    cursor: pointer;
-    font-family: "Mali", cursive;
-    color: #FFE5BC;
     gap: 10px;
+	overflow-y: auto;
+	width: 100%;
+	margin-bottom: 10px;
+	padding-right: 4px; /* para que no se corte el scroll */
+	scrollbar-width: thin;
+	scrollbar-color: #ff9999 #ffe5bc;
+    
 }
 
-.containerButtonCart{
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    width: 15vw;
-    margin-top: 20px;
-    gap: 10px;
+.containerProductsCart::-webkit-scrollbar {
+	width: 6px;
 }
 
-.iconCart{
-    width: 20px;
-    height: 20px;
+.containerProductsCart::-webkit-scrollbar-thumb {
+	background-color: #ff9999;
+	border-radius: 4px;
 }
 
-.containerButtonYTotalCart span{
-    color: #FFE5BC;
-    font-size: 1.2em;
+.containerProductsCart::-webkit-scrollbar-track {
+	background: #ffe5bc;
+}
+
+.containerButtonYTotalCart {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	width: 100%;
+	border-top: 1px solid #ff9999;
+	padding-top: 10px;
+	font-family: "Mali", cursive;
+	color: #ff9999;
+}
+
+/* Botón de compra */
+.buttonCart {
+	background-color: #ff9999;
+	border: none;
+	border-radius: 4px;
+	padding: 10px 20px;
+	cursor: pointer;
+	font-family: "Mali", cursive;
+	color: #ffe5bc;
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.buttonCart:hover {
+	background-color: #ffe5bc;
+	color: #ff9999;
+	transform: scale(1.05);
+}
+
+.iconCart {
+	width: 20px;
+	height: 20px;
+	font-size: 1.2em;
+	color: inherit;
 }
 
 /* Responsive */
 @media (max-width: 440px) {
-    .overlay{
-        margin-top: 8vh;
-    }
+	.principalContainerCart {
+		width: 80vw;
+		height: 70vh;
+	}
 
-    .principalContainerCart{
-        position: absolute;
-        right: 0;
-        top: 0;
-        width: 60vw;
-        height: auto;
-    }
+	.containerButtonYTotalCart {
+		flex-direction: column;
+		gap: 10px;
+	}
 
-    .containerProductCart{
-        width: 60vw;
-    }
-
-    .containerImageProductCart{
-        width: 100%;
-        height: 100%;
-        padding: 5px;
-    }
-
-    .containerInfoProductCart{
-        position: relative;
-        display: flex;
-        flex-direction: column;
-        align-items: stretch;
-        width: 100%;
-        justify-content: center;
-    }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    
-    .containerButtonYTotalCart{
-        height: 8vh;
-        gap:8vw;
-    }
-
-    .containerButtonYTotalCart p{
-        align-self: center;
-        gap: 10px;
-    };
-
-    .containerButtonCart{
-        width: 25vw;
-    }
-    .containerTitleCart{
-        font-size: 0.5rem;
-    }
+	.buttonCart {
+		width: 100%;
+		justify-content: center;
+	}
 }
