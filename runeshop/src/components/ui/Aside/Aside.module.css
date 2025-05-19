@@ -1,0 +1,39 @@
+/* Contenedor general de los talles */
+.checkboxSizeContainer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+/* Oculta el checkbox original */
+.hiddenCheckbox {
+  display: none;
+}
+
+/* Estilo del label que parece un "botón de talle" */
+.sizeLabel {
+  cursor: pointer;
+  user-select: none;
+}
+
+/* Estilo visual del talle */
+.sizeLabel span {
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+  line-height: 40px;
+  text-align: center;
+  border: 2px solid #ccc;
+  border-radius: 6px;
+  background-color: white;
+  font-weight: bold;
+  color: #333;
+  transition: all 0.2s ease;
+}
+
+/* Cuando el checkbox está checkeado, cambiar estilo */
+.hiddenCheckbox:checked + span {
+  background-color: #007bff; /* azul */
+  color: white;
+  border-color: #007bff;
+}

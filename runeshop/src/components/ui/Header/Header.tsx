@@ -8,7 +8,7 @@ export const Header = () => {
 	const [menuOpen, setMenuOpen] = useState(false);
 	const [loginOpen, setLoginOpen] = useState(false);
 	const [cartOpen, setCartOpen] = useState(false);
-
+	
 	const navigate = useNavigate();
 
 	const handleCloseLogin = () => {
@@ -18,6 +18,10 @@ export const Header = () => {
 	const handleCloseCart = () => {
 		setCartOpen(false);
 	};
+
+	const handleProductsCatalog = () => {
+		navigate("/productsCatalog")
+	}
 
 	return (
 		<div className={styles.principalContainerHeader}>
@@ -30,7 +34,7 @@ export const Header = () => {
 				<div></div>
 				<div className={styles.containerFilterButtonsHeader}>
 					<button onClick={() => console.log("/descuento")}>Descuentos</button>
-					<button onClick={() => console.log("/categoria/hombres")}>Hombres</button>
+					<button onClick={handleProductsCatalog}>Hombres</button>
 					<div className={styles.principalButton}>
 						<button onClick={() => navigate("/")}>RuneShop</button>
 					</div>

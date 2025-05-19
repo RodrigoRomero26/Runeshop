@@ -42,7 +42,7 @@
 	overflow-y: auto;
 	width: 100%;
 	margin-bottom: 10px;
-	padding-right: 4px; /* para que no se corte el scroll */
+	padding-right: 4px; 
 	scrollbar-width: thin;
 	scrollbar-color: #ff9999 #ffe5bc;
     
