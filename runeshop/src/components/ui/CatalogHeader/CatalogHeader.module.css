@@ -1,0 +1,32 @@
+.principalContainerCatalogHeader{
+    width: 100%;
+    height: 10vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Mali', cursive;
+}
+
+.catalogContainerHeader{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    color: #FF9797;
+}
+
+.catalogTitle{
+    font-size: 2.5rem;
+    text-align: center;
+    margin-left: 1rem;
+}
+
+.catalogSearch{
+    width: 50%;
+    height: 100%;
+    display: flex;
+    justify-content: right;
+    align-items: center;
+    margin-right: 1rem;
+    font-family: 'Mali', cursive;
+}

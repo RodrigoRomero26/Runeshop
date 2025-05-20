@@ -2,14 +2,11 @@
   display: flex;
   flex-direction: column;
   width: 15vw;
-  height: 58vh;
+  height: 100%;
   overflow: hidden;
   background-color: #FF9999;
-  margin-top: 8vh;
-  margin-bottom: 2vh;
   justify-content: center;
   align-items: center;
-  padding: 10px;
 }
 
 .filtersContainer{
@@ -17,10 +14,9 @@
   flex-direction: column;
   justify-content: flex-start;
   align-items: flex-start;
-  width: 100%;
-  height: 100%;
+  width: 95%;
+  height: 95%;
   overflow-y: auto;
-  padding: 10px;
   font-family: 'Mali', cursive;
   color: #fff;
 }

@@ -1,6 +1,7 @@
 .principalContainerFooter {
 	width: 100%;
-	height: 15vh;
+	height: 10vh;
+	
 }
 
 .dataContainerFooter {
@@ -30,6 +31,14 @@
 	font-family: "Mali", cursive;
 }
 
+.aboutUsDataContainer{
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+	height: 100%;
+}
 
 .contactUsContainerFooter {
 	background-color: #F6E8E8;

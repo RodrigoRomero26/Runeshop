@@ -1,4 +1,4 @@
-import React from 'react'
+import styles from './ProductsCatalog.module.css'
 
 export const ProductsCatalog = () => {
   return (

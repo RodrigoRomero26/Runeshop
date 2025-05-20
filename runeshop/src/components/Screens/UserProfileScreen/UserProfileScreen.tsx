@@ -9,8 +9,9 @@ export const UserProfileScreen = () => {
       <Header />
       <div className={styles.containerUserProfileScreenContent}>
         <UserProfile />
-        <Footer />
+        
       </div>
+      <Footer />
     </div>
   );
 };

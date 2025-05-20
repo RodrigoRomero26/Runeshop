@@ -57,8 +57,9 @@ export const LandingScreen = () => {
 			<div className={styles.containerLandingScreenContent}>
 				<ProductCarousel products={featuredProducts} />
 				<LandingBrandsExhibitor />
-				<Footer />
+				
 			</div>
+			<Footer />
 		</div>
 	);
 };

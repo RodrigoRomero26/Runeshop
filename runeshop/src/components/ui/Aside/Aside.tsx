@@ -94,6 +94,8 @@ export const Aside = () => {
             <input type="text" placeholder="Minimo"/>
           </label>
         </div>
+        
+        
       </div>
     </div>
   );

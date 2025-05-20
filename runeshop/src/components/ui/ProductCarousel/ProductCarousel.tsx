@@ -19,6 +19,7 @@ export const ProductCarousel: React.FC<ProductCarouselProps> = ({
 	const [numVisible, setNumVisible] = useState(
 		window.innerWidth >= 1024 ? 5 : 3
 	);
+	const [isHovered, setIsHovered] = useState(false);
 
 	useEffect(() => {
 		const updateNumVisible = () => {
@@ -30,11 +31,14 @@ export const ProductCarousel: React.FC<ProductCarouselProps> = ({
 	}, []);
 
 	useEffect(() => {
+		if (isHovered) return;
+
 		const interval = setInterval(() => {
 			setCurrentIndex((prev) => (prev + 1) % products.length);
 		}, 4000);
+
 		return () => clearInterval(interval);
-	}, [products.length]);
+	}, [products.length, isHovered]);
 
 	const handlePrev = () => {
 		setCurrentIndex((prev) => (prev - 1 + products.length) % products.length);
@@ -74,7 +78,7 @@ export const ProductCarousel: React.FC<ProductCarouselProps> = ({
 	return (
 		<div className={styles.carouselContainer}>
 			<button className={styles.navButton} onClick={handlePrev}>
-				‹
+				<span className="material-symbols-outlined">arrow_back</span>
 			</button>
 
 			<div className={styles.carouselTrack}>
@@ -88,6 +92,8 @@ export const ProductCarousel: React.FC<ProductCarouselProps> = ({
 								isCenter ? styles.active : ""
 							}`}
 							onClick={() => handleProductClick(product.id, isCenter)}
+							onMouseEnter={() => isCenter && setIsHovered(true)}
+							onMouseLeave={() => isCenter && setIsHovered(false)}
 							style={{ cursor: "pointer" }}>
 							<img src={product.image} alt={product.name} />
 							<p>{product.name}</p>
@@ -98,7 +104,7 @@ export const ProductCarousel: React.FC<ProductCarouselProps> = ({
 			</div>
 
 			<button className={styles.navButton} onClick={handleNext}>
-				›
+				<span className="material-symbols-outlined">arrow_forward</span>
 			</button>
 		</div>
 	);
