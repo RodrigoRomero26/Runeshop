@@ -1,6 +1,7 @@
-import { useEffect, useRef, type FC } from "react";
+import { useEffect, useRef, useState, type FC } from "react";
 import styles from "./Cart.module.css";
 import { CartModalCards } from "../CartModalCards/CartModalCards";
+import { useNavigate } from "react-router";
 
 interface cartProps {
 	onCloseCart: () => void;
@@ -8,6 +9,11 @@ interface cartProps {
 
 export const Cart: FC<cartProps> = ({ onCloseCart }) => {
 	const modalRef = useRef<HTMLDivElement>(null);
+	const navigate = useNavigate();
+
+	const handleCart = () => {
+		navigate("/cart");
+	}
 
 	useEffect(() => {
 		const handleClickOutside = (event: MouseEvent) => {
@@ -41,7 +47,7 @@ export const Cart: FC<cartProps> = ({ onCloseCart }) => {
             
 					</div>
 					<div className={styles.containerButtonYTotalCart}>
-						<button className={styles.buttonCart}>
+						<button onClick={handleCart} className={styles.buttonCart}>
 							Realizar compra
 							<p>
 								<span className="material-symbols-outlined ${styles.iconCart}">

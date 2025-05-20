@@ -1,0 +1,109 @@
+.principalContainerCartScreenComponents {
+  height: 70vh;
+}
+
+.dataContainerCartScreenComponents {
+  background-color: #ffe5bc;
+  display: flex;
+  height: 90%;
+  margin: 30px;
+  justify-content: space-evenly;
+  border-radius: 0.4rem;
+}
+
+.cartSideContainer {
+  display: flex;
+  flex-direction: column;
+  width: 40%;
+  gap: 15px;
+}
+
+.cartSideContainerTitle {
+  color: #ff9797;
+  font-family: "Mali", cursive;
+  margin-top: 10px;
+}
+
+.cartSideContainerCards {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  overflow-y: auto;
+  height: 70%;
+  width: 95%;
+  padding: 10px;
+}
+
+.summarySideContainer {
+  display: flex;
+  flex-direction: column;
+  width: 40%;
+  gap: 15px;
+}
+
+.summarySideContainerTitle {
+  color: #ff9797;
+  font-family: "Mali", cursive;
+  margin-top: 10px;
+}
+
+.summarySideContainerDitails {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  height: 60%;
+  width: 65%;
+  padding: 10px;
+  justify-content: space-evenly;
+}
+
+.summarySideContainerDitailsLine {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  height: 70%;
+  width: 65%;
+  padding: 10px;
+  justify-content: start;
+  color: #ff9797;
+  font-family: "Mali", cursive;
+}
+
+.summarySideContainerDitailsLine p{
+    border-bottom: 2px dotted #ff9797;
+    padding: 5px;
+}
+
+.summarySideContainerPrice {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  height: 70%;
+  width: 65%;
+  padding: 10px;
+  justify-content: start;
+  color: #ff9797;
+  font-family: "Mali", cursive;
+}
+
+.summarySideContainerPrice p{
+    padding: 5px;
+    border-bottom: 2px dotted #ff9797;
+}
+
+.summarySideContainerButton{
+     border-radius: 4px;
+    padding: 5px 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    color: #ffe5bc;
+    font-family: "Mali", cursive;
+    background-color: #ff9999;
+    border: none;
+}
+
+.summarySideContainerButton:hover {
+    background-color:  #FAEDD8;
+    color:  #ff9999;
+    transform: scale(1.05);
+}

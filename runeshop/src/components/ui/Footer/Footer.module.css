@@ -17,7 +17,7 @@
 	align-items: center;
 	width: 35vw;
 	height: 100%;
-	background-color: lightpink;
+	background-color: #FAEDD8;
 }
 
 .aboutUsDataContainerFooter {
@@ -32,7 +32,7 @@
 
 
 .contactUsContainerFooter {
-	background-color: lightblue;
+	background-color: #F6E8E8;
 	display: flex;
 	flex-direction: row;
 	justify-content: space-around;
