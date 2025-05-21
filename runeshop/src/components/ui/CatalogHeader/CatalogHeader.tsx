@@ -22,7 +22,7 @@ export const CatalogHeader = () => {
 							placeholder="Buscar producto"
 						/>
 					</div>
-					<div>
+					<div className={styles.catalogOrder}>
 						<select
 							id="mi-dropdown"
 							value={selectedOption}
