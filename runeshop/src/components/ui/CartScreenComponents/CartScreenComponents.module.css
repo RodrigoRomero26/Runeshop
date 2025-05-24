@@ -55,6 +55,7 @@
   width: 65%;
   padding: 10px;
   justify-content: space-evenly;
+  align-self: center;
 }
 
 .summarySideContainerDitailsLine {
@@ -69,9 +70,9 @@
   font-family: "Mali", cursive;
 }
 
-.summarySideContainerDitailsLine p{
-    border-bottom: 2px dotted #ff9797;
-    padding: 5px;
+.summarySideContainerDitailsLine p {
+  border-bottom: 2px dotted #ff9797;
+  padding: 5px;
 }
 
 .summarySideContainerPrice {
@@ -86,31 +87,31 @@
   font-family: "Mali", cursive;
 }
 
-.summarySideContainerPrice p{
-    padding: 5px;
-    border-bottom: 2px dotted #ff9797;
+.summarySideContainerPrice p {
+  padding: 5px;
+  border-bottom: 2px dotted #ff9797;
 }
 
-.summarySideContainerButton{
-     border-radius: 4px;
-    padding: 5px 10px;
-    cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.2s ease;
-    color: #ffe5bc;
-    font-family: "Mali", cursive;
-    background-color: #ff9999;
-    border: none;
+.summarySideContainerButton {
+  border-radius: 4px;
+  padding: 5px 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  color: #ffe5bc;
+  font-family: "Mali", cursive;
+  background-color: #ff9999;
+  border: none;
 }
 
 .summarySideContainerButton:hover {
-    background-color:  #FAEDD8;
-    color:  #ff9999;
-    transform: scale(1.05);
+  background-color: #faedd8;
+  color: #ff9999;
+  transform: scale(1.05);
 }
 
 /* Responsive */
 @media (max-width: 450px) {
-  .principalContainerCartScreenComponents{
+  .principalContainerCartScreenComponents {
     height: 100%;
   }
 
@@ -118,31 +119,36 @@
     flex-direction: column;
     margin: 10px;
     height: 97%;
+    max-height: 97%;
+    align-items: center;
   }
 
-  .dataContainerCartScreenComponents h2{
+  .dataContainerCartScreenComponents h2 {
     font-size: 1.5rem;
     margin: 0 10px;
   }
 
   .cartSideContainer {
     width: 100%;
-    height: 70%;
+    height: 60%;
     gap: 0;
+    justify-content: space-around;
   }
 
-  .cartSideContainerCards{
-    max-height: 70%;
+  .cartSideContainerCards {
+    height: 80%;
+    max-height: 80%;
   }
 
   .summarySideContainer {
-    height: 30%;
+    height: 35%;
     width: 100%;
     margin-bottom: 10px;
     gap: 3px;
+    justify-content: start;
   }
 
-  .summarySideContainerTitle{
+  .summarySideContainerTitle {
     margin: 0;
     margin-left: 10px;
   }
@@ -150,9 +156,16 @@
   .summarySideContainerDitails {
     max-height: 100%;
     overflow-y: auto;
-    height: 50%;
+    height: 100%;
     width: 100%;
     padding: 0;
     gap: 0;
+  }
+
+  .summarySideContainerButton {
+    width: 50%;
+    font-size: .8rem;
+    padding: 5px;
+    align-self: center;
   }
 }

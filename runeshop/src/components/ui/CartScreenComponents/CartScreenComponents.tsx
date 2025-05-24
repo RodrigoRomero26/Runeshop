@@ -29,7 +29,7 @@ export const CartScreenComponents = () => {
           </div>
           <div className={styles.summarySideContainerDitails}>
             <div className={styles.summarySideContainerDitailsLine}>
-              <p>3 Productos</p>
+              <p>Productos (3)</p>
               <p>Entrega</p>
               <p>Total</p>
             </div>
@@ -39,7 +39,7 @@ export const CartScreenComponents = () => {
               <p>$441000</p>
             </div>
           </div>
-          <button className={styles.summarySideContainerButton}>Comprar</button>
+          <button className={styles.summarySideContainerButton}>Ir a pagar</button>
         </div>
       </div>
     </div>
