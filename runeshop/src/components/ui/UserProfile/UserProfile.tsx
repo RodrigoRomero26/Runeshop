@@ -32,6 +32,83 @@ export const UserProfile = () => {
                   </button>
                 </div>
               </div>
+              <div className={styles.userAdresses}>
+                <p>2FALTA condicional llllllllllllllll lññññllllllllñññññññññññññññlllllllllllllll llll de vacias Dirección de ejemplo</p>
+                <div className={styles.userAdressesButtons}>
+                  <button className={styles.userAdressesEditButton}>
+                    <span className="material-symbols-outlined">edit</span>
+                  </button>
+                  <button className={styles.userAdressesDeleteButton}>
+                    <span className="material-symbols-outlined">delete</span>
+                  </button>
+                </div>
+              </div>
+              <div className={styles.userAdresses}>
+                <p>3FALTA condicional de vacias Dirección de ejemplo</p>
+                <div className={styles.userAdressesButtons}>
+                  <button className={styles.userAdressesEditButton}>
+                    <span className="material-symbols-outlined">edit</span>
+                  </button>
+                  <button className={styles.userAdressesDeleteButton}>
+                    <span className="material-symbols-outlined">delete</span>
+                  </button>
+                </div>
+              </div>
+              <div className={styles.userAdresses}>
+                <p>4FALTA condicional de vacias Dirección de ejemplo</p>
+                <div className={styles.userAdressesButtons}>
+                  <button className={styles.userAdressesEditButton}>
+                    <span className="material-symbols-outlined">edit</span>
+                  </button>
+                  <button className={styles.userAdressesDeleteButton}>
+                    <span className="material-symbols-outlined">delete</span>
+                  </button>
+                </div>
+              </div>
+              <div className={styles.userAdresses}>
+                <p>5FALTA condicional de vacias Dirección de ejemplo</p>
+                <div className={styles.userAdressesButtons}>
+                  <button className={styles.userAdressesEditButton}>
+                    <span className="material-symbols-outlined">edit</span>
+                  </button>
+                  <button className={styles.userAdressesDeleteButton}>
+                    <span className="material-symbols-outlined">delete</span>
+                  </button>
+                </div>
+              </div>
+              <div className={styles.userAdresses}>
+                <p>6FALTA condicional llllllllllllllll lññññllllllllñññññññññññññññlllllllllllllll llll de vacias Dirección de ejemplo</p>
+                <div className={styles.userAdressesButtons}>
+                  <button className={styles.userAdressesEditButton}>
+                    <span className="material-symbols-outlined">edit</span>
+                  </button>
+                  <button className={styles.userAdressesDeleteButton}>
+                    <span className="material-symbols-outlined">delete</span>
+                  </button>
+                </div>
+              </div>
+              <div className={styles.userAdresses}>
+                <p>7FALTA condicional de vacias Dirección de ejemplo</p>
+                <div className={styles.userAdressesButtons}>
+                  <button className={styles.userAdressesEditButton}>
+                    <span className="material-symbols-outlined">edit</span>
+                  </button>
+                  <button className={styles.userAdressesDeleteButton}>
+                    <span className="material-symbols-outlined">delete</span>
+                  </button>
+                </div>
+              </div>
+              <div className={styles.userAdresses}>
+                <p>8FALTA condicional de vacias Dirección de ejemplo</p>
+                <div className={styles.userAdressesButtons}>
+                  <button className={styles.userAdressesEditButton}>
+                    <span className="material-symbols-outlined">edit</span>
+                  </button>
+                  <button className={styles.userAdressesDeleteButton}>
+                    <span className="material-symbols-outlined">delete</span>
+                  </button>
+                </div>
+              </div>
             </div>
             <div className={styles.userAdressesAddButton}>
               <button> Agregar dirección</button>

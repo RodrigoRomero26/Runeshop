@@ -107,15 +107,12 @@
 
 
 /* Responsive */
-@media (max-width: 440px) {
+@media (max-width: 450px) {
     .principalContainerLogin{
         width: 70vw;
         height: auto;
     }
     .containerInputLogin input{
-        width: 60vw;
-    }
-    .containerButtonLogin{
         width: 60vw;
     }
 }

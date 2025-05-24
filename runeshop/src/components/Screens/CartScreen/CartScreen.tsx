@@ -9,8 +9,8 @@ export const CartScreen = () => {
       <Header />
       <div className={styles.cartScreenContent}>
         <CartScreenComponents />
-        <Footer />
       </div>
+        <Footer />
     </div>
   )
 }

@@ -53,8 +53,8 @@ export const Header = () => {
 
 			{menuOpen && (
 				<div className={styles.mobileMenu}>
-					<button onClick={() => console.log("/")}>RuneShop</button>
-					<button onClick={() => console.log("/categoria/hombres")}>Hombres</button>
+					<button onClick={() => navigate("/")}>RuneShop</button>
+					<button onClick={handleProductsCatalog}>Hombres</button>
 					<button onClick={() => console.log("/categoria/mujeres")}>Mujeres</button>
 					<button onClick={() => console.log("/categoria/ninos")}>Niños</button>
 				</div>

@@ -57,7 +57,6 @@ export const LandingScreen = () => {
 			<div className={styles.containerLandingScreenContent}>
 				<ProductCarousel products={featuredProducts} />
 				<LandingBrandsExhibitor />
-				
 			</div>
 			<Footer />
 		</div>

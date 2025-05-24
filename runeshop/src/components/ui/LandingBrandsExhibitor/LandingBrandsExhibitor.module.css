@@ -79,7 +79,7 @@
 }
 
 /* Responsive */
-@media (max-width: 440px) {
+@media (max-width: 450px) {
 	.principalContainerLandingBrandsExhibitor {
 		height: 35vh;
 		flex-direction: column;

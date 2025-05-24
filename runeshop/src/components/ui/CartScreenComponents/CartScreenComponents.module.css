@@ -107,3 +107,52 @@
     color:  #ff9999;
     transform: scale(1.05);
 }
+
+/* Responsive */
+@media (max-width: 450px) {
+  .principalContainerCartScreenComponents{
+    height: 100%;
+  }
+
+  .dataContainerCartScreenComponents {
+    flex-direction: column;
+    margin: 10px;
+    height: 97%;
+  }
+
+  .dataContainerCartScreenComponents h2{
+    font-size: 1.5rem;
+    margin: 0 10px;
+  }
+
+  .cartSideContainer {
+    width: 100%;
+    height: 70%;
+    gap: 0;
+  }
+
+  .cartSideContainerCards{
+    max-height: 70%;
+  }
+
+  .summarySideContainer {
+    height: 30%;
+    width: 100%;
+    margin-bottom: 10px;
+    gap: 3px;
+  }
+
+  .summarySideContainerTitle{
+    margin: 0;
+    margin-left: 10px;
+  }
+
+  .summarySideContainerDitails {
+    max-height: 100%;
+    overflow-y: auto;
+    height: 50%;
+    width: 100%;
+    padding: 0;
+    gap: 0;
+  }
+}

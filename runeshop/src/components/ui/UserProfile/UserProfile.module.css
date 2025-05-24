@@ -1,9 +1,8 @@
 .principalContainerUserProfile {
-	height: 55vh;
-	margin-top: 5vh;
 	display: flex;
 	align-items: center;
 	justify-content: center;
+	height: 100%;
 }
 
 .dataContainerUserProfile {
@@ -13,7 +12,7 @@
 	justify-content: center;
 	padding: 20px;
 	background-color: #f6e8e8;
-	height: 50vh;
+	height: 75%;
 	width: 90vw;
 }
 
@@ -90,7 +89,7 @@
 	box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.25);
 	width: 100%;
 	max-width: 70vh;
-	max-height: 25vh;
+	max-height: 40vh;
 	overflow-y: auto;
 }
 
@@ -152,4 +151,57 @@
 .userAdressesAddButton button:hover {
 	transform: scale(1.05);
   box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.25);
+}
+
+/* Responsive */
+@media (max-width: 450px) {
+	.principalContainerUserProfile {
+		height: 100%;
+	}
+
+	.dataContainerUserProfile {
+		background-color:#f9f3f3;
+		grid-template-columns: 1fr;
+		height: 96%;
+		align-items: start;
+	}
+
+	.userDataForm {
+		gap: 10px;
+	}
+
+	.userIconForm{
+		width: 50px;
+		height: 50px;
+	}
+
+	.userIconForm span {
+		font-size: 3rem;
+	}
+	
+	.userDataFormInputs input {
+		width: 80vw;
+	}
+	
+	.userAdressesForm {
+		margin-top: 5px;
+		border-top: 2px dashed #ff9999;
+		border-left: none;
+		height: 90%;
+		padding: 2%;
+		justify-content: start;
+	}
+
+	.userAdressesInformation {
+		max-width: auto;
+		padding: 10px;
+	}
+
+	.userAdresses {
+		width: 85vw;
+	}
+
+	.userAdressesButtons {
+		gap: 5px;
+	}
 }

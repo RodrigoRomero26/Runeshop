@@ -1,5 +1,16 @@
-.containerProductsCatalogScreen{
-    background-color: gray;
+.principalContainerProductsCatalog{
     width: 85vw;
     height: 100%;
+}
+
+.containerProductsCards{
+    background-color: #FFE5BC;
+    height: 95%;
+    max-height: 95%;
+    display: flex;
+    margin: 10px;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    overflow-y: auto;
+
 }

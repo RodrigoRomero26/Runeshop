@@ -1,119 +1,125 @@
 .overlay {
-	position: fixed;
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 90%;
-	margin-top: 10vh;
-	z-index: 999;
-	display: flex;
-	justify-content: flex-end;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 90%;
+  margin-top: 10vh;
+  z-index: 999;
+  display: flex;
+  justify-content: flex-end;
 }
 
 .principalContainerCart {
-	width: 20vw;
-	height: 60vh;
-	background-color: #faedd8;
-	box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-	display: flex;
-	flex-direction: column;
-	justify-content: space-between;
-	padding: 20px;
-	overflow: hidden;
-	border-radius: 8px;
+  width: 20vw;
+  height: 60vh;
+  background-color: #faedd8;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 20px;
+  overflow: hidden;
+  border-radius: 8px;
 }
 
 .containerDataCart {
-	display: flex;
-	flex-direction: column;
-	height: 100%;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
 }
 
 .containerTitleCart {
-	margin-bottom: 10px;
-	color: #ff9999;
-	font-family: "Mali", cursive;
+  margin-bottom: 10px;
+  color: #ff9999;
+  font-family: "Mali", cursive;
 }
 
 .containerProductsCart {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-	overflow-y: auto;
-	width: 100%;
-	margin-bottom: 10px;
-	padding-right: 4px; 
-	scrollbar-width: thin;
-	scrollbar-color: #ff9999 #ffe5bc;
-    
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  overflow-y: auto;
+  width: 100%;
+  margin-bottom: 10px;
+  padding-right: 4px;
+  scrollbar-width: thin;
+  scrollbar-color: #ff9999 #ffe5bc;
 }
 
 .containerProductsCart::-webkit-scrollbar {
-	width: 6px;
+  width: 6px;
 }
 
 .containerProductsCart::-webkit-scrollbar-thumb {
-	background-color: #ff9999;
-	border-radius: 4px;
+  background-color: #ff9999;
+  border-radius: 4px;
 }
 
 .containerProductsCart::-webkit-scrollbar-track {
-	background: #ffe5bc;
+  background: #ffe5bc;
 }
 
 .containerButtonYTotalCart {
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-	width: 100%;
-	border-top: 1px solid #ff9999;
-	padding-top: 10px;
-	font-family: "Mali", cursive;
-	color: #ff9999;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  border-top: 1px solid #ff9999;
+  padding-top: 10px;
+  font-family: "Mali", cursive;
+  color: #ff9999;
 }
 
 /* Botón de compra */
 .buttonCart {
-	background-color: #ff9999;
-	border: none;
-	border-radius: 4px;
-	padding: 10px 20px;
-	cursor: pointer;
-	font-family: "Mali", cursive;
-	color: #ffe5bc;
-	display: flex;
-	align-items: center;
-	gap: 8px;
-	transition: transform 0.2s ease, color 0.2s ease;
+  background-color: #ff9999;
+  border: none;
+  border-radius: 4px;
+  padding: 10px 20px;
+  cursor: pointer;
+  font-family: "Mali", cursive;
+  color: #ffe5bc;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: transform 0.2s ease, color 0.2s ease;
 }
 
 .buttonCart:hover {
-	background-color: #ffe5bc;
-	color: #ff9999;
-	transform: scale(1.05);
+  background-color: #ffe5bc;
+  color: #ff9999;
+  transform: scale(1.05);
 }
 
 .iconCart {
-	width: 20px;
-	height: 20px;
-	font-size: 1.2em;
-	color: inherit;
+  width: 20px;
+  height: 20px;
+  font-size: 1.2em;
+  color: inherit;
 }
 
 /* Responsive */
-@media (max-width: 440px) {
-	.principalContainerCart {
-		width: 80vw;
-		height: 70vh;
-	}
+@media (max-width: 450px) {
+  .principalContainerCart {
+    width: 60vw;
+    height: 50vh;
+  }
 
-	.containerButtonYTotalCart {
-		flex-direction: column;
-		gap: 10px;
-	}
+  .containerTitleCart {
+    font-size: 0.7rem;
+  }
 
-	.buttonCart {
-		width: 100%;
-		justify-content: center;
-	}
+  .containerButtonYTotalCart {
+	font-size: 0.9rem;
+  }
+
+  .buttonCart {
+	font-size: 0.7rem;
+	padding: 5px 10px;
+  }
+
+  .buttonCart span{
+	font-size: 1rem;
+  }
 }
