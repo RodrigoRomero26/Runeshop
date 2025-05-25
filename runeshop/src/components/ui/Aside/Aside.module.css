@@ -111,3 +111,22 @@
   font-family: 'Mali', cursive;
   color: #fff;
 }
+
+.buttonFilter{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 90%;
+  height: 40px;
+  background-color: #FAEDD8;
+  color: #FF9999;
+  font-family: 'Mali', cursive;
+  font-weight: bold;
+  border-radius: 5px;
+  cursor: pointer;
+  border: none;
+  margin: 4px;
+  padding: 7px;
+  align-self: center;
+}
+

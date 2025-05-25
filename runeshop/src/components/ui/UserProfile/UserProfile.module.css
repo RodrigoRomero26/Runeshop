@@ -193,12 +193,17 @@
 	}
 
 	.userAdressesInformation {
-		max-width: auto;
+		height: 23vh;
 		padding: 10px;
 	}
 
 	.userAdresses {
 		width: 85vw;
+	}
+
+	.userAdresses p {
+		font-size: 0.8rem;
+		width: 59vw;
 	}
 
 	.userAdressesButtons {

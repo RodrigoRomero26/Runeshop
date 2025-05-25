@@ -94,8 +94,8 @@ export const Aside = () => {
             <input type="text" placeholder="Minimo"/>
           </label>
         </div>
-        
-        
+        <button className={styles.buttonFilter}>Aplicar filtros</button>
+        <button className={styles.buttonFilter}>Limpiar filtros</button>
       </div>
     </div>
   );
