@@ -3,6 +3,7 @@ import { UserProfileScreen } from "../components/Screens/UserProfileScreen/UserP
 import { LandingScreen } from "../components/Screens/LandingScreen/LandingScreen.tsx"
 import {ProductsCatalogScreen } from "../components/Screens/ProductsCatalogScreen/ProductsCatalogScreen.tsx"
 import { CartScreen } from "../components/Screens/CartScreen/CartScreen.tsx"
+import { ProductScreen } from "../components/Screens/ProductScreen/ProductScreen.tsx"
 
 export const appRouter = () => {
     return (
@@ -11,6 +12,7 @@ export const appRouter = () => {
             <Route path="/userProfile" element={<UserProfileScreen />}/>
             <Route path="/productsCatalog" element={<ProductsCatalogScreen />} />
             <Route path="/cart" element={<CartScreen />} />
+            <Route path="/product" element={<ProductScreen />} />
         </Routes>
     )
 }

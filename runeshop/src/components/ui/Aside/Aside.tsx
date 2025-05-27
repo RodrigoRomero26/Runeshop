@@ -71,7 +71,7 @@ export const Aside = () => {
         <div className={styles.filterContainer}>
           <h3>Talles</h3>
           <div className={styles.checkboxSizeContainer}>
-            {[34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46].map(
+            {[33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46].map(
               (size) => (
                 <label key={size} className={styles.sizeLabel}>
                   <input
