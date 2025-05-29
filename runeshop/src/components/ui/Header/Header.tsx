@@ -23,6 +23,11 @@ export const Header = () => {
 		navigate("/productsCatalog")
 	}
 
+	const handleAdmin = () => {
+		navigate("/admin");
+	}
+
+
 	return (
 		<div className={styles.principalContainerHeader}>
 			<div className={styles.containerButtonsHeader}>
@@ -33,13 +38,11 @@ export const Header = () => {
 				</div>
 				<div></div>
 				<div className={styles.containerFilterButtonsHeader}>
-					<button onClick={() => console.log("/descuento")}>Descuentos</button>
 					<button onClick={handleProductsCatalog}>Hombres</button>
 					<div className={styles.principalButton}>
 						<button onClick={() => navigate("/")}>RuneShop</button>
 					</div>
-					<button onClick={() => console.log("/categoria/mujeres")}>Mujeres</button>
-					<button onClick={() => console.log("/categoria/ninos")}>Niños</button>
+					<button onClick={handleAdmin}>Mujeres</button>
 				</div>
 				<div className={styles.containerFilterUserButtonsHeader}>
 					<button onClick={() => setCartOpen(true)}>
@@ -55,8 +58,7 @@ export const Header = () => {
 				<div className={styles.mobileMenu}>
 					<button onClick={() => navigate("/")}>RuneShop</button>
 					<button onClick={handleProductsCatalog}>Hombres</button>
-					<button onClick={() => console.log("/categoria/mujeres")}>Mujeres</button>
-					<button onClick={() => console.log("/categoria/ninos")}>Niños</button>
+					<button onClick={handleAdmin}>Mujeres</button>
 				</div>
 			)}
 

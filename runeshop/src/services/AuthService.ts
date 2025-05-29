@@ -1,19 +1,46 @@
+// src/services/AuthService.ts
+import api from '../api/api';
 
-import axios from 'axios';
-import { BackendClient } from './BackendClient';
+export interface LoginRequest {
+  nombreUsuario: string;
+  contrasenia: string;
+}
 
-export class AuthService extends BackendClient {
-  constructor() {
-    super('auth');
+export interface RegisterRequest extends LoginRequest {
+  nombre: string;
+  apellido: string;
+  dni: string;
+  email: string;
+}
+
+export interface LoginResponse {
+  token: string;
+}
+
+export class AuthService {
+  static async login(data: LoginRequest): Promise<LoginResponse | null> {
+    try {
+      const res = await api.post<LoginResponse>('/auth/login', data);
+      localStorage.setItem('token', res.data.token);
+      return res.data;
+    } catch (error) {
+      console.error(error);
+      return null;
+    }
   }
 
-  async login(data: { nombreUsuario: string; contrasenia: string }): Promise<any> {
-    const response = await axios.post(`${this.baseUrl}/login`, data);
-    return response.data;
+  static async register(data: RegisterRequest): Promise<any | null> {
+    try {
+      const res = await api.post('/auth/register', data);
+      return res.data;
+    } catch (error) {
+      console.error(error);
+      return null;
+    }
   }
 
-  async register(data: any): Promise<any> {
-    const response = await axios.post(`${this.baseUrl}/register`, data);
-    return response.data;
+  static logout(): void {
+    localStorage.removeItem('token');
+    window.location.reload();
   }
 }

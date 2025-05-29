@@ -4,6 +4,7 @@ import { LandingScreen } from "../components/Screens/LandingScreen/LandingScreen
 import {ProductsCatalogScreen } from "../components/Screens/ProductsCatalogScreen/ProductsCatalogScreen.tsx"
 import { CartScreen } from "../components/Screens/CartScreen/CartScreen.tsx"
 import { ProductScreen } from "../components/Screens/ProductScreen/ProductScreen.tsx"
+import { AdminScreen } from "../components/Screens/AdminScreen/AdminScreen.tsx"
 
 export const appRouter = () => {
     return (
@@ -13,6 +14,7 @@ export const appRouter = () => {
             <Route path="/productsCatalog" element={<ProductsCatalogScreen />} />
             <Route path="/cart" element={<CartScreen />} />
             <Route path="/product" element={<ProductScreen />} />
+            <Route path="/admin" element={<AdminScreen />} />
         </Routes>
     )
 }

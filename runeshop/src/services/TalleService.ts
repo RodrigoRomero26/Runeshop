@@ -1,14 +1,14 @@
+// src/services/TalleService.ts
+import api from '../api/api';
 
-import axios from 'axios';
-import { BackendClient } from './BackendClient';
-
-export class TalleService extends BackendClient {
-  constructor() {
-    super('talle');
-  }
-
-  async getAllTalles(): Promise<any> {
-    const response = await axios.get(`${this.baseUrl}/`);
-    return response.data;
+export class TalleService {
+  static async getTalles(): Promise<any[]> {
+    try {
+      const res = await api.get('/talle');
+      return res.data;
+    } catch (error) {
+      console.error(error);
+      return [];
+    }
   }
 }

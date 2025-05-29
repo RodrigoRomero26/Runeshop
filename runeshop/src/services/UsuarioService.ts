@@ -1,14 +1,14 @@
+// src/services/UsuarioService.ts
+import api from '../api/api';
 
-import axios from 'axios';
-import { BackendClient } from './BackendClient';
-
-export class UsuarioService extends BackendClient {
-  constructor() {
-    super('usuario');
-  }
-
-  async getAllUsuarios(): Promise<any> {
-    const response = await axios.get(`${this.baseUrl}/`);
-    return response.data;
+export class UsuarioService {
+  static async getUsuarios(): Promise<any[]> {
+    try {
+      const res = await api.get('/usuario');
+      return res.data;
+    } catch (error) {
+      console.error(error);
+      return [];
+    }
   }
 }

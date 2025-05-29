@@ -8,6 +8,32 @@ export const Aside = () => {
       <div className={styles.filtersContainer}>
         <h2>Filtros de busqueda</h2>
         <div className={styles.filterContainer}>
+          <h3>Genero</h3>
+          <label className={styles.checkboxLabel}>
+            <input type="checkbox" name="Mujer" />
+            Mujer
+          </label>
+          <label className={styles.checkboxLabel}>
+            <input type="checkbox" name="Hombre" />
+            Hombre
+          </label>
+        </div>
+        <div className={styles.filterContainer}>
+          <h3>Tipo de indumentaria</h3>
+          <label className={styles.checkboxLabel}>
+            <input type="checkbox" name="Remera" />
+            Remera
+          </label>
+          <label className={styles.checkboxLabel}>
+            <input type="checkbox" name="Pantalon" />
+            Pantalon
+          </label>
+          <label className={styles.checkboxLabel}>
+            <input type="checkbox" name="Calzado" />
+            Calzado
+          </label>
+        </div>
+        <div className={styles.filterContainer}>
           <h3>Categorias</h3>
           <label className={styles.checkboxLabel}>
             <input type="checkbox" name="Running" />
@@ -28,25 +54,6 @@ export const Aside = () => {
           <label className={styles.checkboxLabel}>
             <input type="checkbox" name="Entrenamiento" />
             Entrenamiento
-          </label>
-        </div>
-        <div className={styles.filterContainer}>
-          <h3>Tipo de calzado</h3>
-          <label className={styles.checkboxLabel}>
-            <input type="checkbox" name="Zapatillas" />
-            Zapatillas
-          </label>
-          <label className={styles.checkboxLabel}>
-            <input type="checkbox" name="Botines" />
-            Botines
-          </label>
-          <label className={styles.checkboxLabel}>
-            <input type="checkbox" name="Botas" />
-            Botas
-          </label>
-          <label className={styles.checkboxLabel}>
-            <input type="checkbox" name="Sandalias" />
-            Sandalias
           </label>
         </div>
         <div className={styles.filterContainer}>

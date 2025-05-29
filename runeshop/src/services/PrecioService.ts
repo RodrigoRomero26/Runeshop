@@ -1,19 +1,30 @@
+// src/services/PrecioService.ts
+import api from '../api/api';
 
-import axios from 'axios';
-import { BackendClient } from './BackendClient';
+export interface Precio {
+  precioCompra: number;
+  precioVenta: number;
+}
 
-export class PrecioService extends BackendClient {
-  constructor() {
-    super('precio');
+export class PrecioService {
+  static async crearPrecio(data: Precio): Promise<any | null> {
+    try {
+      const res = await api.post('/precio', data);
+      return res.data;
+    } catch (error) {
+      console.error(error);
+      return null;
+    }
   }
 
-  async getAllPrecios(): Promise<any> {
-    const response = await axios.get(`${this.baseUrl}/`);
-    return response.data;
-  }
-
-  async crearPrecio(data: any): Promise<any> {
-    const response = await axios.post(`${this.baseUrl}/`, data);
-    return response.data;
+  static async getPrecios(): Promise<any[]> {
+    try {
+      const res = await api.get('/precio');
+      return res.data;
+    } catch (error) {
+      console.error(error);
+      return [];
+    }
   }
 }
+

@@ -1,19 +1,29 @@
+// src/services/CategoriaService.ts
+import api from '../api/api';
 
-import axios from 'axios';
-import { BackendClient } from './BackendClient';
+export interface Categoria {
+  id: number;
+  nombre: string;
+}
 
-export class CategoriaService extends BackendClient {
-  constructor() {
-    super('categoria');
+export class CategoriaService {
+  static async crearCategoria(nombre: string): Promise<Categoria | null> {
+    try {
+      const res = await api.post<Categoria>('/categoria', { nombre });
+      return res.data;
+    } catch (error) {
+      console.error(error);
+      return null;
+    }
   }
 
-  async getAllCategorias(): Promise<any> {
-    const response = await axios.get(`${this.baseUrl}/`);
-    return response.data;
-  }
-
-  async createCategoria(data: { nombre: string }): Promise<any> {
-    const response = await axios.post(`${this.baseUrl}/`, data);
-    return response.data;
+  static async getCategorias(): Promise<Categoria[]> {
+    try {
+      const res = await api.get<Categoria[]>('/categoria');
+      return res.data;
+    } catch (error) {
+      console.error(error);
+      return [];
+    }
   }
 }

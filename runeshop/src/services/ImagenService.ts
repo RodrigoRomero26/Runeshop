@@ -1,16 +1,14 @@
+// src/services/ImagenService.ts
+import api from '../api/api';
 
-import axios from 'axios';
-import { BackendClient } from './BackendClient';
-
-export class ImagenService extends BackendClient {
-  constructor() {
-    super('detalle');
-  }
-
-  async actualizarImagenDetalle(formData: FormData): Promise<any> {
-    const response = await axios.put(`${this.baseUrl}/actualizarImagenDetalle`, formData, {
-      headers: { 'Content-Type': 'multipart/form-data' },
-    });
-    return response.data;
+export class ImagenService {
+  static async getImagenes(): Promise<any[]> {
+    try {
+      const res = await api.get('/imagen');
+      return res.data;
+    } catch (error) {
+      console.error(error);
+      return [];
+    }
   }
 }

@@ -1,15 +1,24 @@
+// src/services/DireccionService.ts
+import api from '../api/api';
 
-import axios from 'axios';
-import { BackendClient } from './BackendClient';
-
-export class DireccionService extends BackendClient {
-  constructor() {
-    super('direccion');
+export class DireccionService {
+  static async getDireccionesPorUsuario(usuarioId: number): Promise<any[]> {
+    try {
+      const res = await api.get(`/perfil/usuarios/${usuarioId}/direcciones`);
+      return res.data;
+    } catch (error) {
+      console.error(error);
+      return [];
+    }
   }
 
-  async getAllDirecciones(): Promise<any> {
-    const response = await axios.get(`${this.baseUrl}/`);
-    return response.data;
+  static async getDirecciones(): Promise<any[]> {
+    try {
+      const res = await api.get('/direccion');
+      return res.data;
+    } catch (error) {
+      console.error(error);
+      return [];
+    }
   }
 }
-

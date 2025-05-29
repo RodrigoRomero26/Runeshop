@@ -1,19 +1,27 @@
+// src/services/OrdenCompraService.ts
+import api from '../api/api';
 
-import axios from 'axios';
-import { BackendClient } from './BackendClient';
-
-export class OrdenCompraService extends BackendClient {
-  constructor() {
-    super('orden-compra');
+export class OrdenCompraService {
+  static async crearOrden(usuarioDireccionId: number, detallesId: number[]): Promise<any | null> {
+    try {
+      const res = await api.post(
+        `/orden-compra/crear?usuarioDireccionId=${usuarioDireccionId}&detallesId=${detallesId.join(',')}`
+      );
+      return res.data;
+    } catch (error) {
+      console.error(error);
+      return null;
+    }
   }
 
-  async crearOrdenCompra(usuarioDireccionId: number, detallesId: string, body: any): Promise<any> {
-    const response = await axios.post(`${this.baseUrl}/crear?usuarioDireccionId=${usuarioDireccionId}&detallesId=${detallesId}`, body);
-    return response.data;
-  }
-
-  async getAllOrdenes(): Promise<any> {
-    const response = await axios.get(`${this.baseUrl}/`);
-    return response.data;
+  static async getOrdenes(): Promise<any[]> {
+    try {
+      const res = await api.get('/ordenCompra');
+      return res.data;
+    } catch (error) {
+      console.error(error);
+      return [];
+    }
   }
 }
+ 

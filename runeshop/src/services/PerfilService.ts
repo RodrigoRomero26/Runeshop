@@ -1,18 +1,24 @@
-import axios from "axios";
-import { BackendClient } from "./BackendClient";
+// src/services/PerfilService.ts
+import api from '../api/api';
 
-export class PerfilService extends BackendClient {
-  constructor() {
-    super('perfil');
+export class PerfilService {
+  static async getPerfil(): Promise<any[]> {
+    try {
+      const res = await api.get('/perfil');
+      return res.data;
+    } catch (error) {
+      console.error(error);
+      return [];
+    }
   }
 
-  async getUsuarioPerfil(): Promise<any> {
-    const response = await axios.get(`${this.baseUrl}/`);
-    return response.data;
-  }
-
-  async getDireccionesPorUsuario(usuarioId: number): Promise<any> {
-    const response = await axios.get(`${this.baseUrl}/usuarios/${usuarioId}/direcciones`);
-    return response.data;
+  static async getDireccionesPorUsuario(usuarioId: number): Promise<any[]> {
+    try {
+      const res = await api.get(`/perfil/usuarios/${usuarioId}/direcciones`);
+      return res.data;
+    } catch (error) {
+      console.error(error);
+      return [];
+    }
   }
 }

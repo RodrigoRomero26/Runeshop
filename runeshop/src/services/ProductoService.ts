@@ -1,36 +1,65 @@
+// src/services/ProductoService.ts
+import api from '../api/api';
 
-import axios from 'axios';
-import { BackendClient } from './BackendClient';
+export class ProductoService {
+  static async crearProducto(
+    producto: string,
+    detalle: string,
+    imagenes: File[]
+  ): Promise<any | null> {
+    try {
+      const formData = new FormData();
+      formData.append('producto', producto);
+      formData.append('detalle', detalle);
+      imagenes.forEach((img) => formData.append('imagen', img));
 
-export class ProductoService extends BackendClient {
-  constructor() {
-    super('producto');
+      const res = await api.post('/producto/crear_producto', formData, {
+        headers: { 'Content-Type': 'multipart/form-data' },
+      });
+      return res.data;
+    } catch (error) {
+      console.error(error);
+      return null;
+    }
   }
 
-  async getAllProductos(): Promise<any> {
-    const response = await axios.get(`${this.baseUrl}/`);
-    return response.data;
+  static async getProductos(): Promise<any[]> {
+    try {
+      const res = await api.get('/producto');
+      return res.data;
+    } catch (error) {
+      console.error(error);
+      return [];
+    }
   }
 
-  async crearProducto(formData: FormData): Promise<any> {
-    const response = await axios.post(`${this.baseUrl}/crear_producto`, formData, {
-      headers: { 'Content-Type': 'multipart/form-data' },
-    });
-    return response.data;
+  static async filtroGeneral(params: any): Promise<any[]> {
+    try {
+      const res = await api.get('/producto/filtro', { params });
+      return res.data;
+    } catch (error) {
+      console.error(error);
+      return [];
+    }
   }
 
-  async filtroGeneral(params: any): Promise<any> {
-    const response = await axios.get(`${this.baseUrl}/mujer/filtro`, { params });
-    return response.data;
+  static async filtroPrecio(min: number, max: number): Promise<any[]> {
+    try {
+      const res = await api.get('/producto/filtro_precio', { params: { min, max } });
+      return res.data;
+    } catch (error) {
+      console.error(error);
+      return [];
+    }
   }
 
-  async filtroPrecio(min: number, max: number): Promise<any> {
-    const response = await axios.get(`${this.baseUrl}/filtro_precio`, { params: { min, max } });
-    return response.data;
-  }
-
-  async ordenarPrecioDesc(): Promise<any> {
-    const response = await axios.get(`${this.baseUrl}/ord_desc`);
-    return response.data;
+  static async ordenarDescendente(): Promise<any[]> {
+    try {
+      const res = await api.get('/producto/ord_desc');
+      return res.data;
+    } catch (error) {
+      console.error(error);
+      return [];
+    }
   }
 }
