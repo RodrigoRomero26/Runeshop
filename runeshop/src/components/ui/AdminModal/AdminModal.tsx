@@ -11,10 +11,6 @@ export const AdminModal: FC<adminModalProps> = ({ onCloseAdminModal }) => {
 
 const [openEditor, setOpenEditor] = useState(false);
 
-const handleOpenEditor = () => {
-  setOpenEditor(true);
-};
-
 const handleCloseEditor = () => {
   setOpenEditor(false);
 };
@@ -83,7 +79,7 @@ const imagensModal = () => {
             </div>
           </div>
           <div className={styles.containerButtonAdminModal}>
-            <button onClick={handleOpenEditor}>Editar</button>
+            <button onClick={() => setOpenEditor(true)}>Editar</button>
             <button onClick={onCloseAdminModal}>Cerrar</button>
           </div>
         </div>

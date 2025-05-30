@@ -5,31 +5,81 @@ interface adminModalEditProps {
   onCloseAdminModalEdit: () => void;
 }
 
-export const AdminModalEdit : FC<adminModalEditProps> = ({ onCloseAdminModalEdit }) => {
+
+const imagensModal = () => {
+  return (
+    <div className={styles.containerImageAdminModalEdit}>
+      <img
+        className={styles.imageAdminModalEdit}
+        src="https://th.bing.com/th/id/OIP.7yXv7DXhB_SVtqnlOcxqFAHaH6?rs=1&pid=ImgDetMain"
+        alt="Product"
+      />
+      <img
+        className={styles.imageAdminModalEdit}
+        src="https://th.bing.com/th/id/OIP.7yXv7DXhB_SVtqnlOcxqFAHaH6?rs=1&pid=ImgDetMain"
+        alt="Product"
+      />
+      <img
+        className={styles.imageAdminModalEdit}
+        src="https://th.bing.com/th/id/OIP.7yXv7DXhB_SVtqnlOcxqFAHaH6?rs=1&pid=ImgDetMain"
+        alt="Product"
+      />
+      <img
+        className={styles.imageAdminModalEdit}
+        src="https://th.bing.com/th/id/OIP.7yXv7DXhB_SVtqnlOcxqFAHaH6?rs=1&pid=ImgDetMain"
+        alt="Product"
+      />
+      <img
+        className={styles.imageAdminModalEdit}
+        src="https://th.bing.com/th/id/OIP.7yXv7DXhB_SVtqnlOcxqFAHaH6?rs=1&pid=ImgDetMain"
+        alt="Product"
+      />
+      <img
+        className={styles.imageAdminModalEdit}
+        src="https://th.bing.com/th/id/OIP.7yXv7DXhB_SVtqnlOcxqFAHaH6?rs=1&pid=ImgDetMain"
+        alt="Product"
+      />
+      <img
+        className={styles.imageAdminModalEdit}
+        src="https://th.bing.com/th/id/OIP.7yXv7DXhB_SVtqnlOcxqFAHaH6?rs=1&pid=ImgDetMain"
+        alt="Product"
+      />
+    </div>
+  );
+};
+
+
+export const AdminModalEdit: FC<adminModalEditProps> = ({
+  onCloseAdminModalEdit,
+}) => {
   return (
     <div className={styles.overlay}>
       <div className={styles.principalContainerAdminModalEdit}>
         <div className={styles.containerDataAdminModalEdit}>
           <div className={styles.containerTitleAdminModalEdit}>
-            <span className="material-symbols-outlined">person</span>
-            <h1>Registrar usuario</h1>
+            <h1>Editar producto</h1>
           </div>
           <div className={styles.containerInputAdminModalEdit}>
-            <input type="text" name="user" placeholder="Nombre de usuario" />
-            <input type="text" name="name" placeholder="Nombre" />
-            <input type="text" name="lastName" placeholder="Apellido" />
-            <input type="text" name="mail" placeholder="Correo electrónico" />
-            <input type="number" name="dni" placeholder="DNI" />
-            <input type="password" name="password" placeholder="Contraseña" />
+            <input type="text" name="Name" placeholder="Nombre (talle)" />
+            <input type="text" name="Gender" placeholder="Genero" />
             <input
-              type="password"
-              name="confirmPassword"
-              placeholder="Confirmar Contraseña"
+              type="text"
+              name="IndumtaryType"
+              placeholder="Tipo de indumentaria"
             />
+            <input type="text" name="Category" placeholder="Categoria" />
+            <input type="text" name="Brand" placeholder="Marca" />
+            <input type="double" name="Price" placeholder="Precio" />
+            <input type="text" name="Color" placeholder="Color" />
+            {imagensModal()}
+            <label>
+              <input type="checkbox" name="available" id="habilitado" />
+              Habilitado
+            </label>
           </div>
           <div className={styles.containerButtonAdminModalEdit}>
-            <button>Registrarse</button>
-            <button onClick={onCloseAdminModalEdit}>Cancelar</button>
+            <button>Guardar</button>
+            <button onClick={onCloseAdminModalEdit}>Cerrar</button>
           </div>
         </div>
       </div>

@@ -1,4 +1,4 @@
-/* .overlay{
+.overlay{
     position: fixed;
     top: 0;
     left: 0;
@@ -6,47 +6,43 @@
     height: 100%;
     background-color: rgba(0, 0, 0, 0.5);
     z-index: 999;
-} */
+}
 
-.principalContainerAdminModalEdit{
+.principalContainerDirection{
     position: fixed;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     width: 30vw;
-    height: 80vh;
+    height: 54vh;
     padding: 20px;
     background-color: #FAEDD8;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     z-index: 1000;
 }
 
-.containerDataAdminModalEdit{
+.containerDataDirection{
     display: flex;
     flex-direction: column;
     align-items: center;
     font-family: "Mali", cursive;
 }
 
-.containerTitleAdminModalEdit{
+.containerTitleDirection{
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    margin-bottom: 20px;
 }
 
-.containerTitleAdminModalEdit h1{
-    font-size: 1.5rem;
-}
-
-
-.containerInputAdminModalEdit{
+.containerInputDirection{
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-.containerInputAdminModalEdit input{
+.containerInputDirection input{
     width: 25vw;
     padding: 10px;
     margin: 5px 0;
@@ -55,62 +51,21 @@
     border-radius: 4px;
 }
 
-.containerInputAdminModalEdit input::placeholder{
+.containerInputDirection input::placeholder{
     background: #FEC1C1;
     font-family: "Mali", cursive;
     color: #FAEAE4;
 }
 
-.containerInfoAdminModalEdit{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.containerInfoAdminModalEdit p{
-    width: 25vw;
-    padding: 10px;
-    margin: 5px 0;
-    background-color: #FEC1C1;
-    border: 1px solid #FF9999;
-    color: white;
-    border-radius: 4px;
-}
-
-.containerImageAdminModalEdit{
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    background-color: #FEC1C1;
-    border: 1px solid #FF9999;
-    border-radius: 4px;
-    width: 27vw;
-    height: 12vh;
-    max-width: 27vw;
-    overflow: auto;
-    gap: 5px;
-}
-
-.imageAdminModalEdit{
-    width: 50px;
-    height: 55px;
-    margin: 0 10px;
-}
-
-.containerStatusAdminModalEdit p{
-    background: none;
-    border: none;
-    color: #FF9999;
-}
-
-.containerButtonAdminModalEdit{
+.containerButtonDirection{
     display: flex;
     justify-content: space-around;
     align-items: center;
     width: 15vw;
+    margin-top: 20px;
 }
 
-.containerButtonAdminModalEdit button{
+.containerButtonDirection button{
     padding: 10px 10px;
     background-color: #FF9999;
     border: none;
@@ -123,14 +78,14 @@
 
 /* Responsive */
 @media (max-width: 440px) {
-    .principalContainerAdminModalEdit{
+    .principalContainerDirection{
         width: 75vw;
         height: 60vh;
     }
-    .containerInfoAdminModalEdit p{
+    .containerInputDirection input{
         width: 60vw;
     }
-    .containerButtonAdminModalEdit{
+    .containerButtonDirection{
         width: 60vw;
     }
 }

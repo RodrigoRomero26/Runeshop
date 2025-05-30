@@ -21,7 +21,7 @@
 	flex-direction: column;
 	align-items: center;
 	justify-content: center;
-	gap: 30px;
+	gap: 10px;
 }
 
 .userIconForm {
@@ -136,7 +136,7 @@
 	font-size: 1.2rem;
 }
 
-.userAdressesAddButton button {
+.button button {
 	padding: 10px 10px;
 	background-color: #ffe5bc;
 	border: none;
@@ -148,7 +148,7 @@
 	transition: transform 0.2s ease, color 0.2s ease;
 }
 
-.userAdressesAddButton button:hover {
+.button button:hover {
 	transform: scale(1.05);
   box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.25);
 }
