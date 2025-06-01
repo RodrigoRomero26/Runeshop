@@ -6,57 +6,63 @@ interface adminModalProps {
   onCloseAdminModal: () => void;
 }
 
-
 export const AdminModal: FC<adminModalProps> = ({ onCloseAdminModal }) => {
+  const [openEditor, setOpenEditor] = useState(false);
 
-const [openEditor, setOpenEditor] = useState(false);
 
-const handleCloseEditor = () => {
-  setOpenEditor(false);
-};
+  const handleCloseEditor = () => {
+    setOpenEditor(false);
+  };
 
-const imagensModal = () => {
-  return (
-    <div className={styles.containerImageAdminModal}>
-      <img
-        className={styles.imageAdminModal}
-        src="https://th.bing.com/th/id/OIP.7yXv7DXhB_SVtqnlOcxqFAHaH6?rs=1&pid=ImgDetMain"
-        alt="Product"
-      />
-      <img
-        className={styles.imageAdminModal}
-        src="https://th.bing.com/th/id/OIP.7yXv7DXhB_SVtqnlOcxqFAHaH6?rs=1&pid=ImgDetMain"
-        alt="Product"
-      />
-      <img
-        className={styles.imageAdminModal}
-        src="https://th.bing.com/th/id/OIP.7yXv7DXhB_SVtqnlOcxqFAHaH6?rs=1&pid=ImgDetMain"
-        alt="Product"
-      />
-      <img
-        className={styles.imageAdminModal}
-        src="https://th.bing.com/th/id/OIP.7yXv7DXhB_SVtqnlOcxqFAHaH6?rs=1&pid=ImgDetMain"
-        alt="Product"
-      />
-      <img
-        className={styles.imageAdminModal}
-        src="https://th.bing.com/th/id/OIP.7yXv7DXhB_SVtqnlOcxqFAHaH6?rs=1&pid=ImgDetMain"
-        alt="Product"
-      />
-      <img
-        className={styles.imageAdminModal}
-        src="https://th.bing.com/th/id/OIP.7yXv7DXhB_SVtqnlOcxqFAHaH6?rs=1&pid=ImgDetMain"
-        alt="Product"
-      />
-      <img
-        className={styles.imageAdminModal}
-        src="https://th.bing.com/th/id/OIP.7yXv7DXhB_SVtqnlOcxqFAHaH6?rs=1&pid=ImgDetMain"
-        alt="Product"
-      />
-    </div>
-  );
-};
+  const handleOpenEditor = () => {
+    setOpenEditor(true);
+  };
 
+if (openEditor) {
+    return <AdminModalEdit onCloseAdminModalEdit={handleCloseEditor} />;
+  }
+
+  const imagensModal = () => {
+    return (
+      <div className={styles.containerImageAdminModal}>
+        <img
+          className={styles.imageAdminModal}
+          src="https://th.bing.com/th/id/OIP.7yXv7DXhB_SVtqnlOcxqFAHaH6?rs=1&pid=ImgDetMain"
+          alt="Product"
+        />
+        <img
+          className={styles.imageAdminModal}
+          src="https://th.bing.com/th/id/OIP.7yXv7DXhB_SVtqnlOcxqFAHaH6?rs=1&pid=ImgDetMain"
+          alt="Product"
+        />
+        <img
+          className={styles.imageAdminModal}
+          src="https://th.bing.com/th/id/OIP.7yXv7DXhB_SVtqnlOcxqFAHaH6?rs=1&pid=ImgDetMain"
+          alt="Product"
+        />
+        <img
+          className={styles.imageAdminModal}
+          src="https://th.bing.com/th/id/OIP.7yXv7DXhB_SVtqnlOcxqFAHaH6?rs=1&pid=ImgDetMain"
+          alt="Product"
+        />
+        <img
+          className={styles.imageAdminModal}
+          src="https://th.bing.com/th/id/OIP.7yXv7DXhB_SVtqnlOcxqFAHaH6?rs=1&pid=ImgDetMain"
+          alt="Product"
+        />
+        <img
+          className={styles.imageAdminModal}
+          src="https://th.bing.com/th/id/OIP.7yXv7DXhB_SVtqnlOcxqFAHaH6?rs=1&pid=ImgDetMain"
+          alt="Product"
+        />
+        <img
+          className={styles.imageAdminModal}
+          src="https://th.bing.com/th/id/OIP.7yXv7DXhB_SVtqnlOcxqFAHaH6?rs=1&pid=ImgDetMain"
+          alt="Product"
+        />
+      </div>
+    );
+  };
 
   return (
     <div className={styles.overlay}>
@@ -79,7 +85,7 @@ const imagensModal = () => {
             </div>
           </div>
           <div className={styles.containerButtonAdminModal}>
-            <button onClick={() => setOpenEditor(true)}>Editar</button>
+            <button onClick={handleOpenEditor}>Editar</button>
             <button onClick={onCloseAdminModal}>Cerrar</button>
           </div>
         </div>

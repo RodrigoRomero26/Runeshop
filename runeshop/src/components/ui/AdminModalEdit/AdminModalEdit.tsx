@@ -1,57 +1,25 @@
-import type { FC } from "react";
+import { useState, type FC } from "react";
 import styles from "./AdminModalEdit.module.css";
+import { EditPhotos } from "../EditPhotos/EditPhotos";
 
 interface adminModalEditProps {
   onCloseAdminModalEdit: () => void;
 }
 
+export const AdminModalEdit: FC<adminModalEditProps> = ({ onCloseAdminModalEdit }) => {
+const [openEditorPhoto, setOpenEditorPhoto] = useState(false);
 
-const imagensModal = () => {
-  return (
-    <div className={styles.containerImageAdminModalEdit}>
-      <img
-        className={styles.imageAdminModalEdit}
-        src="https://th.bing.com/th/id/OIP.7yXv7DXhB_SVtqnlOcxqFAHaH6?rs=1&pid=ImgDetMain"
-        alt="Product"
-      />
-      <img
-        className={styles.imageAdminModalEdit}
-        src="https://th.bing.com/th/id/OIP.7yXv7DXhB_SVtqnlOcxqFAHaH6?rs=1&pid=ImgDetMain"
-        alt="Product"
-      />
-      <img
-        className={styles.imageAdminModalEdit}
-        src="https://th.bing.com/th/id/OIP.7yXv7DXhB_SVtqnlOcxqFAHaH6?rs=1&pid=ImgDetMain"
-        alt="Product"
-      />
-      <img
-        className={styles.imageAdminModalEdit}
-        src="https://th.bing.com/th/id/OIP.7yXv7DXhB_SVtqnlOcxqFAHaH6?rs=1&pid=ImgDetMain"
-        alt="Product"
-      />
-      <img
-        className={styles.imageAdminModalEdit}
-        src="https://th.bing.com/th/id/OIP.7yXv7DXhB_SVtqnlOcxqFAHaH6?rs=1&pid=ImgDetMain"
-        alt="Product"
-      />
-      <img
-        className={styles.imageAdminModalEdit}
-        src="https://th.bing.com/th/id/OIP.7yXv7DXhB_SVtqnlOcxqFAHaH6?rs=1&pid=ImgDetMain"
-        alt="Product"
-      />
-      <img
-        className={styles.imageAdminModalEdit}
-        src="https://th.bing.com/th/id/OIP.7yXv7DXhB_SVtqnlOcxqFAHaH6?rs=1&pid=ImgDetMain"
-        alt="Product"
-      />
-    </div>
-  );
-};
+  const handleCloseEditorPhoto = () => {
+    setOpenEditorPhoto(false);
+  };
 
+  const handleOpenEditorPhoto = () => {
+    setOpenEditorPhoto(true);
+  };
+    if (openEditorPhoto) {
+        return <EditPhotos onCloseEditPhotos={handleCloseEditorPhoto} />;
+    }
 
-export const AdminModalEdit: FC<adminModalEditProps> = ({
-  onCloseAdminModalEdit,
-}) => {
   return (
     <div className={styles.overlay}>
       <div className={styles.principalContainerAdminModalEdit}>
@@ -71,18 +39,25 @@ export const AdminModalEdit: FC<adminModalEditProps> = ({
             <input type="text" name="Brand" placeholder="Marca" />
             <input type="double" name="Price" placeholder="Precio" />
             <input type="text" name="Color" placeholder="Color" />
-            {imagensModal()}
-            <label>
+          </div>
+          <div className={styles.containerCheckboxAdminModalEdit}>
+            <label className={styles.checkboxLabel}>
               <input type="checkbox" name="available" id="habilitado" />
               Habilitado
             </label>
           </div>
+          <button onClick={handleOpenEditorPhoto} className={styles.buttonEditImagesAdminModalEdit}>
+            Editar imagenes
+          </button>
           <div className={styles.containerButtonAdminModalEdit}>
             <button>Guardar</button>
             <button onClick={onCloseAdminModalEdit}>Cerrar</button>
           </div>
         </div>
       </div>
+      {openEditorPhoto && (
+        <EditPhotos onCloseEditPhotos={handleCloseEditorPhoto} />
+      )}
     </div>
   );
 };

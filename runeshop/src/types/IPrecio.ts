@@ -1,5 +1,5 @@
 export interface IPrecio{
-    precio_compra:number,
-    precio_venta: number,
-    id: number
+    precioCompra:number,
+    precioVenta: number,
+    id?: number
 }

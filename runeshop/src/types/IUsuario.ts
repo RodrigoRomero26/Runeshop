@@ -1,8 +1,10 @@
 export interface IUsuario {
     id?: number,
-    contraseña: string,
-    email: string,
     nombre: string,
+    nombreUsuario: string,
+    apellido: string,
+    email: string,
+    contrasenia: string,
+    tipoUsuario: string,
     dni: number,
-    rol: string
 }

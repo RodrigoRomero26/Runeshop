@@ -36,6 +36,7 @@ export const Admin = () => {
             <thead>
               <tr>
                 <th>Modelo del producto</th>
+                <th>Color</th>
                 <th>Precio</th>
                 <th>Stock disponible</th>
                 <th>Acciones</th>
@@ -44,158 +45,65 @@ export const Admin = () => {
             <tbody>
               <tr>
                 <td>Producto 1</td>
+                <td>Rojo</td>
                 <td>$100000</td>
                 <td>10</td>
-                <td>{asideButtons()}</td>
-              </tr>
-              <tr>
-                <td>Producto 2</td>
-                <td>$2000000</td>
-                <td>30</td>
                 <td>{asideButtons()}</td>
               </tr>
               <tr>
                 <td>Producto 1</td>
+                <td>Rojo</td>
                 <td>$100000</td>
                 <td>10</td>
-                <td>{asideButtons()}</td>
-              </tr>
-              <tr>
-                <td>Producto 2</td>
-                <td>$2000000</td>
-                <td>30</td>
                 <td>{asideButtons()}</td>
               </tr>
               <tr>
                 <td>Producto 1</td>
+                <td>Rojo</td>
                 <td>$100000</td>
                 <td>10</td>
-                <td>{asideButtons()}</td>
-              </tr>
-              <tr>
-                <td>Producto 2</td>
-                <td>$2000000</td>
-                <td>30</td>
                 <td>{asideButtons()}</td>
               </tr>
               <tr>
                 <td>Producto 1</td>
+                <td>Rojo</td>
                 <td>$100000</td>
                 <td>10</td>
-                <td>{asideButtons()}</td>
-              </tr>
-              <tr>
-                <td>Producto 2</td>
-                <td>$2000000</td>
-                <td>30</td>
                 <td>{asideButtons()}</td>
               </tr>
               <tr>
                 <td>Producto 1</td>
+                <td>Rojo</td>
                 <td>$100000</td>
                 <td>10</td>
-                <td>{asideButtons()}</td>
-              </tr>
-              <tr>
-                <td>Producto 2</td>
-                <td>$2000000</td>
-                <td>30</td>
                 <td>{asideButtons()}</td>
               </tr>
               <tr>
                 <td>Producto 1</td>
+                <td>Rojo</td>
                 <td>$100000</td>
                 <td>10</td>
-                <td>{asideButtons()}</td>
-              </tr>
-              <tr>
-                <td>Producto 2</td>
-                <td>$2000000</td>
-                <td>30</td>
                 <td>{asideButtons()}</td>
               </tr>
               <tr>
                 <td>Producto 1</td>
+                <td>Rojo</td>
                 <td>$100000</td>
                 <td>10</td>
-                <td>{asideButtons()}</td>
-              </tr>
-              <tr>
-                <td>Producto 2</td>
-                <td>$2000000</td>
-                <td>30</td>
                 <td>{asideButtons()}</td>
               </tr>
               <tr>
                 <td>Producto 1</td>
+                <td>Rojo</td>
                 <td>$100000</td>
                 <td>10</td>
-                <td>{asideButtons()}</td>
-              </tr>
-              <tr>
-                <td>Producto 2</td>
-                <td>$2000000</td>
-                <td>30</td>
                 <td>{asideButtons()}</td>
               </tr>
               <tr>
                 <td>Producto 1</td>
+                <td>Rojo</td>
                 <td>$100000</td>
                 <td>10</td>
-                <td>{asideButtons()}</td>
-              </tr>
-              <tr>
-                <td>Producto 2</td>
-                <td>$2000000</td>
-                <td>30</td>
-                <td>{asideButtons()}</td>
-              </tr>
-              <tr>
-                <td>Producto 1</td>
-                <td>$100000</td>
-                <td>10</td>
-                <td>{asideButtons()}</td>
-              </tr>
-              <tr>
-                <td>Producto 2</td>
-                <td>$2000000</td>
-                <td>30</td>
-                <td>{asideButtons()}</td>
-              </tr>
-              <tr>
-                <td>Producto 1</td>
-                <td>$100000</td>
-                <td>10</td>
-                <td>{asideButtons()}</td>
-              </tr>
-              <tr>
-                <td>Producto 2</td>
-                <td>$2000000</td>
-                <td>30</td>
-                <td>{asideButtons()}</td>
-              </tr>
-              <tr>
-                <td>Producto 1</td>
-                <td>$100000</td>
-                <td>10</td>
-                <td>{asideButtons()}</td>
-              </tr>
-              <tr>
-                <td>Producto 2</td>
-                <td>$2000000</td>
-                <td>30</td>
-                <td>{asideButtons()}</td>
-              </tr>
-              <tr>
-                <td>Producto 1</td>
-                <td>$100000</td>
-                <td>10</td>
-                <td>{asideButtons()}</td>
-              </tr>
-              <tr>
-                <td>Producto 2</td>
-                <td>$2000000</td>
-                <td>30</td>
                 <td>{asideButtons()}</td>
               </tr>
             </tbody>

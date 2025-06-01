@@ -1,136 +1,123 @@
-/* .overlay{
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    z-index: 999;
-} */
-
-.principalContainerAdminModalEdit{
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 30vw;
-    height: 80vh;
-    padding: 20px;
-    background-color: #FAEDD8;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    z-index: 1000;
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 999;
 }
 
-.containerDataAdminModalEdit{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    font-family: "Mali", cursive;
+.principalContainerAdminModalEdit {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 30vw;
+  height: 71vh;
+  padding: 20px;
+  background-color: #faedd8;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
 }
 
-.containerTitleAdminModalEdit{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+.containerDataAdminModalEdit {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: "Mali", cursive;
 }
 
-.containerTitleAdminModalEdit h1{
-    font-size: 1.5rem;
+.containerTitleAdminModalEdit {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
-
-.containerInputAdminModalEdit{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+.containerTitleAdminModalEdit h1 {
+  font-size: 1.5rem;
 }
 
-.containerInputAdminModalEdit input{
-    width: 25vw;
-    padding: 10px;
-    margin: 5px 0;
-    background-color: #FEC1C1;
-    border: 1px solid #FF9999;
-    border-radius: 4px;
+.containerInputAdminModalEdit {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-.containerInputAdminModalEdit input::placeholder{
-    background: #FEC1C1;
-    font-family: "Mali", cursive;
-    color: #FAEAE4;
+.containerInputAdminModalEdit input {
+  width: 25vw;
+  padding: 10px;
+  margin: 5px 0;
+  background-color: #fec1c1;
+  border: 1px solid #ff9999;
+  border-radius: 4px;
 }
 
-.containerInfoAdminModalEdit{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+.containerInputAdminModalEdit input::placeholder {
+  background: #fec1c1;
+  font-family: "Mali", cursive;
+  color: #faeae4;
 }
 
-.containerInfoAdminModalEdit p{
-    width: 25vw;
-    padding: 10px;
-    margin: 5px 0;
-    background-color: #FEC1C1;
-    border: 1px solid #FF9999;
-    color: white;
-    border-radius: 4px;
+.containerCheckboxAdminModalEdit {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 }
 
-.containerImageAdminModalEdit{
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    background-color: #FEC1C1;
-    border: 1px solid #FF9999;
-    border-radius: 4px;
-    width: 27vw;
-    height: 12vh;
-    max-width: 27vw;
-    overflow: auto;
-    gap: 5px;
+.containerCheckboxAdminModalEdit label {
+  width: 25vw;
+  padding: 10px;
+  margin: 5px 0;
+  background-color: #fec1c1;
+  border: 1px solid #ff9999;
+  border-radius: 4px;
+  font-family: "Mali", cursive;
+  color: #faeae4;
+  gap: 10px;
 }
 
-.imageAdminModalEdit{
-    width: 50px;
-    height: 55px;
-    margin: 0 10px;
+.buttonEditImagesAdminModalEdit {
+  padding: 10px 10px;
+  background-color: #ff9999;
+  border: none;
+  border-radius: 4px;
+  color: #faeae4;
+  cursor: pointer;
+  font-family: "Mali", cursive;
+  width: 90%;
+  margin: 10px;
+}
+.containerButtonAdminModalEdit {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 20vw;
+  gap: 5%;
 }
 
-.containerStatusAdminModalEdit p{
-    background: none;
-    border: none;
-    color: #FF9999;
+.containerButtonAdminModalEdit button {
+  padding: 10px 10px;
+  background-color: #ff9999;
+  border: none;
+  border-radius: 4px;
+  color: #faeae4;
+  cursor: pointer;
+  font-family: "Mali", cursive;
+  width: 100%;
 }
-
-.containerButtonAdminModalEdit{
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    width: 15vw;
-}
-
-.containerButtonAdminModalEdit button{
-    padding: 10px 10px;
-    background-color: #FF9999;
-    border: none;
-    border-radius: 4px;
-    color: #FAEAE4;
-    cursor: pointer;
-    font-family: "Mali", cursive;
-}
-
 
 /* Responsive */
 @media (max-width: 440px) {
-    .principalContainerAdminModalEdit{
-        width: 75vw;
-        height: 60vh;
-    }
-    .containerInfoAdminModalEdit p{
-        width: 60vw;
-    }
-    .containerButtonAdminModalEdit{
-        width: 60vw;
-    }
+  .principalContainerAdminModalEdit {
+    width: 75vw;
+    height: 60vh;
+  }
+  .containerInfoAdminModalEdit p {
+    width: 60vw;
+  }
+  .containerButtonAdminModalEdit {
+    width: 60vw;
+  }
 }

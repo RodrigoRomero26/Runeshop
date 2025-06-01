@@ -1,7 +1,6 @@
 export interface IProducto {
-    tipo_producto: number,
-    categoria_id: number,
-    id?:number,
-    nombre: string,
-    sexo: string
+    id?: number;
+    modelo: string;
+    sexo: string;
+    tipoProducto: string;
 }

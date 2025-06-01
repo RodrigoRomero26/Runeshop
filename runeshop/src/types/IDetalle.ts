@@ -1,10 +1,13 @@
+import type { IDescuento } from './IDescuento';
+
 export interface IDetalle {
-    estado: boolean,
-    id: number,
-    precio_id: number,
-    producto_id: number,
-    talle_id:number,
-    color: string,
-    marca: string,
-    stock: string
+    id?: number;
+    color: string;
+    estado: string;
+    marca: string;
+    stock: number;
+    descuentos: IDescuento;
+    precio_descuento: number;
+    inicio_descuento: Date;
+    fin_descuento: Date;
 }

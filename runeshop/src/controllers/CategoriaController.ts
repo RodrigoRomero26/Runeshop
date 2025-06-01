@@ -1,11 +1,10 @@
 
 import { CategoriaService } from '../services/CategoriaService';
+import type { ICategoria } from '../types/ICategoria';
 
-const categoriaService = new CategoriaService();
-
-export const getCategoriasController = async (): Promise<any[]> => {
+export const getCategoriasController = async (): Promise<ICategoria[]> => {
   try {
-    const categorias = await categoriaService.getAllCategorias();
+    const categorias = await CategoriaService.getCategorias();
     return categorias || [];
   } catch (error) {
     console.error("Error en getCategoriasController:", error);
@@ -15,7 +14,7 @@ export const getCategoriasController = async (): Promise<any[]> => {
 
 export const createCategoriaController = async (data: { nombre: string }): Promise<any | null> => {
   try {
-    const categoria = await categoriaService.createCategoria(data);
+    const categoria = await CategoriaService.crearCategoria(data);
     return categoria;
   } catch (error) {
     console.error("Error en createCategoriaController:", error);

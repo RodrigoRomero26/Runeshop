@@ -14,7 +14,7 @@
     left: 50%;
     transform: translate(-50%, -50%);
     width: 30vw;
-    height: 80vh;
+    height: 85vh;
     padding: 20px;
     background-color: #FAEDD8;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -62,17 +62,18 @@
     background-color: #FEC1C1;
     border: 1px solid #FF9999;
     border-radius: 4px;
-    width: 27vw;
+    width: 25vw;
     height: 12vh;
-    max-width: 27vw;
+    max-width: 25vw;
     overflow: auto;
-    gap: 5px;
+    gap: 10px;
+    margin: 5px 0;
+    padding: 10px;
 }
 
 .imageAdminModal{
-    width: 50px;
-    height: 55px;
-    margin: 0 10px;
+    width: 70px;
+    height: 75px;
 }
 
 .containerStatusAdminModal p{
@@ -85,7 +86,8 @@
     display: flex;
     justify-content: space-around;
     align-items: center;
-    width: 15vw;
+    width: 20vw;
+    gap: 5%;
 }
 
 .containerButtonAdminModal button{
@@ -96,6 +98,7 @@
     color: #FAEAE4;
     cursor: pointer;
     font-family: "Mali", cursive;
+    width: 100%;
 }
 
 
