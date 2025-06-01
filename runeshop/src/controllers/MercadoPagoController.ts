@@ -1,10 +1,9 @@
 import { MercadoPagoService } from '../services/MercadoPagoService';
 
-const mercadoPagoService = new MercadoPagoService();
 
-export const getMercadoPagoLinkController = async (usuarioDireccionId: number, detallesId: string): Promise<any | null> => {
+export const getMercadoPagoLinkController = async (usuarioDireccionId: number, detallesId:number[] ): Promise<any | null> => {
   try {
-    const link = await mercadoPagoService.getMercadoPagoLink(usuarioDireccionId, detallesId);
+    const link = await MercadoPagoService.getLinkPago(usuarioDireccionId, detallesId);
     return link;
   } catch (error) {
     console.error("Error en getMercadoPagoLinkController:", error);

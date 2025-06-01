@@ -1,10 +1,9 @@
 import { DireccionService } from '../services/DireccionService';
+import type { IDireccion } from '../types/IDireccion';
 
-const direccionService = new DireccionService();
-
-export const getDireccionesController = async (): Promise<any[]> => {
+export const getDireccionesController = async (): Promise<IDireccion[]> => {
   try {
-    const direcciones = await direccionService.getAllDirecciones();
+    const direcciones = await DireccionService.getDirecciones();
     return direcciones || [];
   } catch (error) {
     console.error("Error en getDireccionesController:", error);

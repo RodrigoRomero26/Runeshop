@@ -1,11 +1,11 @@
-import { DescuentoService, DetalleDescuentoService } from '../services/DescuentoService';
+import { DescuentoService } from '../services/DescuentoService';
+import type { IDescuento } from '../types/IDescuento';
 
-const descuentoService = new DescuentoService();
-const detalleDescuentoService = new DetalleDescuentoService();
 
-export const getDescuentosController = async (): Promise<any[]> => {
+
+export const getDescuentosController = async (): Promise<IDescuento[]> => {
   try {
-    const descuentos = await descuentoService.getAllDescuentos();
+    const descuentos = await DescuentoService.getDescuentos();
     return descuentos || [];
   } catch (error) {
     console.error("Error en getDescuentosController:", error);
@@ -13,13 +13,4 @@ export const getDescuentosController = async (): Promise<any[]> => {
   }
 };
 
-export const agregarDescuentoController = async (detalleId: number, descuentoId: number, finDescuento: string): Promise<any | null> => {
-  try {
-    const resultado = await detalleDescuentoService.agregarDescuento(detalleId, descuentoId, finDescuento);
-    return resultado;
-  } catch (error) {
-    console.error("Error en agregarDescuentoController:", error);
-    return null;
-  }
-};
 

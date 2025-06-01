@@ -1,65 +1,77 @@
 // src/services/ProductoService.ts
-import api from '../api/api';
+import api from "../api/api";
+import type { IDetalleDto } from "../types/DTOs/IDetalleDto";
+import type { IFiltrosDto } from "../types/DTOs/IFiltrosDto";
+import type { IProductoDto } from "../types/DTOs/IProductoDto";
+import type { IProducto } from "../types/IProducto";
+import type { Page } from "../types/Pages";
 
 export class ProductoService {
-  static async crearProducto(
-    producto: string,
-    detalle: string,
-    imagenes: File[]
-  ): Promise<any | null> {
-    try {
-      const formData = new FormData();
-      formData.append('producto', producto);
-      formData.append('detalle', detalle);
-      imagenes.forEach((img) => formData.append('imagen', img));
+	static async crearProducto(
+		producto: IProductoDto,
+		detalle: IDetalleDto,
+		imagenes: File[]
+	): Promise<any | null> {
+		try {
+			const formData = new FormData();
+			formData.append("producto", JSON.stringify(producto));
+			formData.append("detalle", JSON.stringify(detalle));
+			imagenes.forEach((img) => formData.append("imagen", img));
 
-      const res = await api.post('/producto/crear_producto', formData, {
-        headers: { 'Content-Type': 'multipart/form-data' },
-      });
-      return res.data;
-    } catch (error) {
-      console.error(error);
-      return null;
-    }
-  }
+			const res = await api.post("/producto/crear_producto", formData, {
+				headers: { "Content-Type": "multipart/form-data" },
+			});
+			return res.data;
+		} catch (error) {
+			console.error("Error al crear producto:", error);
+			return null;
+		}
+	}
 
-  static async getProductos(): Promise<any[]> {
-    try {
-      const res = await api.get('/producto');
-      return res.data;
-    } catch (error) {
-      console.error(error);
-      return [];
-    }
-  }
+	static async getProductosPaginados(
+		filtros: IFiltrosDto = {},
+		page: number = 0,
+		size: number = 10,
+		orden: string = "asc"
+	): Promise<Page<IProducto> | null> {
+		try {
+			const params = new URLSearchParams();
 
-  static async filtroGeneral(params: any): Promise<any[]> {
-    try {
-      const res = await api.get('/producto/filtro', { params });
-      return res.data;
-    } catch (error) {
-      console.error(error);
-      return [];
-    }
-  }
+			if (filtros.sexo) params.append("sexo", filtros.sexo);
+			if (filtros.marca) params.append("marca", filtros.marca);
+			if (filtros.talle !== undefined)
+				params.append("talle", filtros.talle.toString());
+			if (filtros.tipoProducto)
+				params.append("tipoProducto", filtros.tipoProducto);
+			if (filtros.modelo) params.append("modelo", filtros.modelo);
+			if (filtros.categoria) params.append("categoria", filtros.categoria);
+			if (filtros.min !== undefined)
+				params.append("min", filtros.min.toString());
+			if (filtros.max !== undefined)
+				params.append("max", filtros.max.toString());
 
-  static async filtroPrecio(min: number, max: number): Promise<any[]> {
-    try {
-      const res = await api.get('/producto/filtro_precio', { params: { min, max } });
-      return res.data;
-    } catch (error) {
-      console.error(error);
-      return [];
-    }
-  }
+			params.append("orden", orden);
+			params.append("page", page.toString());
+			params.append("size", size.toString());
 
-  static async ordenarDescendente(): Promise<any[]> {
-    try {
-      const res = await api.get('/producto/ord_desc');
-      return res.data;
-    } catch (error) {
-      console.error(error);
-      return [];
-    }
-  }
+			const res = await api.get<Page<IProducto>>("/producto/filtro", {
+				params,
+			});
+
+			return res.data;
+		} catch (error) {
+			console.error("Error al obtener productos filtrados:", error);
+			return null;
+		}
+	}
+
+	static async getAllProductos(): Promise<IProducto[] | null> {
+		try {
+			const res = await api.get<IProducto[]>("/producto");
+			return res.data;
+		} catch (error) {
+			console.error("Error al obtener todos los productos:", error);
+			return null;
+		}
+	}
 }

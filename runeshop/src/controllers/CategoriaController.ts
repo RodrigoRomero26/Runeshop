@@ -12,9 +12,9 @@ export const getCategoriasController = async (): Promise<ICategoria[]> => {
   }
 };
 
-export const createCategoriaController = async (data: { nombre: string }): Promise<any | null> => {
+export const createCategoriaController = async (data:ICategoria): Promise<any | null> => {
   try {
-    const categoria = await CategoriaService.crearCategoria(data);
+    const categoria = await CategoriaService.crearCategoria(data.nombre);
     return categoria;
   } catch (error) {
     console.error("Error en createCategoriaController:", error);

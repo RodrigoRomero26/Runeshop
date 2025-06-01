@@ -1,10 +1,9 @@
 import { DetalleService } from '../services/DetalleService';
+import type { IDetalle } from '../types/IDetalle';
 
-const detalleService = new DetalleService();
-
-export const getDetallesController = async (): Promise<any[]> => {
+export const getDetallesController = async (): Promise<IDetalle[]> => {
   try {
-    const detalles = await detalleService.getAllDetalles();
+    const detalles = await DetalleService.getDetalles();
     return detalles || [];
   } catch (error) {
     console.error("Error en getDetallesController:", error);

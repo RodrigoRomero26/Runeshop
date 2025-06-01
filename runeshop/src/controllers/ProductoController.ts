@@ -1,53 +1,54 @@
-import { ProductoService } from '../services/ProductoService';
+import { ProductoService } from "../services/ProductoService";
+import type { IDetalleDto } from "../types/DTOs/IDetalleDto";
+import type { IFiltrosDto } from "../types/DTOs/IFiltrosDto";
+import type { IProductoDto } from "../types/DTOs/IProductoDto";
+import type { IProducto } from "../types/IProducto";
+import type { Page } from "../types/Pages";
 
-const productoService = new ProductoService();
-
-export const getProductosController = async (): Promise<any[]> => {
-  try {
-    const productos = await productoService.getAllProductos();
-    return productos || [];
-  } catch (error) {
-    console.error("Error en getProductosController:", error);
-    return [];
-  }
+export const getProductosController = async (
+	filtros: IFiltrosDto = {},
+	page: number = 0,
+	size: number = 10,
+	orden: string = "asc"
+): Promise<Page<IProducto> | null> => {
+	try {
+		const productos = await ProductoService.getProductosPaginados(
+			filtros,
+			page,
+			size,
+			orden
+		);
+		return productos;
+	} catch (error) {
+		console.error("Error en getProductosController:", error);
+		return null;
+	}
 };
 
-export const crearProductoController = async (formData: FormData): Promise<any | null> => {
-  try {
-    const producto = await productoService.crearProducto(formData);
-    return producto;
-  } catch (error) {
-    console.error("Error en crearProductoController:", error);
-    return null;
-  }
+export const crearProductoController = async (
+	producto: IProductoDto,
+	detalle: IDetalleDto,
+	imagenes: File[]
+): Promise<any | null> => {
+	try {
+		const data = await ProductoService.crearProducto(
+			producto,
+			detalle,
+			imagenes
+		);
+		return data;
+	} catch (error) {
+		console.error("Error en crearProductoController:", error);
+		return null;
+	}
 };
 
-export const filtroGeneralController = async (params: any): Promise<any[]> => {
-  try {
-    const productos = await productoService.filtroGeneral(params);
-    return productos || [];
-  } catch (error) {
-    console.error("Error en filtroGeneralController:", error);
-    return [];
-  }
-};
-
-export const filtroPrecioController = async (min: number, max: number): Promise<any[]> => {
-  try {
-    const productos = await productoService.filtroPrecio(min, max);
-    return productos || [];
-  } catch (error) {
-    console.error("Error en filtroPrecioController:", error);
-    return [];
-  }
-};
-
-export const ordenarPrecioDescController = async (): Promise<any[]> => {
-  try {
-    const productos = await productoService.ordenarPrecioDesc();
-    return productos || [];
-  } catch (error) {
-    console.error("Error en ordenarPrecioDescController:", error);
-    return [];
-  }
-};
+export const getAllProductosController = async (): Promise<IProducto[] | null> => {
+	try {
+		const productos = await ProductoService.getAllProductos();
+		return productos;
+	} catch (error) {
+		console.error("Error en getAllProductosController:", error);
+		return null;
+	}
+}
