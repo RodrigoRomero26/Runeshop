@@ -9,7 +9,7 @@ import styles from "./Login.module.css";
 import { Register } from "../RegisterModal/Register";
 import { useNavigate } from "react-router";
 import { LoginSchema } from "../../Schemas/LoginSchema";
-import { loginController, registerController } from "../../../controllers/AuthController";
+import { loginController} from "../../../controllers/AuthController";
 import Swal from "sweetalert2";
 
 interface loginProps {

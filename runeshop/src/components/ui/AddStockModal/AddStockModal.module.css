@@ -8,7 +8,7 @@
 	z-index: 999;
 }
 
-.principalContainerRegister {
+.principalContainerAddStockModal {
 	position: fixed;
 	top: 50%;
 	left: 50%;
@@ -20,75 +20,23 @@
 	z-index: 1000;
 }
 
-.containerDataRegister {
+.containerDataAddStockModal {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 	font-family: "Mali", cursive;
+	height: 95%;
+	justify-content: space-between;
 }
 
-.containerTitleRegister {
+.containerTitleAddStockModal {
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
-	margin-bottom: 16px;
+	margin-bottom: 20px;
+	height: 30%;
 }
-
-.containerInputRegister {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-}
-
-.containerInputRegister input {
-	width: 25vw;
-	padding: 10px;
-	margin: 5px 0;
-	background-color: #fec1c1;
-	border: 1px solid #ff9999;
-	border-radius: 4px;
-	margin-bottom: 0;
-}
-
-.containerInputRegister input::placeholder {
-	background: #fec1c1;
-	font-family: "Mali", cursive;
-	color: #faeae4;
-}
-
-.containerButtonRegister {
-
-	display: flex;
-	justify-content: space-around;
-	align-items: center;
-	width: 100%;
-	margin-top: 20px;
-}
-
-.containerButtonRegister button {
-	padding: 12px 24px;
-	font-size: 1.2rem;
-	background-color: #ff9999;
-	border: none;
-	border-radius: 4px;
-	color: #faeae4;
-	cursor: pointer;
-	font-family: "Mali", cursive;
-	transition: transform 0.2s ease, color 0.2s ease;
-}
-
-.containerButtonRegister button:hover {
-	transform: scale(1.05);
-}
-
-.submitbtn:disabled {
-	cursor: not-allowed;
-	box-shadow: none;
-	transition: transform 0.2s ease, color 0.2s ease;
-}
-
-
 
 .inputContainer {
 	position: relative;
@@ -96,39 +44,66 @@
 	margin-bottom: 18px;
 }
 
-.error {
-	position: absolute;
-	bottom: -20px;
-	left: 0;
-	font-size: 0.8rem;
-	margin: 0;
-	width: 100%;
-	height: 20px;
+.inputContainer input {
+	width: 25vw;
+	padding: 10px;
+	margin: 5px 0 0 0;
+	background-color: #fec1c1;
+	border: 1px solid #ff9999;
+	border-radius: 4px;
+}
+
+.inputContainer input::placeholder {
+	background: #fec1c1;
+	font-family: "Mali", cursive;
+	color: #faeae4;
+}
+
+.containerButtonAddStockModal {
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	gap: 12px;
+	margin-top: 20px;
+}
+
+.containerButtonAddStockModal button {
+	padding: 12px 24px;
+	font-size: 1.2rem;
+	background-color: #ff9999;
+	border: none;
+	border-radius: 6px;
+	color: #faeae4;
+	cursor: pointer;
+	font-family: "Mali", cursive;
+	transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.containerButtonAddStockModal button:hover {
+	transform: scale(1.05);
+}
+
+.containerRegisterAddStockModal button {
+	background: none;
+	border: none;
+	color: #ff9999;
+	cursor: pointer;
+	font-family: "Mali", cursive;
+	text-decoration: underline;
+	transition: transform 0.2s ease, color 0.2s ease;
 }
 
 /* Responsive */
-@media (max-width: 440px) {
-	.principalContainerRegister {
-		width: 75vw;
+@media (max-width: 450px) {
+	.principalContainerAddStockModal {
+		width: 70vw;
+		height: auto;
 	}
-	.containerInputRegister input {
-		width: 90%;
-	}
-	.containerButtonRegister {
-		width: 100%;
-		gap: 12px;
-	}
-	.inputContainer {
+    .inputContainer {
 		margin-bottom: 22px;
 	}
-
-	.containerButtonRegister button{
-		padding: 10px 15px;
+	.inputContainer input {
+		width: 60vw;
 	}
-
-	.error {
-		bottom: -18px;
-		height: 18px;
-		font-size: 0.7rem;
-	}
+	
 }

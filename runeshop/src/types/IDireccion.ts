@@ -1,7 +1,9 @@
 export interface IDireccion{
     id?:number,
     departamento: string,
-    localidad: string,
+    direccion: string,
     pais: string,
-    provincia: string
+    provincia: string,
+    estado: boolean,
+    codigoPostal: string,
 }
