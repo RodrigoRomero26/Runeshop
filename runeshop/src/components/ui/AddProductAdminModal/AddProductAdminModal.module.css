@@ -1,0 +1,123 @@
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+}
+
+.principalContainerAddProductAdminModal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 30vw;
+  height: 71vh;
+  padding: 20px;
+  background-color: #faedd8;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+}
+
+.containerDataAddProductAdminModal {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: "Mali", cursive;
+}
+
+.containerTitleAddProductAdminModal {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.containerTitleAddProductAdminModal h1 {
+  font-size: 1.5rem;
+}
+
+.containerInputAddProductAdminModal {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.containerInputAddProductAdminModal input {
+  width: 25vw;
+  padding: 10px;
+  margin: 5px 0;
+  background-color: #fec1c1;
+  border: 1px solid #ff9999;
+  border-radius: 4px;
+}
+
+.containerInputAddProductAdminModal input::placeholder {
+  background: #fec1c1;
+  font-family: "Mali", cursive;
+  color: #faeae4;
+}
+
+.containerCheckboxAddProductAdminModal {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.containerCheckboxAddProductAdminModal label {
+  width: 25vw;
+  padding: 10px;
+  margin: 5px 0;
+  background-color: #fec1c1;
+  border: 1px solid #ff9999;
+  border-radius: 4px;
+  font-family: "Mali", cursive;
+  color: #faeae4;
+  gap: 10px;
+}
+
+.buttonAddImagesAddProductAdminModal {
+  padding: 10px 10px;
+  background-color: #ff9999;
+  border: none;
+  border-radius: 4px;
+  color: #faeae4;
+  cursor: pointer;
+  font-family: "Mali", cursive;
+  width: 90%;
+  margin: 10px;
+}
+.containerButtonAddProductAdminModal {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 20vw;
+  gap: 5%;
+}
+
+.containerButtonAddProductAdminModal button {
+  padding: 10px 10px;
+  background-color: #ff9999;
+  border: none;
+  border-radius: 4px;
+  color: #faeae4;
+  cursor: pointer;
+  font-family: "Mali", cursive;
+  width: 100%;
+}
+
+/* Responsive */
+@media (max-width: 440px) {
+  .principalContainerAddProductAdminModal {
+    width: 75vw;
+    height: 60vh;
+  }
+  .containerInfoAddProductAdminModal p {
+    width: 60vw;
+  }
+  .containerButtonAddProductAdminModal {
+    width: 60vw;
+  }
+}

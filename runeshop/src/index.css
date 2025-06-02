@@ -20,3 +20,7 @@
 ::-webkit-scrollbar-track {
   background: #ffe5bc;
 }
+
+button:hover{
+  transform: scale(1.05);
+}

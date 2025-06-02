@@ -126,23 +126,24 @@
 }
 
 /* Responsive */
-@media (max-width: 450px) {
+@media (max-width: 1350px) {
 	.principalContainerLogin {
-		width: 70vw;
-		height: auto;
+		width: 35%;
+		height: 40%;
+	}
+	.containerInputLogin{
+		height: 40%;
 	}
 	.containerInputLogin input {
-		width: 60vw;
+		width: 30vw;
 	}
 	.inputContainer {
-		margin-bottom: 22px;
+		margin-bottom: 30px;
 	}
 	.error {
 		bottom: -18px;
 		height: 18px;
 		font-size: 0.7rem;
 	}
-	.containerInputLogin input {
-		width: 60vw;
-	}
 }
+

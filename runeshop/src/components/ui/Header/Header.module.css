@@ -1,130 +1,157 @@
 .principalContainerHeader {
-	display: flex;
-	justify-content: center;
-	background-color: white;
-	height: 10vh;
-	box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-	width: 100%;
-	position: relative;
+  display: flex;
+  justify-content: center;
+  background-color: white;
+  height: 10vh;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  width: 100%;
+  position: relative;
 }
 
 .containerButtonsHeader {
-	display: flex;
-	justify-content: space-between;
-	width: 90%;
-	gap: 20px;
+  display: flex;
+  justify-content: space-between;
+  width: 90%;
+  gap: 20px;
 }
 
 .containerFilterButtonsHeader {
-	display: flex;
-	gap: 40px;
-	align-items: center;
-	position: absolute;
-	top: 50%;
-	left: 50%;
-	transform: translate(-50%, -50%);
+  display: flex;
+  gap: 40px;
+  align-items: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
-
 .containerFilterButtonsHeader button {
-	background: none;
-	border: none;
-	font-family: "Mali", cursive;
-	font-size: 35px;
-	letter-spacing: 0;
-	text-align: center;
-	color: #f28d8d;
-	cursor: pointer;
-	transition: transform 0.2s ease, color 0.2s ease;
+  background: none;
+  border: none;
+  font-family: "Mali", cursive;
+  font-size: 35px;
+  letter-spacing: 0;
+  text-align: center;
+  color: #f28d8d;
+  cursor: pointer;
+  transition: transform 0.2s ease, color 0.2s ease;
 }
 
 .principalButton button {
-	font-size: 50px;
+  font-size: 50px;
 }
 
 .containerFilterButtonsHeader button:hover {
-	transform: scale(1.05);
-	color: #e47070;
+  transform: scale(1.05);
+  color: #e47070;
 }
 
 .containerFilterUserButtonsHeader {
-	width: 10%;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	gap: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
 }
 
 .containerFilterUserButtonsHeader span {
-	font-size: 35px;
+  font-size: 35px;
 }
 
 .containerFilterUserButtonsHeader button {
-	background: none;
-	border: none;
-	text-align: center;
-	color: #f28d8d;
-	cursor: pointer;
-	transition: transform 0.2s ease, color 0.2s ease;
+  background: none;
+  border: none;
+  text-align: center;
+  color: #f28d8d;
+  cursor: pointer;
+  transition: transform 0.2s ease, color 0.2s ease;
 }
 
 .containerFilterUserButtonsHeader button:hover {
-	transform: scale(1.05);
-	color: #e47070;
+  transform: scale(1.05);
+  color: #e47070;
 }
 
 .menuIconMobile {
-	display: none;
+  display: none;
 }
 
 .mobileMenu {
-	display: none;
+  display: none;
 }
 
 .mobileMenu button {
-	box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
-
-
 /* Responsive */
-@media (max-width: 450px) {
+@media (max-width: 600px) {
+  .principalContainerHeader {
+    height: 8vh;
+  }
 
-	.principalContainerHeader {
-		height: 8vh;
-	}
-	
-	.containerFilterButtonsHeader {
-		display: none;
-		height: 8vh;
-	}
+  .containerFilterButtonsHeader {
+    display: none;
+    height: 8vh;
+  }
 
-	.menuIconMobile {
-		display: block;
-		font-size: 40px;
-		color: #f28d8d;
-		cursor: pointer;
-	}
+  .menuIconMobile {
+    display: block;
+    font-size: 40px;
+    color: #f28d8d;
+    cursor: pointer;
+  }
 
-	.mobileMenu {
-		display: flex;
-		flex-direction: column;
-		position: absolute;
-		top: 8vh;
-		left: 0;
-		width: 100%;
-		background-color: white;
-		z-index: 1000;
-	}
+  .mobileMenu {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 8vh;
+    left: 0;
+    width: 100%;
+    background-color: white;
+    z-index: 1000;
+  }
 
-	.mobileMenu button {
-		font-size: 30px;
-		padding: 15px;
-		border-bottom: 1px solid #ccc;
-		background: none;
-		border: none;
-		color: #f28d8d;
-		font-family: "Mali", cursive;
-	}
+  .mobileMenu button {
+    font-size: 30px;
+    padding: 15px;
+    border-bottom: 1px solid #ccc;
+    background: none;
+    border: none;
+    color: #f28d8d;
+    font-family: "Mali", cursive;
+  }
+}
+
+@media (max-width: 1000px) {
+  .containerFilterButtonsHeader {
+    position: static;
+    transform: none;
+    justify-content: flex-start;
+    width: 50%;
+  }
+
+  .containerFilterUserButtonsHeader {
+    justify-content: flex-end;
+    width: 50%;
+    display: flex;
+  }
+
+  .containerButtonsHeader {
+    width: 95%;
+    align-items: center;
+  }
+
+  .containerFilterButtonsHeader button {
+    font-size: 25px;
+  }
+
+  .principalButton button {
+    font-size: 35px;
+  }
+
+  .containerFilterUserButtonsHeader span {
+    font-size: 28px;
+  }
 
 }

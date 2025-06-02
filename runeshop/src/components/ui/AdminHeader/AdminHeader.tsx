@@ -1,16 +1,26 @@
-import React, { useState } from "react";
+import React, { useState, type ChangeEvent } from "react";
 import styles from "./AdminHeader.module.css";
+import { AddProductAdminModal } from "../AddProductAdminModal/AddProductAdminModal";
 export const AdminHeader = () => {
   const [selectedOption, setSelectedOption] = useState("");
+  const [addProductAdminModal, setAddProductAdminModal] = useState(false);
 
-  const handleChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+  const handleChange = (event: ChangeEvent<HTMLSelectElement>) => {
     setSelectedOption(event.target.value);
+  };
+
+  const handleOpenAddProductAdminModal = () => {
+    setAddProductAdminModal(true);
+  };
+
+  const handleCloseAddProductAdminModal = () => {
+    setAddProductAdminModal(false);
   };
 
   return (
     <div className={styles.principalContainerAdminHeader}>
       <div className={styles.adminContainerHeader}>
-          <button className={styles.adminButton}>Agregar Producto</button>
+          <button onClick={handleOpenAddProductAdminModal} className={styles.adminButton}>Agregar Producto</button>
         <div className={styles.adminSearch}>
           <div>
             <input
@@ -32,6 +42,7 @@ export const AdminHeader = () => {
           </div>
         </div>
       </div>
+      {addProductAdminModal && <AddProductAdminModal onCloseAddProductAdminModal={handleCloseAddProductAdminModal} />}
     </div>
   );
 };

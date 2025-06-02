@@ -1,73 +1,90 @@
-import { useState } from "react";
+import { useEffect, useRef, useState, type FC } from "react";
 import styles from "./Header.module.css";
 import { Login } from "../LoginModal/Login";
 import { Cart } from "../CartModal/Cart";
 import { useNavigate } from "react-router";
 
-export const Header = () => {
-	const [menuOpen, setMenuOpen] = useState(false);
-	const [loginOpen, setLoginOpen] = useState(false);
-	const [cartOpen, setCartOpen] = useState(false);
-	
-	const navigate = useNavigate();
+interface HeaderProps {
+  onCloseHeader: () => void;
+}
 
-	const handleCloseLogin = () => {
-		setLoginOpen(false);
-	};
+export const Header: FC<HeaderProps> = ({ onCloseHeader }) => {
+  const [menuOpen, setMenuOpen] = useState(false);
+  const [loginOpen, setLoginOpen] = useState(false);
+  const [cartOpen, setCartOpen] = useState(false);
 
-	const handleCloseCart = () => {
-		setCartOpen(false);
-	};
+  const navigate = useNavigate();
 
-	const handleProductsCatalog = () => {
-		navigate("/productsCatalog")
-	}
+  const handleCloseLogin = () => {
+    setLoginOpen(false);
+  };
 
-	const handleAdmin = () => {
-		navigate("/admin");
-	}
+  const handleCloseCart = () => {
+    setCartOpen(false);
+  };
 
+  const handleProductsCatalog = () => {
+    navigate("/productsCatalog");
+  };
 
-	return (
-		<div className={styles.principalContainerHeader}>
-			<div className={styles.containerButtonsHeader}>
-				<div
-					className={styles.menuIconMobile}
-					onClick={() => setMenuOpen(!menuOpen)}>
-					&#9776;
-				</div>
-				<div></div>
-				<div className={styles.containerFilterButtonsHeader}>
-					<button onClick={handleProductsCatalog}>Hombres</button>
-					<div className={styles.principalButton}>
-						<button onClick={() => navigate("/")}>RuneShop</button>
-					</div>
-					<button onClick={handleAdmin}>Mujeres</button>
-				</div>
-				<div className={styles.containerFilterUserButtonsHeader}>
-					<button onClick={() => setCartOpen(true)}>
-						<span className="material-symbols-outlined">shopping_cart</span>
-					</button>
-					<button onClick={() => setLoginOpen(true)}>
-						<span className="material-symbols-outlined">account_circle</span>
-					</button>
-				</div>
-			</div>
+  const handleAdmin = () => {
+    navigate("/admin");
+  };
 
-			{menuOpen && (
-				<div className={styles.mobileMenu}>
-					<button onClick={() => navigate("/")}>RuneShop</button>
-					<button onClick={handleProductsCatalog}>Hombres</button>
-					<button onClick={handleAdmin}>Mujeres</button>
-				</div>
-			)}
+  const menuRef = useRef<HTMLDivElement>(null);
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (menuRef.current && !menuRef.current.contains(event.target as Node)) {
+        setMenuOpen(false);
+      }
+    };
 
-			{loginOpen && (
-				<Login onCloseLogin={handleCloseLogin}/>)}
+    if (menuOpen) {
+      document.addEventListener("mousedown", handleClickOutside);
+    }
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [menuOpen]);
 
-			{cartOpen && (
-				<Cart onCloseCart={handleCloseCart} />
-			)}
-		</div>
-	);
+  return (
+    <div className={styles.principalContainerHeader}>
+      <div className={styles.containerButtonsHeader}>
+        <div
+          className={styles.menuIconMobile}
+          onClick={() => setMenuOpen(!menuOpen)}
+        >
+          &#9776;
+        </div>
+        <div></div>
+        <div className={styles.containerFilterButtonsHeader}>
+          <button onClick={handleProductsCatalog}>Hombres</button>
+          <div className={styles.principalButton}>
+            <button onClick={() => navigate("/")}>RuneShop</button>
+          </div>
+          <button onClick={handleAdmin}>Mujeres</button>
+        </div>
+        <div className={styles.containerFilterUserButtonsHeader}>
+          <button onClick={() => setCartOpen(true)}>
+            <span className="material-symbols-outlined">shopping_cart</span>
+          </button>
+          <button onClick={() => setLoginOpen(true)}>
+            <span className="material-symbols-outlined">account_circle</span>
+          </button>
+        </div>
+      </div>
+
+      {menuOpen && (
+        <div className={styles.mobileMenu} ref={menuRef}>
+          <button onClick={() => navigate("/")}>RuneShop</button>
+          <button onClick={handleProductsCatalog}>Hombres</button>
+          <button onClick={handleAdmin}>Mujeres</button>
+        </div>
+      )}
+
+      {loginOpen && <Login onCloseLogin={handleCloseLogin} />}
+
+      {cartOpen && <Cart onCloseCart={handleCloseCart} />}
+    </div>
+  );
 };

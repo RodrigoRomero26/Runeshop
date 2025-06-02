@@ -38,12 +38,6 @@
 	height: 30%;
 }
 
-.inputContainer {
-	position: relative;
-	width: 100%;
-	margin-bottom: 18px;
-}
-
 .inputContainer input {
 	width: 25vw;
 	padding: 10px;
@@ -81,16 +75,6 @@
 
 .containerButtonAddStockModal button:hover {
 	transform: scale(1.05);
-}
-
-.containerRegisterAddStockModal button {
-	background: none;
-	border: none;
-	color: #ff9999;
-	cursor: pointer;
-	font-family: "Mali", cursive;
-	text-decoration: underline;
-	transition: transform 0.2s ease, color 0.2s ease;
 }
 
 /* Responsive */
