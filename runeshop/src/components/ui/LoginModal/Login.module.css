@@ -1,118 +1,149 @@
-.overlay{
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    z-index: 999;
+.overlay {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0, 0, 0, 0.5);
+	z-index: 999;
 }
 
-.principalContainerLogin{
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 30vw;
-    height: 40vh;
-    padding: 20px;
-    background-color: #FAEDD8;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    z-index: 1000;
+.principalContainerLogin {
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	width: 30vw;
+	height: 40vh;
+	padding: 20px;
+	background-color: #faedd8;
+	box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+	z-index: 1000;
 }
 
-.containerDataLogin{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    font-family: "Mali", cursive;
-    height: 95%;
-    justify-content: space-between;
+.containerDataLogin {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	font-family: "Mali", cursive;
+	height: 95%;
+	justify-content: space-between;
 }
 
-.containerTitleLogin{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: 20px;
-    height: 30%;
+.containerTitleLogin {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	margin-bottom: 20px;
+	height: 30%;
 }
 
-.containerTitleLogin span{
-    color: #FF9999;
-    font-size: 5rem;
+.containerTitleLogin span {
+	color: #ff9999;
+	font-size: 5rem;
 }
 
-.containerInputLogin{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    
+.containerInputLogin {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
 }
 
-.containerInputLogin input{
-    width: 25vw;
-    padding: 10px;
-    margin: 5px 0;
-    background-color: #FEC1C1;
-    border: 1px solid #FF9999;
-    border-radius: 4px;
+.inputContainer {
+	position: relative;
+	width: 100%;
+	margin-bottom: 18px;
 }
 
-.containerInputLogin input::placeholder{
-    background: #FEC1C1;
-    font-family: "Mali", cursive;
-    color: #FAEAE4;
-
+.error {
+	position: absolute;
+	bottom: -20px;
+	left: 0;
+	font-size: 0.8rem;
+	margin: 0;
+	width: 100%;
+	height: 20px;
 }
 
-.containerButtonLogin{
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    gap:12px;
-    margin-top: 20px;
+.containerInputLogin input {
+	width: 25vw;
+	padding: 10px;
+	margin: 5px 0 0 0;
+	background-color: #fec1c1;
+	border: 1px solid #ff9999;
+	border-radius: 4px;
 }
 
-.containerButtonLogin button{
-    padding: 12px 24px;
-    font-size: 1.2rem;
-    background-color: #FF9999;
-    border: none;
-    border-radius: 6px;
-    color: #FAEAE4;
-    cursor: pointer;
-    font-family: "Mali", cursive;
-    transition: transform 0.2s ease, color 0.2s ease;
+.containerInputLogin input::placeholder {
+	background: #fec1c1;
+	font-family: "Mali", cursive;
+	color: #faeae4;
 }
 
-.containerButtonLogin button:hover{
-    transform: scale(1.05);
+.containerButtonLogin {
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	gap: 12px;
+	margin-top: 20px;
 }
 
-.containerRegisterLogin button{
-    background: none;
-    border: none;
-    color: #FF9999;
-    cursor: pointer;
-    font-family: "Mali", cursive;
-    text-decoration: underline;
-    transition: transform 0.2s ease, color 0.2s ease;
+.containerButtonLogin button {
+	padding: 12px 24px;
+	font-size: 1.2rem;
+	background-color: #ff9999;
+	border: none;
+	border-radius: 6px;
+	color: #faeae4;
+	cursor: pointer;
+	font-family: "Mali", cursive;
+	transition: transform 0.2s ease, color 0.2s ease;
 }
 
-.containerRegisterLogin button:hover{
-    transform: scale(1.05);
+.containerButtonLogin button:hover {
+	transform: scale(1.05);
 }
 
+.containerRegisterLogin button {
+	background: none;
+	border: none;
+	color: #ff9999;
+	cursor: pointer;
+	font-family: "Mali", cursive;
+	text-decoration: underline;
+	transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.submitbtn:disabled {
+	cursor: not-allowed;
+	box-shadow: none;
+	transition: transform 0.2s ease, color 0.2s ease;
+}
+
+
+.containerRegisterLogin button:hover {
+	transform: scale(1.05);
+}
 
 /* Responsive */
 @media (max-width: 450px) {
-    .principalContainerLogin{
-        width: 70vw;
-        height: auto;
-    }
-    .containerInputLogin input{
-        width: 60vw;
-    }
+	.principalContainerLogin {
+		width: 70vw;
+		height: auto;
+	}
+	.containerInputLogin input {
+		width: 60vw;
+	}
+	.inputContainer {
+		margin-bottom: 22px;
+	}
+	.error {
+		bottom: -18px;
+		height: 18px;
+		font-size: 0.7rem;
+	}
+	.containerInputLogin input {
+		width: 60vw;
+	}
 }

@@ -4,6 +4,7 @@ import type { IDetalleDto } from "../types/DTOs/IDetalleDto";
 import type { IFiltrosDto } from "../types/DTOs/IFiltrosDto";
 import type { IProductoDto } from "../types/DTOs/IProductoDto";
 import type { IProducto } from "../types/IProducto";
+import type { IProductoGet } from "../types/IProductoGet";
 import type { Page } from "../types/Pages";
 
 export class ProductoService {
@@ -65,9 +66,9 @@ export class ProductoService {
 		}
 	}
 
-	static async getAllProductos(): Promise<IProducto[] | null> {
+	static async getAllProductos(): Promise<IProductoGet[] | null> {
 		try {
-			const res = await api.get<IProducto[]>("/producto");
+			const res = await api.get<IProductoGet[]>("/producto");
 			return res.data;
 		} catch (error) {
 			console.error("Error al obtener todos los productos:", error);

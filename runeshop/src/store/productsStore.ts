@@ -15,7 +15,6 @@ interface IProductsStore {
 export const productsStore = create<IProductsStore>((set) => ({
 	products: [],
 	setArrayProducts: (productsArray) => set(() => ({ products: productsArray })),
-
 	productsCart: [],
 	activeProduct: null,
 	setActiveProduct: (activeProductIn) =>

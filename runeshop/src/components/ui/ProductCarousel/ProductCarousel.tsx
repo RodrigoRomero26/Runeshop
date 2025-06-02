@@ -1,114 +1,156 @@
 import React, { useEffect, useState } from "react";
 import styles from "./ProductCarousel.module.css";
 import { useNavigate } from "react-router";
+import { getAllProductosController } from "../../../controllers/ProductoController";
+import type { IProductoGet } from "../../../types/IProductoGet";
 
-interface Product {
-  id: number;
-  name: string;
-  image: string;
-  price: number;
+interface IVisibleProduct {
+	id: number;
+	name: string;
+	precio: number;
+	imagen: string;
 }
 
-interface ProductCarouselProps {
-  products: Product[];
-}
+export const ProductCarousel = () => {
+	const [currentIndex, setCurrentIndex] = useState(0);
+	const [numVisible, setNumVisible] = useState(
+		window.innerWidth >= 1024 ? 5 : 3
+	);
+	const [isHovered, setIsHovered] = useState(false);
+	const [products, setProducts] = useState<IProductoGet[] | null>(null);
+	const [simplifiedProducts, setSimplifiedProducts] = useState<
+		IVisibleProduct[] | null
+	>(null);
 
-export const ProductCarousel: React.FC<ProductCarouselProps> = ({
-  products,
-}) => {
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const [numVisible, setNumVisible] = useState(
-    window.innerWidth >= 1024 ? 5 : 3
-  );
-  const [isHovered, setIsHovered] = useState(false);
+	const navigate = useNavigate();
 
-  useEffect(() => {
-    const updateNumVisible = () => {
-      setNumVisible(window.innerWidth >= 1024 ? 5 : 3);
-    };
+	useEffect(() => {
+		const fetchProducts = async () => {
+			try {
+				const data = await getAllProductosController();
+				if (data) {
+					setProducts(data);
+				} else {
+					console.error("No products found");
+				}
+			} catch (error) {
+				console.error("Error fetching products:", error);
+			}
+		};
 
-    window.addEventListener("resize", updateNumVisible);
-    return () => window.removeEventListener("resize", updateNumVisible);
-  }, []);
+		fetchProducts();
+	}, []);
 
-  useEffect(() => {
-    if (isHovered) return;
+	useEffect(() => {
+		if (products) {
+			const cleared = products.map((product) => ({
+				id: product.id!,
+				name: product.modelo,
+				precio: product.detalles[0].precio.precioVenta,
+				imagen: product.detalles[0].imagenes[0].imagenUrl,
+			}));
+			setSimplifiedProducts(cleared);
+		}
+	}, [products]);
 
-    const interval = setInterval(() => {
-      setCurrentIndex((prev) => (prev + 1) % products.length);
-    }, 4000);
+	useEffect(() => {
+		const updateNumVisible = () => {
+			setNumVisible(window.innerWidth >= 1024 ? 5 : 3);
+		};
 
-    return () => clearInterval(interval);
-  }, [products.length, isHovered]);
+		window.addEventListener("resize", updateNumVisible);
+		return () => window.removeEventListener("resize", updateNumVisible);
+	}, []);
 
-  const handlePrev = () => {
-    setCurrentIndex((prev) => (prev - 1 + products.length) % products.length);
-  };
+	useEffect(() => {
+		if (!simplifiedProducts || simplifiedProducts.length === 0 || isHovered)
+			return;
 
-  const handleNext = () => {
-    setCurrentIndex((prev) => (prev + 1) % products.length);
-  };
+		const interval = setInterval(() => {
+			setCurrentIndex((prev) => (prev + 1) % simplifiedProducts.length);
+		}, 4000);
 
-  const navigate = useNavigate();
-  
-  const handleProductClick = (id: number, isCenter: boolean) => {
-    if (isCenter) {
-		navigate("/product")
-    }
-  };
+		return () => clearInterval(interval);
+	}, [simplifiedProducts, isHovered]);
 
-  const getVisibleProducts = () => {
-    const total = products.length;
-    const indices = [];
+	const handlePrev = () => {
+		if (!simplifiedProducts) return;
+		setCurrentIndex(
+			(prev) =>
+				(prev - 1 + simplifiedProducts.length) % simplifiedProducts.length
+		);
+	};
 
-    for (
-      let i = -Math.floor(numVisible / 2);
-      i <= Math.floor(numVisible / 2);
-      i++
-    ) {
-      indices.push((currentIndex + i + total) % total);
-    }
+	const handleNext = () => {
+		if (!simplifiedProducts) return;
+		setCurrentIndex((prev) => (prev + 1) % simplifiedProducts.length);
+	};
 
-    return indices.map((i) => ({
-      index: i,
-      product: products[i],
-    }));
-  };
+	const handleProductClick = (id: number, isCenter: boolean) => {
+		if (isCenter) {
+			navigate(`/product/${id}`);
+		}
+	};
 
-  const visibleProducts = getVisibleProducts();
+	const getVisibleProducts = () => {
+		if (!simplifiedProducts || simplifiedProducts.length === 0) return [];
 
-  return (
-    <div className={styles.carouselContainer}>
-      <button className={styles.navButton} onClick={handlePrev}>
-        <span className="material-symbols-outlined">arrow_back</span>
-      </button>
+		const total = simplifiedProducts.length;
+		const indices = [];
 
-      <div className={styles.carouselTrack}>
-        {visibleProducts.map(({ index, product }, i) => {
-          const isCenter = i === Math.floor(visibleProducts.length / 2);
+		for (
+			let i = -Math.floor(numVisible / 2);
+			i <= Math.floor(numVisible / 2);
+			i++
+		) {
+			indices.push((currentIndex + i + total) % total);
+		}
 
-          return (
-            <div
-              key={product.id}
-              className={`${styles.carouselItem} ${
-                isCenter ? styles.active : ""
-              }`}
-              onClick={() => handleProductClick(product.id, isCenter)}
-              onMouseEnter={() => isCenter && setIsHovered(true)}
-              onMouseLeave={() => isCenter && setIsHovered(false)}
-              style={{ cursor: "pointer" }}
-            >
-              <img src={product.image} alt={product.name} />
-              <p>{product.name}</p>
-              <p>${product.price.toLocaleString("es-AR")}</p>
-            </div>
-          );
-        })}
-      </div>
+		return indices.map((i) => ({
+			index: i,
+			product: simplifiedProducts[i],
+		}));
+	};
 
-      <button className={styles.navButton} onClick={handleNext}>
-        <span className="material-symbols-outlined">arrow_forward</span>
-      </button>
-    </div>
-  );
+	const visibleProducts = getVisibleProducts();
+
+	return (
+		<div className={styles.carouselContainer}>
+			{simplifiedProducts && simplifiedProducts.length > 0 ? (
+				<>
+					<button className={styles.navButton} onClick={handlePrev}>
+						<span className="material-symbols-outlined">chevron_left</span>
+					</button>
+
+					<div className={styles.carouselTrack}>
+						{visibleProducts.map(({ index, product }, i) => {
+							const isCenter = i === Math.floor(visibleProducts.length / 2);
+
+							return (
+								<div
+									key={product.id}
+									className={`${styles.carouselItem} ${
+										isCenter ? styles.active : ""
+									}`}
+									onClick={() => handleProductClick(product.id, isCenter)}
+									onMouseEnter={() => isCenter && setIsHovered(true)}
+									onMouseLeave={() => isCenter && setIsHovered(false)}
+									style={{ cursor: "pointer" }}>
+									<img src={product.imagen} alt={product.name} />
+									<p>{product.name}</p>
+									<p>${product.precio.toLocaleString("es-AR")}</p>
+								</div>
+							);
+						})}
+					</div>
+
+					<button className={styles.navButton} onClick={handleNext}>
+						<span className="material-symbols-outlined">chevron_right</span>
+					</button>
+				</>
+			) : (
+				<p>No hay productos disponibles.</p>
+			)}
+		</div>
+	);
 };

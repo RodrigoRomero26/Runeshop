@@ -1,90 +1,129 @@
-.overlay{
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    z-index: 999;
+.overlay {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0, 0, 0, 0.5);
+	z-index: 999;
 }
 
-.principalContainerRegister{
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 30vw;
-    padding: 20px;
-    background-color: #FAEDD8;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    z-index: 1000;
+.principalContainerRegister {
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	width: 30vw;
+	padding: 20px;
+	background-color: #faedd8;
+	box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+	z-index: 1000;
 }
 
-.containerDataRegister{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    font-family: "Mali", cursive;
+.containerDataRegister {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	font-family: "Mali", cursive;
 }
 
-.containerTitleRegister{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: 20px;
+.containerTitleRegister {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	margin-bottom: 16px;
 }
 
-.containerInputRegister{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+.containerInputRegister {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
 }
 
-.containerInputRegister input{
-    width: 25vw;
-    padding: 10px;
-    margin: 5px 0;
-    background-color: #FEC1C1;
-    border: 1px solid #FF9999;
-    border-radius: 4px;
+.containerInputRegister input {
+	width: 25vw;
+	padding: 10px;
+	margin: 5px 0;
+	background-color: #fec1c1;
+	border: 1px solid #ff9999;
+	border-radius: 4px;
+	margin-bottom: 0;
 }
 
-.containerInputRegister input::placeholder{
-    background: #FEC1C1;
-    font-family: "Mali", cursive;
-    color: #FAEAE4;
+.containerInputRegister input::placeholder {
+	background: #fec1c1;
+	font-family: "Mali", cursive;
+	color: #faeae4;
 }
 
-.containerButtonRegister{
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    width: 15vw;
-    margin-top: 20px;
+.containerButtonRegister {
+
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	width: 20vw;
+	margin-top: 20px;
 }
 
-.containerButtonRegister button{
-    padding: 10px 10px;
-    background-color: #FF9999;
-    border: none;
-    border-radius: 4px;
-    color: #FAEAE4;
-    cursor: pointer;
-    font-family: "Mali", cursive;
+.containerButtonRegister button {
+	padding: 12px 24px;
+	font-size: 1.2rem;
+	background-color: #ff9999;
+	border: none;
+	border-radius: 4px;
+	color: #faeae4;
+	cursor: pointer;
+	font-family: "Mali", cursive;
+	transition: transform 0.2s ease, color 0.2s ease;
 }
 
+.containerButtonRegister button:hover {
+	transform: scale(1.05);
+}
+
+.submitbtn:disabled {
+	cursor: not-allowed;
+	box-shadow: none;
+	transition: transform 0.2s ease, color 0.2s ease;
+}
+
+
+
+.inputContainer {
+	position: relative;
+	width: 100%;
+	margin-bottom: 18px;
+}
+
+.error {
+	position: absolute;
+	bottom: -20px;
+	left: 0;
+	font-size: 0.8rem;
+	margin: 0;
+	width: 100%;
+	height: 20px;
+}
 
 /* Responsive */
 @media (max-width: 440px) {
-    .principalContainerRegister{
-        width: 75vw;
-        height: 60vh;
-    }
-    .containerInputRegister input{
-        width: 60vw;
-    }
-    .containerButtonRegister{
-        width: 60vw;
-    }
+	.principalContainerRegister {
+		width: 75vw;
+		height: 60vh;
+	}
+	.containerInputRegister input {
+		width: 60vw;
+	}
+	.containerButtonRegister {
+		width: 60vw;
+	}
+	.inputContainer {
+		margin-bottom: 22px;
+	}
+	.error {
+		bottom: -18px;
+		height: 18px;
+		font-size: 0.7rem;
+	}
 }

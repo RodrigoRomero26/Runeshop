@@ -3,6 +3,7 @@ import type { IDetalleDto } from "../types/DTOs/IDetalleDto";
 import type { IFiltrosDto } from "../types/DTOs/IFiltrosDto";
 import type { IProductoDto } from "../types/DTOs/IProductoDto";
 import type { IProducto } from "../types/IProducto";
+import type { IProductoGet } from "../types/IProductoGet";
 import type { Page } from "../types/Pages";
 
 export const getProductosController = async (
@@ -43,7 +44,7 @@ export const crearProductoController = async (
 	}
 };
 
-export const getAllProductosController = async (): Promise<IProducto[] | null> => {
+export const getAllProductosController = async (): Promise<IProductoGet[] | null> => {
 	try {
 		const productos = await ProductoService.getAllProductos();
 		return productos;

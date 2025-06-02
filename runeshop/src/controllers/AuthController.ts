@@ -1,10 +1,8 @@
 import { AuthService } from '../services/AuthService';
 
-const authService = new AuthService();
-
 export const loginController = async (data: { nombreUsuario: string; contrasenia: string }): Promise<any | null> => {
   try {
-    const user = await authService.login(data);
+    const user = await AuthService.login(data);
     return user;
   } catch (error) {
     console.error("Error en loginController:", error);
@@ -14,7 +12,7 @@ export const loginController = async (data: { nombreUsuario: string; contrasenia
 
 export const registerController = async (data: any): Promise<any | null> => {
   try {
-    const user = await authService.register(data);
+    const user = await AuthService.register(data);
     return user;
   } catch (error) {
     console.error("Error en registerController:", error);

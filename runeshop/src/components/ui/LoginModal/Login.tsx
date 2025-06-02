@@ -1,50 +1,141 @@
-import { useState, type FC } from "react";
+import {
+	useEffect,
+	useState,
+	type ChangeEvent,
+	type FC,
+	type FormEvent,
+} from "react";
 import styles from "./Login.module.css";
 import { Register } from "../RegisterModal/Register";
 import { useNavigate } from "react-router";
+import { LoginSchema } from "../../Schemas/LoginSchema";
+import { loginController, registerController } from "../../../controllers/AuthController";
+import Swal from "sweetalert2";
 
 interface loginProps {
-  onCloseLogin: () => void;
+	onCloseLogin: () => void;
 }
 
 export const Login: FC<loginProps> = ({ onCloseLogin }) => {
-  const [registerOpen, setRegisterOpen] = useState(false);
-  const navigate = useNavigate();
+	const [registerOpen, setRegisterOpen] = useState(false);
+	const navigate = useNavigate();
 
-  const handleCloseRegister = () => {
-    setRegisterOpen(false);
-  };
+	const [formData, setFormData] = useState({
+		nombreUsuario: "",
+		contrasenia: "",
+	});
 
-  const handleLogin = () => {
-    navigate("/userProfile");
-  }
+	const [errors, setErrors] = useState<Record<string, string>>({});
 
-  return (
-    <div className={styles.overlay}>
-      <div className={styles.principalContainerLogin}>
-        <div className={styles.containerDataLogin}>
-          <div className={styles.containerTitleLogin}>
-            <span className="material-symbols-outlined">person</span>
-            <h1>Iniciar Sesión</h1>
-          </div>
-          <div className={styles.containerInputLogin}>
-            <input type="text" placeholder="Nombre de usuario" />
-            <input type="password" placeholder="Contraseña" />
-          </div>
-          <div className={styles.containerButtonLogin}>
-            <button onClick={handleLogin}>Acceder</button>
-            <button onClick={onCloseLogin}>Cancelar</button>
-          </div>
-          <div className={styles.containerRegisterLogin}>
-            <p>
-              ¿No tienes cuenta?{" "}
-              <button onClick={() => setRegisterOpen(true)}>Registrate</button>
-            </p>
-          </div>
-        </div>
+	const handleChange = async (
+		e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+	) => {
+		const { name, value } = e.target;
+		setFormData((prev) => ({ ...prev, [`${name}`]: value }));
 
-        {registerOpen && <Register onCloseRegister={handleCloseRegister} />}
-      </div>
-    </div>
-  );
+		try {
+			await LoginSchema.validateAt(name, { ...formData, [name]: value });
+			setErrors((prev) => {
+				const newErrors = { ...prev };
+				delete newErrors[name];
+				return newErrors;
+			});
+		} catch (err: any) {
+			setErrors((prev) => ({ ...prev, [name]: err.message }));
+		}
+	};
+
+	const handleSubmit = async (e: FormEvent) => {
+		e.preventDefault();
+		try {
+			await LoginSchema.validate(formData, { abortEarly: false });
+			const response = await loginController(formData);
+			if (response) {
+				navigate("/userProfile");
+        console.log("Login successful:", response);
+			} else {
+				Swal.fire({
+					title: "Ingreso Erroneo",
+					text: "Usuario o contraseña incorrectos",
+          icon: "error",
+				});
+			}
+		} catch (err: any) {
+			const validationErrors: Record<string, string> = {};
+			err.inner.forEach((error: any) => {
+				validationErrors[error.path] = error.message;
+			});
+			setErrors(validationErrors);
+		}
+	};
+
+	const isFormValid = () => {
+		const hasErrors = Object.keys(errors).length > 0;
+		const hasEmptyFields = Object.values(formData).some(
+			(value) => value.trim() === ""
+		);
+		return !hasErrors && !hasEmptyFields;
+	};
+
+	useEffect(() => {
+		isFormValid();
+	}, [formData]);
+
+	const handleCloseRegister = () => {
+		setRegisterOpen(false);
+	};
+
+
+	return (
+		<div className={styles.overlay}>
+			<div className={styles.principalContainerLogin}>
+				<div className={styles.containerDataLogin}>
+					<div className={styles.containerTitleLogin}>
+						<span className="material-symbols-outlined">person</span>
+						<h1>Iniciar Sesión</h1>
+					</div>
+					<div className={styles.containerInputLogin}>
+						<div className={styles.inputContainer}>
+							<input
+								onChange={handleChange}
+								type="text"
+								name="nombreUsuario"
+								placeholder="Nombre de usuario"
+							/>
+							{errors.nombreUsuario && <p className={styles.error}>{errors.nombreUsuario}</p>}
+						</div>
+						<div className={styles.inputContainer}>
+							<input
+								onChange={handleChange}
+								type="password"
+								name="contrasenia"
+								placeholder="Contraseña"
+							/>
+							{errors.contrasenia && (
+								<p className={styles.error}>{errors.contrasenia}</p>
+							)}
+						</div>
+					</div>
+					<div className={styles.containerButtonLogin}>
+						<button
+							className={styles.submitbtn}
+							type="submit"
+							disabled={!isFormValid()}
+							onClick={handleSubmit}>
+							Acceder
+						</button>
+						<button onClick={onCloseLogin}>Cancelar</button>
+					</div>
+					<div className={styles.containerRegisterLogin}>
+						<p>
+							¿No tienes cuenta?{" "}
+							<button onClick={() => setRegisterOpen(true)}>Registrate</button>
+						</p>
+					</div>
+				</div>
+
+				{registerOpen && <Register onCloseRegister={handleCloseRegister} />}
+			</div>
+		</div>
+	);
 };
