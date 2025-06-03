@@ -10,12 +10,13 @@ export const loginController = async (data: { nombreUsuario: string; contrasenia
   }
 };
 
-export const registerController = async (data: any): Promise<any | null> => {
+export const registerController = async (data: any): Promise<{ user: any | null, error: string | null }> => {
   try {
     const user = await AuthService.register(data);
-    return user;
-  } catch (error) {
-    console.error("Error en registerController:", error);
-    return null;
+    return { user, error: null };
+  } catch (error: any) {
+    console.error("Error en registerController:", error.message);
+    return { user: null, error: error.message };
   }
 };
+;

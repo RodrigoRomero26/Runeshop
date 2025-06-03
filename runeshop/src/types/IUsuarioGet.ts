@@ -1,3 +1,4 @@
+import type { IAuthorities } from "./IAuthorities";
 import type { IUsuariosDirecciones } from "./IUsuariosDirecciones";
 
 export interface IUsuarioGet {
@@ -11,5 +12,5 @@ export interface IUsuarioGet {
     dni:number;
     estado:boolean;
     usuariosDirecciones: IUsuariosDirecciones[];
-
+    authorities: IAuthorities
 }

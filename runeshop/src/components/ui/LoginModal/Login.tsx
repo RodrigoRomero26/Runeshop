@@ -9,7 +9,7 @@ import styles from "./Login.module.css";
 import { Register } from "../RegisterModal/Register";
 import { useNavigate } from "react-router";
 import { LoginSchema } from "../../Schemas/LoginSchema";
-import { loginController} from "../../../controllers/AuthController";
+import { loginController } from "../../../controllers/AuthController";
 import Swal from "sweetalert2";
 
 interface loginProps {
@@ -52,12 +52,12 @@ export const Login: FC<loginProps> = ({ onCloseLogin }) => {
 			const response = await loginController(formData);
 			if (response) {
 				navigate("/userProfile");
-        console.log("Login successful:", response);
+				console.log("Login successful:", response);
 			} else {
 				Swal.fire({
 					title: "Ingreso Erroneo",
 					text: "Usuario o contraseña incorrectos",
-          icon: "error",
+					icon: "error",
 				});
 			}
 		} catch (err: any) {
@@ -85,7 +85,6 @@ export const Login: FC<loginProps> = ({ onCloseLogin }) => {
 		setRegisterOpen(false);
 	};
 
-
 	return (
 		<div className={styles.overlay}>
 			<div className={styles.principalContainerLogin}>
@@ -102,7 +101,9 @@ export const Login: FC<loginProps> = ({ onCloseLogin }) => {
 								name="nombreUsuario"
 								placeholder="Nombre de usuario"
 							/>
-							{errors.nombreUsuario && <p className={styles.error}>{errors.nombreUsuario}</p>}
+							{errors.nombreUsuario && (
+								<p className={styles.error}>{errors.nombreUsuario}</p>
+							)}
 						</div>
 						<div className={styles.inputContainer}>
 							<input
@@ -119,7 +120,6 @@ export const Login: FC<loginProps> = ({ onCloseLogin }) => {
 					<div className={styles.containerButtonLogin}>
 						<button
 							className={styles.submitbtn}
-							type="submit"
 							disabled={!isFormValid()}
 							onClick={handleSubmit}>
 							Acceder
