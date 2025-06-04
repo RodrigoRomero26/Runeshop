@@ -130,3 +130,44 @@
   align-self: center;
 }
 
+.menuIconMobile {
+  display: none;
+}
+
+.mobileMenu {
+  display: none;
+}
+
+.mobileMenu button {
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+@media (max-width: 600px) {
+  .menuIconMobile {
+    display: block;
+    font-size: 40px;
+    color: #f28d8d;
+    cursor: pointer;
+  }
+
+  .mobileMenu {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 8vh;
+    left: 0;
+    width: 100%;
+    background-color: white;
+    z-index: 1000;
+  }
+
+  .mobileMenu button {
+    font-size: 30px;
+    padding: 15px;
+    border-bottom: 1px solid #ccc;
+    background: none;
+    border: none;
+    color: #f28d8d;
+    font-family: "Mali", cursive;
+  }
+}

@@ -111,7 +111,7 @@
 }
 
 /* Responsive */
-@media (max-width: 450px) {
+@media (max-width: 600px) {
 	.carouselContainer {
 		height: 30vh;
 		width: 100%;
