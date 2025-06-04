@@ -1,6 +1,7 @@
 import { AuthService } from '../services/AuthService';
+import type { ILoginResponse } from '../types/ILoginResponse';
 
-export const loginController = async (data: { nombreUsuario: string; contrasenia: string }): Promise<any | null> => {
+export const loginController = async (data: { nombreUsuario: string; contrasenia: string }): Promise<ILoginResponse | null> => {
   try {
     const user = await AuthService.login(data);
     return user;

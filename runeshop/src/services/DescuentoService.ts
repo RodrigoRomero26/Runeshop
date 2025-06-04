@@ -1,4 +1,4 @@
-// src/services/DescuentoService.ts
+
 import api from '../api/api';
 
 export class DescuentoService {

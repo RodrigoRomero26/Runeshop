@@ -1,5 +1,5 @@
-
 import api from "../api/api";
+import type { ILoginResponse } from "../types/ILoginResponse";
 
 export interface LoginRequest {
 	nombreUsuario: string;
@@ -13,14 +13,12 @@ export interface RegisterRequest extends LoginRequest {
 	email: string;
 }
 
-export interface LoginResponse {
-	token: string;
-}
+
 
 export class AuthService {
-	static async login(data: LoginRequest): Promise<LoginResponse | null> {
+	static async login(data: LoginRequest): Promise<ILoginResponse | null> {
 		try {
-			const res = await api.post<LoginResponse>("/auth/login", data);
+			const res = await api.post<ILoginResponse>("/auth/login", data);
 			localStorage.setItem("token", res.data.token);
 			return res.data;
 		} catch (error) {
