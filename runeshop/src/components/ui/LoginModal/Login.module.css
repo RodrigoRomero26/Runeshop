@@ -126,10 +126,61 @@
 }
 
 /* Responsive */
-@media (max-width: 1350px) {
+@media (max-width: 553px) {
+    .principalContainerLogin{
+        width: 70vw;
+        height: 45vh;
+    }
+	.containerTitleLogin{
+		margin-bottom: 0;
+	}
+	.containerTitleLogin span{
+		font-size: 3rem;
+	}
+	.containerTitleLogin h1{
+		font-size: 1.5rem;
+	}
+	.inputContainer{
+		margin-bottom: 22px;
+	}
+	 .error {
+		height: 18px;
+		font-size: 0.6rem;
+	 }
+    .containerInputLogin input{
+        width: 60vw;
+    }
+    .containerButtonLogin{
+        width: 100%;
+		margin-top: 8px;
+		align-content: center;
+		flex-direction: column;
+    }
+	.containerButtonLogin button{
+		font-size: 1rem;
+		width: 85%;
+	}
+
+}
+
+
+@media (max-width: 800px) and (min-width: 553px) {
+    .principalContainerLogin{
+        width: 70vw;
+        height: 42vh;
+    }
+    .containerInputLogin input{
+        width: 60vw;
+    }
+    .containerButtonLogin{
+        width: 60vw;
+    }
+}
+
+@media (max-width: 1350px) and (min-width: 800px) {
 	.principalContainerLogin {
 		width: 35%;
-		height: 40%;
+		height: 44%;
 	}
 	.containerInputLogin{
 		height: 40%;

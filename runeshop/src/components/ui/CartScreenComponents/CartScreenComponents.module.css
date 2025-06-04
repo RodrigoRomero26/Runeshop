@@ -29,7 +29,7 @@
   flex-direction: column;
   gap: 10px;
   overflow-y: auto;
-  height: 70%;
+  height: 76%;
   width: 95%;
   padding: 10px;
 }
@@ -47,49 +47,25 @@
   margin-top: 10px;
 }
 
-.summarySideContainerDitails {
-  display: flex;
-  flex-direction: row;
-  gap: 10px;
-  height: 60%;
-  width: 65%;
-  padding: 10px;
-  justify-content: space-evenly;
-  align-self: center;
+.summarySideTableContainer {
+  height: 70%;
+  max-height: 70%;
+  overflow: auto;
 }
 
-.summarySideContainerDitailsLine {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  height: 70%;
-  width: 65%;
+.summarySideTable {
+  width: 100%;
   padding: 10px;
-  justify-content: start;
+  font-size: 1.5rem;
+  align-self: flex-start;
   color: #ff9797;
   font-family: "Mali", cursive;
 }
 
-.summarySideContainerDitailsLine p {
-  border-bottom: 2px dotted #ff9797;
-  padding: 5px;
-}
-
-.summarySideContainerPrice {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  height: 70%;
-  width: 65%;
-  padding: 10px;
-  justify-content: start;
-  color: #ff9797;
-  font-family: "Mali", cursive;
-}
-
-.summarySideContainerPrice p {
-  padding: 5px;
-  border-bottom: 2px dotted #ff9797;
+.summarySideTable td {
+  padding: 12px;
+  text-align: center;
+  border-bottom: 4px dotted #ff9797;
 }
 
 .summarySideContainerButton {
@@ -101,6 +77,7 @@
   font-family: "Mali", cursive;
   background-color: #ff9999;
   border: none;
+  font-size: 1.4rem;
 }
 
 .summarySideContainerButton:hover {
@@ -110,7 +87,7 @@
 }
 
 /* Responsive */
-@media (max-width: 450px) {
+@media (max-width: 600px) {
   .principalContainerCartScreenComponents {
     height: 100%;
   }
@@ -153,19 +130,49 @@
     margin-left: 10px;
   }
 
-  .summarySideContainerDitails {
+  .summarySideTableContainer {
     max-height: 100%;
-    overflow-y: auto;
-    height: 100%;
-    width: 100%;
-    padding: 0;
-    gap: 0;
+  }
+  .summarySideTable {
+    font-size: 1rem;
   }
 
   .summarySideContainerButton {
     width: 50%;
-    font-size: .8rem;
+    font-size: 0.8rem;
     padding: 5px;
+    align-self: center;
+  }
+}
+
+@media (min-width: 600px) and (max-width: 1140px) {
+  .principalContainerCartScreenComponents {
+    height: 100%;
+  }
+
+  .cartSideContainer {
+    width: 60%;
+    height: 100%;
+  }
+
+  .cartSideContainerCards {
+    height: 80%;
+  }
+
+  .summarySideContainer {
+    height: 100%;
+    width: 40%;
+  }
+
+  .summarySideTableContainer {
+    max-height: 100%;
+  }
+  .summarySideTable {
+    font-size: 1rem;
+  }
+
+  .summarySideContainerButton {
+    width: 65%;
     align-self: center;
   }
 }

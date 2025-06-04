@@ -23,19 +23,45 @@ export const CartScreenComponents = () => {
           <div className={styles.summarySideContainerTitle}>
             <h2>Resumen</h2>
           </div>
-          <div className={styles.summarySideContainerDitails}>
-            <div className={styles.summarySideContainerDitailsLine}>
-              <p>Productos (3)</p>
-              <p>Entrega</p>
-              <p>Total</p>
-            </div>
-            <div className={styles.summarySideContainerPrice}>
-              <p>$435000</p>
-              <p>$6000</p>
-              <p>$441000</p>
-            </div>
+          <div className={styles.summarySideTableContainer}>
+            <table className={styles.summarySideTable}>
+              <tr>
+                <td>Productos (3)</td>
+                <td>$435000</td>
+              </tr>
+              <tr>
+                <td>Entrega</td>
+                <td>$6000</td>
+              </tr>
+              <tr>
+                <td>Total</td>
+                <td>$441000</td>
+              </tr>
+              <tr>
+                <td>Total</td>
+                <td>$441000</td>
+              </tr>
+              <tr>
+                <td>Total</td>
+                <td>$441000</td>
+              </tr>
+              <tr>
+                <td>Total</td>
+                <td>$441000</td>
+              </tr>
+              <tr>
+                <td>Total</td>
+                <td>$441000</td>
+              </tr>
+              <tr>
+                <td>Total</td>
+                <td>$441000</td>
+              </tr>
+            </table>
           </div>
-          <button className={styles.summarySideContainerButton}>Ir a pagar</button>
+          <button className={styles.summarySideContainerButton}>
+            Ir a pagar
+          </button>
         </div>
       </div>
     </div>

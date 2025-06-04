@@ -11,7 +11,7 @@
 }
 
 .principalContainerCart {
-  width: 20vw;
+  width: 30vw;
   height: 60vh;
   background-color: #faedd8;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -100,26 +100,45 @@
 }
 
 /* Responsive */
-@media (max-width: 450px) {
+@media (max-width: 600px) {
+  .overlay {
+    margin-top: 8vh;
+  }
+
   .principalContainerCart {
     width: 60vw;
     height: 50vh;
   }
 
   .containerTitleCart {
-    font-size: 0.7rem;
+    font-size: 0.8rem;
   }
 
   .containerButtonYTotalCart {
-	font-size: 0.9rem;
+    font-size: 1rem;
   }
 
   .buttonCart {
-	font-size: 0.7rem;
-	padding: 5px 10px;
+    font-size: .8rem;
+    padding: 8px 10px;
+    margin-right: 15px;
   }
 
-  .buttonCart span{
-	font-size: 1rem;
+  .buttonCart span {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 1325px) and (min-width: 1000px) {
+  .principalContainerCart {
+    width: 35vw;
+    height: 50vh;
+  }
+}
+
+@media (max-width: 1000px) and (min-width: 600px) {
+  .principalContainerCart {
+    width: 60%;
+    height: 50vh;
   }
 }

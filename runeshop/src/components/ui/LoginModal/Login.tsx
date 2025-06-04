@@ -124,7 +124,7 @@ export const Login: FC<loginProps> = ({ onCloseLogin }) => {
 							onClick={handleSubmit}>
 							Acceder
 						</button>
-						<button onClick={onCloseLogin}>Cancelar</button>
+						<button className={styles.submitbtn} onClick={onCloseLogin}>Cancelar</button>
 					</div>
 					<div className={styles.containerRegisterLogin}>
 						<p>
