@@ -143,9 +143,10 @@
 }
 
 @media (max-width: 600px) {
+
   .menuIconMobile {
     display: block;
-    font-size: 40px;
+    padding: 5px;
     color: #f28d8d;
     cursor: pointer;
   }
@@ -156,13 +157,14 @@
     position: absolute;
     top: 8vh;
     left: 0;
-    width: 100%;
+    width: 230px;
     background-color: white;
     z-index: 1000;
+    max-height: 55%;
+    overflow-y: auto;
   }
 
   .mobileMenu button {
-    font-size: 30px;
     padding: 15px;
     border-bottom: 1px solid #ccc;
     background: none;
