@@ -11,6 +11,8 @@ import { useNavigate } from "react-router";
 import { LoginSchema } from "../../Schemas/LoginSchema";
 import { loginController } from "../../../controllers/AuthController";
 import Swal from "sweetalert2";
+import { userStore } from "../../../store/userStore";
+import { getUsuario } from "../../../controllers/UsuarioController";
 
 interface loginProps {
 	onCloseLogin: () => void;
@@ -19,6 +21,8 @@ interface loginProps {
 export const Login: FC<loginProps> = ({ onCloseLogin }) => {
 	const [registerOpen, setRegisterOpen] = useState(false);
 	const navigate = useNavigate();
+	const setUserId = userStore((state) => state.setUserID);
+	const setUser = userStore((state) => state.setUser);
 
 	const [formData, setFormData] = useState({
 		nombreUsuario: "",
@@ -51,8 +55,14 @@ export const Login: FC<loginProps> = ({ onCloseLogin }) => {
 			await LoginSchema.validate(formData, { abortEarly: false });
 			const response = await loginController(formData);
 			if (response) {
-				navigate("/userProfile");
-				console.log("Login successful:", response);
+				setUserId(response.id);
+				console.log("Usuario ID:", response.id);
+				console.log("Usuario:", response.token);
+				const user = await getUsuario(response.id);
+				if (user.usuario) {
+					setUser(user.usuario);
+					navigate("/userProfile");
+				}
 			} else {
 				Swal.fire({
 					title: "Ingreso Erroneo",
@@ -124,7 +134,9 @@ export const Login: FC<loginProps> = ({ onCloseLogin }) => {
 							onClick={handleSubmit}>
 							Acceder
 						</button>
-						<button className={styles.submitbtn} onClick={onCloseLogin}>Cancelar</button>
+						<button className={styles.submitbtn} onClick={onCloseLogin}>
+							Cancelar
+						</button>
 					</div>
 					<div className={styles.containerRegisterLogin}>
 						<p>

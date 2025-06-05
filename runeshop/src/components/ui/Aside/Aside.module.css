@@ -143,33 +143,57 @@
 }
 
 @media (max-width: 600px) {
+  .principalContainerAside{
+    display: none;
+    align-items: center;
+  }
 
   .menuIconMobile {
     display: block;
     padding: 5px;
-    color: #f28d8d;
+    color: #FF9999;
     cursor: pointer;
   }
 
   .mobileMenu {
+    padding: 10px;
     display: flex;
     flex-direction: column;
     position: absolute;
     top: 8vh;
     left: 0;
-    width: 230px;
-    background-color: white;
-    z-index: 1000;
+    width: 96%;
+    background-color: #FF9999;
     max-height: 55%;
     overflow-y: auto;
+    border-radius: 4px;
+    font-family: 'Mali', cursive;
+    color: #fff;
   }
 
-  .mobileMenu button {
-    padding: 15px;
-    border-bottom: 1px solid #ccc;
-    background: none;
-    border: none;
-    color: #f28d8d;
-    font-family: "Mali", cursive;
+  .mobileMenu h2{
+    font-size: 1.5rem;
+  }
+
+  .buttonFilter{
+    font-size: 1rem;
+  }
+
+  .filterContainer{
+    font-size: 1.3rem;
+  }
+
+  .checkboxSizeContainer{
+    width: 75%;
+  }
+
+  .filterContainer span{
+    font-size: 1.5rem;
+  }
+
+  .priceLabel input{
+    height: 50%;
+    width: 100%;
+    font-size: 20px;
   }
 }
