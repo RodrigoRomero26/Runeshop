@@ -30,41 +30,45 @@ export class ProductoService {
 	}
 
 	static async getProductosPaginados(
-		filtros: IFiltrosDto = {},
-		page: number = 0,
-		size: number = 10,
-		orden: string = "asc"
-	): Promise<Page<IProducto> | null> {
-		try {
-			const params = new URLSearchParams();
+	filtros: IFiltrosDto = {},
+	page: number = 0,
+	size: number = 10,
+	orden: string = "asc"
+): Promise<Page<IProductoGet> | null> {
+	try {
+		const params = new URLSearchParams();
 
-			if (filtros.sexo) params.append("sexo", filtros.sexo);
-			if (filtros.marca) params.append("marca", filtros.marca);
-			if (filtros.talle !== undefined)
-				params.append("talle", filtros.talle.toString());
-			if (filtros.tipoProducto)
-				params.append("tipoProducto", filtros.tipoProducto);
-			if (filtros.modelo) params.append("modelo", filtros.modelo);
-			if (filtros.categoria) params.append("categoria", filtros.categoria);
-			if (filtros.min !== undefined)
-				params.append("min", filtros.min.toString());
-			if (filtros.max !== undefined)
-				params.append("max", filtros.max.toString());
+		if (filtros.sexo) filtros.sexo.forEach((v) => params.append("sexo", v));
+		if (filtros.marca) filtros.marca.forEach((v) => params.append("marca", v));
+		if (filtros.talle) filtros.talle.forEach((v) => params.append("talle", v.toString()));
+		if (filtros.tipoProducto) filtros.tipoProducto.forEach((v) => params.append("tipoProducto", v));
+		if (filtros.modelo) filtros.modelo.forEach((v) => params.append("modelo", v));
+		if (filtros.categoria) filtros.categoria.forEach((v) => params.append("categoria", v));
 
-			params.append("orden", orden);
-			params.append("page", page.toString());
-			params.append("size", size.toString());
-
-			const res = await api.get<Page<IProducto>>("/producto/filtro", {
-				params,
-			});
-
-			return res.data;
-		} catch (error) {
-			console.error("Error al obtener productos filtrados:", error);
-			return null;
+		if (filtros.min !== null && filtros.min !== undefined) {
+			params.append("min", filtros.min.toString());
 		}
+
+		if (filtros.max !== null && filtros.max !== undefined) {
+			params.append("max", filtros.max.toString());
+		}
+
+		console.log(params.toString());
+
+		params.append("orden", orden);
+		params.append("page", page.toString());
+		params.append("size", size.toString());
+
+		const res = await api.get<Page<IProductoGet>>("/producto/filtro", {
+			params,
+		});
+
+		return res.data;
+	} catch (error) {
+		console.error("Error al obtener productos filtrados:", error);
+		return null;
 	}
+}
 
 	static async getAllProductos(): Promise<IProductoGet[] | null> {
 		try {

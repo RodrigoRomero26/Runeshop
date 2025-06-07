@@ -18,7 +18,7 @@ export class UsuarioDireccionService {
 
     static async agregarDireccion(usuarioId: number, direccion: IDireccion): Promise<string | null> {
 	try {
-		const res = await api.post<string>(`/usuarios/${usuarioId}/direcciones`, direccion);
+		const res = await api.post<string>(`perfil/usuarios/${usuarioId}/direcciones`, direccion);
 		return res.data;
 	} catch (error) {
 		console.error("Error al agregar dirección:", error);

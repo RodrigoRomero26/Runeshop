@@ -20,6 +20,8 @@ export class AuthService {
 		try {
 			const res = await api.post<ILoginResponse>("/auth/login", data);
 			localStorage.setItem("token", res.data.token);
+			localStorage.setItem("userId", res.data.id.toString());
+			localStorage.setItem("refreshToken", res.data.refreshToken);
 			return res.data;
 		} catch (error) {
 			console.error(error);

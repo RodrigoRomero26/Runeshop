@@ -94,19 +94,37 @@
 }
 
 .userAdresses {
-	display: flex;
-	align-items: center;
-	justify-content: space-around;
-	gap: 20px;
-	padding: 10px;
-	justify-items: start;
-	width: 90%;
-	max-width: 70vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-between; 
+    gap: 20px;
+    padding: 10px;
+    width: 90%;
+    max-width: 70vh;
+	border-bottom: 2px dashed #ff9999;
 }
 
 .userAdresses p {
-	font-family: "Mali", cursive;
-	color: #ff9999;
+    font-family: "Mali", cursive;
+    color: #ff9999;
+    white-space: nowrap; 
+    overflow: hidden;
+    text-overflow: ellipsis; 
+    max-width: 80%; 
+    transition: all 0.3s ease;
+    cursor: pointer; 
+}
+
+.userAdresses p:hover {
+    white-space: normal; 
+    overflow: visible; 
+    text-overflow: clip; 
+    position: relative;
+    z-index: 1;
+    background-color: #fff;
+    padding: 5px;
+    border-radius: 4px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1); 
 }
 
 .userAdressesButtons {

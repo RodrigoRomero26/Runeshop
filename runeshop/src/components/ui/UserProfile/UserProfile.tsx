@@ -1,13 +1,11 @@
 import React, { useEffect, useState } from "react";
 import styles from "./UserProfile.module.css";
 import { DirectionModal } from "../DirectionModal/DirectionModal";
-import { userStore } from "../../../store/userStore";
-import { updateUsuario } from "../../../controllers/UsuarioController";
 import { useUser } from "../../../hooks/useUser";
 import Swal from "sweetalert2";
-import { useShallow } from "zustand/shallow";
 
 type UserData = {
+	id: number;
 	nombreUsuario: string;
 	contraseña: string;
 	nombre: string;
@@ -21,6 +19,7 @@ export const UserProfile = () => {
 	const [directionModalOpen, setDirectionModalOpen] = useState(false);
 	const { user, updateUserData } = useUser();
 	const initialState: UserData = {
+		id: 0,
 		nombreUsuario: "",
 		contraseña: "",
 		nombre: "",
@@ -35,6 +34,7 @@ export const UserProfile = () => {
 	useEffect(() => {
 		if (user) {
 			setUserData({
+				id: user.id,
 				nombreUsuario: user.nombreUsuario || "",
 				contraseña: user.contraseña || "",
 				nombre: user.nombre || "",
@@ -131,7 +131,7 @@ export const UserProfile = () => {
 						{user?.usuariosDirecciones?.length ? (
 							user?.usuariosDirecciones.map((direccion) => (
 								<div className={styles.userAdresses}>
-									<p>{direccion.direccion.direccion}</p>
+									<p>{`${direccion.direccion.direccion} - ${direccion.direccion.departamento} - ${direccion.direccion.provincia}`}</p>
 									<div className={styles.userAdressesButtons}>
 										<button className={styles.userAdressesEditButton}>
 											<span className="material-symbols-outlined">edit</span>
@@ -162,3 +162,4 @@ export const UserProfile = () => {
 		</div>
 	);
 };
+

@@ -1,241 +1,194 @@
-import { useEffect, useRef, useState } from "react";
 import styles from "./Aside.module.css";
-
+import { filtersStore } from "../../../store/filtersStore";
+import { getCategoriasController } from "../../../controllers/CategoriaController";
+import { useEffect, useState } from "react";
+import type { ICategoria } from "../../../types/ICategoria";
+import type { ITalle } from "../../../types/ITalle";
+import { getTallesController } from "../../../controllers/TalleController";
 export const Aside = () => {
-  const [menuOpen, setMenuOpen] = useState(false);
-  const menuRef = useRef<HTMLDivElement>(null);
-  useEffect(() => {
-    const handleClickOutside = (event: MouseEvent) => {
-      if (menuRef.current && !menuRef.current.contains(event.target as Node)) {
-        setMenuOpen(false);
-      }
-    };
+	const {
+		genero,
+		tipoIndumentaria,
+		marcas,
+		talles,
+		precioMin,
+		precioMax,
+		toggleGenero,
+		toggleTipoIndumentaria,
+		toggleMarca,
+		toggleTalle,
+		setPrecioMin,
+		setPrecioMax,
+		resetFilters,
+	} = filtersStore();
 
-    if (menuOpen) {
-      document.addEventListener("mousedown", handleClickOutside);
-    }
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
-  }, [menuOpen]);
+	// Estados locales para guardar los datos traídos de la API
+	const TiposIndumentariaDisponibles = [
+		"Zapatilla",
+		"Remera",
+		"Campera",
+		"Botin",
+	];
+	const marcasDisponibles = ["Nike", "Adidas", "Puma", "Reebok"];
+	const [categoriasDisponibles, setCategoriasDisponibles] = useState<
+		ICategoria[]
+	>([]);
+	const [tallesDisponibles, setTallesDisponibles] = useState<ITalle[]>([]);
+	const generosDisponibles = ["Hombre", "Mujer"];
 
-  return (
-    //SE ABRE APRETANDO EL BOTON DE HOMBRES
-    <>
-      <div
-        className={styles.menuIconMobile}
-        onClick={() => setMenuOpen(!menuOpen)}
-      >
-        <span className="material-symbols-outlined">filter_alt</span>
-      </div>
-      <div className={styles.principalContainerAside}>
-        <div className={styles.filtersContainer}>
-          <h2>Filtros de busqueda</h2>
-          <button className={styles.buttonFilter}>Aplicar filtros</button>
-          <button className={styles.buttonFilter}>Limpiar filtros</button>
-          <div className={styles.filterContainer}>
-            <h3>Genero</h3>
-            <label className={styles.checkboxLabel}>
-              <input type="checkbox" name="Mujer" />
-              Mujer
-            </label>
-            <label className={styles.checkboxLabel}>
-              <input type="checkbox" name="Hombre" />
-              Hombre
-            </label>
-          </div>
-          <div className={styles.filterContainer}>
-            <h3>Tipo de indumentaria</h3>
-            <label className={styles.checkboxLabel}>
-              <input type="checkbox" name="Remera" />
-              Remera
-            </label>
-            <label className={styles.checkboxLabel}>
-              <input type="checkbox" name="Pantalon" />
-              Pantalon
-            </label>
-            <label className={styles.checkboxLabel}>
-              <input type="checkbox" name="Calzado" />
-              Calzado
-            </label>
-          </div>
-          <div className={styles.filterContainer}>
-            <h3>Categorias</h3>
-            <label className={styles.checkboxLabel}>
-              <input type="checkbox" name="Running" />
-              Running
-            </label>
-            <label className={styles.checkboxLabel}>
-              <input type="checkbox" name="Urbano" />
-              Urbano
-            </label>
-            <label className={styles.checkboxLabel}>
-              <input type="checkbox" name="Casual" />
-              Casual
-            </label>
-            <label className={styles.checkboxLabel}>
-              <input type="checkbox" name="Trail" />
-              Trail
-            </label>
-            <label className={styles.checkboxLabel}>
-              <input type="checkbox" name="Entrenamiento" />
-              Entrenamiento
-            </label>
-          </div>
-          <div className={styles.filterContainer}>
-            <h3>Marca</h3>
-            <label className={styles.checkboxLabel}>
-              <input type="checkbox" name="Nike" />
-              Nike
-            </label>
-            <label className={styles.checkboxLabel}>
-              <input type="checkbox" name="Adidas" />
-              Adidas
-            </label>
-            <label className={styles.checkboxLabel}>
-              <input type="checkbox" name="Puma" />
-              Puma
-            </label>
-            <label className={styles.checkboxLabel}>
-              <input type="checkbox" name="Reebok" />
-              Reebok
-            </label>
-          </div>
-          <div className={styles.filterContainer}>
-            <h3>Talles</h3>
-            <div className={styles.checkboxSizeContainer}>
-              {[33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46].map(
-                (size) => (
-                  <label key={size} className={styles.sizeLabel}>
-                    <input
-                      type="checkbox"
-                      name={String(size)}
-                      className={styles.hiddenCheckbox}
-                    />
-                    <span>{size}</span>
-                  </label>
-                )
-              )}
-            </div>
-          </div>
-          <div className={styles.filterContainer}>
-            <span className="material-symbols-outlined">paid</span>
-            <label className={styles.priceLabel}>
-              <input type="text" placeholder="Maximo" />
-            </label>
-            <label className={styles.priceLabel}>
-              <input type="text" placeholder="Minimo" />
-            </label>
-          </div>
-        </div>
-      </div>
-      {menuOpen && (
-        <div className={styles.mobileMenu} ref={menuRef}>
-          <h2>Filtros de búsqueda</h2>
-          <button className={styles.buttonFilter}>Aplicar filtros</button>
-          <button className={styles.buttonFilter}>Limpiar filtros</button>
+	useEffect(() => {
+		const fetchFiltros = async () => {
+			try {
+				const categorias = await getCategoriasController();
+				const talles = await getTallesController();
+				setCategoriasDisponibles(categorias || []);
+				setTallesDisponibles(talles || []);
+			} catch (err) {
+				console.error("Error cargando filtros", err);
+			}
+		};
 
-          <div className={styles.filterContainer}>
-            <h3>Género</h3>
-            <label className={styles.checkboxLabel}>
-              <input type="checkbox" name="Mujer" />
-              Mujer
-            </label>
-            <label className={styles.checkboxLabel}>
-              <input type="checkbox" name="Hombre" />
-              Hombre
-            </label>
-          </div>
+		fetchFiltros();
+	}, []);
 
-          <div className={styles.filterContainer}>
-            <h3>Tipo de indumentaria</h3>
-            <label className={styles.checkboxLabel}>
-              <input type="checkbox" name="Remera" />
-              Remera
-            </label>
-            <label className={styles.checkboxLabel}>
-              <input type="checkbox" name="Pantalon" />
-              Pantalón
-            </label>
-            <label className={styles.checkboxLabel}>
-              <input type="checkbox" name="Calzado" />
-              Calzado
-            </label>
-          </div>
+	return (
+		<aside className={styles.principalContainerAside}>
+			<div className={styles.filtersContainer}>
+				<button
+					className={styles.buttonFilter}
+					onClick={() => {
+						console.log("Filtros aplicados", {
+							genero,
+							tipoIndumentaria,
+							marcas,
+							talles,
+							precioMin,
+							precioMax,
+						});
+					}}>
+					Aplicar Filtros
+				</button>
+				<button
+					className={styles.buttonFilter}
+					onClick={() => {
+						resetFilters();
+						console.log("Filtros limpiados", {
+							genero,
+							tipoIndumentaria,
+							marcas,
+							talles,
+							precioMin,
+							precioMax,
+						});
+					}}>
+					Limpiar Filtros
+				</button>
 
-          <div className={styles.filterContainer}>
-            <h3>Categorías</h3>
-            <label className={styles.checkboxLabel}>
-              <input type="checkbox" name="Running" />
-              Running
-            </label>
-            <label className={styles.checkboxLabel}>
-              <input type="checkbox" name="Urbano" />
-              Urbano
-            </label>
-            <label className={styles.checkboxLabel}>
-              <input type="checkbox" name="Casual" />
-              Casual
-            </label>
-            <label className={styles.checkboxLabel}>
-              <input type="checkbox" name="Trail" />
-              Trail
-            </label>
-            <label className={styles.checkboxLabel}>
-              <input type="checkbox" name="Entrenamiento" />
-              Entrenamiento
-            </label>
-          </div>
+				<div className={styles.filterContainer}>
+					<h3>Género</h3>
+					{generosDisponibles.map((gen) => (
+						<label key={gen} className={styles.checkboxLabel}>
+							<input
+								type="checkbox"
+								checked={genero.includes(gen)}
+								onChange={() => toggleGenero(gen)}
+							/>
+							{gen}
+						</label>
+					))}
+				</div>
 
-          <div className={styles.filterContainer}>
-            <h3>Marca</h3>
-            <label className={styles.checkboxLabel}>
-              <input type="checkbox" name="Nike" />
-              Nike
-            </label>
-            <label className={styles.checkboxLabel}>
-              <input type="checkbox" name="Adidas" />
-              Adidas
-            </label>
-            <label className={styles.checkboxLabel}>
-              <input type="checkbox" name="Puma" />
-              Puma
-            </label>
-            <label className={styles.checkboxLabel}>
-              <input type="checkbox" name="Reebok" />
-              Reebok
-            </label>
-          </div>
+				<div className={styles.filterContainer}>
+					<h3>Tipo</h3>
+					{TiposIndumentariaDisponibles.map((tipo) => (
+						<label key={tipo} className={styles.checkboxLabel}>
+							<input
+								type="checkbox"
+								checked={tipoIndumentaria.includes(tipo)}
+								onChange={() => toggleTipoIndumentaria(tipo)}
+							/>
+							{tipo}
+						</label>
+					))}
+				</div>
 
-          <div className={styles.filterContainer}>
-            <h3>Talles</h3>
-            <div className={styles.checkboxSizeContainer}>
-              {[33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46].map(
-                (size) => (
-                  <label key={size} className={styles.sizeLabel}>
-                    <input
-                      type="checkbox"
-                      name={String(size)}
-                      className={styles.hiddenCheckbox}
-                    />
-                    <span>{size}</span>
-                  </label>
-                )
-              )}
-            </div>
-          </div>
+				<div className={styles.filterContainer}>
+					<h3>Categoria</h3>
+					{categoriasDisponibles.map((cat) => (
+						<label key={cat.id} className={styles.checkboxLabel}>
+							<input
+								type="checkbox"
+								checked={marcas.includes(cat.nombre)}
+								onChange={() => toggleMarca(cat.nombre)}
+							/>
+							{cat.nombre}
+						</label>
+					))}
+				</div>
 
-          <div className={styles.filterContainer}>
-            <span className="material-symbols-outlined">paid</span>
-            <label className={styles.priceLabel}>
-              <input type="text" placeholder="Máximo" />
-            </label>
-            <label className={styles.priceLabel}>
-              <input type="text" placeholder="Mínimo" />
-            </label>
-          </div>
-        </div>
-      )}
-    </>
-  );
+				<div className={styles.filterContainer}>
+					<h3>Marca</h3>
+					{marcasDisponibles.map((marca) => (
+						<label key={marca} className={styles.checkboxLabel}>
+							<input
+								type="checkbox"
+								checked={marcas.includes(marca)}
+								onChange={() => toggleMarca(marca)}
+							/>
+							{marca}
+						</label>
+					))}
+				</div>
+
+				<div className={`${styles.filterContainer} ${styles.sizeContainer}`}>
+					<h3>Talle</h3>
+					<div className={styles.checkboxSizeContainer}>
+						{tallesDisponibles.map((talle) => (
+							<label key={talle.id} className={styles.sizeLabel}>
+								<input
+									type="checkbox"
+									className={styles.hiddenCheckbox}
+									checked={talles.includes(talle.numero)}
+									onChange={() => toggleTalle(talle.numero)}
+								/>
+								<span>{talle.numero}</span>
+							</label>
+						))}
+					</div>
+				</div>
+
+				<div className={styles.filterContainer}>
+					<h3>Precio</h3>
+					<div>
+						<label className={styles.priceLabel}>
+							<input
+								type="number"
+								placeholder="Mínimo"
+								value={precioMin}
+								onChange={(e) =>
+									setPrecioMin(
+										e.target.value === "" ? "" : Number(e.target.value)
+									)
+								}
+							/>
+						</label>
+						<label className={styles.priceLabel}>
+							<input
+								type="number"
+								placeholder="Máximo"
+								value={precioMax}
+								onChange={(e) =>
+									setPrecioMax(
+										e.target.value === "" ? "" : Number(e.target.value)
+									)
+								}
+							/>
+						</label>
+					</div>
+				</div>
+			</div>
+		</aside>
+	);
 };
+
+export default Aside;

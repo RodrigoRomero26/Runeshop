@@ -1,19 +1,61 @@
-.principalContainerProductsCatalog{
-    width: 99vw;
-    height: 90%;
+.principalContainerProductsCatalog {
+	width: 100%;
+	height: 95%;
+	display: flex;
+	flex-direction: column;
+	padding: 0 10px;
+	box-sizing: border-box;
 }
 
-.containerProductsCards{
-    background-color: #FFE5BC;
-    height: 95%;
-    max-height: 95%;
-    display: flex;
-    margin: 10px;
-    justify-content: space-around;
-    flex-wrap: wrap;
-    overflow-y: auto;
-
+.containerProductsCards {
+	flex: 1;
+	overflow-y: auto;
+	background-color: #ffe5bc;
+	display: flex;
+	justify-content: space-around;
+	flex-wrap: wrap;
+	gap: 20px;
+	padding: 20px;
+	border-radius: 8px;
 }
+
+.pagination {
+	padding: 6px 0;
+	display: flex;
+	gap: 6px;
+	justify-content: center;
+	align-items: center;
+	background-color: #fff1e0;
+}
+
+
+.pageButton {
+	padding: 4px 10px;
+	font-size: 13px;
+    background-color: #ff9999;
+	color: #faeae4;
+	cursor: pointer;
+	border-radius: 6px;
+	transition: background-color 0.2s, color 0.2s, border-color 0.2s;
+}
+
+.pageButton:hover {
+    transform: scale(1.05);
+}
+
+.pageButton:disabled {
+	border-color: #f4cfc2;
+	color: #bda59c;
+	background-color: #ffece6;
+	cursor: not-allowed;
+}
+
+.activePageButton {
+	background-color: #c57777;
+	color: white;
+	border-color: #c57777;
+}
+
 
 .principalContainerProductsCatalog{
     height: 95%;

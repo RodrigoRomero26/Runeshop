@@ -11,7 +11,7 @@ export const getProductosController = async (
 	page: number = 0,
 	size: number = 10,
 	orden: string = "asc"
-): Promise<Page<IProducto> | null> => {
+): Promise<Page<IProductoGet> | null> => {
 	try {
 		const productos = await ProductoService.getProductosPaginados(
 			filtros,

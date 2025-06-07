@@ -13,6 +13,7 @@ import { loginController } from "../../../controllers/AuthController";
 import Swal from "sweetalert2";
 import { userStore } from "../../../store/userStore";
 import { getUsuario } from "../../../controllers/UsuarioController";
+import { useUser } from "../../../hooks/useUser";
 
 interface loginProps {
 	onCloseLogin: () => void;
@@ -23,6 +24,8 @@ export const Login: FC<loginProps> = ({ onCloseLogin }) => {
 	const navigate = useNavigate();
 	const setUserId = userStore((state) => state.setUserID);
 	const setUser = userStore((state) => state.setUser);
+	const user = userStore((state) => state.user);
+	const { getUser } = useUser();
 
 	const [formData, setFormData] = useState({
 		nombreUsuario: "",
@@ -56,13 +59,8 @@ export const Login: FC<loginProps> = ({ onCloseLogin }) => {
 			const response = await loginController(formData);
 			if (response) {
 				setUserId(response.id);
-				console.log("Usuario ID:", response.id);
-				console.log("Usuario:", response.token);
-				const user = await getUsuario(response.id);
-				if (user.usuario) {
-					setUser(user.usuario);
-					navigate("/userProfile");
-				}
+				await getUser(response.id);
+				navigate("/userProfile");
 			} else {
 				Swal.fire({
 					title: "Ingreso Erroneo",

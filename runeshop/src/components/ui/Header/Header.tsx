@@ -1,14 +1,12 @@
-import { useEffect, useRef, useState, type FC } from "react";
+import { useEffect, useRef, useState } from "react";
 import styles from "./Header.module.css";
 import { Login } from "../LoginModal/Login";
 import { Cart } from "../CartModal/Cart";
 import { useNavigate } from "react-router";
 
-interface HeaderProps {
-	onCloseHeader: () => void;
-}
 
-export const Header: FC<HeaderProps> = ({ onCloseHeader }) => {
+
+export const Header = () => {
 	const [menuOpen, setMenuOpen] = useState(false);
 	const [loginOpen, setLoginOpen] = useState(false);
 	const [cartOpen, setCartOpen] = useState(false);
@@ -76,6 +74,8 @@ export const Header: FC<HeaderProps> = ({ onCloseHeader }) => {
 
 	const handleLogout = () => {
 		localStorage.removeItem("token");
+		localStorage.removeItem("refreshToken");
+		localStorage.removeItem("userId");
 		setIsLoggedIn(false);
 		setMenuOpen(false);
 		navigate("/");

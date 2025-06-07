@@ -68,7 +68,7 @@ export const ProductCarousel = () => {
 
 		const interval = setInterval(() => {
 			setCurrentIndex((prev) => (prev + 1) % simplifiedProducts.length);
-		}, 4000);
+		}, 400000);
 
 		return () => clearInterval(interval);
 	}, [simplifiedProducts, isHovered]);
@@ -96,20 +96,27 @@ export const ProductCarousel = () => {
 		if (!simplifiedProducts || simplifiedProducts.length === 0) return [];
 
 		const total = simplifiedProducts.length;
+		const half = Math.floor(numVisible / 2);
 		const indices = [];
 
-		for (
-			let i = -Math.floor(numVisible / 2);
-			i <= Math.floor(numVisible / 2);
-			i++
-		) {
-			indices.push((currentIndex + i + total) % total);
+		if (total <= numVisible) {
+			return simplifiedProducts.map((product, index) => ({
+				index,
+				product,
+				position: index - Math.floor(total / 2),
+			}));
 		}
 
-		return indices.map((i) => ({
-			index: i,
-			product: simplifiedProducts[i],
-		}));
+		for (let i = -half; i <= half; i++) {
+			let idx = (currentIndex + i + total) % total;
+			indices.push({
+				index: idx,
+				product: simplifiedProducts[idx],
+				position: i, 
+			});
+		}
+
+		return indices;
 	};
 
 	const visibleProducts = getVisibleProducts();
@@ -123,20 +130,26 @@ export const ProductCarousel = () => {
 					</button>
 
 					<div className={styles.carouselTrack}>
-						{visibleProducts.map(({ index, product }, i) => {
-							const isCenter = i === Math.floor(visibleProducts.length / 2);
+						{visibleProducts.map(({ index, product }) => {
+							const isCenter = index === currentIndex;
+							const positionIndex =
+								visibleProducts.findIndex((item) => item.index === index) -
+								Math.floor(numVisible / 2);
 
 							return (
 								<div
-									key={product.id}
+									key={`${product.id}-${index}`}
 									className={`${styles.carouselItem} ${
 										isCenter ? styles.active : ""
 									}`}
 									onClick={() => handleProductClick(product.id, isCenter)}
 									onMouseEnter={() => isCenter && setIsHovered(true)}
 									onMouseLeave={() => isCenter && setIsHovered(false)}
-									style={{ cursor: "pointer" }}>
-									<img src={product.imagen} alt={product.name} />
+									style={{
+										cursor: isCenter ? "pointer" : "default",
+										order: positionIndex + Math.floor(numVisible / 2),
+									}}>
+									<img className={isCenter ? styles.activeImg : ""} src={product.imagen} alt={product.name} />
 									<p>{product.name}</p>
 									<p>${product.precio.toLocaleString("es-AR")}</p>
 								</div>
