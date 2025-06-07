@@ -92,7 +92,7 @@
 }
 
 /* Responsive celulares*/
-@media (max-width: 450px) {
+@media (max-width: 460px) {
 	.principalContainerFooter {
 		height: 28vh;
 	}
@@ -134,7 +134,7 @@
 	}
 }
 
-@media (max-width: 1000px) and ( min-width: 450px) {
+@media (max-width: 1000px) and ( min-width: 460px) {
 	.principalContainerFooter {
 		height: 14vh;
 	}
@@ -192,7 +192,7 @@
 
 	.logoButton img {
 		width: 30px;
-		height: 25px;
+		height: 16px;
 		margin-bottom: 10px;
 	}
 }

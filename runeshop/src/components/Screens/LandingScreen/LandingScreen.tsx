@@ -14,7 +14,7 @@ export const LandingScreen = () => {
 
 	return (
 		<div className={styles.containerLandingScreen}>
-			<Header />
+			<Header{...{ onCloseHeader: () => {} }} />
 			<div className={styles.containerLandingScreenContent}>
 				<ProductCarousel/>
 				<LandingBrandsExhibitor />

@@ -24,3 +24,10 @@
 }
 
 /* Responsive */
+
+@media (max-width: 1000px) {
+  .principalAdminContainerHeader{
+    font-size: 0.9rem;
+    height: 8vh;
+  }
+}

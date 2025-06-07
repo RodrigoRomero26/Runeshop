@@ -9,7 +9,7 @@ import { ProductsCatalog } from "../../ui/ProductCatalog/ProductsCatalog";
 export const ProductsCatalogScreen = () => {
 	return (
 		<div className={styles.containerProductsCatalogScreen}>
-			<Header />
+			<Header{...{ onCloseHeader: () => {} }} />
 			<CatalogHeader />
 			<div className={styles.containerProductsCatalogScreenContent}>
 				<Aside />

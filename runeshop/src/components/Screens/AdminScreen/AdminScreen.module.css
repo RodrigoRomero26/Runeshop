@@ -12,3 +12,10 @@
 	height: 68%;
 	align-items: center;
 }
+
+@media (max-width: 910px) {
+	.containerAdminScreenContent {
+		flex-direction: column;
+		justify-content: flex-start;
+	}
+}

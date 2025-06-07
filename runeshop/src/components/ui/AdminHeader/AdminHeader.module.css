@@ -27,7 +27,7 @@
   background-color: #ffe5bc;
   border: none;
   font-size: 1.2rem;
-  width: 21vw;
+  width: 27vw;
 }
 
 .adminButton:hover {
@@ -68,3 +68,38 @@
 }
 
 /* Responsive */
+@media (max-width: 550px) {
+  .adminContainerHeader {
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    margin-top: 10px;
+  }
+
+  .adminButton{
+    font-size: 1rem;
+    margin: 5px;
+    width: 80%;
+  }
+
+  .adminSearch{
+    width: 100%;
+    justify-content: space-evenly;
+    margin: 0;
+    margin-bottom: 20px;
+  }
+
+  .adminSearch input{
+    width: 40vw;
+  }
+
+}
+
+@media (max-width: 768px) and (min-width: 550px) {
+  .adminButton{
+    width: 30%;
+  }
+  .adminSearch input {
+    width: 30vw;
+  }
+}

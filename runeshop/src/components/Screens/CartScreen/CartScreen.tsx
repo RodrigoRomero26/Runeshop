@@ -6,7 +6,7 @@ import { CartScreenComponents } from '../../ui/CartScreenComponents/CartScreenCo
 export const CartScreen = () => {
   return (
     <div className={styles.cartScreen}>
-      <Header />
+      <Header{...{ onCloseHeader: () => {} }} />
       <div className={styles.cartScreenContent}>
         <CartScreenComponents />
       </div>

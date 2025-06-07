@@ -14,3 +14,13 @@
     overflow-y: auto;
 
 }
+
+.principalContainerProductsCatalog{
+    height: 95%;
+}
+
+@media (max-width: 895px){
+    .principalContainerProductsCatalog{
+        height: 92%;
+    }
+}

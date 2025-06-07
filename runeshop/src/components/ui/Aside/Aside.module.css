@@ -1,7 +1,7 @@
 .principalContainerAside{
   display: flex;
   flex-direction: column;
-  width: 15vw;
+  width: 24vw;
   height: 95%;
   overflow: hidden;
   background-color: #FF9999;
@@ -105,6 +105,7 @@
 .priceLabel input{
   border: 2px solid #fff;
   background-color: #FF9999;
+  width: 15vw;
 }
 
 .priceLabel input::placeholder{
@@ -142,7 +143,7 @@
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
-@media (max-width: 600px) {
+@media (max-width: 910px) {
   .principalContainerAside{
     display: none;
     align-items: center;
@@ -153,6 +154,8 @@
     padding: 5px;
     color: #FF9999;
     cursor: pointer;
+    margin-top: 5px;
+    height: 3%;
   }
 
   .mobileMenu {

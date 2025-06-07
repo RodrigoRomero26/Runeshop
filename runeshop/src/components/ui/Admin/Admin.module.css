@@ -15,8 +15,8 @@
 .adminTableContainer {
   flex: 1;
   overflow-y: auto;
-  height: 90%;
-  max-width: 95%;
+  height: 95%;
+  max-width: 98%;
 }
 
 .adminTableContainer table {
@@ -38,6 +38,7 @@
   padding: 12px;
   text-align: center;
   border-bottom: 1px solid #ffdede;
+  justify-self: center;
 }
 
 .buttonAdmin {
@@ -57,4 +58,55 @@
 
 .material-symbols-outlined {
   font-size: 20px;
+}
+
+@media (max-width: 940px) and (min-width: 500px) {
+  .principalContainerAdmin {
+    height: 93%;
+    width: 100%;
+    justify-self: center;
+    justify-items: center;
+  }
+
+  .adminButtons {
+    width: 20vw;
+  }
+
+  .buttonAdmin {
+    height: auto;
+    margin: 0 2px;
+  }
+}
+
+@media (max-width: 500px) {
+  .principalContainerAdmin {
+    height: 93%;
+    width: 95%;
+    justify-self: center;
+    justify-items: center;
+  }
+
+  .containerAdmin {
+    width: 100%;
+  }
+
+  .adminTableContainer th,
+  .adminTableContainer td {
+    font-size: 0.7rem;
+    padding: 8px;
+  }
+
+  .adminButtons {
+    width: 20vw;
+  }
+
+  .buttonAdmin {
+    height: auto;
+    width: auto;
+    margin: 0 2px;
+  }
+
+  .buttonAdmin span {
+    font-size: 1.3rem;
+  }
 }

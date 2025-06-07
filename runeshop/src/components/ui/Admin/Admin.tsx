@@ -24,7 +24,7 @@ export const Admin = () => {
 
 	const asideButtons = () => {
 		return (
-			<>
+			<div className={styles.adminButtons}>
 				<button onClick={handleOpenDetails} className={styles.buttonAdmin}>
 					<span className="material-symbols-outlined">visibility</span>
 				</button>
@@ -36,7 +36,7 @@ export const Admin = () => {
 				<button className={styles.buttonAdmin}>
 					<span className="material-symbols-outlined">delete</span>
 				</button>
-			</>
+			</div>
 		);
 	};
 
@@ -55,6 +55,90 @@ export const Admin = () => {
 							</tr>
 						</thead>
 						<tbody>
+							<tr>
+								<td>Producto 1</td>
+								<td>Rojo</td>
+								<td>$100000</td>
+								<td>10</td>
+								<td>{asideButtons()}</td>
+							</tr>
+							<tr>
+								<td>Producto 1</td>
+								<td>Rojo</td>
+								<td>$100000</td>
+								<td>10</td>
+								<td>{asideButtons()}</td>
+							</tr>
+							<tr>
+								<td>Producto 1</td>
+								<td>Rojo</td>
+								<td>$100000</td>
+								<td>10</td>
+								<td>{asideButtons()}</td>
+							</tr>
+							<tr>
+								<td>Producto 1</td>
+								<td>Rojo</td>
+								<td>$100000</td>
+								<td>10</td>
+								<td>{asideButtons()}</td>
+							</tr>
+							<tr>
+								<td>Producto 1</td>
+								<td>Rojo</td>
+								<td>$100000</td>
+								<td>10</td>
+								<td>{asideButtons()}</td>
+							</tr>
+							<tr>
+								<td>Producto 1</td>
+								<td>Rojo</td>
+								<td>$100000</td>
+								<td>10</td>
+								<td>{asideButtons()}</td>
+							</tr>
+							<tr>
+								<td>Producto 1</td>
+								<td>Rojo</td>
+								<td>$100000</td>
+								<td>10</td>
+								<td>{asideButtons()}</td>
+							</tr>
+							<tr>
+								<td>Producto 1</td>
+								<td>Rojo</td>
+								<td>$100000</td>
+								<td>10</td>
+								<td>{asideButtons()}</td>
+							</tr>
+							<tr>
+								<td>Producto 1</td>
+								<td>Rojo</td>
+								<td>$100000</td>
+								<td>10</td>
+								<td>{asideButtons()}</td>
+							</tr>
+							<tr>
+								<td>Producto 1</td>
+								<td>Rojo</td>
+								<td>$100000</td>
+								<td>10</td>
+								<td>{asideButtons()}</td>
+							</tr>
+							<tr>
+								<td>Producto 1</td>
+								<td>Rojo</td>
+								<td>$100000</td>
+								<td>10</td>
+								<td>{asideButtons()}</td>
+							</tr>
+							<tr>
+								<td>Producto 1</td>
+								<td>Rojo</td>
+								<td>$100000</td>
+								<td>10</td>
+								<td>{asideButtons()}</td>
+							</tr>
 							<tr>
 								<td>Producto 1</td>
 								<td>Rojo</td>
