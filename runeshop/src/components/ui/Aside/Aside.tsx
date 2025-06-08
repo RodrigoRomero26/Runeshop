@@ -11,12 +11,14 @@ export const Aside = () => {
 		tipoIndumentaria,
 		marcas,
 		talles,
+		categorias,
 		precioMin,
 		precioMax,
 		toggleGenero,
 		toggleTipoIndumentaria,
 		toggleMarca,
 		toggleTalle,
+		toggleCategoria,
 		setPrecioMin,
 		setPrecioMax,
 		resetFilters,
@@ -118,8 +120,8 @@ export const Aside = () => {
 						<label key={cat.id} className={styles.checkboxLabel}>
 							<input
 								type="checkbox"
-								checked={marcas.includes(cat.nombre)}
-								onChange={() => toggleMarca(cat.nombre)}
+								checked={categorias.includes(cat.nombre)}
+								onChange={() => toggleCategoria(cat.nombre)}
 							/>
 							{cat.nombre}
 						</label>

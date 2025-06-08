@@ -44,11 +44,11 @@ export const filtersStore = create<IFiltersStore>((set, get) => ({
 				: [...state.tipoIndumentaria, tipo],
 		})),
 
-	toggleCategoria: (cat) =>
+	toggleCategoria: (categoria: string) =>
 		set((state) => ({
-			categorias: state.categorias.includes(cat)
-				? state.categorias.filter((x) => x !== cat)
-				: [...state.categorias, cat],
+			categorias: state.categorias.includes(categoria)
+				? state.categorias.filter((c) => c !== categoria)
+				: [...state.categorias, categoria],
 		})),
 
 	toggleMarca: (marca) =>

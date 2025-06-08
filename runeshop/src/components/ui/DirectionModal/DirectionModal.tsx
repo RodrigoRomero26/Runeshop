@@ -12,6 +12,7 @@ import {
 } from "../../../controllers/UbicacionesControler";
 import Swal from "sweetalert2";
 import { DirectionModalSchema } from "../../Schemas/DirectionModalSchema";
+import { useUser } from "../../../hooks/useUser";
 
 interface directionModalProps {
 	onCloseDirectionModal: () => void;
@@ -22,6 +23,7 @@ export const DirectionModal: FC<directionModalProps> = ({
 }) => {
 	const [provincias, setProvincias] = useState<string[]>([]);
 	const [departamentos, setDepartamentos] = useState<string[]>([]);
+	const {addDirection} = useUser();
 
 	const [formData, setFormData] = useState({
 		pais: "Argentina",
@@ -96,7 +98,7 @@ export const DirectionModal: FC<directionModalProps> = ({
 
 		try {
 			await DirectionModalSchema.validate(formData, { abortEarly: false });
-			//A COMPLETAR: Aquí deberías enviar formDataApi a tu API o manejarlo como necesites
+			addDirection(formDataApi);
 			console.log("Datos enviados:", formDataApi);
 			Swal.fire({
 				title: "Dirección guardada",

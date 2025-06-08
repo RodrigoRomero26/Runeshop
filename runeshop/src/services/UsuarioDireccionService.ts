@@ -1,4 +1,5 @@
 import api from "../api/api";
+import type { IDireccionDto } from "../types/DTOs/IDireccionDto";
 import type { IDireccion } from "../types/IDireccion";
 
 export class UsuarioDireccionService {
@@ -16,7 +17,7 @@ export class UsuarioDireccionService {
 		}
 	}
 
-    static async agregarDireccion(usuarioId: number, direccion: IDireccion): Promise<string | null> {
+    static async agregarDireccion(usuarioId: number, direccion: IDireccionDto): Promise<string | null> {
 	try {
 		const res = await api.post<string>(`perfil/usuarios/${usuarioId}/direcciones`, direccion);
 		return res.data;
@@ -25,5 +26,15 @@ export class UsuarioDireccionService {
 		return null;
 	}
 }
+
+	static async eliminarDireccion(direccionId: number): Promise<string | null> {
+		try {
+			const res = await api.put(`direccion/${direccionId}`);
+			return res.data;
+		} catch (error) {
+			console.error("Error al eliminar dirección:", error);
+			return null;
+		}
+	}
 
 }

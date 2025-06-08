@@ -18,7 +18,6 @@ function onRefreshed(token: string) {
   refreshSubscribers = [];
 }
 
-// Interceptor para agregar el access token a cada request
 api.interceptors.request.use(
   (config) => {
     const token = localStorage.getItem("token");
@@ -30,13 +29,10 @@ api.interceptors.request.use(
   (error) => Promise.reject(error)
 );
 
-// Interceptor para manejar respuestas
 api.interceptors.response.use(
   (response) => response,
   async (error) => {
     const originalRequest = error.config;
-
-    // Si responde 401 y no hemos hecho retry todavía
     if (
       error.response?.status === 401 &&
       !originalRequest._retry &&
@@ -44,22 +40,20 @@ api.interceptors.response.use(
     ) {
       originalRequest._retry = true;
 
-      // Si no estamos refrescando, iniciamos la renovación
       if (!isRefreshing) {
         isRefreshing = true;
 
         try {
           const refreshToken = localStorage.getItem("refreshToken");
 
-          // Llamada a endpoint para renovar token
           const res = await axios.post(
             `${API_URL}/auth/refresh`,
             refreshToken,
             {
-              headers: { "Content-Type": "text/plain" },
+              headers: { "Content-Type": "application/json" },
             }
           );
-
+          console.log(res.data);
           const newToken = res.data.token;
           const newRefreshToken = res.data.refreshToken;
 
@@ -85,7 +79,6 @@ api.interceptors.response.use(
       });
     }
 
-    // Otros errores los rechazamos normalmente
     return Promise.reject(error);
   }
 );

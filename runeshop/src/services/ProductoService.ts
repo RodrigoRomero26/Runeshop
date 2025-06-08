@@ -53,8 +53,6 @@ export class ProductoService {
 			params.append("max", filtros.max.toString());
 		}
 
-		console.log(params.toString());
-
 		params.append("orden", orden);
 		params.append("page", page.toString());
 		params.append("size", size.toString());
