@@ -2,6 +2,8 @@ import { useEffect, useRef, useState, type FC } from "react";
 import styles from "./Cart.module.css";
 import { CartModalCards } from "../CartModalCards/CartModalCards";
 import { useNavigate } from "react-router";
+import { useUser } from "../../../hooks/useUser";
+import { userStore } from "../../../store/userStore";
 
 interface cartProps {
   onCloseCart: () => void;
@@ -10,6 +12,7 @@ interface cartProps {
 export const Cart: FC<cartProps> = ({ onCloseCart }) => {
   const modalRef = useRef<HTMLDivElement>(null);
   const navigate = useNavigate();
+  const usercart = userStore((state) => state.usercart);
 
   const handleCart = () => {
     navigate("/cart");
@@ -39,10 +42,16 @@ export const Cart: FC<cartProps> = ({ onCloseCart }) => {
             <h1>Carrito</h1>
           </div>
           <div className={styles.containerProductsCart}>
-            <CartModalCards />
-            <CartModalCards />
-            <CartModalCards />
-            <CartModalCards />
+            {usercart && usercart.length > 0 ? (
+              usercart.map((product) => (
+                <CartModalCards
+                  key={product.id}
+                  product={product}
+                />
+              ))
+            ) : (
+              <p className={styles.emptyCart}>El carrito está vacío</p>
+            )}
           </div>
           <div className={styles.containerButtonYTotalCart}>
             <button onClick={handleCart} className={styles.buttonCart}>
@@ -56,7 +65,13 @@ export const Cart: FC<cartProps> = ({ onCloseCart }) => {
             <p>
               Total:
               <br />
-              $0000000
+              {usercart && usercart.length > 0
+                ? `$${usercart.reduce(
+                    (total, product) =>
+                      total + product.detalles[0].precio.precioVenta * product.cantidad,
+                    0
+                  )}`
+                : "$0"}
             </p>
           </div>
         </div>

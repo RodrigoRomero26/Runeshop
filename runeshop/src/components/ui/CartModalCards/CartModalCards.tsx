@@ -1,34 +1,64 @@
+import type { FC } from "react";
+import type { IProductoGet } from "../../../types/IProductoGet";
 import styles from "./CartModalCards.module.css";
+import { useUser } from "../../../hooks/useUser";
 
-export const CartModalCards = () => {
+type CartModalCardsProps = {
+	product: IProductoGet;
+};
+export const CartModalCards: FC<CartModalCardsProps> = ({ product }) => {
+	const {
+		incrementProductQuantity,
+		decrementProductQuantity,
+		removeFromCart,
+		showAmount,
+	} = useUser();
+
+	const handleIncrement = () => {
+		incrementProductQuantity(product.id!);
+	};
+
+	const handleDecrement = () => {
+		decrementProductQuantity(product.id!);
+	};
+	const handleRemove = () => {
+		removeFromCart(product.id!);
+	};
+	const handleAmount = (productId: number) => {
+		return showAmount(productId);
+	};
 	return (
 		<div className={styles.cardWrapper}>
 			<div className={styles.topSection}>
 				<div className={styles.containerImageProductCart}>
 					<img
-						src="https://imgs.search.brave.com/1EuIsDeRffUn4TbvODgTEofZPv4x2vot022dkxpGAbQ/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9kYXNo/LnZ0ZXhhc3NldHMu/Y29tL2FycXVpdm9z/L2lkcy8xNTE4NTM1/LTUwMC1hdXRvP3Y9/NjM4NjI5NjAwNjg4/OTMwMDAwJndpZHRo/PTUwMCZoZWlnaHQ9/YXV0byZhc3BlY3Q9/dHJ1ZQ"
-						alt="Product"
+						src={product.detalles[0].imagenes[0].imagenUrl}
+						alt={product.modelo}
 					/>
 				</div>
 				<div className={styles.containerInfoProductCart}>
-					<h2>Nombre zapatillas</h2>
-					<p>Talle: 42</p>
+					<h2>{product.modelo}</h2>
+					<p>Color: {product.detalles[0].color}</p>
+					<p>Talle: {product.detalles[0].talle.numero}</p>
 				</div>
-				<button className={styles.buttonDelete}>
+				<button onClick={handleRemove} className={styles.buttonDelete}>
 					<span className="material-symbols-outlined">delete</span>
 				</button>
 			</div>
 			<div className={styles.bottomSection}>
 				<div className={styles.containerAmountProductCart}>
-					<button className={styles.buttonAmount}>
+					<button onClick={handleIncrement} className={styles.buttonAmount}>
 						<span className="material-symbols-outlined">add</span>
 					</button>
-					<p>1</p>
-					<button className={styles.buttonAmount}>
+					<p>{handleAmount(product.id!)}</p>
+					<button onClick={handleDecrement} className={styles.buttonAmount}>
 						<span className="material-symbols-outlined">remove</span>
 					</button>
 				</div>
-				<p className={styles.price}>$150.000</p>
+				<p
+					className={
+						styles.price
+					}>{`$${product.detalles[0].precio.precioVenta}`}</p>
 			</div>
 		</div>
 	);
