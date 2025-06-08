@@ -109,15 +109,75 @@
 }
 
 /* Responsive */
-@media (max-width: 440px) {
+@media (max-width: 450px) {
   .principalContainerAddProductAdminModal {
     width: 75vw;
-    height: 60vh;
+    height: 68%;
   }
-  .containerInfoAddProductAdminModal p {
-    width: 60vw;
+
+  .containerTitleAddProductAdminModal h1 {
+    font-size: 0.9rem;
   }
+
+  .containerInputAddProductAdminModal {
+    width: 90%;
+  }
+
+  .containerInputAddProductAdminModal input {
+    width: 95%;
+  }
+
+  .containerCheckboxAddProductAdminModal {
+    width: 95%;
+  }
+
+  .containerCheckboxAddProductAdminModal label {
+    width: 90%;
+  }
+
+  .buttonAddImagesAddProductAdminModal {
+    width: 90%;
+  }
+
+  .buttonAddImagesAddProductAdminModal button {
+    width: 95%;
+  }
+
   .containerButtonAddProductAdminModal {
-    width: 60vw;
+    width: 70%;
+    gap: 12px;
+  }
+}
+
+@media (max-width: 1000px) and (min-width: 450px) {
+  .principalContainerAddProductAdminModal {
+    width: 75vw;
+  }
+  .containerInputAddProductAdminModal {
+    width: 90%;
+  }
+  .containerInputAddProductAdminModal input {
+    width: 95%;
+  }
+
+  .containerCheckboxAddProductAdminModal {
+    width: 90%;
+  }
+
+  .containerCheckboxAddProductAdminModal label {
+    width: 95%;
+  }
+
+  .buttonAddImagesAddProductAdminModal {
+    width: 90%;
+  }
+
+  .buttonAddImagesAddProductAdminModal button {
+    width: 95%;
+  }
+
+  .containerButtonAddProductAdminModal {
+    width: 70%;
+    gap: 12px;
   }
 }

@@ -118,3 +118,35 @@
   width: 100%;
 }
 
+
+/* Responsive */
+@media (max-width: 550px) {
+  .principalContainerEditPhotos{
+    width: 70vw;
+    font-size: 0.7rem;
+  }
+  .buttonDelete{
+    width: 7vw;
+    height: 7vw;
+  }
+  .containerButtonAdminModalEdit{
+    width: 75%;
+  }
+
+  .containerButtonAdminModalEdit button{
+    width: 45%;
+  }
+}
+
+@media (max-width: 1000px) and (min-width: 550px) {
+  .principalContainerEditPhotos{
+    width: 50vw;
+  }
+  .containerButtonAdminModalEdit{
+    width: 35vw;
+  }
+
+  .containerButtonAdminModalEdit button{
+    width: 50%;
+  }
+}

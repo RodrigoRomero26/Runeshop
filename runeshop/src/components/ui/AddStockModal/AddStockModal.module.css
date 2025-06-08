@@ -78,16 +78,24 @@
 }
 
 /* Responsive */
-@media (max-width: 450px) {
+@media (max-width: 910px) {
 	.principalContainerAddStockModal {
 		width: 70vw;
 		height: auto;
 	}
+
+	.containerTitleAddStockModal {
+		font-size: 0.8rem;
+	}
     .inputContainer {
-		margin-bottom: 22px;
+		margin-bottom: 0;
 	}
 	.inputContainer input {
 		width: 60vw;
+	}
+
+	.containerButtonAddStockModal button{
+		font-size: 0.8rem;
 	}
 	
 }

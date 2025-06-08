@@ -113,3 +113,34 @@
   width: 100%;
 }
 
+/* Responsive */
+@media (max-width: 550px) {
+  .principalContainerCreatePhotos{
+    width: 70vw;
+    font-size: 0.7rem;
+  }
+  .buttonDelete{
+    width: 7vw;
+    height: 7vw;
+  }
+  .containerButtonAdminModalCreate{
+    width: 75%;
+  }
+
+  .containerButtonAdminModalCreate button{
+    width: 45%;
+  }
+}
+
+@media (max-width: 1000px) and (min-width: 550px) {
+  .principalContainerCreatePhotos{
+    width: 50vw;
+  }
+  .containerButtonAdminModalCreate{
+    width: 35vw;
+  }
+
+  .containerButtonAdminModalCreate button{
+    width: 50%;
+  }
+}

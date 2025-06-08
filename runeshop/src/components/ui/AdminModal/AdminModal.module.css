@@ -105,7 +105,9 @@
 @media (max-width: 450px) {
   .principalContainerAdminModal {
     width: 75vw;
+    height: 80vh;
   }
+  
 
   .containerTitleAdminModal {
     font-size: 0.9rem;
