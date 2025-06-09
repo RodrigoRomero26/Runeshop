@@ -1,7 +1,10 @@
+import { userStore } from "../../../store/userStore";
 import { CartModalCards } from "../CartModalCards/CartModalCards";
 import styles from "./CartScreenComponents.module.css";
 
 export const CartScreenComponents = () => {
+   const usercart = userStore((state) => state.usercart);
+
   return (
     <div className={styles.principalContainerCartScreenComponents}>
       <div className={styles.dataContainerCartScreenComponents}>
@@ -10,13 +13,16 @@ export const CartScreenComponents = () => {
             <h2>Carrito</h2>
           </div>
           <div className={styles.cartSideContainerCards}>
-            <CartModalCards />
-            <CartModalCards />
-            <CartModalCards />
-            <CartModalCards />
-            <CartModalCards />
-            <CartModalCards />
-            <CartModalCards />
+            {usercart && usercart.length > 0 ? (
+              usercart.map((product) => (
+                <CartModalCards
+                  key={product.id}
+                  product={product}
+                />
+              ))
+            ) : (
+              <p className={styles.emptyCart}>El carrito está vacío</p>
+            )}
           </div>
         </div>
         <div className={styles.summarySideContainer}>

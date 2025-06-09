@@ -14,7 +14,7 @@ interface IVisibleProduct {
 export const ProductCarousel = () => {
 	const [currentIndex, setCurrentIndex] = useState(0);
 	const [numVisible, setNumVisible] = useState(
-		window.innerWidth >= 1024 ? 5 : 3
+		window.innerWidth >= 1150 ? 5 : 3
 	);
 	const [isHovered, setIsHovered] = useState(false);
 	const [products, setProducts] = useState<IProductoGet[] | null>(null);

@@ -7,7 +7,7 @@ import { ProductScreenComponents } from "../../ui/ProductScreenComponents/Produc
 export const ProductScreen = () => {
   return (
     <div className={styles.containerProductScreen}>
-      <Header{...{ onCloseHeader: () => {} }} />
+      <Header />
       <div className={styles.containerProductScreenContent}>
         <ProductScreenComponents />
       </div>
