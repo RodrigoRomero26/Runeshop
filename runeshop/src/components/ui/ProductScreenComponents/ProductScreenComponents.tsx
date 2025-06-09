@@ -67,29 +67,31 @@ export const ProductScreenComponents = () => {
     <div className={styles.principalContainerProductScreenComponents}>
       <div className={styles.containerProductScreenComponents}>
         <div className={styles.productInfoContainer}>
-          <div className={styles.productImagesPerspectiveContainer}>
-            {imagenes.map((img, idx) => (
-              <img
-                key={idx}
-                src={img.imagenUrl}
-                alt={`Vista ${idx + 1}`}
-                className={styles.productImagePerspective}
-                style={{
-                  border:
-                    selectedImageIdx === idx
-                      ? "2px solid #ff4d4f"
-                      : "2px solid transparent",
-                  cursor: "pointer",
-                }}
-                onClick={() => setSelectedImageIdx(idx)}
-              />
-            ))}
+          <div className={styles.productImagesContainer}>
+            <div className={styles.productImagesPerspectiveContainer}>
+              {imagenes.map((img, idx) => (
+                <img
+                  key={idx}
+                  src={img.imagenUrl}
+                  alt={`Vista ${idx + 1}`}
+                  className={styles.productImagePerspective}
+                  style={{
+                    border:
+                      selectedImageIdx === idx
+                        ? "2px solid #ff4d4f"
+                        : "2px solid transparent",
+                    cursor: "pointer",
+                  }}
+                  onClick={() => setSelectedImageIdx(idx)}
+                />
+              ))}
+            </div>
+            <img
+              src={imagenes[selectedImageIdx]?.imagenUrl}
+              alt="Principal"
+              className={styles.productPrincipalImage}
+            />
           </div>
-          <img
-            src={imagenes[selectedImageIdx]?.imagenUrl}
-            alt="Principal"
-            className={styles.productPrincipalImage}
-          />
           <div className={styles.productDetailsContainer}>
             <div style={{ display: "flex", alignItems: "center", gap: "12px" }}>
               <h2 className={styles.productTitle}>{product.modelo}</h2>
@@ -114,7 +116,7 @@ export const ProductScreenComponents = () => {
                 <span>${detallesColorSeleccionado[0]?.precio.precioVenta}</span>
               )}
             </div>
-             
+
             <div className={styles.productColors}>
               {colores.map((color) => (
                 <button

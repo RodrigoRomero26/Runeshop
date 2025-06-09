@@ -1,27 +1,35 @@
 .principalContainerUserProfile {
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
 }
 
 .dataContainerUserProfile {
-	display: grid;
-	grid-template-columns: repeat(2, 1fr);
-	align-items: center;
-	justify-content: center;
-	padding: 20px;
-	background-color: #f6e8e8;
-	height: 75%;
-	width: 90vw;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  align-items: center;
+  justify-content: center;
+  background-color: #f6e8e8;
+  height: 85%;
+  width: 95%;
+  justify-items: center;
+  align-content: center;
+  align-items: center;
+}
+
+.userPrincipalInfo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .userDataForm {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	justify-content: center;
-	gap: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
 }
 
 .readOnlyText {
@@ -35,7 +43,7 @@
 .userDataField {
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  align-items: center;
 }
 
 .userDataField label {
@@ -43,246 +51,273 @@
   color: #ff9999;
 }
 
-.userDataField p{
-	  font-family: "Mali", cursive;
-  color: #2f2f2f;
-  background-color: #ffe5bc;
-  padding: 8px 12px;
-  border-radius: 4px;
-  border: 1px solid #ccc;
+.userDataField p {
+  font-family: "Mali", cursive;
+  color: #ff9999;
+  background-color: #f6e8e8;
+  border: none;
 }
 
 .userIconForm {
-	width: 40px;
-	height: 40px;
-	border-radius: 50%;
-	background-color: #ffe5bc;
-	display: flex;
-	align-items: center;
-	justify-content: center;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: #ffe5bc;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .userIconForm span {
-	font-size: 3rem;
-	color: #2f2f2f;
+  font-size: 3rem;
+  color: #2f2f2f;
 }
 
 .userDataFormInputs {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .userDataFormInputs input {
-	width: 25vw;
-	padding: 10px;
-	margin: 4px 0;
-	background-color: #fec1c1;
-	border: 1px solid #ff9999;
-	border-radius: 4px;
+  width: 25vw;
+  padding: 10px;
+  margin: 4px 0;
+  background-color: #fec1c1;
+  border: 1px solid #ff9999;
+  border-radius: 4px;
 }
 
 .userDataFormInputs input::placeholder {
-	background: #fec1c1;
-	font-family: "Mali", cursive;
-	color: #faeae4;
+  background: #fec1c1;
+  font-family: "Mali", cursive;
+  color: #faeae4;
 }
 
 .userAdressesForm {
-	padding-left: 20px;
-	border-left: 2px dashed #ff9999;
-	height: 90%;
-	padding-top: 20px;
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	justify-content: center;
-	gap: 10px;
+  padding-left: 27px;
+  border-left: 2px dashed #ff9999;
+  height: 90%;
+  width: 43vw;
+  padding-top: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
 }
 
 .userAdressesForm h2 {
-	font-family: "Mali", cursive;
-	color: #ff9999;
+  font-family: "Mali", cursive;
+  color: #ff9999;
 }
 
 .userAdressesInformation {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	justify-content: start;
-	gap: 5px;
-	background-color: #ffe5bc;
-	padding: 20px;
-	border-radius: 4px;
-	box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.25);
-	width: 100%;
-	max-width: 70vh;
-	max-height: 40vh;
-	overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: start;
+  gap: 5px;
+  background-color: #ffe5bc;
+  padding: 20px;
+  border-radius: 4px;
+  box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.25);
+  width: 80%;
+  max-height: 40vh;
+  overflow-y: auto;
 }
 
 .userAdresses {
-    display: flex;
-    align-items: center;
-    justify-content: space-between; 
-    gap: 20px;
-    padding: 10px;
-    width: 90%;
-    max-width: 70vh;
-	border-bottom: 2px dashed #ff9999;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 10px;
+  width: 90%;
+  border-bottom: 2px dashed #ff9999;
 }
 
 .userAdresses p {
-    font-family: "Mali", cursive;
-    color: #ff9999;
-    white-space: nowrap; 
-    overflow: hidden;
-    text-overflow: ellipsis; 
-    max-width: 80%; 
-    transition: all 0.3s ease;
-    cursor: pointer; 
+  font-family: "Mali", cursive;
+  color: #ff9999;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 80%;
+  transition: all 0.3s ease;
+  cursor: pointer;
 }
 
 .userAdresses p:hover {
-    white-space: normal; 
-    overflow: visible; 
-    text-overflow: clip; 
-    position: relative;
-    z-index: 1;
-    background-color: #fff;
-    padding: 5px;
-    border-radius: 4px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1); 
+  white-space: normal;
+  overflow: visible;
+  text-overflow: clip;
+  position: relative;
+  z-index: 1;
+  background-color: #fff;
+  padding: 5px;
+  border-radius: 4px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 .userAdressesButtons {
-	display: flex;
-	flex-direction: row;
-	align-items: center;
-	justify-content: center;
-	gap: 5px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
 }
 
 .userAdressesButtons button {
-	padding: 10px 10px;
-	background-color: #ff9999;
-	border: none;
-	border-radius: 4px;
-	color: #fff;
-	cursor: pointer;
-	transition: transform 0.2s ease, color 0.2s ease;
+  padding: 10px 10px;
+  background-color: #ff9999;
+  border: none;
+  border-radius: 4px;
+  color: #fff;
+  cursor: pointer;
+  transition: transform 0.2s ease, color 0.2s ease;
 }
 
 .userAdressesButtons button:hover {
-	transform: scale(1.05);
+  transform: scale(1.05);
   box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.25);
 }
 
 .userAdressesButtons span {
-	font-size: 1.2rem;
+  font-size: 1.2rem;
 }
 
 .button button {
-	padding: 10px 10px;
-	background-color: #ffe5bc;
-	border: none;
-	border-radius: 4px;
-	color: #ff9999;
-	cursor: pointer;
-	font-family: "Mali", cursive;
-	box-shadow: 10px 10px 10px -5px rgba(0, 0, 0, 0.25);
-	transition: transform 0.2s ease, color 0.2s ease;
+  padding: 10px 10px;
+  background-color: #ffe5bc;
+  border: none;
+  border-radius: 4px;
+  color: #ff9999;
+  cursor: pointer;
+  font-family: "Mali", cursive;
+  box-shadow: 10px 10px 10px -5px rgba(0, 0, 0, 0.25);
+  transition: transform 0.2s ease, color 0.2s ease;
 }
 
 .button button:not(:disabled):hover {
-	transform: scale(1.05);
-	box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.25);
+  transform: scale(1.05);
+  box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.25);
 }
 
-.noDirections{
-	font-family: "Mali", cursive;
+.noDirections {
+  font-family: "Mali", cursive;
 }
 
 .button button:disabled {
-	cursor: not-allowed;
-	box-shadow: none;
-	background-color: #e0e0e0;
-	color: #999;
-	opacity: 0.6;
-	transform: none;
+  cursor: not-allowed;
+  box-shadow: none;
+  background-color: #e0e0e0;
+  color: #999;
+  opacity: 0.6;
+  transform: none;
 }
 
 .inputContainer {
-	position: relative;
-	width: 100%;
-	margin-bottom: 18px;
+  position: relative;
+  width: 100%;
+  margin-bottom: 18px;
 }
 
 .error {
-	position: absolute;
-	bottom: -20px;
-	left: 0;
-	font-size: 0.8rem;
-	margin: 0;
-	width: 100%;
-	height: 20px;
-	font-family: "Mali", cursive;
+  position: absolute;
+  bottom: -20px;
+  left: 0;
+  font-size: 0.8rem;
+  margin: 0;
+  width: 100%;
+  height: 20px;
+  font-family: "Mali", cursive;
 }
 
 /* Responsive */
-@media (max-width: 450px) {
-	.principalContainerUserProfile {
-		height: 100%;
-	}
+@media (max-width: 1250px) and (min-width: 900px) {
+  .userAdresses p {
+    font-size: 0.8rem;
+  }
+  .userAdressesButtons span {
+    font-size: 1rem;
+  }
 
-	.dataContainerUserProfile {
-		background-color:#f9f3f3;
-		grid-template-columns: 1fr;
-		height: 96%;
-		align-items: start;
-	}
+  .userAdressesButtons button {
+    padding: 5px 5px;
+  }
+}
 
-	.userDataForm {
-		gap: 10px;
-	}
+@media (max-width: 900px) {
+  .principalContainerUserProfile {
+    height: 100%;
+  }
 
-	.userIconForm{
-		width: 50px;
-		height: 50px;
-	}
+  .dataContainerUserProfile {
+	display: flex;
+	flex-direction: column;
+    height: 96%;
+    align-items: center;
+	justify-content: space-between;
+  }
+  .userDataForm {
+    justify-content: flex-start;
+    width: 100%;
+    height: 57%;
+    gap: 0;
+  }
+  .userDataField {
+    flex-direction: row;
+  }
+  .userIconForm {
+    width: 40px;
+    height: 40px;
+  }
 
-	.userIconForm span {
-		font-size: 3rem;
-	}
-	
-	.userDataFormInputs input {
+  .userIconForm span {
+    font-size: 2rem;
+  }
+
+  .readOnlyText{
+	padding: 0;
+  }
+
+  .inputContainer {
+    margin-bottom: 0;
+  }
+  .userDataFormInputs input {
+    width: 80vw;
+  }
+
+  .userAdressesForm {
+    height: 43%;
+    width: 100%;
+    margin-bottom: 10px;
+    gap: 5px;
+    justify-content: start;
+	padding: 0;
+	border-left: 0;
+	font-size: 0.8rem;
+  }
+
+   .userAdressesInformation {
 		width: 80vw;
-	}
-	
-	.userAdressesForm {
-		margin-top: 5px;
-		border-top: 2px dashed #ff9999;
-		border-left: none;
-		height: 90%;
-		padding: 2%;
-		justify-content: start;
-	}
-
-	.userAdressesInformation {
-		height: 23vh;
 		padding: 10px;
+	} 
+
+   .userAdresses {
+		padding: 5px;
 	}
 
-	.userAdresses {
-		width: 85vw;
-	}
-
-	.userAdresses p {
+   .userAdresses p {
 		font-size: 0.8rem;
-		width: 59vw;
 	}
 
-	.userAdressesButtons {
-		gap: 5px;
+	.userAdressesButtons button {
+		padding: 5px 5px;
 	}
+
+  .userAdressesButtons span{
+		font-size: 1rem;
+	} 
 }

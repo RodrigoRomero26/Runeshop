@@ -1,15 +1,14 @@
 .productCard {
   background-color: #faedd8;
-  width: 250px; /* Fijo, puedes ajustar el valor */
-  min-width: 250px;
-  max-width: 250px;
+  width: 222px; 
+  min-width: 222px;
+  max-width: 222px;
   height: 350px;
-  margin: 10px;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
-  position: relative; /* Para que el badge se posicione correctamente */
+  position: relative;
 }
 
 .productCard:hover {
@@ -80,38 +79,29 @@
   margin: 0;
 }
 
-@media (max-width: 1250px) and (min-width: 730px) {
-  .productCard {
-    width: 18%;
-    margin: 5px;
-  }
 
-  .productImage {
-    height: 55%;
-    width: 85%;
+@media (max-width: 529px) {
+  .productCard{
+    width: 47%;
+    min-width: 47%;
+    max-width: 47%;
+    height: 240px
   }
+.productImage {
+  height: 57%;
+  width: 80%;
+  margin-bottom: 15px;
+  margin-top: 10px;
 }
 
-@media (max-width: 730px) and (min-width: 600px) {
-  .productCard {
-    width: 23%;
-    margin: 5px;
-  }
+.productData h3 {
+  color: #ff9797;
+  font-size: 1rem;
 }
 
-@media (max-width: 600px) and (min-width: 460px) {
-  .productCard {
-    width: 31%;
-    margin: 5px;
-  }
-
+.productData p {
+  font-size: 0.8rem;
 }
 
-@media (max-width: 460px) {
-  .productCard {
-    width: 46%;
-    margin: 5px;
-    height: 50%;
-  }
 
 }

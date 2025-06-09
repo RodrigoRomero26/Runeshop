@@ -41,6 +41,24 @@
     align-items: center;
 }
 
+.containerInputDirection select{
+    width: 25vw;
+    padding: 10px;
+    margin: 5px 0;
+    background-color: #FEC1C1;
+    border: 1px solid #FF9999;
+    border-radius: 4px;
+}
+
+.containerInputDirection select{
+width: 26.5vw;
+    padding: 10px;
+    margin: 5px 0;
+    background-color: #FEC1C1;
+    border: 1px solid #FF9999;
+    border-radius: 4px;
+}
+
 .containerInputDirection input{
     width: 25vw;
     padding: 10px;
@@ -75,12 +93,6 @@
 }
 
 .containerInputDirection select {
-    width: 100%;
-    padding: 10px;
-    margin: 5px 0;
-    background-color: #FEC1C1;
-    border: 1px solid #FF9999;
-    border-radius: 4px;
     font-family: "Mali", cursive;
     color: #333;
     appearance: none;
@@ -128,15 +140,72 @@
 
 
 /* Responsive */
-@media (max-width: 440px) {
-    .principalContainerDirection{
-        width: 75vw;
-        height: 60vh;
+@media (max-width: 450px) {
+	.principalContainerDirection {
+		width: 75vw;
     }
-    .containerInputDirection input{
-        width: 60vw;
+    .containerTitleDirection span{
+        font-size: 2rem;
     }
-    .containerButtonDirection{
-        width: 60vw;
+    .containerTitleDirection h1{
+        font-size: 1rem;
     }
+    .containerInputDirection select{
+        width: 96%;
+    }
+	.containerInputDirection input {
+		width: 90%;
+	}
+	.containerButtonDirection {
+		width: 100%;
+		gap: 12px;
+	}
+	.inputContainer {
+		margin-bottom: 22px;
+	}
+
+	.containerButtonDirection button{
+		padding: 10px 15px;
+	}
+
+	.error {
+		bottom: -18px;
+		height: 18px;
+		font-size: 0.7rem;
+	}
+}
+
+@media (max-width: 1000px) and (min-width: 450px) {
+	.principalContainerDirection {
+		width: 75vw;
+	}
+	.containerTitleDirection span{
+		font-size: 40px;
+	}
+	.containerInputDirection{
+		width: 90%;
+	}
+    .containerInputDirection select{
+        width: 98%;
+    }
+	.containerInputDirection input {
+		width: 95%;
+	}
+	.containerButtonDirection {
+		width: 100%;
+		gap: 12px;
+	}
+	.inputContainer {
+		margin-bottom: 22px;
+	}
+
+	.containerButtonDirection button{
+		padding: 10px 15px;
+	}
+
+	.error {
+		bottom: -18px;
+		height: 18px;
+		font-size: 0.7rem;
+	}
 }

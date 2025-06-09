@@ -11,7 +11,7 @@ export const DirectionModalSchema = Yup.object().shape({
 		.integer("El código postal debe ser un número entero"),
 	direccion: Yup.string()
 		.required("La dirección es obligatoria")
-		.min(5, "La dirección debe tener al menos 5 caracteres"),
+		.min(3, "La dirección debe tener al menos 3 caracteres"),
 	numero: Yup.number()
 		.transform((value, originalValue) =>
 			originalValue === "" ? undefined : value
