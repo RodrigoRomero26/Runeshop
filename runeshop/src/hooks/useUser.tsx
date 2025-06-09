@@ -3,8 +3,7 @@ import type { IUsuarioDto } from "../types/DTOs/IUsuarioDto";
 import { getUsuario, updateUsuario } from "../controllers/UsuarioController";
 import Swal from "sweetalert2";
 import { useShallow } from "zustand/shallow";
-import type { IDireccion } from "../types/IDireccion";
-import { agregarDireccionController, eliminarDireccionController } from "../controllers/UsuarioDireccionesController";
+import { actualizarDireccionController, agregarDireccionController, eliminarDireccionController } from "../controllers/UsuarioDireccionesController";
 import type { IDireccionDto } from "../types/DTOs/IDireccionDto";
 import type { IProductoGet } from "../types/IProductoGet";
 
@@ -98,6 +97,33 @@ export const useUser = () => {
 		}
 	};
 	
+	const editDirection = async (updatedDireccion: IDireccionDto) => {
+		if (!user) {
+			console.error("No hay usuario autenticado");
+			return;
+		}
+
+		try {
+			await actualizarDireccionController(updatedDireccion);
+			getUser(user.id);
+			Swal.fire({
+				title: "Dirección actualizada",
+				text: "La dirección se ha actualizado correctamente.",
+				icon: "success",
+				confirmButtonText: "Ok",
+			});
+		} catch (error) {
+			console.error("Error al actualizar dirección:", error);
+			Swal.fire({
+				title: "Error",
+				text: "Hubo un problema al actualizar la dirección.",
+				icon: "error",
+				confirmButtonText: "Ok",
+			});
+			return null;
+		}
+	}
+
 	const deleteDirection = async (direccionId: number) => {
 		if (!user) {
 			console.error("No hay usuario autenticado");
@@ -174,6 +200,7 @@ export const useUser = () => {
 		getUser,
 		updateUserData,
 		addDirection,
+		editDirection,
 		deleteDirection,
 		usercart,
 		setUserCart,

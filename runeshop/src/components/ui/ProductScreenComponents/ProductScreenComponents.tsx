@@ -1,102 +1,151 @@
-import React from "react";
+import { useState, useEffect } from "react";
+import { getProductoByIdController } from "../../../controllers/ProductoController";
 import styles from "./ProductScreenComponents.module.css";
+import { useParams } from "react-router-dom";
+import type { IDetalle } from "../../../types/IDetalle";
+import type { IProductoGet } from "../../../types/IProductoGet";
+import type { IImagenGet } from "../../../types/IImagenGet";
+import type { ITalle } from "../../../types/ITalle";
+
 export const ProductScreenComponents = () => {
+  const { id } = useParams();
+  const [product, setProduct] = useState<IProductoGet | null>(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchProduct = async () => {
+      setLoading(true);
+      const prod = await getProductoByIdController(Number(id));
+      setProduct(prod);
+      setLoading(false);
+    };
+    fetchProduct();
+  }, [id]);
+
+  // Agrupa detalles por color
+  const detallesPorColor: { [color: string]: IDetalle[] } = {};
+  product?.detalles.forEach((detalle) => {
+    if (!detallesPorColor[detalle.color]) detallesPorColor[detalle.color] = [];
+    detallesPorColor[detalle.color].push(detalle);
+  });
+
+  const colores = Object.keys(detallesPorColor);
+  const [selectedColor, setSelectedColor] = useState(colores[0] || "");
+
+  // Actualiza el color seleccionado si cambia la data
+  useEffect(() => {
+    if (colores.length && !colores.includes(selectedColor)) {
+      setSelectedColor(colores[0]);
+    }
+  }, [product, selectedColor, colores]);
+
+  // Detalles del color seleccionado
+  const detallesColorSeleccionado = detallesPorColor[selectedColor] || [];
+
+  // Imágenes del primer detalle del color seleccionado
+  const imagenes: IImagenGet[] = detallesColorSeleccionado[0]?.imagenes || [];
+
+  // Talles disponibles (sin repetir)
+  const tallesDisponibles: ITalle[] = Array.from(
+    new Map(
+      detallesColorSeleccionado.map((d) => [d.talle.numero, d.talle])
+    ).values()
+  );
+
+  // Estado para la imagen principal seleccionada
+  const [selectedImageIdx, setSelectedImageIdx] = useState(0);
+
+  // Cuando cambian las imágenes (por cambio de color), resetea la imagen principal
+  useEffect(() => {
+    setSelectedImageIdx(0);
+  }, [imagenes]);
+
+  if (loading) return <div>Cargando producto...</div>;
+  if (!product) return <div>Producto no encontrado</div>;
+
   return (
     <div className={styles.principalContainerProductScreenComponents}>
-      {/* blanco */}
       <div className={styles.containerProductScreenComponents}>
-        {/* naranja */}
         <div className={styles.productInfoContainer}>
           <div className={styles.productImagesPerspectiveContainer}>
-            <img
-              src="https://th.bing.com/th/id/OIP.YZxt1qIMGtTRsEVzIiOkfQHaHa?rs=1&pid=ImgDetMain"
-              alt="Product"
-              className={styles.productImagePerspective}
-            />
-            <img
-              src="https://imgs.search.brave.com/1EuIsDeRffUn4TbvODgTEofZPv4x2vot022dkxpGAbQ/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9kYXNo/LnZ0ZXhhc3NldHMu/Y29tL2FycXVpdm9z/L2lkcy8xNTE4NTM1/LTUwMC1hdXRvP3Y9/NjM4NjI5NjAwNjg4/OTMwMDAwJndpZHRo/PTUwMCZoZWlnaHQ9/YXV0byZhc3BlY3Q9/dHJ1ZQ"
-              alt="Product"
-              className={styles.productImagePerspective}
-            />
-            <img
-              src="https://th.bing.com/th/id/OIP.YZxt1qIMGtTRsEVzIiOkfQHaHa?rs=1&pid=ImgDetMain"
-              alt="Product"
-              className={styles.productImagePerspective}
-            />
-            <img
-              src="https://th.bing.com/th/id/OIP.7yXv7DXhB_SVtqnlOcxqFAHaH6?rs=1&pid=ImgDetMain"
-              alt="Product"
-              className={styles.productImagePerspective}
-            />
-            <img
-              src="https://imgs.search.brave.com/1EuIsDeRffUn4TbvODgTEofZPv4x2vot022dkxpGAbQ/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9kYXNo/LnZ0ZXhhc3NldHMu/Y29tL2FycXVpdm9z/L2lkcy8xNTE4NTM1/LTUwMC1hdXRvP3Y9/NjM4NjI5NjAwNjg4/OTMwMDAwJndpZHRo/PTUwMCZoZWlnaHQ9/YXV0byZhc3BlY3Q9/dHJ1ZQ"
-              alt="Product"
-              className={styles.productImagePerspective}
-            />
-            <img
-              src="https://imgs.search.brave.com/1EuIsDeRffUn4TbvODgTEofZPv4x2vot022dkxpGAbQ/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9kYXNo/LnZ0ZXhhc3NldHMu/Y29tL2FycXVpdm9z/L2lkcy8xNTE4NTM1/LTUwMC1hdXRvP3Y9/NjM4NjI5NjAwNjg4/OTMwMDAwJndpZHRo/PTUwMCZoZWlnaHQ9/YXV0byZhc3BlY3Q9/dHJ1ZQ"
-              alt="Product"
-              className={styles.productImagePerspective}
-            />
+            {imagenes.map((img, idx) => (
+              <img
+                key={idx}
+                src={img.imagenUrl}
+                alt={`Vista ${idx + 1}`}
+                className={styles.productImagePerspective}
+                style={{
+                  border:
+                    selectedImageIdx === idx
+                      ? "2px solid #ff4d4f"
+                      : "2px solid transparent",
+                  cursor: "pointer",
+                }}
+                onClick={() => setSelectedImageIdx(idx)}
+              />
+            ))}
           </div>
           <img
-            src="https://th.bing.com/th/id/OIP.YZxt1qIMGtTRsEVzIiOkfQHaHa?rs=1&pid=ImgDetMain"
-            alt="Product"
+            src={imagenes[selectedImageIdx]?.imagenUrl}
+            alt="Principal"
             className={styles.productPrincipalImage}
           />
           <div className={styles.productDetailsContainer}>
-            <h2 className={styles.productTitle}>Product Title</h2>
-            <p className={styles.productPrice}>$2000000</p>
-            <p className={styles.productPromos}>
-              Hasta 5 x $40.000 sin interes
-            </p>
-            <div className={styles.productColors}>
-              <img
-                src="https://imgs.search.brave.com/1EuIsDeRffUn4TbvODgTEofZPv4x2vot022dkxpGAbQ/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9kYXNo/LnZ0ZXhhc3NldHMu/Y29tL2FycXVpdm9z/L2lkcy8xNTE4NTM1/LTUwMC1hdXRvP3Y9/NjM4NjI5NjAwNjg4/OTMwMDAwJndpZHRo/PTUwMCZoZWlnaHQ9/YXV0byZhc3BlY3Q9/dHJ1ZQ"
-                alt="Product"
-                className={styles.productImageColor}
-              />
-              <img
-                src="https://th.bing.com/th/id/OIP.7yXv7DXhB_SVtqnlOcxqFAHaH6?rs=1&pid=ImgDetMain"
-                alt="Product"
-                className={styles.productImageColor}
-              />
-              <img
-                src="https://th.bing.com/th/id/OIP.YZxt1qIMGtTRsEVzIiOkfQHaHa?rs=1&pid=ImgDetMain"
-                alt="Product"
-                className={styles.productImageColor}
-              />
-              <img
-                src="https://imgs.search.brave.com/1EuIsDeRffUn4TbvODgTEofZPv4x2vot022dkxpGAbQ/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9kYXNo/LnZ0ZXhhc3NldHMu/Y29tL2FycXVpdm9z/L2lkcy8xNTE4NTM1/LTUwMC1hdXRvP3Y9/NjM4NjI5NjAwNjg4/OTMwMDAwJndpZHRo/PTUwMCZoZWlnaHQ9/YXV0byZhc3BlY3Q9/dHJ1ZQ"
-                alt="Product"
-                className={styles.productImageColor}
-              />
-              <img
-                src="https://imgs.search.brave.com/1EuIsDeRffUn4TbvODgTEofZPv4x2vot022dkxpGAbQ/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9kYXNo/LnZ0ZXhhc3NldHMu/Y29tL2FycXVpdm9z/L2lkcy8xNTE4NTM1/LTUwMC1hdXRvP3Y9/NjM4NjI5NjAwNjg4/OTMwMDAwJndpZHRo/PTUwMCZoZWlnaHQ9/YXV0byZhc3BlY3Q9/dHJ1ZQ"
-                alt="Product"
-                className={styles.productImageColor}
-              />
-              <img
-                src="https://imgs.search.brave.com/1EuIsDeRffUn4TbvODgTEofZPv4x2vot022dkxpGAbQ/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9kYXNo/LnZ0ZXhhc3NldHMu/Y29tL2FycXVpdm9z/L2lkcy8xNTE4NTM1/LTUwMC1hdXRvP3Y9/NjM4NjI5NjAwNjg4/OTMwMDAwJndpZHRo/PTUwMCZoZWlnaHQ9/YXV0byZhc3BlY3Q9/dHJ1ZQ"
-                alt="Product"
-                className={styles.productImageColor}
-              />
+            <div style={{ display: "flex", alignItems: "center", gap: "12px" }}>
+              <h2 className={styles.productTitle}>{product.modelo}</h2>
+              {detallesColorSeleccionado[0]?.precio_descuento && (
+                <span className={styles.discountBadge}>¡OFERTA!</span>
+              )}
             </div>
+            <div className={styles.productBrand}>
+              {detallesColorSeleccionado[0]?.marca}
+            </div>
+            <div className={styles.productPrice}>
+              {detallesColorSeleccionado[0]?.precio_descuento ? (
+                <>
+                  <span className={styles.oldPrice}>
+                    ${detallesColorSeleccionado[0]?.precio.precioVenta}
+                  </span>
+                  <span className={styles.discountPrice}>
+                    ${detallesColorSeleccionado[0]?.precio_descuento}
+                  </span>
+                </>
+              ) : (
+                <span>${detallesColorSeleccionado[0]?.precio.precioVenta}</span>
+              )}
+            </div>
+             
+            <div className={styles.productColors}>
+              {colores.map((color) => (
+                <button
+                  key={color}
+                  className={`${styles.productColorButton} ${
+                    selectedColor === color ? styles.selected : ""
+                  }`}
+                  onClick={() => setSelectedColor(color)}
+                  type="button"
+                >
+                  <img
+                    src={detallesPorColor[color][0]?.imagenes[0]?.imagenUrl}
+                    alt={color}
+                  />
+                </button>
+              ))}
+            </div>
+            {/* Talles disponibles para el color seleccionado */}
             <div className={styles.sizesContainer}>
-              <h3>Talles</h3>
+              <h3>Talles disponibles:</h3>
               <div className={styles.checkboxSizeContainer}>
-                {[33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46].map(
-                  (size) => (
-                    <label key={size} className={styles.sizeLabel}>
-                      <input
-                        type="checkbox"
-                        name={String(size)}
-                        className={styles.hiddenCheckbox}
-                      />
-                      <span>{size}</span>
-                    </label>
-                  )
-                )}
+                {tallesDisponibles.map((talle) => (
+                  <label key={talle.id} className={styles.sizeLabel}>
+                    <input
+                      type="checkbox"
+                      className={styles.hiddenCheckbox}
+                      name={`talle-${talle.numero}`}
+                    />
+                    <span>{talle.numero}</span>
+                  </label>
+                ))}
               </div>
             </div>
             <button className={styles.addToCartButton}>
@@ -104,51 +153,7 @@ export const ProductScreenComponents = () => {
             </button>
           </div>
         </div>
-        <div className={styles.similarProductsContainer}>
-          <h2 className={styles.similarProductsTitle}>Productos similares</h2>
-          <div className={styles.similarProductsImagesContainer}>
-            <img
-              src="https://th.bing.com/th/id/OIP.7yXv7DXhB_SVtqnlOcxqFAHaH6?rs=1&pid=ImgDetMain"
-              alt="Product"
-              className={styles.similarProductImage}
-              onClick={() => {
-                console.log("Imagen clickeada 1");
-              }}
-            />
-            <img
-              src="https://th.bing.com/th/id/OIP.YZxt1qIMGtTRsEVzIiOkfQHaHa?rs=1&pid=ImgDetMain"
-              alt="Product"
-              className={styles.similarProductImage}
-              onClick={() => {
-                console.log("Imagen clickeada 2");
-              }}
-            />
-            <img
-              src="https://th.bing.com/th/id/OIP.YZxt1qIMGtTRsEVzIiOkfQHaHa?rs=1&pid=ImgDetMain"
-              alt="Product"
-              className={styles.similarProductImage}
-              onClick={() => {
-                console.log("Imagen clickeada 3");
-              }}
-            />
-            <img
-              src="https://imgs.search.brave.com/1EuIsDeRffUn4TbvODgTEofZPv4x2vot022dkxpGAbQ/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9kYXNo/LnZ0ZXhhc3NldHMu/Y29tL2FycXVpdm9z/L2lkcy8xNTE4NTM1/LTUwMC1hdXRvP3Y9/NjM4NjI5NjAwNjg4/OTMwMDAwJndpZHRo/PTUwMCZoZWlnaHQ9/YXV0byZhc3BlY3Q9/dHJ1ZQ"
-              alt="Product"
-              className={styles.similarProductImage}
-              onClick={() => {
-                console.log("Imagen clickeada 4");
-              }}
-            />
-            <img
-              src="https://th.bing.com/th/id/OIP.7yXv7DXhB_SVtqnlOcxqFAHaH6?rs=1&pid=ImgDetMain"
-              alt="Product"
-              className={styles.similarProductImage}
-              onClick={() => {
-                console.log("Imagen clickeada 5");
-              }}
-            />
-          </div>
-        </div>
+        {/* ...productos similares... */}
       </div>
     </div>
   );

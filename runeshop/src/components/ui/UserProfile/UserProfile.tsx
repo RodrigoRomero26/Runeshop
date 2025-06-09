@@ -4,6 +4,8 @@ import { DirectionModal } from "../DirectionModal/DirectionModal";
 import { useUser } from "../../../hooks/useUser";
 import Swal from "sweetalert2";
 import { UserSchema } from "../../Schemas/UserSchema";
+import type { IDireccion } from "../../../types/IDireccion";
+import { DirectionEditModal } from "../DirectionEditModal/DirectionEditModal";
 
 type UserData = {
 	id: number;
@@ -18,6 +20,8 @@ type UserData = {
 
 export const UserProfile = () => {
 	const [directionModalOpen, setDirectionModalOpen] = useState(false);
+	const [direcionEditModalOpen, setDirectionEditModalOpen] = useState(false);
+	const [direccionToEdit, setDireccionToEdit] = useState<IDireccion | null>(null);
 	const { user, updateUserData, getUser, deleteDirection } = useUser();
 	const initialState: UserData = {
 		id: 0,
@@ -58,6 +62,11 @@ export const UserProfile = () => {
 	const handleCloseDirectionModal = () => {
 		setDirectionModalOpen(false);
 	};
+
+	const handleCloseDirectionEditModal = () => {
+		setDirectionEditModalOpen(false);
+		setDireccionToEdit(null);
+	}
 
 	const handleInputChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
 		const { name, value } = e.target;
@@ -126,6 +135,23 @@ export const UserProfile = () => {
 			}
 		});
 	};
+
+	const handleEditDirecion = (direccion: IDireccion) => {
+		Swal.fire({
+			title: "Editar dirección",
+			html: `<p>${direccion.direccion} - ${direccion.departamento} - ${direccion.provincia}</p>`,
+			icon: "info",
+			showCancelButton: true,
+			confirmButtonText: "Editar",
+			cancelButtonText: "Cancelar",
+		}).then((result) => {
+			if (result.isConfirmed) {
+				setDireccionToEdit(direccion);
+				setDirectionEditModalOpen(true);
+				
+			}
+		});
+	}
 
 	const isFormValid = () => {
 		const hasErrors = Object.keys(errors).length > 0;
@@ -221,7 +247,7 @@ export const UserProfile = () => {
 										key={direccion.direccion.id}>
 										<p>{`${direccion.direccion.direccion} - ${direccion.direccion.departamento} - ${direccion.direccion.provincia}`}</p>
 										<div className={styles.userAdressesButtons}>
-											<button className={styles.userAdressesEditButton}>
+											<button onClick={()=>handleEditDirecion(direccion.direccion)} className={styles.userAdressesEditButton}>
 												<span className="material-symbols-outlined">edit</span>
 											</button>
 											<button
@@ -250,6 +276,11 @@ export const UserProfile = () => {
 			</div>
 			{directionModalOpen && (
 				<DirectionModal onCloseDirectionModal={handleCloseDirectionModal} />
+			)}
+			{direcionEditModalOpen && (
+				<DirectionEditModal
+					onCloseDirectionEditModal={handleCloseDirectionEditModal} addressToEdit={direccionToEdit!}
+				/>
 			)}
 		</div>
 	);

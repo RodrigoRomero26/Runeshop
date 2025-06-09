@@ -77,4 +77,14 @@ export class ProductoService {
 			return null;
 		}
 	}
+
+	static async getProductoById(id: number): Promise<IProductoGet | null> {
+		try {
+			const res = await api.get<IProductoGet>(`/producto/${id}`);
+			return res.data;
+		} catch (error) {
+			console.error("Error al obtener producto por ID:", error);
+			return null;
+		}
+	}
 }

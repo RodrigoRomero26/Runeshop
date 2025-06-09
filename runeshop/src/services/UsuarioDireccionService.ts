@@ -27,6 +27,18 @@ export class UsuarioDireccionService {
 	}
 }
 
+	static async actualizarDireccion(
+		direccion: IDireccionDto
+	): Promise<string | null> {
+		try {
+			const res = await api.put<string>(`direccion`, direccion);
+			return res.data;
+		} catch (error) {
+			console.error("Error al actualizar dirección:", error);
+			return null;
+		}
+	}
+
 	static async eliminarDireccion(direccionId: number): Promise<string | null> {
 		try {
 			const res = await api.put(`direccion/${direccionId}`);

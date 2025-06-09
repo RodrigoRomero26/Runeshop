@@ -44,7 +44,9 @@ export const crearProductoController = async (
 	}
 };
 
-export const getAllProductosController = async (): Promise<IProductoGet[] | null> => {
+export const getAllProductosController = async (): Promise<
+	IProductoGet[] | null
+> => {
 	try {
 		const productos = await ProductoService.getAllProductos();
 		return productos;
@@ -52,4 +54,16 @@ export const getAllProductosController = async (): Promise<IProductoGet[] | null
 		console.error("Error en getAllProductosController:", error);
 		return null;
 	}
-}
+};
+
+export const getProductoByIdController = async (
+	id: number
+): Promise<IProductoGet | null> => {
+	try {
+		const producto = await ProductoService.getProductoById(id);
+		return producto;
+	} catch (error) {
+		console.error("Error en getProductoByIdController:", error);
+		return null;
+	}
+};

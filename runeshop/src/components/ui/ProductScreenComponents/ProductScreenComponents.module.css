@@ -22,7 +22,7 @@
 	align-items: center;
 	justify-content: center;
 	width: 100%;
-	height: 70%;
+	height: 90%;
 	gap: 10px;
 }
 
@@ -57,48 +57,127 @@
 	height: 98%;
 }
 
-.productDetailsContainer{
-	display: flex;
-	flex-direction: column;
-	align-items: stretch;
-	width: 100%;
-	height: 95%;
-	gap: 5px;
-	padding: 5px;
-	justify-content: center;
-	font-family: "Mali", cursive;
+.productDetailsContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
+  height: 95%;
+  gap: 16px;
+  padding: 20px 30px;
+  justify-content: flex-start;
+  font-family: "Mali", cursive;
+  font-size: 1.2rem;
+  background: #fff8ef;
+  border-radius: 12px;
+  box-shadow: 0 2px 12px 0 rgba(0,0,0,0.07);
 }
 
-.productColors{
-	display: flex;
-	flex-direction: row;
-	align-items: center;
-	width: 90%;
-	height: 30%;
-	max-width: 95%;
-	overflow: auto;
-	gap: 10px;
-	padding: 5px;
-	justify-content: flex-start;
+.productTitle {
+  font-size: 2.1rem;
+  font-weight: bold;
+  color: #ff4d4f;
+  margin-bottom: 8px;
 }
 
-.productImageColor {
-	max-width: 90%;
-	max-height: 90%;
-	box-shadow: 0px 0px 5px 3px rgba(0, 0, 0, 0.1);
-	max-width: 12%;	
-	display: block;
-	object-fit: cover;
+.productBrand {
+  font-size: 1.2rem;
+  color: #888;
+  margin-bottom: 4px;
 }
 
-.sizesContainer{
+.productPrice {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.oldPrice {
+  color: #bdbdbd;
+  text-decoration: line-through;
+  font-size: 1.3rem;
+  margin-right: 10px;
+}
+
+.discountPrice {
+  color: #ff4d4f;
+  font-size: 2.2rem;
+  font-weight: bold;
+  background: #ffe5bc;
+  border-radius: 8px;
+  padding: 2px 12px;
+  box-shadow: 0 2px 8px 0 rgba(255,77,79,0.08);
+}
+
+.discountBadge {
+  display: inline-block;
+  background: #ff4d4f;
+  color: #fff;
+  font-weight: bold;
+  font-size: 1.1rem;
+  padding: 4px 16px;
+  border-radius: 8px;
+  margin-bottom: 10px;
+  margin-left: 8px;
+  letter-spacing: 1px;
+  box-shadow: 0 2px 8px 0 rgba(255,77,79,0.12);
+}
+
+.productDescription {
+  font-size: 1.1rem;
+  color: #444;
+  margin-bottom: 10px;
+  line-height: 1.5;
+}
+
+.productColors {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 90%;
+  max-width: 95%;
+  overflow: auto;
+  gap: 10px;
+  padding: 5px;
+  justify-content: flex-start;
+}
+
+.productColorButton {
+  border: 2px solid transparent;
+  background: none;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: border 0.2s;
+}
+
+.productColorButton.selected {
+  border: 2px solid #ff4d4f;
+}
+
+.productColorButton img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+/* Talles */
+.sizesContainer {
   display: flex;
   flex-direction: column;
   padding: 10px;
   align-items: flex-start;
   border-bottom: black 1px dashed;
 }
-
 
 .checkboxSizeContainer {
   display: flex;
@@ -109,7 +188,6 @@
 }
 
 .sizeLabel {
-  position: relative;
   background-color: #FFE5BC;
   cursor: pointer;
   display: inline-block;
@@ -117,17 +195,19 @@
   height: 40px;
   line-height: 40px;
   text-align: center;
-  border: 2px solid black;
+  border: 2px solid #bdbdbd;
   border-radius: 6px;
   font-weight: bold;
   user-select: none;
   transition: all 0.2s ease;
+  margin-bottom: 2px;
 }
 
-.sizeLabel:hover {
-  border-color: #666;
+.sizeLabel:hover,
+.sizeLabel.selected {
+  border-color: #ff4d4f;
   background-color: #FF9797;
-  color: #666;
+  color: #fff;
 }
 
 .hiddenCheckbox {
@@ -135,9 +215,9 @@
 }
 
 .hiddenCheckbox:checked + span {
-  border-color: #666;
+  border-color: #ff4d4f;
   background-color: #FF9797;
-  color: #666;
+  color: #fff;
 }
 
 .sizeLabel span {

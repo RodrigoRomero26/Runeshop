@@ -1,12 +1,21 @@
 .productCard {
   background-color: #faedd8;
-  width: 15vw;
-  height: auto;
+  width: 250px; /* Fijo, puedes ajustar el valor */
+  min-width: 250px;
+  max-width: 250px;
+  height: 350px;
   margin: 10px;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
+  position: relative; /* Para que el badge se posicione correctamente */
+}
+
+.productCard:hover {
+  box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+  transform: translateY(-4px) scale(1.03);
+  transition: box-shadow 0.2s, transform 0.2s;
 }
 
 .productImage {
@@ -19,14 +28,21 @@
 .productData {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  height:30%;
+  justify-content: space-between;
   align-items: center;
   font-family: "Mali", cursive;
 }
 
 .productData h3 {
   color: #ff9797;
+  font-size: 1.5rem;
 }
+
+.productData p {
+  font-size: 1.1rem;
+}
+
 
 .productInformation {
   display: flex;
@@ -36,6 +52,34 @@
   font-family: "Mali", cursive;
   margin-bottom: 10px;
 }
+
+.discountBadge {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background: #ff4d4f;
+  color: #fff;
+  font-weight: bold;
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-size: 1rem;
+  z-index: 2;
+}
+
+.oldPrice {
+  color: #bdbdbd;
+  text-decoration: line-through;
+  font-size: 1.1rem;
+  margin: 0;
+}
+
+.discountPrice {
+  color: #ff4d4f;
+  font-size: 1.3rem;
+  font-weight: bold;
+  margin: 0;
+}
+
 @media (max-width: 1250px) and (min-width: 730px) {
   .productCard {
     width: 18%;

@@ -5,6 +5,7 @@ import type { IProductoGet } from "../../../types/IProductoGet";
 import { ProductCard } from "../ProductCard/ProductCard";
 import { filtersStore } from "../../../store/filtersStore";
 
+
 export const ProductsCatalog = () => {
 	const [productos, setProductos] = useState<IProductoGet[]>([]);
 	const [currentApiPage, setCurrentApiPage] = useState(0);
@@ -36,7 +37,7 @@ export const ProductsCatalog = () => {
 				},
 				currentApiPage,
 				pageSize,
-				"asc" 
+				"asc"
 			);
 
 			if (data) {
@@ -86,22 +87,20 @@ export const ProductsCatalog = () => {
 	return (
 		<div className={styles.principalContainerProductsCatalog}>
 			<div className={styles.containerProductsCards}>
-				{productos.length === 0 ? (
-					<p className={styles.noProductsMessage}>No hay productos disponibles.</p>
-				) : (
-					productos.map((producto: IProductoGet) => (
-						<ProductCard
-							key={producto.id}
-							producto={{
-								id: producto.id!,
-								imageUrl: producto.detalles[0]?.imagenes[0]?.imagenUrl || "",
-								marca: producto.detalles[0]?.marca || "Unknown brand",
-								modelo: producto.modelo,
-								precio: producto.detalles[0]?.precio?.precioVenta || 0,
-							}}
-						/>
-					))
-				)}
+				<div className={styles.productsCardsHolder}>
+					{productos.length === 0 ? (
+						<p className={styles.noProductsMessage}>
+							No hay productos disponibles.
+						</p>
+					) : (
+						productos.map((producto: IProductoGet) => (
+							<ProductCard
+								key={producto.id}
+								producto={producto}
+							/>
+						))
+					)}
+				</div>
 			</div>
 
 			{totalPages > 1 && productos.length > 0 && (

@@ -1,0 +1,142 @@
+.overlay{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+}
+
+.principalContainerDirection{
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 30vw;
+    padding: 20px;
+    background-color: #FAEDD8;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+}
+
+.containerDataDirection{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: "Mali", cursive;
+}
+
+.containerTitleDirection{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.containerInputDirection{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.containerInputDirection input{
+    width: 25vw;
+    padding: 10px;
+    margin: 5px 0;
+    background-color: #FEC1C1;
+    border: 1px solid #FF9999;
+    border-radius: 4px;
+}
+
+.containerInputDirection input::placeholder{
+    background: #FEC1C1;
+    font-family: "Mali", cursive;
+    color: #FAEAE4;
+}
+
+.containerButtonDirection{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 15vw;
+    margin-top: 20px;
+}
+
+.containerButtonDirection button{
+    padding: 15px 25px;
+    background-color: #FF9999;
+    border: none;
+    border-radius: 4px;
+    color: #FAEAE4;
+    cursor: pointer;
+    font-family: "Mali", cursive;
+}
+
+.containerInputDirection select {
+    width: 100%;
+    padding: 10px;
+    margin: 5px 0;
+    background-color: #FEC1C1;
+    border: 1px solid #FF9999;
+    border-radius: 4px;
+    font-family: "Mali", cursive;
+    color: #333;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20width%3D%2210%22%20height%3D%227%22%20viewBox%3D%220%200%2010%207%22%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%3E%3Cpath%20d%3D%22M0%200l5%207%205-7z%22%20fill%3D%22%23333%22/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    background-size: 10px;
+}
+
+.containerInputDirection select:focus {
+    outline: none;
+    border-color: #FF6666;
+}
+
+.containerInputDirection option {
+    background: #FAEDD8;
+    color: #333;
+    font-family: "Mali", cursive;
+}
+
+.inputContainer {
+	position: relative;
+	width: 100%;
+	margin-bottom: 18px;
+}
+
+.error {
+	position: absolute;
+	bottom: -20px;
+	left: 0;
+	font-size: 0.8rem;
+	margin: 0;
+	width: 100%;
+	height: 20px;
+}
+
+.submitbtn:disabled {
+	cursor: not-allowed;
+	box-shadow: none;
+	transition: transform 0.2s ease, color 0.2s ease;
+}
+
+
+
+/* Responsive */
+@media (max-width: 440px) {
+    .principalContainerDirection{
+        width: 75vw;
+        height: 60vh;
+    }
+    .containerInputDirection input{
+        width: 60vw;
+    }
+    .containerButtonDirection{
+        width: 60vw;
+    }
+}

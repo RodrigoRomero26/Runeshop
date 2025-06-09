@@ -74,21 +74,7 @@ export const Aside = () => {
   const asideContent = () => {
     return (
       <div className={styles.filtersContainer}>
-        <button
-          className={styles.buttonFilter}
-          onClick={() => {
-            console.log("Filtros aplicados", {
-              genero,
-              tipoIndumentaria,
-              marcas,
-              talles,
-              precioMin,
-              precioMax,
-            });
-          }}
-        >
-          Aplicar Filtros
-        </button>
+        
         <button
           className={styles.buttonFilter}
           onClick={() => {

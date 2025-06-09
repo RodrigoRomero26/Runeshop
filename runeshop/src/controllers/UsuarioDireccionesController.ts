@@ -22,6 +22,16 @@ export const agregarDireccionController = async (usuarioId: number, direccion: I
 	}
 };
 
+export const actualizarDireccionController = async (direccion: IDireccionDto): Promise<string | null> => {
+	try {
+		const res = await UsuarioDireccionService.actualizarDireccion(direccion);
+		return res;
+	} catch (error) {
+		console.error("Error en actualizarDireccionController:", error);
+		return null;
+	}
+}
+
 export const eliminarDireccionController = async (direccionId: number): Promise<string | null> => {
 	try {
 		const res = await UsuarioDireccionService.eliminarDireccion(direccionId);
