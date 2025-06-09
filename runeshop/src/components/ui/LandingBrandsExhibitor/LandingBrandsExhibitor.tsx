@@ -22,15 +22,13 @@ export const LandingBrandsExhibitor = () => {
 		},
 	];
 
-	const { toggleMarca, resetFilters } = filtersStore();
+	const { setMarcaUnica } = filtersStore();
 	const navigate = useNavigate();
+
 	const handleClick = (brand: string) => {
-  resetFilters();
-  setTimeout(() => {
-    toggleMarca(brand);
-    navigate("/productsCatalog");
-  }, 0);
-};
+		setMarcaUnica(brand);
+		navigate("/productsCatalog");
+	};
 
 	return (
 		<div className={styles.principalContainerLandingBrandsExhibitor}>

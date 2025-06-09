@@ -1,9 +1,8 @@
-import { useEffect, useRef, useState, type FC } from "react";
+import { useEffect, useRef, type FC } from "react";
 import styles from "./Cart.module.css";
 import { CartModalCards } from "../CartModalCards/CartModalCards";
 import { useNavigate } from "react-router";
 import { useUser } from "../../../hooks/useUser";
-import { userStore } from "../../../store/userStore";
 
 interface cartProps {
   onCloseCart: () => void;
@@ -12,7 +11,9 @@ interface cartProps {
 export const Cart: FC<cartProps> = ({ onCloseCart }) => {
   const modalRef = useRef<HTMLDivElement>(null);
   const navigate = useNavigate();
-  const usercart = userStore((state) => state.usercart);
+  const {
+    usercart,
+  } = useUser();
 
   const handleCart = () => {
     navigate("/cart");
@@ -34,6 +35,16 @@ export const Cart: FC<cartProps> = ({ onCloseCart }) => {
     };
   }, [onCloseCart]);
 
+  // Calcula el total correctamente usando precio_descuento si existe, sino precioVenta
+  const total = usercart && usercart.length > 0
+    ? usercart.reduce(
+        (sum, detalle) =>
+          sum +
+          ((detalle.precio_descuento ?? detalle.precio.precioVenta) * detalle.cantidad),
+        0
+      )
+    : 0;
+
   return (
     <div className={styles.overlay}>
       <div className={styles.principalContainerCart} ref={modalRef}>
@@ -43,10 +54,10 @@ export const Cart: FC<cartProps> = ({ onCloseCart }) => {
           </div>
           <div className={styles.containerProductsCart}>
             {usercart && usercart.length > 0 ? (
-              usercart.map((product) => (
+              usercart.map((detalle) => (
                 <CartModalCards
-                  key={product.id}
-                  product={product}
+                  key={detalle.id}
+                  detalle={detalle}
                 />
               ))
             ) : (
@@ -56,22 +67,14 @@ export const Cart: FC<cartProps> = ({ onCloseCart }) => {
           <div className={styles.containerButtonYTotalCart}>
             <button onClick={handleCart} className={styles.buttonCart}>
               Realizar compra
-              <p>
-                <span className="material-symbols-outlined ${styles.iconCart}">
-                  payments
-                </span>
-              </p>
+              <span className={`material-symbols-outlined ${styles.iconCart}`}>
+                payments
+              </span>
             </button>
             <p>
               Total:
               <br />
-              {usercart && usercart.length > 0
-                ? `$${usercart.reduce(
-                    (total, product) =>
-                      total + product.detalles[0].precio.precioVenta * product.cantidad,
-                    0
-                  )}`
-                : "$0"}
+              ${total}
             </p>
           </div>
         </div>

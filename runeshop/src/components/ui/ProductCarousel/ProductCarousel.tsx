@@ -8,6 +8,7 @@ interface IVisibleProduct {
 	id: number;
 	name: string;
 	precio: number;
+	precio_descuento?: number | null;
 	imagen: string;
 }
 
@@ -31,10 +32,8 @@ export const ProductCarousel = () => {
 				if (data) {
 					setProducts(data);
 				} else {
-					console.error("No products found");
 				}
 			} catch (error) {
-				console.error("Error fetching products:", error);
 			}
 		};
 
@@ -43,15 +42,25 @@ export const ProductCarousel = () => {
 
 	useEffect(() => {
 		if (products) {
-			const cleared = products.map((product) => ({
-				id: product.id!,
-				name: product.modelo,
-				precio: product.detalles[0].precio.precioVenta,
-				imagen: product.detalles[0].imagenes[0].imagenUrl,
-			}));
+			const cleared = products
+				.filter(
+					(product) =>
+						Array.isArray(product.detalles) && product.detalles.length > 0
+				)
+				.map((product) => {
+					const detalle = product.detalles[0];
+					return {
+						id: product.id!,
+						name: product.modelo,
+						precio: detalle?.precio?.precioVenta ?? 0,
+						precio_descuento: detalle?.precio_descuento ?? null,
+						imagen: detalle?.imagenes?.[0]?.imagenUrl ?? "",
+					};
+				});
 			setSimplifiedProducts(cleared);
 		}
 	}, [products]);
+
 
 	useEffect(() => {
 		const updateNumVisible = () => {
@@ -148,10 +157,18 @@ export const ProductCarousel = () => {
 									style={{
 										cursor: isCenter ? "pointer" : "default",
 										order: positionIndex + Math.floor(numVisible / 2),
-									}}>
+									}}
+								>
 									<img className={isCenter ? styles.activeImg : ""} src={product.imagen} alt={product.name} />
 									<p>{product.name}</p>
-									<p>${product.precio.toLocaleString("es-AR")}</p>
+									{product.precio_descuento ? (
+										<p>
+											<span className={styles.oldPrice}>${product.precio.toLocaleString("es-AR")}</span>
+											<span className={styles.discountPrice}>${product.precio_descuento.toLocaleString("es-AR")}</span>
+										</p>
+									) : (
+										<p>${product.precio.toLocaleString("es-AR")}</p>
+									)}
 								</div>
 							);
 						})}

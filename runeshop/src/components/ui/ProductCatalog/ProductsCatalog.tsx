@@ -25,6 +25,13 @@ export const ProductsCatalog = () => {
 
 	useEffect(() => {
 		const fetchProductos = async () => {
+			let min = precioMin === "" ? null : precioMin;
+			let max = precioMax === "" ? null : precioMax;
+
+			// Si uno está definido y el otro no, asigna valores por defecto
+			if (min !== null && max === null) max = 99999999; // o el máximo de tu catálogo
+			if (min === null && max !== null) min = 0;
+
 			const data = await getProductosController(
 				{
 					sexo: genero,
@@ -32,15 +39,19 @@ export const ProductsCatalog = () => {
 					categoria: categorias,
 					marca: marcas,
 					talle: talles,
-					min: precioMin || null,
-					max: precioMax || null,
+					min: min,
+					max: max,
 				},
 				currentApiPage,
 				pageSize,
 				"asc"
 			);
 
-			if (data) {
+			// Si la API devuelve 204 o data es null/undefined, muestra mensaje
+			if (!data || !data.content || data.content.length === 0) {
+				setProductos([]);
+				setTotalPages(0);
+			} else {
 				setProductos(data.content);
 				setTotalPages(data.page.totalPages);
 			}
@@ -90,7 +101,7 @@ export const ProductsCatalog = () => {
 				<div className={styles.productsCardsHolder}>
 					{productos.length === 0 ? (
 						<p className={styles.noProductsMessage}>
-							No hay productos disponibles.
+							No hay productos que coincidan con los filtros seleccionados.
 						</p>
 					) : (
 						productos.map((producto: IProductoGet) => (

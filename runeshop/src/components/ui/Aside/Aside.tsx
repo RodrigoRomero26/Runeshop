@@ -31,7 +31,6 @@ export const Aside = () => {
     "Campera",
     "Botin",
   ];
-  const marcasDisponibles = ["Nike", "Adidas", "Puma", "Reebok"];
   const [categoriasDisponibles, setCategoriasDisponibles] = useState<
     ICategoria[]
   >([]);
@@ -140,7 +139,7 @@ export const Aside = () => {
             <label key={marca} className={styles.checkboxLabel}>
               <input
                 type="checkbox"
-                checked={marcas.includes(marca)}
+                checked={marcas.some((m) => m.toLowerCase() === marca.toLowerCase())}
                 onChange={() => toggleMarca(marca)}
               />
               {marca}
@@ -217,3 +216,6 @@ export const Aside = () => {
 };
 
 export default Aside;
+
+// Puedes definirlo arriba o traerlo de la API si lo necesitas
+const marcasDisponibles = ["Adidas", "Puma", "Nike", "Reebok"];

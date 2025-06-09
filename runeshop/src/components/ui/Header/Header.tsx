@@ -3,8 +3,7 @@ import styles from "./Header.module.css";
 import { Login } from "../LoginModal/Login";
 import { Cart } from "../CartModal/Cart";
 import { useNavigate } from "react-router";
-
-
+import { filtersStore } from "../../../store/filtersStore";
 
 export const Header = () => {
 	const [menuOpen, setMenuOpen] = useState(false);
@@ -14,6 +13,7 @@ export const Header = () => {
 	const [isLoggedIn, setIsLoggedIn] = useState(true);
 
 	const navigate = useNavigate();
+	const { resetFilters } = filtersStore();
 
 	const handleCloseLogin = () => {
 		setLoginOpen(false);
@@ -24,6 +24,7 @@ export const Header = () => {
 	};
 
 	const handleProductsCatalog = () => {
+		resetFilters();
 		navigate("/productsCatalog");
 	};
 

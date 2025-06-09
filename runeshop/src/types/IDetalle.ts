@@ -3,6 +3,7 @@ import type { IImagen } from './IImagen';
 import type { IImagenGet } from './IImagenGet';
 import type { IOrdenCompra } from './IOrdenCompra';
 import type { IPrecio } from './IPrecio';
+import type { IProducto } from './IProducto';
 import type { ITalle } from './ITalle';
 
 export interface IDetalle {
@@ -18,5 +19,6 @@ export interface IDetalle {
     talle: ITalle;
     precio: IPrecio;
     imagenes: IImagenGet[];
+    producto: IProducto
     ordenCompras: IOrdenCompra[];
 }

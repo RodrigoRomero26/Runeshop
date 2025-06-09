@@ -2,8 +2,13 @@ import { create } from "zustand";
 import type { IUsuarioGet } from "../types/IUsuarioGet";
 import type { IUsuarioDto } from "../types/DTOs/IUsuarioDto";
 import type { IProductoGet } from "../types/IProductoGet";
+import type { IDetalle } from "../types/IDetalle";
 
 export interface IProductoCarrito extends IProductoGet {
+    cantidad: number;
+}
+
+export interface IDetalleCarrito extends IDetalle {
     cantidad: number;
 }
 
@@ -13,11 +18,11 @@ interface IUserStore {
 	userID: number | null;
 	setUserID: (id: number) => void;
 	updateUser: (updateduser: IUsuarioDto) => void;
-	usercart: IProductoCarrito[] | null;
-	setUserCart: (product: IProductoGet, cantidad: number) => void;
-	incrementProductQuantity: (productId: number) => void;
-	decrementProductQuantity: (productId: number) => void;
-	removeFromCart: (productId: number) => void;
+	usercart: IDetalleCarrito[] | null;
+	setUserCart: (detalle: IDetalle, cantidad: number) => void;
+	incrementProductQuantity: (detalleId: number) => void;
+	decrementProductQuantity: (detalleId: number) => void;
+	removeFromCart: (detalleId: number) => void;
 }
 
 export const userStore = create<IUserStore>((set) => ({
@@ -42,39 +47,58 @@ export const userStore = create<IUserStore>((set) => ({
 			};
 		}),
 	usercart: null,
-	setUserCart: (product, cantidad) =>
+	setUserCart: (detalle, cantidad) =>
 		set((state) => {
 			const currentCart = state.usercart ?? [];
-			const index = currentCart.findIndex((p) => p.id === product.id);
+			const index = currentCart.findIndex((d) => d.id === detalle.id);
 			if (index !== -1) {
 				const updatedCart = [...currentCart];
-				updatedCart[index].cantidad += cantidad;
+				const cantidadActual = updatedCart[index].cantidad;
+				const nuevaCantidad = cantidadActual + cantidad;
+				// Validar stock
+				if (nuevaCantidad > detalle.stock) {
+					// Opcional: puedes lanzar un error o mostrar un mensaje aquí
+					return { usercart: currentCart };
+				}
+				updatedCart[index].cantidad = nuevaCantidad;
 				return { usercart: updatedCart };
 			}
-			return { usercart: [...currentCart, { ...product, cantidad }] };
+			// Validar stock al agregar nuevo
+			if (cantidad > detalle.stock) {
+				return { usercart: currentCart };
+			}
+			return { usercart: [...currentCart, { ...detalle, cantidad }] };
 		}),
-	incrementProductQuantity: (productId) =>
+	incrementProductQuantity: (detalleId) =>
 		set((state) => {
 			const currentCart = state.usercart ?? [];
-			const updatedCart = currentCart.map((p) =>
-				p.id === productId ? { ...p, cantidad: p.cantidad + 1 } : p
-			);
+			const updatedCart = currentCart.map((d) => {
+				if (d.id === detalleId) {
+					// Validar stock antes de incrementar
+					if (d.cantidad < d.stock) {
+						return { ...d, cantidad: d.cantidad + 1 };
+					}
+					// Si ya está en el tope, no incrementa
+					return d;
+				}
+				return d;
+			});
 			return { usercart: updatedCart };
 		}),
-	decrementProductQuantity: (productId) =>
+	decrementProductQuantity: (detalleId) =>
 		set((state) => {
 			const currentCart = state.usercart ?? [];
 			const updatedCart = currentCart
-				.map((p) =>
-					p.id === productId ? { ...p, cantidad: p.cantidad - 1 } : p
+				.map((d) =>
+					d.id === detalleId ? { ...d, cantidad: d.cantidad - 1 } : d
 				)
-				.filter((p) => p.cantidad > 0); // Elimina si la cantidad llega a 0
+				.filter((d) => d.cantidad > 0);
 			return { usercart: updatedCart };
 		}),
-	removeFromCart: (productId) =>
+	removeFromCart: (detalleId) =>
 		set((state) => {
 			const currentCart = state.usercart ?? [];
-			const updatedCart = currentCart.filter((p) => p.id !== productId);
+			const updatedCart = currentCart.filter((d) => d.id !== detalleId);
 			return { usercart: updatedCart };
 		}),
 }));

@@ -19,6 +19,7 @@ interface IFiltersStore {
 	setPrecioMin: (min: number | "") => void;
 	setPrecioMax: (max: number | "") => void;
 	resetFilters: () => void;
+	setMarcaUnica: (marca: string) => void;
 }
 
 export const filtersStore = create<IFiltersStore>((set, get) => ({
@@ -73,6 +74,16 @@ export const filtersStore = create<IFiltersStore>((set, get) => ({
 			tipoIndumentaria: [],
 			categorias: [],
 			marcas: [],
+			talles: [],
+			precioMin: "",
+			precioMax: "",
+		})),
+	setMarcaUnica: (marca: string) =>
+		set(() => ({
+			marcas: [marca],
+			genero: [],
+			tipoIndumentaria: [],
+			categorias: [],
 			talles: [],
 			precioMin: "",
 			precioMax: "",

@@ -32,6 +32,13 @@
 	font-family: "mali", cursive;
 }
 
+.noProductsMsg {
+	text-align: center;
+	color: #ff4d4f;
+	font-size: 1.2rem;
+	margin: 40px 0;
+}
+
 .active {
 	opacity: 1;
 	transform: scale(1.05) translateY(-10px);
@@ -116,6 +123,23 @@
 	transform: translateY(-50%);
 }
 
+/* ProductCarousel.module.css */
+.oldPrice {
+	color: #bdbdbd;
+	text-decoration: line-through;
+	font-size: 1rem;
+	margin-right: 8px;
+}
+.discountPrice {
+	color: #ff4d4f;
+	font-size: 1.2rem;
+	font-weight: bold;
+	background: #ffe5bc;
+	border-radius: 8px;
+	padding: 2px 8px;
+	margin-left: 2px;
+}
+
 /* Responsive */
 @media (max-width: 450px) {
 	.carouselContainer {
@@ -123,10 +147,9 @@
 		width: 100%;
 	}
 
-	.carouselItem p{
+	.carouselItem p {
 		font-size: 0.8rem;
 	}
-
 }
 
 @media (max-width: 700px) and (min-width: 450px) {
@@ -150,7 +173,7 @@
 		margin: 0 auto;
 	}
 
-	.carouselItem p{
+	.carouselItem p {
 		font-size: 0.9rem;
 	}
 
@@ -176,7 +199,7 @@
 		width: 270px;
 	}
 
-	.carouselItem p{
+	.carouselItem p {
 		font-size: 1rem;
 	}
 
