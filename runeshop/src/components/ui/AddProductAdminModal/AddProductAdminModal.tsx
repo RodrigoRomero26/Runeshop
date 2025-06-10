@@ -28,7 +28,8 @@ const [openCreatePhoto, setOpenCreatePhoto] = useState(false);
             <h1>Añadir producto</h1>
           </div>
           <div className={styles.containerInputAddProductAdminModal}>
-            <input type="text" name="Name" placeholder="Nombre (talle)" />
+            <input type="text" name="Name" placeholder="Nombre" />
+            <input type="number" name="Size" placeholder="Talle" />
             <input type="text" name="Gender" placeholder="Genero" />
             <input
               type="text"

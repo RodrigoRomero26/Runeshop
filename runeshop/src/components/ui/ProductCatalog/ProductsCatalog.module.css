@@ -1,85 +1,83 @@
 .principalContainerProductsCatalog {
-	width: 100%;
-	height: 95%;
-	display: flex;
-	flex-direction: column;
-	padding: 0 10px;
-	box-sizing: border-box;
+  width: 100%;
+  height: 95%;
+  display: flex;
+  flex-direction: column;
+  padding: 0 10px;
+  box-sizing: border-box;
 }
 
 .containerProductsCards {
-	flex: 1;
-	overflow-y: auto;
-	background-color: #ffe5bc;
-	padding: 20px;
-	border-radius: 8px;
+  flex: 1;
+  overflow-y: auto;
+  background-color: #ffe5bc;
+  padding: 20px;
+  border-radius: 8px;
 }
 
 .productsCardsHolder {
-	display: flex;
-	justify-content: space-between;
-	flex-wrap: wrap;
-	gap: 20px;
-	width: 100%;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 20px;
+  width: 100%;
 }
 
 .noProductsMsg {
-    color: #ff7d40;
-    background: #fff8f2;
-    border: 1.5px dashed #ffbcbc;
-    border-radius: 10px;
-    padding: 24px 32px;
-    margin: 40px auto;
-    font-size: 1.25rem;
-    font-family: "Mali", cursive, Arial, sans-serif;
-    text-align: center;
-    max-width: 420px;
-    box-shadow: 0 2px 12px #ff7d4033;
-    letter-spacing: 0.5px;
+  color: #ff7d40;
+  background: #fff8f2;
+  border: 1.5px dashed #ffbcbc;
+  border-radius: 10px;
+  padding: 24px 32px;
+  margin: 40px auto;
+  font-size: 1.25rem;
+  font-family: "Mali", cursive, Arial, sans-serif;
+  text-align: center;
+  max-width: 420px;
+  box-shadow: 0 2px 12px #ff7d4033;
+  letter-spacing: 0.5px;
 }
 
-
 .pagination {
-	padding: 6px 0;
-	display: flex;
-	gap: 6px;
-	justify-content: center;
-	align-items: center;
-	background-color: #fff1e0;
+  padding: 6px 0;
+  display: flex;
+  gap: 6px;
+  justify-content: center;
+  align-items: center;
+  background-color: #fff1e0;
 }
 
 .pageButton {
-	padding: 4px 10px;
-	font-size: 13px;
-	background-color: #ff9999;
-	color: #faeae4;
-	cursor: pointer;
-	border-radius: 6px;
-	transition: background-color 0.2s, color 0.2s, border-color 0.2s;
+  padding: 4px 10px;
+  font-size: 13px;
+  background-color: #ff9999;
+  color: #faeae4;
+  cursor: pointer;
+  border-radius: 6px;
+  transition: background-color 0.2s, color 0.2s, border-color 0.2s;
 }
 
 .pageButton:hover {
-	transform: scale(1.05);
+  transform: scale(1.05);
 }
 
 .pageButton:disabled {
-	border-color: #f4cfc2;
-	color: #bda59c;
-	background-color: #ffece6;
-	cursor: not-allowed;
+  border-color: #f4cfc2;
+  color: #bda59c;
+  background-color: #ffece6;
+  cursor: not-allowed;
 }
 
 .activePageButton {
-	background-color: #c57777;
-	color: white;
-	border-color: #c57777;
+  background-color: #c57777;
+  color: white;
+  border-color: #c57777;
 }
 
-.principalContainerProductsCatalog {
-	height: 95%;
-}
-
- @media (max-width: 960px) {
+@media (max-width: 960px) {
+  .principalContainerProductsCatalog {
+    height: 92%;
+  }
   .productsCardsHolder {
     justify-content: space-evenly;
   }

@@ -6,13 +6,23 @@ import { getProductosController } from "../../../controllers/ProductoController"
 import { filtersStore } from "../../../store/filtersStore";
 import type { IProductoGet } from "../../../types/IProductoGet";
 import type { IDetalle } from "../../../types/IDetalle";
+import { EditProductAdmin } from "../EditProductAdmin/EditProductAdmin";
 
 export const Admin = () => {
     const [openDetailsId, setOpenDetailsId] = useState<number | null>(null);
     const [openAddStockId, setOpenAddStockId] = useState<number | null>(null);
     const [openEditProductId, setOpenEditProductId] = useState<number | null>(null);
     const [productos, setProductos] = useState<IProductoGet[]>([]);
+    const [openEditorProducts, setOpenEditorProducts] = useState(false);
     const filtros = filtersStore();
+
+     const handleCloseEditorProducts = () => {
+        setOpenEditorProducts(false);
+    };
+
+    const handleOpenEditorProducts = () => {
+        setOpenEditorProducts(true);
+    };
 
     useEffect(() => {
         const fetchProductos = async () => {
@@ -53,7 +63,8 @@ export const Admin = () => {
     const productButtons = (productoId: number) => (
         <div className={styles.adminButtons}>
             <button
-                onClick={() => setOpenEditProductId(productoId)}
+                onClick={handleOpenEditorProducts}
+                // onClick={() => setOpenEditProductId(productoId)}
                 className={styles.buttonAdmin}
                 title="Editar producto"
             >
@@ -136,6 +147,9 @@ export const Admin = () => {
                 />
             )}
             {/* Aquí podrías agregar un modal para editar producto si lo necesitas */}
+            {openEditorProducts && (
+                    <EditProductAdmin onCloseEditProductAdmin={handleCloseEditorProducts} />
+                  )}
         </div>
     );
 };

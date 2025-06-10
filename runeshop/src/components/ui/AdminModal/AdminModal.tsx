@@ -74,17 +74,12 @@ if (openEditor) {
             <h1>Detalles producto</h1>
           </div>
           <div className={styles.containerInfoAdminModal}>
-            <p>Air Jordan 1 (41)</p>
+            <p>Talle</p>
             <p>Hombre</p>
-            <p>Calzado</p>
-            <p>Urbanas</p>
             <p>Nike</p>
             <p>$200.000</p>
             <p>Rojo</p>
             {imagensModal()}
-            <div className={styles.containerStatusAdminModal}>
-              <p>Habilitado</p>
-            </div>
           </div>
           <div className={styles.containerButtonAdminModal}>
             <button onClick={handleOpenEditor}>Editar</button>

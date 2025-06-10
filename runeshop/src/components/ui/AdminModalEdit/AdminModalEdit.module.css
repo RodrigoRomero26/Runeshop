@@ -14,7 +14,7 @@
   left: 50%;
   transform: translate(-50%, -50%);
   width: 30vw;
-  height: 71vh;
+  height: 50vh;
   padding: 20px;
   background-color: #faedd8;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -60,25 +60,6 @@
   color: #faeae4;
 }
 
-.containerCheckboxAdminModalEdit {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-}
-
-.containerCheckboxAdminModalEdit label {
-  width: 25vw;
-  padding: 10px;
-  margin: 5px 0;
-  background-color: #fec1c1;
-  border: 1px solid #ff9999;
-  border-radius: 4px;
-  font-family: "Mali", cursive;
-  color: #faeae4;
-  gap: 10px;
-}
-
 .buttonEditImagesAdminModalEdit {
   padding: 10px 10px;
   background-color: #ff9999;
@@ -113,7 +94,7 @@
 @media (max-width: 450px) {
   .principalContainerAdminModalEdit {
     width: 75vw;
-    height: 68%;
+    height: 50%;
   }
 
   .containerTitleAdminModalEdit h1 {
@@ -126,14 +107,6 @@
 
   .containerInputAdminModalEdit input {
     width: 95%;
-  }
-
-  .containerCheckboxAdminModalEdit {
-    width: 95%;
-  }
-
-  .containerCheckboxAdminModalEdit label {
-    width: 90%;
   }
 
   .buttonEditImagesAdminModalEdit {
@@ -158,14 +131,6 @@
     width: 90%;
   }
   .containerInputAdminModalEdit input {
-    width: 95%;
-  }
-
-  .containerCheckboxAdminModalEdit {
-    width: 90%;
-  }
-
-  .containerCheckboxAdminModalEdit label {
     width: 95%;
   }
 

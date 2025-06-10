@@ -25,26 +25,14 @@ const [openEditorPhoto, setOpenEditorPhoto] = useState(false);
       <div className={styles.principalContainerAdminModalEdit}>
         <div className={styles.containerDataAdminModalEdit}>
           <div className={styles.containerTitleAdminModalEdit}>
-            <h1>Editar producto</h1>
+            <h1>Editar Detalles</h1>
           </div>
           <div className={styles.containerInputAdminModalEdit}>
-            <input type="text" name="Name" placeholder="Nombre (talle)" />
+            <input type="number" name="Size" placeholder="Talle" />
             <input type="text" name="Gender" placeholder="Genero" />
-            <input
-              type="text"
-              name="IndumtaryType"
-              placeholder="Tipo de indumentaria"
-            />
-            <input type="text" name="Category" placeholder="Categoria" />
             <input type="text" name="Brand" placeholder="Marca" />
             <input type="double" name="Price" placeholder="Precio" />
             <input type="text" name="Color" placeholder="Color" />
-          </div>
-          <div className={styles.containerCheckboxAdminModalEdit}>
-            <label className={styles.checkboxLabel}>
-              <input type="checkbox" name="available" id="habilitado" />
-              Habilitado
-            </label>
           </div>
           <button onClick={handleOpenEditorPhoto} className={styles.buttonEditImagesAdminModalEdit}>
             Editar imagenes
