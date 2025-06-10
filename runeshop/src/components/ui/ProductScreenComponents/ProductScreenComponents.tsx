@@ -110,7 +110,9 @@ export const ProductScreenComponents = () => {
     }
 
     // Buscar si ya está en el carrito
-    const detalleEnCarrito = usercart?.find((d) => d.id === detalleSeleccionado.id);
+    const detalleEnCarrito = usercart?.find(
+      (d) => d.id === detalleSeleccionado.id
+    );
     const cantidadActual = detalleEnCarrito ? detalleEnCarrito.cantidad : 0;
 
     // Validar stock
@@ -118,7 +120,9 @@ export const ProductScreenComponents = () => {
       Swal.fire({
         icon: "error",
         title: "Sin stock suficiente",
-        text: `No hay suficiente stock para agregar esa cantidad (stock disponible: ${detalleSeleccionado.stock - cantidadActual}).`,
+        text: `No hay suficiente stock para agregar esa cantidad (stock disponible: ${
+          detalleSeleccionado.stock - cantidadActual
+        }).`,
       });
       return;
     }
@@ -155,101 +159,115 @@ export const ProductScreenComponents = () => {
             />
           </div>
           <div className={styles.productDetailsContainer}>
-            <div style={{ display: "flex", alignItems: "center", gap: "12px" }}>
-              <h2 className={styles.productTitle}>{product.modelo}</h2>
-              {detallesColorSeleccionado[0]?.precio_descuento && (
-                <span className={styles.discountBadge}>¡OFERTA!</span>
-              )}
-            </div>
-            <div className={styles.productBrand}>
-              {detallesColorSeleccionado[0]?.marca}
-            </div>
-            <div className={styles.productPrice}>
-              {detallesColorSeleccionado[0]?.precio_descuento ? (
-                <>
-                  <span className={styles.oldPrice}>
+            <div className={styles.productTitleBrandPriceContainer}>
+              <div
+                style={{ display: "flex", alignItems: "center", gap: "12px" }}
+              >
+                <h2 className={styles.productTitle}>{product.modelo}</h2>
+                {detallesColorSeleccionado[0]?.precio_descuento && (
+                  <span className={styles.discountBadge}>¡OFERTA!</span>
+                )}
+              </div>
+              <div className={styles.productBrand}>
+                {detallesColorSeleccionado[0]?.marca}
+              </div>
+              <div className={styles.productPrice}>
+                {detallesColorSeleccionado[0]?.precio_descuento ? (
+                  <>
+                    <span className={styles.oldPrice}>
+                      ${detallesColorSeleccionado[0]?.precio.precioVenta}
+                    </span>
+                    <span className={styles.discountPrice}>
+                      ${detallesColorSeleccionado[0]?.precio_descuento}
+                    </span>
+                  </>
+                ) : (
+                  <span>
                     ${detallesColorSeleccionado[0]?.precio.precioVenta}
                   </span>
-                  <span className={styles.discountPrice}>
-                    ${detallesColorSeleccionado[0]?.precio_descuento}
-                  </span>
-                </>
-              ) : (
-                <span>${detallesColorSeleccionado[0]?.precio.precioVenta}</span>
-              )}
-            </div>
-            <div className={styles.productColors}>
-              {colores.map((color) => (
-                <button
-                  key={color}
-                  className={`${styles.productColorButton} ${
-                    selectedColor === color ? styles.selected : ""
-                  }`}
-                  onClick={() => setSelectedColor(color)}
-                  type="button"
-                >
-                  <img
-                    src={detallesPorColor[color][0]?.imagenes[0]?.imagenUrl}
-                    alt={color}
-                  />
-                </button>
-              ))}
-            </div>
-            {/* Talles disponibles para el color seleccionado */}
-            <div className={styles.sizesContainer}>
-              <h3>Talles disponibles:</h3>
-              <div className={styles.checkboxSizeContainer}>
-                {tallesDisponibles.map((talle) => (
-                  <label
-                    key={talle.id}
-                    className={`${styles.sizeLabel} ${
-                      selectedTalle === talle.numero ? styles.selected : ""
-                    }`}
-                  >
-                    <input
-                      type="radio"
-                      className={styles.hiddenCheckbox}
-                      name="talle"
-                      checked={selectedTalle === talle.numero}
-                      onChange={() => setSelectedTalle(talle.numero)}
-                    />
-                    <span>{talle.numero}</span>
-                  </label>
-                ))}
+                )}
               </div>
             </div>
-            <div className={styles.quantityContainer}>
-              <button
-                type="button"
-                className={styles.quantityButton}
-                onClick={() => setCantidad((c) => Math.max(1, c - 1))}
-                disabled={cantidad <= 1}
-              >
-                -
-              </button>
-              <span className={styles.quantityValue}>{cantidad}</span>
-              <button
-                type="button"
-                className={styles.quantityButton}
-                onClick={() => {
-                  if (
-                    detalleSeleccionado &&
-                    cantidad < (detalleSeleccionado.stock - (usercart?.find((d) => d.id === detalleSeleccionado.id)?.cantidad || 0))
-                  ) {
-                    setCantidad((c) => c + 1);
+            <div className={styles.productColorsSizesContainer}>
+              <div className={styles.productColors}>
+                {colores.map((color) => (
+                  <button
+                    key={color}
+                    className={`${styles.productColorButton} ${
+                      selectedColor === color ? styles.selected : ""
+                    }`}
+                    onClick={() => setSelectedColor(color)}
+                    type="button"
+                  >
+                    <img
+                      src={detallesPorColor[color][0]?.imagenes[0]?.imagenUrl}
+                      alt={color}
+                    />
+                  </button>
+                ))}
+              </div>
+              {/* Talles disponibles para el color seleccionado */}
+              <div className={styles.sizesContainer}>
+                <h3>Talles disponibles:</h3>
+                <div className={styles.checkboxSizeContainer}>
+                  {tallesDisponibles.map((talle) => (
+                    <label
+                      key={talle.id}
+                      className={`${styles.sizeLabel} ${
+                        selectedTalle === talle.numero ? styles.selected : ""
+                      }`}
+                    >
+                      <input
+                        type="radio"
+                        className={styles.hiddenCheckbox}
+                        name="talle"
+                        checked={selectedTalle === talle.numero}
+                        onChange={() => setSelectedTalle(talle.numero)}
+                      />
+                      <span>{talle.numero}</span>
+                    </label>
+                  ))}
+                </div>
+              </div>
+              <div className={styles.quantityContainer}>
+                <button
+                  type="button"
+                  className={styles.quantityButton}
+                  onClick={() => setCantidad((c) => Math.max(1, c - 1))}
+                  disabled={cantidad <= 1}
+                >
+                  -
+                </button>
+                <span className={styles.quantityValue}>{cantidad}</span>
+                <button
+                  type="button"
+                  className={styles.quantityButton}
+                  onClick={() => {
+                    if (
+                      detalleSeleccionado &&
+                      cantidad <
+                        detalleSeleccionado.stock -
+                          (usercart?.find(
+                            (d) => d.id === detalleSeleccionado.id
+                          )?.cantidad || 0)
+                    ) {
+                      setCantidad((c) => c + 1);
+                    }
+                  }}
+                  disabled={
+                    !detalleSeleccionado ||
+                    cantidad >=
+                      (detalleSeleccionado
+                        ? detalleSeleccionado.stock -
+                          (usercart?.find(
+                            (d) => d.id === detalleSeleccionado.id
+                          )?.cantidad || 0)
+                        : 1)
                   }
-                }}
-                disabled={
-                  !detalleSeleccionado ||
-                  cantidad >=
-                    (detalleSeleccionado
-                      ? detalleSeleccionado.stock -
-                        (usercart?.find((d) => d.id === detalleSeleccionado.id)?.cantidad || 0)
-                      : 1)
-                }
-              >
-                +
-              </button>
+                >
+                  +
+                </button>
+              </div>
             </div>
             <button
               className={styles.addToCartButton}

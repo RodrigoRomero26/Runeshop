@@ -81,22 +81,26 @@
   border-radius: 12px;
 }
 
+.productTitleBrandPriceContainer{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+}
+
 .productTitle {
   font-size: 2.1rem;
   font-weight: bold;
-  margin-bottom: 8px;
 }
 
 .productBrand {
-  font-size: 1.2rem;
+  font-size: 1rem;
   color: #888;
-  margin-bottom: 4px;
 }
 
 .productPrice {
-  font-size: 2rem;
+  font-size: 1rem;
   font-weight: bold;
-  margin-bottom: 8px;
   display: flex;
   align-items: center;
   gap: 12px;
@@ -132,13 +136,15 @@
   box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.12);
 }
 
-.productDescription {
-  font-size: 1.1rem;
-  color: #444;
-  margin-bottom: 10px;
-  line-height: 1.5;
+.productColorsSizesContainer{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  gap: 8px;
+  justify-content: flex-start;
+  font-family: "Mali", cursive;
 }
-
 .productColors {
   display: flex;
   flex-direction: row;
@@ -147,7 +153,6 @@
   max-width: 95%;
   overflow: auto;
   gap: 10px;
-  padding: 5px;
   justify-content: flex-start;
 }
 
@@ -155,8 +160,8 @@
   border: 2px solid transparent;
   background: none;
   border-radius: 50%;
-  width: 40px;
-  height: 40px;
+  width: 50px;
+  height: 50px;
   padding: 0;
   cursor: pointer;
   display: flex;
@@ -176,7 +181,6 @@
 .sizesContainer {
   display: flex;
   flex-direction: column;
-  padding: 10px;
   align-items: flex-start;
   border-bottom: black 1px dashed;
 }
@@ -251,6 +255,7 @@
   color: #FF9999;
   font-family: 'Mali', cursive;
   font-weight: bold;
+  font-size: 1.2rem;
   border-radius: 5px;
   cursor: pointer;
   border: none;
@@ -306,33 +311,31 @@
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
+    height: 100%;
   }
   .productImagesContainer{
-    flex-direction: column;
     justify-content: center;
     align-items: center;
     width: 100%;
     height: 60%;
   }
   .productImagesPerspectiveContainer{
-    width: 75%;
-    height: 15%;
-    max-width: 75%;
+    width: 30%;
+    height: 80%;
     overflow: auto;
-    flex-direction: row;
-    justify-content: center;
     align-items: center;
+    max-height: 80%;
   }
   .productImagesPerspectiveContainer img{
-    width: 25%;
-    height: 85%;
+    width: 70%;
+    height: 57%;
     object-fit: cover;
     max-width: none;
     max-height: none;
   }
   .productPrincipalImage{
-    width: 60%;
-    height: 65%;
+    width: 47%;
+    height: 89%;
   }
   .productTitle{
     font-size: 1rem;
@@ -356,7 +359,6 @@
   }
   .productDetailsContainer{
     flex-direction: row;
-    flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
     width: 70%;
@@ -388,7 +390,6 @@
 .quantityButton {
   background: #ffe5bc;
   border: 1px solid #ffbfae;
-  color: #ff4d4f;
   font-size: 1.5rem;
   width: 36px;
   height: 36px;
