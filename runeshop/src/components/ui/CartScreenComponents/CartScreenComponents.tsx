@@ -2,10 +2,12 @@ import { useUser } from "../../../hooks/useUser";
 import { CartModalCards } from "../CartModalCards/CartModalCards";
 import styles from "./CartScreenComponents.module.css";
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 export const CartScreenComponents = () => {
     const { usercart, user } = useUser();
     const [selectedAddressId, setSelectedAddressId] = useState<number | null>(null);
+    const navigate = useNavigate();
 
     // Sumar precios del carrito
     const total = usercart && usercart.length > 0
@@ -27,6 +29,45 @@ export const CartScreenComponents = () => {
         }
     }, [direcciones, selectedAddressId]);
 
+    // 1. Si no hay sesión iniciada
+    if (!user) {
+        return (
+            <div className={styles.principalContainerCartScreenComponents}>
+                <div className={styles.dataContainerCartScreenComponents}>
+                    <div className={styles.cartSideContainer}>
+                        <h2>Carrito</h2>
+                        <div className={styles.warningMessage}>
+                            Debes iniciar sesión para completar la compra.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        );
+    }
+
+    // 2. Si no hay direcciones
+    if (direcciones.length === 0) {
+        return (
+            <div className={styles.principalContainerCartScreenComponents}>
+                <div className={styles.dataContainerCartScreenComponents}>
+                    <div className={styles.cartSideContainer}>
+                        <h2>Carrito</h2>
+                        <div className={styles.warningMessage}>
+                            Debes registrar al menos una dirección antes de completar el pago.
+                        </div>
+                        <button
+                            className={styles.summarySideContainerButton}
+                            onClick={() => navigate("/userProfile")}
+                        >
+                            Ir a mi perfil
+                        </button>
+                    </div>
+                </div>
+            </div>
+        );
+    }
+
+    // 3. Si todo está OK, render normal
     return (
         <div className={styles.principalContainerCartScreenComponents}>
             <div className={styles.dataContainerCartScreenComponents}>
@@ -77,22 +118,20 @@ export const CartScreenComponents = () => {
                             }}
                             className={styles.addressSelect}
                         >
-                            {direcciones.length === 0 && (
-                                <option value="">No tienes direcciones guardadas</option>
-                            )}
                             {direcciones.map((dir) => (
                                 <option key={dir.direccion.id} value={dir.direccion.id}>
                                     {dir.direccion.direccion} - {dir.direccion.departamento} - {dir.direccion.provincia}
                                 </option>
                             ))}
                         </select>
-                    </div>
-                    <button
+                        <button
                         className={styles.summarySideContainerButton}
                         disabled={!usercart || usercart.length === 0 || !selectedAddressId}
                     >
                         Ir a pagar
                     </button>
+                    </div>
+                    
                 </div>
             </div>
         </div>

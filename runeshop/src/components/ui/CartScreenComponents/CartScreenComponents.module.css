@@ -12,11 +12,15 @@
 }
 
 .cartSideContainer {
+   color: #ff9797;
+  font-family: "Mali", cursive;
   display: flex;
   flex-direction: column;
   width: 40%;
   gap: 15px;
 }
+
+
 
 .cartSideContainerTitle {
   color: #ff9797;
@@ -121,6 +125,17 @@
 .addressSelect option {
   color: #ff9999;
   background: #faedd8;
+}
+
+.warningMessage {
+    background: #fff3cd;
+    color: #856404;
+    border: 1px solid #ffeeba;
+    border-radius: 6px;
+    padding: 16px 20px;
+    margin: 18px 0 12px 0;
+    font-size: 1.08rem;
+    text-align: center;
 }
 
 /* Responsive */

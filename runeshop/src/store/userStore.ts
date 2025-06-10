@@ -1,4 +1,5 @@
 import { create } from "zustand";
+import { persist } from "zustand/middleware";
 import type { IUsuarioGet } from "../types/IUsuarioGet";
 import type { IUsuarioDto } from "../types/DTOs/IUsuarioDto";
 import type { IProductoGet } from "../types/IProductoGet";
@@ -23,14 +24,17 @@ interface IUserStore {
 	incrementProductQuantity: (detalleId: number) => void;
 	decrementProductQuantity: (detalleId: number) => void;
 	removeFromCart: (detalleId: number) => void;
+	clearCart: () => void; // Nueva acción para limpiar el carrito
 }
 
-export const userStore = create<IUserStore>((set) => ({
-	user: null,
-	setUser: (usuario) => set(() => ({ user: usuario })),
-	userID: null,
-	setUserID: (id) => set(() => ({ userID: id })),
-	updateUser: (updateduser) =>
+export const userStore = create<IUserStore>()(
+    persist(
+        (set, get) => ({
+            user: null,
+            setUser: (usuario) => set(() => ({ user: usuario })),
+            userID: null,
+            setUserID: (id) => set(() => ({ userID: id })),
+            updateUser: (updateduser) =>
 		set((state) => {
 			if (!state.user) return { user: null };
 
@@ -101,4 +105,15 @@ export const userStore = create<IUserStore>((set) => ({
 			const updatedCart = currentCart.filter((d) => d.id !== detalleId);
 			return { usercart: updatedCart };
 		}),
-}));
+	clearCart: () => set({ usercart: null }),
+        }),
+        {
+            name: "user-storage", // clave en localStorage
+            partialize: (state) => ({
+                usercart: state.usercart,
+                user: state.user,
+                userID: state.userID,
+            }),
+        }
+    )
+);

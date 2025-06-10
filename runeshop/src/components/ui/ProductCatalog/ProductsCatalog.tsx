@@ -21,6 +21,7 @@ export const ProductsCatalog = () => {
 		talles,
 		precioMin,
 		precioMax,
+		order, // <-- agrega esto
 	} = filtersStore();
 
 	useEffect(() => {
@@ -44,7 +45,7 @@ export const ProductsCatalog = () => {
 				},
 				currentApiPage,
 				pageSize,
-				"asc"
+				order // <-- usa el valor del store
 			);
 
 			// Si la API devuelve 204 o data es null/undefined, muestra mensaje
@@ -67,6 +68,7 @@ export const ProductsCatalog = () => {
 		precioMin,
 		precioMax,
 		currentApiPage,
+		order, // <--- agrega order como dependencia
 	]);
 
 	useEffect(() => {

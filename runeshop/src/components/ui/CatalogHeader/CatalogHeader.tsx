@@ -1,11 +1,11 @@
-import { useState } from "react";
+import { filtersStore } from "../../../store/filtersStore";
 import styles from "./CatalogHeader.module.css";
 
 export const CatalogHeader = () => {
-	const [selectedOption, setSelectedOption] = useState("");
+	const { order, setOrder } = filtersStore();
 
 	const handleChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
-		setSelectedOption(event.target.value);
+		setOrder(event.target.value);
 	};
 
 	return (
@@ -25,11 +25,11 @@ export const CatalogHeader = () => {
 					<div className={styles.catalogOrder}>
 						<select
 							id="mi-dropdown"
-							value={selectedOption}
+							value={order}
 							onChange={handleChange}>
 							<option value="">Ordenar por</option>
-							<option value="opcion1">Mayor precio</option>
-							<option value="opcion2">Menor precio</option>
+							<option value="desc">Mayor precio</option>
+							<option value="asc">Menor precio</option>
 						</select>
 					</div>
 				</div>

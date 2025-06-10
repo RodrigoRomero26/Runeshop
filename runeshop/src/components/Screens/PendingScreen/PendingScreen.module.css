@@ -1,0 +1,66 @@
+.containerPendingScreen {
+    min-height: 100vh;
+    width: 100vw;
+    background: linear-gradient(135deg, #fff8f2 0%, #ffe0d2 100%);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    overflow: hidden;
+}
+
+.centerContentWrapper {
+    flex: 1;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.containerPendingScreenContent {
+    background: #fff;
+    border-radius: 18px;
+    box-shadow: 0 4px 24px rgba(255, 125, 64, 0.12);
+    padding: 48px 32px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    max-width: 420px;
+    width: 90vw;
+    margin: 0;
+    animation: fadeIn 0.8s;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(40px);}
+    to { opacity: 1; transform: translateY(0);}
+}
+
+.pendingMessage {
+    font-family: "Mali", cursive;
+}
+
+.pendingMessage h1 {
+    color: #ffb300;
+    font-size: 2.2rem;
+    margin-bottom: 18px;
+    font-weight: 700;
+    text-align: center;
+}
+
+.pendingMessage p {
+    color: #3a2d1a;
+    font-size: 1.1rem;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+@media (max-width: 600px) {
+    .containerPendingScreenContent {
+        padding: 28px 8px;
+    }
+    .pendingMessage h1 {
+        font-size: 1.4rem;
+    }
+}

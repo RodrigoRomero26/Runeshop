@@ -31,16 +31,16 @@ export class ProductoService {
 
 	static async getProductosPaginados(
 	filtros: IFiltrosDto = {},
-	page: number = 0,
+	page: number = 0, 
 	size: number = 10,
-	orden: string = "asc"
+	orden: string = filtros.orden || "asc"
 ): Promise<Page<IProductoGet> | null> {
 	try {
 		const params = new URLSearchParams();
 
 		if (filtros.sexo) filtros.sexo.forEach((v) => params.append("sexo", v));
 		if (filtros.marca) filtros.marca.forEach((v) => params.append("marca", v));
-		if (filtros.talle) filtros.talle.forEach((v) => params.append("talle", v.toString()));
+		if (filtros.talle) filtros.talle.forEach((v) => params.append("talleNumero", v.toString()));
 		if (filtros.tipoProducto) filtros.tipoProducto.forEach((v) => params.append("tipoProducto", v));
 		if (filtros.modelo) filtros.modelo.forEach((v) => params.append("modelo", v));
 		if (filtros.categoria) filtros.categoria.forEach((v) => params.append("categoria", v));

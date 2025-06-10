@@ -4,6 +4,7 @@ import { Login } from "../LoginModal/Login";
 import { Cart } from "../CartModal/Cart";
 import { useNavigate } from "react-router";
 import { filtersStore } from "../../../store/filtersStore";
+import { userStore } from "../../../store/userStore";
 
 export const Header = () => {
 	const [menuOpen, setMenuOpen] = useState(false);
@@ -77,6 +78,8 @@ export const Header = () => {
 		localStorage.removeItem("token");
 		localStorage.removeItem("refreshToken");
 		localStorage.removeItem("userId");
+		userStore.getState().clearCart();
+		localStorage.removeItem("user-storage");
 		setIsLoggedIn(false);
 		setMenuOpen(false);
 		navigate("/");
