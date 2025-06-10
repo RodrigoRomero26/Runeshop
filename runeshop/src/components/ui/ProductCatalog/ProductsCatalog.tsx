@@ -104,7 +104,7 @@ export const ProductsCatalog = () => {
 			<div className={styles.containerProductsCards}>
 				<div className={styles.productsCardsHolder}>
 					{productos.length === 0 ? (
-						<p className={styles.noProductsMessage}>
+						<p className={styles.noProductsMsg}>
 							No hay productos que coincidan con los filtros seleccionados.
 						</p>
 					) : (

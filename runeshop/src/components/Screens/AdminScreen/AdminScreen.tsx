@@ -7,15 +7,15 @@ import { AdminHeader } from "../../ui/AdminHeader/AdminHeader";
 import { Admin } from "../../ui/Admin/Admin";
 
 export const AdminScreen = () => {
-  return (
-    <div className={styles.containerAdminScreen}>
-      <AdminPrincipalHeader />
-      <AdminHeader />
-      <div className={styles.containerAdminScreenContent}>
-        <Aside />
-        <Admin />
-      </div>
-      <Footer />
-    </div>
-  );
+	return (
+		<div className={styles.containerAdminScreen}>
+			<AdminPrincipalHeader />
+			<AdminHeader />
+			<div className={styles.containerAdminScreenContent}>
+				<Aside />
+				<Admin />
+			</div>
+			<Footer />
+		</div>
+	);
 };

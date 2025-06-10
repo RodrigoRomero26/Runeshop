@@ -1,112 +1,227 @@
 .principalContainerAdmin {
-  width: 85vw;
-  height: 100%;
+	width: 85vw;
+	height: 100%;
+  padding: 0 10px;
+	box-sizing: border-box;
 }
 
 .containerAdmin {
-  background-color: #ff9797;
-  height: 95%;
-  display: flex;
-  margin: 10px;
-  justify-content: center;
-  align-items: center;
+	background-color: #ff9797;
+	height: 100%;
+	display: flex;
+	margin: 24px auto;        
+	justify-content: center;
+	align-items: center;
+	max-height: 70vh;
+	overflow-y: auto;
+	padding-right: 8px;
+	box-sizing: border-box;
+	width: 100%;
 }
 
 .adminTableContainer {
-  flex: 1;
-  overflow-y: auto;
-  height: 95%;
-  max-width: 98%;
+	flex: 1;
+	overflow-y: auto;
+	height: 95%;
+	max-width: 98%;
 }
 
 .adminTableContainer table {
-  width: 100%;
-  border-collapse: collapse;
-  background-color: #fff5f5;
-  border-radius: 8px;
-  overflow: hidden;
-  font-family: "Mali", cursive;
+	width: 100%;
+	border-collapse: collapse;
+	background-color: #fff5f5;
+	border-radius: 8px;
+	overflow: hidden;
+	font-family: "Mali", cursive;
 }
 
 .adminTableContainer thead {
-  background-color: #ffbcbc;
-  color: white;
+	background-color: #ffbcbc;
+	color: white;
 }
 
 .adminTableContainer th,
 .adminTableContainer td {
-  padding: 12px;
-  text-align: center;
-  border-bottom: 1px solid #ffdede;
-  justify-self: center;
+	padding: 12px;
+	text-align: center;
+	border-bottom: 1px solid #ffdede;
+	justify-self: center;
 }
 
 .buttonAdmin {
-  background-color: #ffe5bc;
-  border: none;
-  cursor: pointer;
-  width: 5vw;
-  height: 3vw;
-  color: #ff9999;
-  margin: 0 5px;
-  transition: transform 0.2s;
+	background-color: #ffe5bc;
+	border: none;
+	cursor: pointer;
+	width: 5vw;
+	min-width: 36px;
+	max-width: 60px;
+	height: 3vw;
+	min-height: 32px;
+	max-height: 44px;
+	color: #ff9999;
+	margin: 0 5px;
+	transition: transform 0.2s, background 0.2s;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-size: 1.2rem;
+	border-radius: 6px;
+	box-shadow: none;
 }
 
 .buttonAdmin:hover {
-  transform: scale(1.2);
+	background-color: #ffe0a3;
+	transform: scale(1.12);
 }
 
 .material-symbols-outlined {
-  font-size: 20px;
+	font-size: 20px;
 }
 
-@media (max-width: 940px) and (min-width: 500px) {
-  .principalContainerAdmin {
-    height: 93%;
-    width: 100%;
-    justify-self: center;
-    justify-items: center;
-  }
-
-  .adminButtons {
-    width: 20vw;
-  }
-
-  .buttonAdmin {
-    height: auto;
-    margin: 0 2px;
-  }
+.productList {
+	max-height: 60vh;
+	overflow-y: auto;
+	width: 100%;
+	padding: 0;
+	margin: 0;
+	margin-top: 20px;
+	list-style: none;
+	box-sizing: border-box;
+	display: flex;
+	flex-direction: column;
+	gap: 20px;
 }
 
-@media (max-width: 500px) {
-  .principalContainerAdmin {
-    height: 93%;
-    width: 95%;
-    justify-self: center;
-    justify-items: center;
-  }
+.productItem {
+	background: linear-gradient(90deg, #fff8f2 0%, #ffe0d2 100%);
+	border-radius: 16px;
+	box-shadow: 0 4px 24px rgba(255, 125, 64, 0.12);
+	padding: 20px 18px 14px 18px;
+	width: 100%;
+	max-width: 1100px;
+	font-family: "Mali", cursive, Arial, sans-serif;
+	transition: box-shadow 0.2s;
+	box-sizing: border-box;
+	margin: 0 auto 20px auto;  
+}
 
+.productItem:hover {
+	box-shadow: 0 8px 32px rgba(255, 125, 64, 0.18);
+}
+
+.productHeader {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	align-items: center;
+	margin-bottom: 14px;
+	font-size: 1.1rem;
+	color: #ff7d40;
+	font-weight: 700;
+	font-family: "Mali", cursive, Arial, sans-serif;
+	gap: 10px;
+	word-break: break-word;
+}
+
+.detailList {
+	max-height: 350px;
+	overflow-y: auto;
+	padding-left: 0;
+	margin: 0;
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+}
+
+.detailItem {
+	background: #fff;
+	border-radius: 10px;
+	padding: 10px 12px;
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	justify-content: space-between;
+	font-size: 1rem;
+	color: #3a2d1a;
+	font-family: "Mali", cursive, Arial, sans-serif;
+	border-left: 5px solid #ff7d40;
+	box-shadow: 0 2px 8px #ff7d4033;
+	gap: 10px;
+	word-break: break-word;
+}
+
+.adminButtons {
+	display: flex;
+	gap: 8px;
+	flex-wrap: wrap;
+}
+
+.noProductsMsg {
+    color: #ff7d40;
+    background: #fff8f2;
+    border: 1.5px dashed #ffbcbc;
+    border-radius: 10px;
+    padding: 24px 32px;
+    margin: 40px auto;
+    font-size: 1.25rem;
+    font-family: "Mali", cursive, Arial, sans-serif;
+    text-align: center;
+    max-width: 420px;
+    box-shadow: 0 2px 12px #ff7d4033;
+    letter-spacing: 0.5px;
+}
+
+
+@media (max-width: 900px) {
+	.containerAdmin {
+		margin: 12px 0;
+		padding-right: 0;
+	}
+	.productItem {
+		padding: 10px 2vw 8px 2vw;
+		max-width: 99vw;
+		margin: 0 auto 14px auto;
+	}
+	.productHeader {
+		flex-direction: column;
+		align-items: flex-start;
+		gap: 8px;
+		font-size: 1rem;
+		word-break: break-word;
+	}
+	.detailItem {
+		font-size: 0.95rem;
+		padding: 8px 6px;
+		flex-direction: column;
+		align-items: flex-start;
+		gap: 6px;
+	}
+	.adminButtons {
+		gap: 4px;
+		margin-top: 6px;
+	}
+}
+
+@media (max-width: 600px) {
+  .principalContainerAdmin {
+    width: 100vw;
+    min-width: 100vw;
+    max-width: 100vw;
+    padding: 0;
+  }
   .containerAdmin {
-    width: 100%;
+    margin: 4px 0;
+    padding: 0;
+    width: 100vw;
+    min-width: 100vw;
+    max-width: 100vw;
   }
-
-  .adminTableContainer th,
-  .adminTableContainer td {
-    font-size: 0.7rem;
-    padding: 8px;
+  .productItem {
+    padding: 8px 0 8px 0;
+    max-width: 100vw;
+    margin: 0 0 10px 0;
   }
-
-  .adminButtons {
-    width: 20vw;
-  }
-
-  .buttonAdmin {
-    height: auto;
-    width: auto;
-    margin: 0 2px;
-  }
-
-  .buttonAdmin span {
-    font-size: 1.3rem;
+  .productList {
+    width: 99%;
   }
 }

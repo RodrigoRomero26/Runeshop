@@ -23,6 +23,22 @@
 	width: 100%;
 }
 
+.noProductsMsg {
+    color: #ff7d40;
+    background: #fff8f2;
+    border: 1.5px dashed #ffbcbc;
+    border-radius: 10px;
+    padding: 24px 32px;
+    margin: 40px auto;
+    font-size: 1.25rem;
+    font-family: "Mali", cursive, Arial, sans-serif;
+    text-align: center;
+    max-width: 420px;
+    box-shadow: 0 2px 12px #ff7d4033;
+    letter-spacing: 0.5px;
+}
+
+
 .pagination {
 	padding: 6px 0;
 	display: flex;

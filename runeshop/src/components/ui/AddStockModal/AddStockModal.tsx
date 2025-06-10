@@ -1,4 +1,4 @@
-import React, { type FC } from "react";
+import { type FC } from "react";
 import styles from "./AddStockModal.module.css";
 import type { IDetalle } from "../../../types/IDetalle";
 
