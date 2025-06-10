@@ -131,12 +131,14 @@ export const Admin = () => {
                                       <span className={styles.productModel} title={producto.modelo}>
                                         {producto.modelo}
                                       </span>
-                                      {" | Estado: "}
+                                      {" | "}
                                       {producto.estado ? "Activo" : "Inactivo"}
-                                      {" | Tipo Producto: "}
+                                      {" | "}
                                       {producto.tipoProducto.charAt(0).toUpperCase() + producto.tipoProducto.slice(1).toLowerCase()}
-                                      {" | Categoría: "}
+                                      {" | "}
                                       {producto.categoria.nombre}
+                                      {" | "}
+                                      {producto.sexo.charAt(0).toUpperCase() + producto.sexo.slice(1).toLowerCase()}
                                       {productButtons(producto.id!)}
                                     </div>
                                     <ul className={styles.detailList}>

@@ -14,7 +14,6 @@
   left: 50%;
   transform: translate(-50%, -50%);
   width: 30vw;
-  height: 37vh;
   padding: 20px;
   background-color: #faedd8;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -51,7 +50,12 @@
   margin: 5px 0;
   background-color: #fec1c1;
   border: 1px solid #ff9999;
-  border-radius: 4px;
+  color: #faeae4;
+  font-family: "Mali", cursive;
+  font-size: 1rem;
+  padding: 10px 12px;
+  border-radius: 8px;
+  margin-bottom: 14px;
 }
 
 .containerInputEditProductAdmin input::placeholder {
@@ -64,26 +68,24 @@
   width: 100%;
   padding: 10px 12px;
   margin-bottom: 14px;
-  border: 1.5px solid #ffbcbc;
+  border: 1.5px solid #ff9999;
   border-radius: 8px;
-  background: #fff8f2;
-  color: #3a2d1a;
+  background: #ffbcbc;
+  color: #faeae4;
   font-size: 1rem;
-  font-family: "Mali", cursive, Arial, sans-serif;
+  font-family: "Mali", cursive;
   transition: border 0.2s, box-shadow 0.2s;
   outline: none;
-  box-shadow: 0 1px 4px #ffbcbc22;
 }
 
 .containerInputEditProductAdmin select:focus {
-  border-color: #ff7d40;
-  box-shadow: 0 0 0 2px #ffbcbc55;
+  border-color: #fa6d6d;
 }
 
 .containerInputEditProductAdmin option {
-  background: #fff;
-  color: #3a2d1a;
-  font-family: "Mali", cursive, Arial, sans-serif;
+  background: #faeae4;
+  color: #ff9999;
+  font-family: "Mali", cursive;
 }
 
 .containerCheckboxEditProductAdmin {
@@ -91,15 +93,16 @@
   flex-direction: row;
   align-items: center;
   justify-content: center;
+  width: 88%;
 }
 
 .containerCheckboxEditProductAdmin label {
-  width: 25vw;
-  padding: 10px;
-  margin: 5px 0;
+  width: 100%;
+  padding: 10px 12px;
+  margin-bottom: 14px;
   background-color: #fec1c1;
   border: 1px solid #ff9999;
-  border-radius: 4px;
+  border-radius: 8px;
   font-family: "Mali", cursive;
   color: #faeae4;
   gap: 10px;
