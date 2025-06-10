@@ -2,10 +2,14 @@ import { filtersStore } from "../../../store/filtersStore";
 import styles from "./CatalogHeader.module.css";
 
 export const CatalogHeader = () => {
-	const { order, setOrder } = filtersStore();
+	const { order, setOrder, nombre, setNombre } = filtersStore();
 
 	const handleChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
 		setOrder(event.target.value);
+	};
+
+	const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+		setNombre(event.target.value);
 	};
 
 	return (
@@ -20,6 +24,8 @@ export const CatalogHeader = () => {
 							type="text"
 							name="productFind"
 							placeholder="Buscar producto"
+							value={nombre}
+							onChange={handleInputChange}
 						/>
 					</div>
 					<div className={styles.catalogOrder}>

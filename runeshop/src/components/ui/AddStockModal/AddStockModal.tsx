@@ -1,11 +1,13 @@
 import React, { type FC } from "react";
 import styles from "./AddStockModal.module.css";
+import type { IDetalle } from "../../../types/IDetalle";
 
 interface AddStockModalProps {
     onCloseAddStockModal: () => void;
+	detalle: IDetalle;
 }
 
-export const AddStockModal: FC<AddStockModalProps> = ({onCloseAddStockModal}) => {
+export const AddStockModal: FC<AddStockModalProps> = ({onCloseAddStockModal, detalle}) => {
 
 	return (
 		<div className={styles.overlay}>

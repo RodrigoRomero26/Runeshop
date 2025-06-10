@@ -1,12 +1,14 @@
 import styles from "./AdminModal.module.css";
 import { AdminModalEdit } from "../AdminModalEdit/AdminModalEdit";
 import { useState, type FC } from "react";
+import type { IDetalle } from "../../../types/IDetalle";
 
 interface adminModalProps {
   onCloseAdminModal: () => void;
+  detalle: IDetalle;
 }
 
-export const AdminModal: FC<adminModalProps> = ({ onCloseAdminModal }) => {
+export const AdminModal: FC<adminModalProps> = ({ onCloseAdminModal, detalle }) => {
   const [openEditor, setOpenEditor] = useState(false);
 
 

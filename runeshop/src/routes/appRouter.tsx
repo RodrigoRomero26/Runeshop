@@ -20,7 +20,7 @@ export const appRouter = () => {
             <Route path="/productsCatalog" element={<ProductsCatalogScreen />} />
             <Route path="/cart" element={<CartScreen />} />
             <Route path="/product/:id" element={<ProductScreen />} />
-            <Route path="/admin" element={user?.tipoUsuario === "ADMIN" ? <AdminScreen /> : <Navigate to="/" />} />
+            <Route path="/admin" element={<AdminScreen /> } />
             <Route path="/success" element={<SuccessScreen />} />
             <Route path="/pending" element={<PendingScreen />} />
             <Route path="/error" element={<ErrorScreen />} />

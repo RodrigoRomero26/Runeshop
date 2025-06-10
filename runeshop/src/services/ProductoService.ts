@@ -44,6 +44,7 @@ export class ProductoService {
 		if (filtros.tipoProducto) filtros.tipoProducto.forEach((v) => params.append("tipoProducto", v));
 		if (filtros.modelo) filtros.modelo.forEach((v) => params.append("modelo", v));
 		if (filtros.categoria) filtros.categoria.forEach((v) => params.append("categoria", v));
+		if (filtros.nombre) params.append("nombre", filtros.nombre);
 
 		if (filtros.min !== null && filtros.min !== undefined) {
 			params.append("min", filtros.min.toString());
@@ -52,6 +53,8 @@ export class ProductoService {
 		if (filtros.max !== null && filtros.max !== undefined) {
 			params.append("max", filtros.max.toString());
 		}
+
+		console.log("params:", params.toString());
 
 		params.append("orden", orden);
 		params.append("page", page.toString());

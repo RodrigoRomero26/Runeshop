@@ -1,6 +1,7 @@
 export interface IFiltrosDto {
     sexo?: string[];
     marca?: string[];
+    nombre?: string;
     talle?: number[];
     tipoProducto?:string[];
     modelo?: string[];

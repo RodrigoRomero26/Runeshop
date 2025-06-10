@@ -22,9 +22,9 @@ export const Footer = () => {
                     <p>Los señores de la runa <br /> Todos los derechos reservados</p>
                 </div>
                 <div className={styles.contactUsSocialMedia}>
-                    <button className={styles.logoButton}><img src="src\components\ui\Footer\img\xlogo.png" alt="X" /></button>
-                    <button className={styles.logoButton}><img src="src\components\ui\Footer\img\iglogo.png" alt="Instagram" /></button>
-                    <button className={styles.logoButton}><img src="src\components\ui\Footer\img\facelogo.png" alt="Facebook" /></button>
+                    <button onClick={() => window.open("https://res.cloudinary.com/dpyfse8qb/video/upload/v1749535382/ettvqxbymhog9ny6imaf.mp4", "_blank")} className={styles.logoButton}><img src="src\components\ui\Footer\img\xlogo.png" alt="X" /></button>
+                    <button onClick={() => window.open("https://res.cloudinary.com/dpyfse8qb/video/upload/v1749535800/zkh8hqra4j7xgllkgqzo.mp4", "_blank")} className={styles.logoButton}><img src="src\components\ui\Footer\img\iglogo.png" alt="Instagram" /></button>
+                    <button onClick={() => window.open("https://res.cloudinary.com/dpyfse8qb/video/upload/v1749534570/kq8kx9jcpslfablzam61.mp4", "_blank")} className={styles.logoButton}><img src="src\components\ui\Footer\img\facelogo.png" alt="Facebook" /></button>
                 </div>
             </div>
         </div>

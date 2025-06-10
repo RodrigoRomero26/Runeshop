@@ -21,7 +21,8 @@ export const ProductsCatalog = () => {
 		talles,
 		precioMin,
 		precioMax,
-		order, // <-- agrega esto
+		order, 
+		nombre,
 	} = filtersStore();
 
 	useEffect(() => {
@@ -29,8 +30,8 @@ export const ProductsCatalog = () => {
 			let min = precioMin === "" ? null : precioMin;
 			let max = precioMax === "" ? null : precioMax;
 
-			// Si uno está definido y el otro no, asigna valores por defecto
-			if (min !== null && max === null) max = 99999999; // o el máximo de tu catálogo
+	
+			if (min !== null && max === null) max = 99999999;
 			if (min === null && max !== null) min = 0;
 
 			const data = await getProductosController(
@@ -42,13 +43,13 @@ export const ProductsCatalog = () => {
 					talle: talles,
 					min: min,
 					max: max,
+					nombre,
 				},
 				currentApiPage,
 				pageSize,
-				order // <-- usa el valor del store
+				order
 			);
 
-			// Si la API devuelve 204 o data es null/undefined, muestra mensaje
 			if (!data || !data.content || data.content.length === 0) {
 				setProductos([]);
 				setTotalPages(0);
@@ -68,7 +69,8 @@ export const ProductsCatalog = () => {
 		precioMin,
 		precioMax,
 		currentApiPage,
-		order, // <--- agrega order como dependencia
+		order,
+		nombre, 
 	]);
 
 	useEffect(() => {
