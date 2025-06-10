@@ -48,8 +48,8 @@
 }
 
 .summarySideTableContainer {
-  height: 70%;
-  max-height: 70%;
+  height: 45%;
+  max-height: 45%;
   overflow: auto;
 }
 
@@ -91,33 +91,36 @@
   display: flex;
   flex-direction: column;
   gap: 8px;
+  font-family: "Mali", cursive;
+  align-items: center;
 }
 
 .addressSelectorContainer label {
   font-weight: 500;
-  color: #3a2d1a;
+  color:#ff9999;
   margin-bottom: 4px;
 }
 
 .addressSelect {
   padding: 8px 12px;
   border-radius: 6px;
-  border: 1.5px solid #ffbfae;
-  background: #fff8f2;
-  color: #3a2d1a;
+  border: 1.5px solid #ff9999;
+  background: #faedd8;
+  color: #ff9999;
   font-size: 1rem;
   transition: border 0.2s;
   outline: none;
+  max-width: 80%;
 }
 
 .addressSelect:focus {
-  border: 2px solid #ff4d4f;
-  background: #fff3e6;
+  background: #ffe5bc;
+  max-width: 80%;
 }
 
 .addressSelect option {
-  color: #3a2d1a;
-  background: #fff8f2;
+  color: #ff9999;
+  background: #faedd8;
 }
 
 /* Responsive */
@@ -141,7 +144,7 @@
 
   .cartSideContainer {
     width: 100%;
-    height: 60%;
+    height: 43%;
     gap: 0;
     justify-content: space-around;
   }
@@ -152,7 +155,7 @@
   }
 
   .summarySideContainer {
-    height: 35%;
+    height: 55%;
     width: 100%;
     margin-bottom: 10px;
     gap: 3px;
@@ -165,7 +168,7 @@
   }
 
   .summarySideTableContainer {
-    max-height: 100%;
+    overflow: hidden;
   }
   .summarySideTable {
     font-size: 1rem;
