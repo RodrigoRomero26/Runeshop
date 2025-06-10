@@ -5,7 +5,6 @@ import { AddStockModal } from "../AddStockModal/AddStockModal";
 import { getProductosController } from "../../../controllers/ProductoController";
 import { filtersStore } from "../../../store/filtersStore";
 import type { IProductoGet } from "../../../types/IProductoGet";
-import type { IDetalle } from "../../../types/IDetalle";
 import { EditProductAdmin } from "../EditProductAdmin/EditProductAdmin";
 
 export const Admin = () => {
@@ -20,10 +19,6 @@ export const Admin = () => {
         setOpenEditorProducts(false);
     };
 
-    const handleOpenEditorProducts = () => {
-        setOpenEditorProducts(true);
-    };
-
     useEffect(() => {
         const fetchProductos = async () => {
             const data = await getProductosController({
@@ -34,7 +29,7 @@ export const Admin = () => {
                 talle: filtros.talles,
                 min: filtros.precioMin === "" ? null : filtros.precioMin,
                 max: filtros.precioMax === "" ? null : filtros.precioMax,
-                nombre: filtros.nombre,
+                modelo: filtros.modelo || undefined,
             });
             setProductos(data?.content || []);
         };
@@ -47,8 +42,22 @@ export const Admin = () => {
         filtros.talles,
         filtros.precioMin,
         filtros.precioMax,
-        filtros.nombre,
+        filtros.modelo,
     ]);
+
+    const fetchProd = async () => {
+        const data = await getProductosController({
+            sexo: filtros.genero,
+            tipoProducto: filtros.tipoIndumentaria,
+            categoria: filtros.categorias,
+            marca: filtros.marcas,
+            talle: filtros.talles,
+            min: filtros.precioMin === "" ? null : filtros.precioMin,
+            max: filtros.precioMax === "" ? null : filtros.precioMax,
+            modelo: filtros.modelo || undefined,
+        });
+        setProductos(data?.content || []);
+    };
 
     const detalleSeleccionado = productos
         .flatMap((p) => p.detalles)
@@ -63,8 +72,10 @@ export const Admin = () => {
     const productButtons = (productoId: number) => (
         <div className={styles.adminButtons}>
             <button
-                onClick={handleOpenEditorProducts}
-                // onClick={() => setOpenEditProductId(productoId)}
+                onClick={() => {
+                    setOpenEditProductId(productoId);
+                    setOpenEditorProducts(true);
+                }}
                 className={styles.buttonAdmin}
                 title="Editar producto"
             >
@@ -117,8 +128,16 @@ export const Admin = () => {
                             {productos.map((producto) => (
                                 <li key={producto.id} className={styles.productItem}>
                                     <div className={styles.productHeader}>
-                                        <strong>{producto.modelo}</strong> | Estado: {producto.estado ? "Activo" : "Inactivo"} | Tipo Producto: {producto.tipoProducto.charAt(0).toUpperCase() + producto.tipoProducto.slice(1).toLowerCase()} | Categoría: {producto.categoria.nombre}  
-                                        {productButtons(producto.id!)}
+                                      <span className={styles.productModel} title={producto.modelo}>
+                                        {producto.modelo}
+                                      </span>
+                                      {" | Estado: "}
+                                      {producto.estado ? "Activo" : "Inactivo"}
+                                      {" | Tipo Producto: "}
+                                      {producto.tipoProducto.charAt(0).toUpperCase() + producto.tipoProducto.slice(1).toLowerCase()}
+                                      {" | Categoría: "}
+                                      {producto.categoria.nombre}
+                                      {productButtons(producto.id!)}
                                     </div>
                                     <ul className={styles.detailList}>
                                         {producto.detalles?.map((detalle) => (
@@ -147,8 +166,12 @@ export const Admin = () => {
                 />
             )}
             {/* Aquí podrías agregar un modal para editar producto si lo necesitas */}
-            {openEditorProducts && (
-                    <EditProductAdmin onCloseEditProductAdmin={handleCloseEditorProducts} />
+            {openEditorProducts && productoSeleccionado && (
+                    <EditProductAdmin
+                      producto={productoSeleccionado}
+                      onCloseEditProductAdmin={handleCloseEditorProducts}
+                      onSuccess={fetchProd}
+                    />
                   )}
         </div>
     );

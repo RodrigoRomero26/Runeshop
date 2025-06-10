@@ -10,7 +10,7 @@ interface IFiltersStore {
 	precioMin: number | "";
 	precioMax: number | "";
 	order: string;
-	nombre: string;
+	modelo: string;
 
 	// Acciones
 	toggleGenero: (genero: string) => void;
@@ -23,7 +23,7 @@ interface IFiltersStore {
 	resetFilters: () => void;
 	setMarcaUnica: (marca: string) => void;
 	setOrder: (order: string) => void;
-	setNombre: (nombre: string) => void;
+	setModelo: (modelo: string) => void;
 }
 
 export const filtersStore = create<IFiltersStore>((set, get) => ({
@@ -35,7 +35,7 @@ export const filtersStore = create<IFiltersStore>((set, get) => ({
 	precioMin: "",
 	precioMax: "",
 	order: "",
-	nombre: "",
+	modelo: "",
 
 	toggleGenero: (g) =>
 		set((state) => ({
@@ -95,5 +95,5 @@ export const filtersStore = create<IFiltersStore>((set, get) => ({
 			precioMax: "",
 		})),
 	setOrder: (order) => set(() => ({ order })),
-	setNombre: (nombre) => set(() => ({ nombre })),
+	setModelo: (modelo) => set(() => ({ modelo })),
 }));

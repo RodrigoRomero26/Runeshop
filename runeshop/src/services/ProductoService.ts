@@ -5,6 +5,7 @@ import type { IFiltrosDto } from "../types/DTOs/IFiltrosDto";
 import type { IProductoDto } from "../types/DTOs/IProductoDto";
 import type { IProducto } from "../types/IProducto";
 import type { IProductoGet } from "../types/IProductoGet";
+import type { IProductoUpdate } from "../types/IProductoUpdate";
 import type { Page } from "../types/Pages";
 
 export class ProductoService {
@@ -42,9 +43,8 @@ export class ProductoService {
 		if (filtros.marca) filtros.marca.forEach((v) => params.append("marca", v));
 		if (filtros.talle) filtros.talle.forEach((v) => params.append("talleNumero", v.toString()));
 		if (filtros.tipoProducto) filtros.tipoProducto.forEach((v) => params.append("tipoProducto", v));
-		if (filtros.modelo) filtros.modelo.forEach((v) => params.append("modelo", v));
 		if (filtros.categoria) filtros.categoria.forEach((v) => params.append("categoria", v));
-		if (filtros.nombre) params.append("nombre", filtros.nombre);
+		if (filtros.modelo) params.append("modelo", filtros.modelo);
 
 		if (filtros.min !== null && filtros.min !== undefined) {
 			params.append("min", filtros.min.toString());
@@ -87,6 +87,16 @@ export class ProductoService {
 			return res.data;
 		} catch (error) {
 			console.error("Error al obtener producto por ID:", error);
+			return null;
+		}
+	}
+
+	static async updateProducto( producto: IProductoUpdate): Promise<IProductoUpdate | null> {
+		try {
+			const res = await api.put<IProductoGet>(`/producto`, producto);
+			return res.data;
+		} catch (error) {
+			console.error("Error al actualizar producto:", error);
 			return null;
 		}
 	}

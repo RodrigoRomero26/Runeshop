@@ -60,6 +60,32 @@
   color: #faeae4;
 }
 
+.containerInputEditProductAdmin select {
+  width: 100%;
+  padding: 10px 12px;
+  margin-bottom: 14px;
+  border: 1.5px solid #ffbcbc;
+  border-radius: 8px;
+  background: #fff8f2;
+  color: #3a2d1a;
+  font-size: 1rem;
+  font-family: "Mali", cursive, Arial, sans-serif;
+  transition: border 0.2s, box-shadow 0.2s;
+  outline: none;
+  box-shadow: 0 1px 4px #ffbcbc22;
+}
+
+.containerInputEditProductAdmin select:focus {
+  border-color: #ff7d40;
+  box-shadow: 0 0 0 2px #ffbcbc55;
+}
+
+.containerInputEditProductAdmin option {
+  background: #fff;
+  color: #3a2d1a;
+  font-family: "Mali", cursive, Arial, sans-serif;
+}
+
 .containerCheckboxEditProductAdmin {
   display: flex;
   flex-direction: row;
@@ -69,7 +95,7 @@
 
 .containerCheckboxEditProductAdmin label {
   width: 25vw;
-  padding:10px;
+  padding: 10px;
   margin: 5px 0;
   background-color: #fec1c1;
   border: 1px solid #ff9999;

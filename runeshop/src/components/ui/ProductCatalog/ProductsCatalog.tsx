@@ -22,7 +22,7 @@ export const ProductsCatalog = () => {
 		precioMin,
 		precioMax,
 		order, 
-		nombre,
+		modelo,
 	} = filtersStore();
 
 	useEffect(() => {
@@ -43,7 +43,7 @@ export const ProductsCatalog = () => {
 					talle: talles,
 					min: min,
 					max: max,
-					nombre,
+					modelo: modelo || undefined,
 				},
 				currentApiPage,
 				pageSize,
@@ -70,7 +70,7 @@ export const ProductsCatalog = () => {
 		precioMax,
 		currentApiPage,
 		order,
-		nombre, 
+		modelo, 
 	]);
 
 	useEffect(() => {

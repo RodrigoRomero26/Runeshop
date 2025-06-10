@@ -42,45 +42,57 @@
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	width: 95%;
+	width: 100%;
 	height: 95%;
 	background-color: #FAEDD8;
 	max-height: 95%;
 	overflow: auto;
-	gap: 10px;
 	padding: 5px;
 }
 
-.containerPhotos{
+.photosGrid {
   display: flex;
-  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 12px;
+  justify-content: flex-start;
+  align-items: flex-start;
+  width: 100%;
+}
+
+.containerPhotos{
+  width: 120px;
+  display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: center;
-  width: 95%;
-  height: 95%;
-  gap: 10px;
-  padding: 5px;
-  background-color: #ff9999;
+  gap: 8px;
+  padding: 8px;
+  background: #ff9999;
+  border-radius: 10px;
 }
 
 .photos {
-	max-width: 80%;
-	max-height: 80%;
-	box-shadow: 0px 0px 5px 3px rgba(0, 0, 0, 0.1);
-	display: block;
-	object-fit: cover;
-	
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 8px;
+  box-shadow: 0px 0px 5px 3px rgba(0, 0, 0, 0.1);
+  background: #fff;
+  display: block;
 }
 
 .buttonDelete {
   background-color: #ffe5bc;
   border: none;
   cursor: pointer;
-  width: 4vw;
-  height: 4vw;
+  width: 32px;
+  height: 32px;
   color: #ff9999;
-  margin: 0 5px;
+  margin: 0;
   transition: transform 0.2s;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .buttonDelete:hover {
@@ -135,6 +147,14 @@
 
   .containerButtonAdminModalEdit button{
     width: 45%;
+  }
+
+  .photos {
+    width: 65px;
+    height: 65px;
+  }
+  .containerPhotos {
+    width: 80px;
   }
 }
 

@@ -14,18 +14,26 @@
   left: 50%;
   transform: translate(-50%, -50%);
   width: 30vw;
-  height: 50vh;
-  padding: 20px;
+  min-width: 320px;
+  max-width: 95vw;
+  height: auto;
+  padding: 32px 28px 24px 28px;
   background-color: #faedd8;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 16px rgba(255, 125, 64, 0.1);
+  border-radius: 16px;
   z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 10px;
 }
 
 .containerDataAdminModalEdit {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: stretch;
   font-family: "Mali", cursive;
+  gap: 18px;
 }
 
 .containerTitleAdminModalEdit {
@@ -33,25 +41,57 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  margin-bottom: 10px;
 }
 
 .containerTitleAdminModalEdit h1 {
   font-size: 1.5rem;
+  color: #ff7d40;
+  font-family: "Mali", cursive;
+  font-weight: 700;
+  letter-spacing: 1px;
 }
 
 .containerInputAdminModalEdit {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: stretch;
+  gap: 16px;
+  margin-bottom: 10px;
+  width: 100%;
 }
 
-.containerInputAdminModalEdit input {
-  width: 25vw;
-  padding: 10px;
-  margin: 5px 0;
+.containerInputAdminModalEdit label {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  font-size: 1rem;
+  color: #ff7d40;
+  font-family: "Mali", cursive;
+  font-weight: 600;
+  margin-bottom: 2px;
+  gap: 4px;
+}
+
+.containerInputAdminModalEdit input[type="text"],
+.containerInputAdminModalEdit input[type="number"] {
+  width: 100%;
+  padding: 10px 12px;
+  margin-top: 2px;
   background-color: #fec1c1;
   border: 1px solid #ff9999;
-  border-radius: 4px;
+  border-radius: 8px;
+  color: #3a2d1a;
+  font-size: 1rem;
+  font-family: "Mali", cursive;
+  transition: border 0.2s, box-shadow 0.2s;
+  outline: none;
+  box-shadow: 0 1px 4px #ffbcbc22;
+}
+
+.containerInputAdminModalEdit input:focus {
+  border-color: #ff7d40;
+  box-shadow: 0 0 0 2px #ffbcbc55;
 }
 
 .containerInputAdminModalEdit input::placeholder {
@@ -64,86 +104,141 @@
   padding: 10px 10px;
   background-color: #ff9999;
   border: none;
-  border-radius: 4px;
-  color: #faeae4;
-  cursor: pointer;
-  font-family: "Mali", cursive;
-  width: 90%;
-  margin: 10px;
-}
-.containerButtonAdminModalEdit {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  width: 20vw;
-  gap: 5%;
-}
-
-.containerButtonAdminModalEdit button {
-  padding: 10px 10px;
-  background-color: #ff9999;
-  border: none;
-  border-radius: 4px;
+  border-radius: 6px;
   color: #faeae4;
   cursor: pointer;
   font-family: "Mali", cursive;
   width: 100%;
+  margin: 10px 0 0 0;
+  font-size: 1rem;
+  font-weight: 600;
+  transition: background 0.2s, color 0.2s;
+  box-shadow: 0 2px 8px #ffbcbc33;
 }
 
-/* Responsive */
-@media (max-width: 450px) {
+.buttonEditImagesAdminModalEdit:hover {
+
+  color: #fff;
+}
+
+.containerButtonAdminModalEdit {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  width: 100%;
+  gap: 16px;
+  margin-top: 18px;
+}
+
+.containerButtonAdminModalEdit button {
+  padding: 10px 22px;
+  background-color: #ff9999;
+  border: none;
+  border-radius: 6px;
+  color: #faeae4;
+  cursor: pointer;
+  font-family: "Mali", cursive;
+  font-size: 1rem;
+  font-weight: 600;
+  width: auto;
+  min-width: 110px;
+  transition: background 0.2s, box-shadow 0.2s;
+  box-shadow: 0 2px 8px #ff7d4033;
+}
+
+.containerButtonAdminModalEdit button:hover {
+  color: #fff;
+}
+
+/* Cambia el color del texto principal a un tono más oscuro para mejor contraste */
+.principalContainerAdminModalEdit,
+.containerDataAdminModalEdit,
+.containerTitleAdminModalEdit h1,
+.containerInputAdminModalEdit label {
+  color: #3a2d1a;
+}
+
+/* Estilos para el select de color */
+.containerInputAdminModalEdit select {
+  width: 100%;
+  padding: 10px 12px;
+  margin-top: 2px;
+  background-color: #fec1c1;
+  border: 1px solid #ff9999;
+  border-radius: 8px;
+  color: #3a2d1a;
+  font-size: 1rem;
+  font-family: "Mali", cursive;
+  transition: border 0.2s, box-shadow 0.2s;
+  outline: none;
+  box-shadow: 0 1px 4px #ffbcbc22;
+}
+
+.containerInputAdminModalEdit select:focus {
+  border-color: #ff7d40;
+  box-shadow: 0 0 0 2px #ffbcbc55;
+}
+
+.containerInputAdminModalEdit option {
+  background: #fff;
+  color: #3a2d1a;
+  font-family: "Mali", cursive;
+}
+
+.containerImageAdminModal {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+  background-color: #fec1c1;
+  border: 1px solid #ff9999;
+  border-radius: 4px;
+  width: 100%;
+  min-height: 75px;
+  max-width: 100%;
+  overflow: auto;
+  padding: 10px;
+  margin-top: 6px;
+}
+
+.imageAdminModal {
+  width: 70px;
+  height: 70px;
+  border-radius: 6px;
+  object-fit: cover;
+  background: #fff;
+  border: 1px solid #ffbcbc;
+  box-shadow: 0px 0px 5px 2px rgba(0,0,0,0.07);
+  margin-right: 0;
+}
+
+@media (max-width: 1000px) {
   .principalContainerAdminModalEdit {
     width: 75vw;
-    height: 50%;
+    padding: 18px 4vw;
   }
+  .containerInputAdminModalEdit input {
+    width: 100%;
+  }
+}
 
+@media (max-width: 600px) {
+  .principalContainerAdminModalEdit {
+    width: 95vw;
+    min-width: unset;
+    padding: 12px 2vw;
+  }
   .containerTitleAdminModalEdit h1 {
-    font-size: 0.9rem;
+    font-size: 1.1rem;
   }
-
-  .containerInputAdminModalEdit {
-    width: 90%;
-  }
-
-  .containerInputAdminModalEdit input {
-    width: 95%;
-  }
-
-  .buttonEditImagesAdminModalEdit {
-    width: 90%;
-  }
-
-  .buttonEditImagesAdminModalEdit button {
-    width: 95%;
-  }
-
   .containerButtonAdminModalEdit {
-    width: 70%;
-    gap: 12px;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 10px;
   }
-}
-
-@media (max-width: 1000px) and (min-width: 450px) {
-  .principalContainerAdminModalEdit {
-    width: 75vw;
-  }
-  .containerInputAdminModalEdit {
-    width: 90%;
-  }
-  .containerInputAdminModalEdit input {
-    width: 95%;
-  }
-
-  .buttonEditImagesAdminModalEdit {
-    width: 90%;
-  }
-
-  .buttonEditImagesAdminModalEdit button {
-    width: 95%;
-  }
-
-  .containerButtonAdminModalEdit {
-    width: 70%;
-    gap: 12px;
+  .containerButtonAdminModalEdit button {
+    width: 100%;
+    padding: 10px 0;
+    min-width: unset;
   }
 }

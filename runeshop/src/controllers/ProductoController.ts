@@ -4,6 +4,7 @@ import type { IFiltrosDto } from "../types/DTOs/IFiltrosDto";
 import type { IProductoDto } from "../types/DTOs/IProductoDto";
 import type { IProducto } from "../types/IProducto";
 import type { IProductoGet } from "../types/IProductoGet";
+import type { IProductoUpdate } from "../types/IProductoUpdate";
 import type { Page } from "../types/Pages";
 
 export const getProductosController = async (
@@ -67,3 +68,13 @@ export const getProductoByIdController = async (
 		return null;
 	}
 };
+
+export const updateProductoController = async ( producto: IProductoUpdate): Promise<IProductoUpdate | null> => {
+	try {
+		const updatedProducto = await ProductoService.updateProducto(producto);
+		return updatedProducto;
+	} catch (error) {
+		console.error("Error en updateProductoController:", error);
+		return null;
+	}
+}
