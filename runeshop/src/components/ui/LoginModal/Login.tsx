@@ -59,14 +59,13 @@ export const Login: FC<loginProps> = ({ onCloseLogin }) => {
 			const response = await loginController(formData);
 			if (response) {
 				setUserId(response.id);
-				await getUser(response.id);
-				console.log(user?.tipoUsuario)
-				if (user?.tipoUsuario === "ADMIN") {
-					console.log("Admin logged in");
-                navigate("/admin");
-            } else {
-                navigate("/userProfile");
-            }
+				const usuario = await getUser(response.id);
+				setUser(usuario!); 
+				if (usuario?.tipoUsuario === "ADMIN") {
+					navigate("/admin");
+				} else {
+					navigate("/userProfile");
+				}
 			} else {
 				Swal.fire({
 					title: "Ingreso Erroneo",

@@ -1,4 +1,4 @@
-// src/services/CategoriaService.ts
+
 import api from '../api/api';
 
 export interface Categoria {

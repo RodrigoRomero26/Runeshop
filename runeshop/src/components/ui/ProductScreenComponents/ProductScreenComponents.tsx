@@ -20,7 +20,6 @@ export const ProductScreenComponents = () => {
     const fetchProduct = async () => {
       setLoading(true);
       const prod = await getProductoByIdController(Number(id));
-      // Asigna el producto a cada detalle
       if (prod?.detalles) {
         prod.detalles = prod.detalles.map((detalle: IDetalle) => ({
           ...detalle,
@@ -40,10 +39,8 @@ export const ProductScreenComponents = () => {
     fetchProduct();
   }, [id]);
 
-  // Agrupa detalles por color
   const detallesPorColor: { [color: string]: IDetalle[] } = {};
   product?.detalles.forEach((detalle) => {
-    // Aquí detalle debe tener la propiedad producto
     if (!detallesPorColor[detalle.color]) detallesPorColor[detalle.color] = [];
     detallesPorColor[detalle.color].push(detalle);
   });
@@ -51,46 +48,36 @@ export const ProductScreenComponents = () => {
   const colores = Object.keys(detallesPorColor);
   const [selectedColor, setSelectedColor] = useState(colores[0] || "");
 
-  // Actualiza el color seleccionado si cambia la data
   useEffect(() => {
     if (colores.length && !colores.includes(selectedColor)) {
       setSelectedColor(colores[0]);
     }
   }, [product, selectedColor, colores]);
 
-  // Detalles del color seleccionado
   const detallesColorSeleccionado = detallesPorColor[selectedColor] || [];
 
-  // Imágenes del primer detalle del color seleccionado
   const imagenes: IImagenGet[] = detallesColorSeleccionado[0]?.imagenes || [];
 
-  // Talles disponibles (sin repetir)
   const tallesDisponibles: ITalle[] = Array.from(
     new Map(
       detallesColorSeleccionado.map((d) => [d.talle.numero, d.talle])
     ).values()
   );
 
-  // Estado para la imagen principal seleccionada
   const [selectedImageIdx, setSelectedImageIdx] = useState(0);
 
-  // Estado para el talle seleccionado
   const [selectedTalle, setSelectedTalle] = useState<number | null>(null);
 
-  // Estado para la cantidad a agregar
   const [cantidad, setCantidad] = useState(1);
 
-  // Cuando cambian las imágenes (por cambio de color), resetea la imagen principal
   useEffect(() => {
     setSelectedImageIdx(0);
   }, [imagenes]);
 
-  // Cuando cambia el color, resetea el talle seleccionado
   useEffect(() => {
     setSelectedTalle(null);
   }, [selectedColor]);
 
-  // Cuando cambia el talle seleccionado, resetea la cantidad a 1
   useEffect(() => {
     setCantidad(1);
   }, [selectedTalle]);
@@ -98,7 +85,6 @@ export const ProductScreenComponents = () => {
   if (loading) return <div>Cargando producto...</div>;
   if (!product) return <div>Producto no encontrado</div>;
 
-  // Busca el detalle seleccionado por color y talle
   const detalleSeleccionado = detallesColorSeleccionado.find(
     (d) => d.talle.numero === selectedTalle
   );
@@ -109,13 +95,11 @@ export const ProductScreenComponents = () => {
       return;
     }
 
-    // Buscar si ya está en el carrito
     const detalleEnCarrito = usercart?.find(
       (d) => d.id === detalleSeleccionado.id
     );
     const cantidadActual = detalleEnCarrito ? detalleEnCarrito.cantidad : 0;
 
-    // Validar stock
     if (cantidadActual + cantidad > detalleSeleccionado.stock) {
       Swal.fire({
         icon: "error",
@@ -190,25 +174,27 @@ export const ProductScreenComponents = () => {
                 </div>
 
                 <div className={styles.productColors}>
-                  {colores.map((color) => (
-                    <button
-                      key={color}
-                      className={`${styles.productColorButton} ${
-                        selectedColor === color ? styles.selected : ""
-                      }`}
-                      onClick={() => setSelectedColor(color)}
-                      type="button"
-                    >
-                      <img
-                        src={detallesPorColor[color][0]?.imagenes[0]?.imagenUrl}
-                        alt={color}
-                      />
-                    </button>
-                  ))}
+                  <label
+                    htmlFor="colorSelect"
+                    style={{ fontWeight: 600, marginRight: 8 }}
+                  >
+                    Color:
+                  </label>
+                  <select
+                    id="colorSelect"
+                    value={selectedColor}
+                    onChange={(e) => setSelectedColor(e.target.value)}
+                    className={styles.productColorSelect}
+                  >
+                    {colores.map((color) => (
+                      <option key={color} value={color}>
+                        {color.charAt(0).toUpperCase() + color.slice(1).toLowerCase()}
+                      </option>
+                    ))}
+                  </select>
                 </div>
               </div>
               <div className={styles.productsSizeCuantityContainer}>
-                {/* Talles disponibles para el color seleccionado */}
                 <div className={styles.sizesContainer}>
                   <h3>Talles disponibles:</h3>
                   <div className={styles.checkboxSizeContainer}>

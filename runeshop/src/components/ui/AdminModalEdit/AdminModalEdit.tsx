@@ -85,7 +85,7 @@ const MARCAS = [
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
-        setLoading(true); // <-- inicia loading
+        setLoading(true); 
         try {
             const talle = await talleDisponibleController(formData.talle);
             const precio = await precioDisponibleController(formData.precio, formData.precioCompra);
@@ -118,7 +118,7 @@ const MARCAS = [
         } catch (err) {
             alert("Error al actualizar el detalle");
         } finally {
-            setLoading(false); // <-- termina loading
+            setLoading(false);
         }
     };
 

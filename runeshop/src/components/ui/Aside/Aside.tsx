@@ -24,12 +24,12 @@ export const Aside = () => {
     resetFilters,
   } = filtersStore();
 
-  // Estados locales para guardar los datos traídos de la API
   const TiposIndumentariaDisponibles = [
     "Zapatilla",
     "Remera",
     "Campera",
     "Botin",
+    "Pantalon",
   ];
   const [categoriasDisponibles, setCategoriasDisponibles] = useState<
     ICategoria[]
@@ -217,5 +217,4 @@ export const Aside = () => {
 
 export default Aside;
 
-// Puedes definirlo arriba o traerlo de la API si lo necesitas
 const marcasDisponibles = ["Adidas", "Puma", "Nike", "Reebok"];

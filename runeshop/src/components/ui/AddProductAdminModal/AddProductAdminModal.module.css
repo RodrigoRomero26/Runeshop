@@ -148,6 +148,25 @@
   margin-top: 18px;
 }
 
+.imageWrapperColumn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.imageAdminModal,
+.previewImage {
+  width: 38px;
+  height: 38px;
+  object-fit: cover;
+  border-radius: 6px;
+  border: 1.5px solid #ffbcbc;
+  box-shadow: 0 1px 4px #ffbcbc33;
+  background: #fff8f2;
+  transition: border 0.2s, box-shadow 0.2s;
+  margin-right: 0;
+}
+
 .containerButtonAddProductAdminModal button {
   padding: 10px 22px;
   background-color: #ff9999;
@@ -167,6 +186,60 @@
 .containerButtonAddProductAdminModal button:hover {
   background-color: #ff7d40;
   color: #fff;
+}
+
+.previewImagesContainer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 8px;
+  margin-bottom: 8px;
+  justify-content: flex-start;
+}
+
+.previewImagesContainer img {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 10px;
+  border: 2px solid #ffbcbc;
+  box-shadow: 0 2px 8px #ffbcbc33;
+  background: #fff8f2;
+  transition: border 0.2s, box-shadow 0.2s;
+  margin-right: 6px;
+}
+
+.previewImage {
+  width: 48px;
+  height: 48px;
+  object-fit: cover;
+  border-radius: 6px;
+  border: 1.5px solid #ffbcbc;
+  box-shadow: 0 1px 4px #ffbcbc33;
+  background: #fff8f2;
+  transition: border 0.2s, box-shadow 0.2s;
+  margin-right: 0;
+}
+
+.previewImage:hover {
+  border-color: #ff7d40;
+  box-shadow: 0 0 0 2px #ffbcbc55;
+}
+
+.containerImageAdminModal {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 8px;
+  margin-top: 8px;
+  margin-bottom: 8px;
+  overflow-x: auto;
+  max-width: 100%;
+  min-width: 220px;
+  width: 220px; /* Fija el ancho del contenedor */
+  padding-bottom: 4px;
+  background: #fff8f2;
+  border-radius: 8px;
+  border: 1px solid #ffbcbc;
 }
 
 /* Responsive */

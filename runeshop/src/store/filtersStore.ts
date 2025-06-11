@@ -1,4 +1,4 @@
-// src/stores/filtersStore.ts
+
 import { create } from "zustand";
 
 interface IFiltersStore {
@@ -12,7 +12,6 @@ interface IFiltersStore {
 	order: string;
 	modelo: string;
 
-	// Acciones
 	toggleGenero: (genero: string) => void;
 	toggleTipoIndumentaria: (tipo: string) => void;
 	toggleCategoria: (categoria: string) => void;

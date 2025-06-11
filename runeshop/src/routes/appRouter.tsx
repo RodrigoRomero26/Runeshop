@@ -11,7 +11,7 @@ import { PendingScreen } from "../components/Screens/PendingScreen/PendingScreen
 import { ErrorScreen } from "../components/Screens/ErrorScreen/ErrorScreen.tsx"
 
 export const appRouter = () => {
-    const user = userStore(state => state.user); // así se actualiza en cada render
+    const user = userStore(state => state.user); 
 
     return (
         <Routes>
@@ -25,7 +25,7 @@ export const appRouter = () => {
                 element={
                     user && user.tipoUsuario === "ADMIN"
                         ? <AdminScreen />
-                        : <Navigate to="/userProfile" />
+                        : <Navigate to="/" />
                 }
             />
             <Route path="/success" element={<SuccessScreen />} />

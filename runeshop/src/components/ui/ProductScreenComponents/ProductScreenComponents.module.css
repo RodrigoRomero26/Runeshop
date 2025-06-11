@@ -185,6 +185,17 @@
   border-radius: 50%;
 }
 
+.productColorSelect {
+  padding: 6px 12px;
+  border-radius: 6px;
+  border: 1px solid #ffbcbc;
+  font-family: "Mali", cursive;
+  font-size: 1rem;
+  background: #fff8f2;
+  color: #3a2d1a;
+  margin-bottom: 8px;
+}
+
 /* Talles */
 .sizesContainer {
   display: flex;

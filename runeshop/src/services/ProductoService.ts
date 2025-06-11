@@ -1,5 +1,6 @@
-// src/services/ProductoService.ts
+
 import api from "../api/api";
+import type { IDetalleCreate } from "../types/DTOs/IDetalleCreate";
 import type { IDetalleDto } from "../types/DTOs/IDetalleDto";
 import type { IFiltrosDto } from "../types/DTOs/IFiltrosDto";
 import type { IProductoDto } from "../types/DTOs/IProductoDto";
@@ -9,25 +10,24 @@ import type { Page } from "../types/Pages";
 
 export class ProductoService {
 	static async crearProducto(
-		producto: IProductoDto,
-		detalle: IDetalleDto,
-		imagenes: File[]
-	): Promise<any | null> {
-		try {
-			const formData = new FormData();
-			formData.append("producto", JSON.stringify(producto));
-			formData.append("detalle", JSON.stringify(detalle));
-			imagenes.forEach((img) => formData.append("imagen", img));
+	producto: IProductoDto,
+	detalle: IDetalleCreate,
+	imagenes: File[]
+): Promise<any | null> {
+	try {
+		const formData = new FormData();
+		formData.append("producto", JSON.stringify(producto));
+		formData.append("detalle", JSON.stringify(detalle));
+		imagenes.forEach((img) => formData.append("imagen", img));
 
-			const res = await api.post("/producto/crear_producto", formData, {
-				headers: { "Content-Type": "multipart/form-data" },
-			});
-			return res.data;
-		} catch (error) {
-			console.error("Error al crear producto:", error);
-			return null;
-		}
+		const res = await api.post("/producto/crear_producto", formData);
+		return res.data;
+	} catch (error) {
+		console.error("Error al crear producto:", error);
+		return null;
 	}
+}
+
 
 	static async getProductosPaginados(
 	filtros: IFiltrosDto = {},

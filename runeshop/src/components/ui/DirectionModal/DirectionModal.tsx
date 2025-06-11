@@ -52,7 +52,6 @@ export const DirectionModal: FC<directionModalProps> = ({
 			} else {
 				setDepartamentos([]);
 			}
-			// reset departamento if provincia changes
 			setFormData((prev) => ({ ...prev, departamento: "" }));
 			setErrors((prev) => {
 				const newErrors = { ...prev };

@@ -70,10 +70,8 @@ const [formData, setFormData] = useState({
 
 		
 	});
-// Guarda la provincia anterior
 const [prevProvincia, setPrevProvincia] = useState(addressToEdit?.provincia || "");
 
-// Efecto para cargar departamentos cuando cambia la provincia
 useEffect(() => {
     const loadDepartamentos = async () => {
         if (formData.provincia) {
@@ -85,7 +83,6 @@ useEffect(() => {
     };
     loadDepartamentos();
 
-    // Si la provincia cambió, borra el departamento
     if (prevProvincia !== formData.provincia) {
         setFormData((prev) => ({ ...prev, departamento: "" }));
         setErrors((prev) => {
@@ -95,7 +92,6 @@ useEffect(() => {
         });
         setPrevProvincia(formData.provincia);
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
 }, [formData.provincia]);
 
 	const handleChange = async (

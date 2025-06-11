@@ -1,4 +1,5 @@
 import { ProductoService } from "../services/ProductoService";
+import type { IDetalleCreate } from "../types/DTOs/IDetalleCreate";
 import type { IDetalleDto } from "../types/DTOs/IDetalleDto";
 import type { IFiltrosDto } from "../types/DTOs/IFiltrosDto";
 import type { IProductoDto } from "../types/DTOs/IProductoDto";
@@ -29,7 +30,7 @@ export const getProductosController = async (
 
 export const crearProductoController = async (
 	producto: IProductoDto,
-	detalle: IDetalleDto,
+	detalle: IDetalleCreate,
 	imagenes: File[]
 ): Promise<any | null> => {
 	try {

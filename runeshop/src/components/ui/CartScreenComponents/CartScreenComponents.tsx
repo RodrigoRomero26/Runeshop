@@ -1,3 +1,4 @@
+import { getMercadoPagoLinkController } from "../../../controllers/MercadoPagoController";
 import { useUser } from "../../../hooks/useUser";
 import { CartModalCards } from "../CartModalCards/CartModalCards";
 import styles from "./CartScreenComponents.module.css";
@@ -9,7 +10,6 @@ export const CartScreenComponents = () => {
     const [selectedAddressId, setSelectedAddressId] = useState<number | null>(null);
     const navigate = useNavigate();
 
-    // Sumar precios del carrito
     const total = usercart && usercart.length > 0
         ? usercart.reduce(
             (sum, detalle) =>
@@ -19,7 +19,6 @@ export const CartScreenComponents = () => {
         )
         : 0;
 
-    // Obtener direcciones del usuario (estructura anidada)
     const direcciones = user?.usuariosDirecciones?.filter((d) => d.direccion.estado) ?? [];
 
     useEffect(() => {
@@ -29,7 +28,22 @@ export const CartScreenComponents = () => {
         }
     }, [direcciones, selectedAddressId]);
 
-    // 1. Si no hay sesión iniciada
+    const handlePagar = async () => {
+        if (!selectedAddressId || !usercart || usercart.length === 0) return;
+        try {
+            const detallesId = usercart.map(detalle => detalle.id).filter((id): id is number => typeof id === "number");
+            const link = await getMercadoPagoLinkController(selectedAddressId, detallesId);
+            console.log("Link de pago obtenido:", link);
+            if (link) {
+                window.location.href = link; 
+            } else {
+                alert("No se pudo obtener el link de pago.");
+            }
+        } catch (err) {
+            alert("Error al iniciar el pago con Mercado Pago");
+        }
+    };
+
     if (!user) {
         return (
             <div className={styles.principalContainerCartScreenComponents}>
@@ -45,7 +59,6 @@ export const CartScreenComponents = () => {
         );
     }
 
-    // 2. Si no hay direcciones
     if (direcciones.length === 0) {
         return (
             <div className={styles.principalContainerCartScreenComponents}>
@@ -67,7 +80,6 @@ export const CartScreenComponents = () => {
         );
     }
 
-    // 3. Si todo está OK, render normal
     return (
         <div className={styles.principalContainerCartScreenComponents}>
             <div className={styles.dataContainerCartScreenComponents}>
@@ -119,17 +131,18 @@ export const CartScreenComponents = () => {
                             className={styles.addressSelect}
                         >
                             {direcciones.map((dir) => (
-                                <option key={dir.direccion.id} value={dir.direccion.id}>
+                                <option key={dir.id} value={dir.id}>
                                     {dir.direccion.direccion} - {dir.direccion.departamento} - {dir.direccion.provincia}
                                 </option>
                             ))}
                         </select>
                         <button
-                        className={styles.summarySideContainerButton}
-                        disabled={!usercart || usercart.length === 0 || !selectedAddressId}
-                    >
-                        Ir a pagar
-                    </button>
+                            className={styles.summarySideContainerButton}
+                            disabled={!usercart || usercart.length === 0 || !selectedAddressId}
+                            onClick={handlePagar}
+                        >
+                            Ir a pagar
+                        </button>
                     </div>
                     
                 </div>

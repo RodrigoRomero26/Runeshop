@@ -1,7 +1,9 @@
-// src/services/DetalleService.ts
+
+import { number } from 'yup';
 import api from '../api/api';
 import type { IDetalleUpdate } from '../types/DTOs/IDetalleUpdate';
 import type { IDetalle } from '../types/IDetalle';
+import type { IDetalleCreate } from '../types/DTOs/IDetalleCreate';
 
 export class DetalleService {
   static async actualizarImagenDetalle(detalleId: number, imagenId: number, imagen: File): Promise<any | null> {
@@ -46,6 +48,29 @@ export class DetalleService {
   static async updateDetalle(detalle: IDetalleUpdate): Promise<IDetalle | null> {
     try {
       const res = await api.put('/detalle', detalle);
+      return res.data;
+    } catch (error) {
+      console.error(error);
+      return null;
+    }
+  }
+
+  static async agregarDetalle(
+    detalle: IDetalleCreate,
+    prodID: number,
+    imagen: File[]
+  ): Promise<IDetalle | null> {
+    try {
+      const formData = new FormData();
+      formData.append('detalle', JSON.stringify(detalle));
+      formData.append('prodID', String(prodID));
+      imagen.forEach((file, idx) => {
+        formData.append('imagen', file);
+      });
+
+      const res = await api.post(`/detalle/agregar`, formData, {
+        headers: { 'Content-Type': 'multipart/form-data' },
+      });
       return res.data;
     } catch (error) {
       console.error(error);

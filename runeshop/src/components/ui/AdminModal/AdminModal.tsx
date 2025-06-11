@@ -8,7 +8,7 @@ interface adminModalProps {
   onCloseAdminModal: () => void;
   detalle: IDetalle;
   producto: IProductoGet;
-  onSuccess?: () => void; // <-- agrega esto
+  onSuccess?: () => void; 
 }
 
 export const AdminModal: FC<adminModalProps> = ({ onCloseAdminModal, detalle, producto, onSuccess }) => {
@@ -30,7 +30,7 @@ export const AdminModal: FC<adminModalProps> = ({ onCloseAdminModal, detalle, pr
         detalle={detalle}
         producto={producto}
         onCloseAdminModalEdit={handleCloseEditor}
-        onSuccess={onSuccess} // <-- pasa la prop
+        onSuccess={onSuccess} 
       />
     );
   }

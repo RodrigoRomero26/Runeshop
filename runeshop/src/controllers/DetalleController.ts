@@ -1,4 +1,5 @@
 import { DetalleService } from '../services/DetalleService';
+import type { IDetalleCreate } from '../types/DTOs/IDetalleCreate';
 import type { IDetalleUpdate } from '../types/DTOs/IDetalleUpdate';
 import type { IDetalle } from '../types/IDetalle';
 
@@ -21,3 +22,17 @@ export const updateDetalleController = async (detalle: IDetalleUpdate): Promise<
     return null;
   }
 };
+
+export const agregarDetalleController = async (
+  detalle: IDetalleCreate,
+  prodID: number,
+  imagen: File[]
+): Promise<IDetalle | null> => {
+  try {
+    const newDetalle = await DetalleService.agregarDetalle(detalle, prodID, imagen);
+    return newDetalle;
+  } catch (error) {
+    console.error("Error en agregarDetalleController:", error);
+    return null;
+  }
+}

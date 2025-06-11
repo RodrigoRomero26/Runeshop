@@ -6,7 +6,7 @@ import type { ICategoria } from "../../../types/ICategoria";
 import { getCategoriasController } from "../../../controllers/CategoriaController";
 import { updateProductoController } from "../../../controllers/ProductoController";
 
-const TIPOS_PRODUCTO = ["ZAPATILLA", "REMERA", "CAMPERA", "BOTIN"];
+const TIPOS_PRODUCTO = ["ZAPATILLA", "REMERA", "CAMPERA", "BOTIN", "PANTALON"];
 
 const SEXOS = ["HOMBRE", "MUJER"];
 

@@ -146,7 +146,6 @@ export const useUser = () => {
         }
     };
 
-    // --- SOLO DETALLES EN EL CARRITO ---
     const addDetailToCart = async (detalle: IDetalle, cantidad: number) => {
         setUserCart(detalle, cantidad);
         Swal.fire({

@@ -24,7 +24,7 @@ interface IUserStore {
 	incrementProductQuantity: (detalleId: number) => void;
 	decrementProductQuantity: (detalleId: number) => void;
 	removeFromCart: (detalleId: number) => void;
-	clearCart: () => void; // Nueva acción para limpiar el carrito
+	clearCart: () => void;
 }
 
 export const userStore = create<IUserStore>()(
@@ -59,15 +59,12 @@ export const userStore = create<IUserStore>()(
 				const updatedCart = [...currentCart];
 				const cantidadActual = updatedCart[index].cantidad;
 				const nuevaCantidad = cantidadActual + cantidad;
-				// Validar stock
 				if (nuevaCantidad > detalle.stock) {
-					// Opcional: puedes lanzar un error o mostrar un mensaje aquí
 					return { usercart: currentCart };
 				}
 				updatedCart[index].cantidad = nuevaCantidad;
 				return { usercart: updatedCart };
 			}
-			// Validar stock al agregar nuevo
 			if (cantidad > detalle.stock) {
 				return { usercart: currentCart };
 			}
@@ -78,11 +75,9 @@ export const userStore = create<IUserStore>()(
 			const currentCart = state.usercart ?? [];
 			const updatedCart = currentCart.map((d) => {
 				if (d.id === detalleId) {
-					// Validar stock antes de incrementar
 					if (d.cantidad < d.stock) {
 						return { ...d, cantidad: d.cantidad + 1 };
 					}
-					// Si ya está en el tope, no incrementa
 					return d;
 				}
 				return d;
@@ -108,7 +103,7 @@ export const userStore = create<IUserStore>()(
 	clearCart: () => set({ usercart: null }),
         }),
         {
-            name: "user-storage", // clave en localStorage
+            name: "user-storage",
             partialize: (state) => ({
                 usercart: state.usercart,
                 user: state.user,

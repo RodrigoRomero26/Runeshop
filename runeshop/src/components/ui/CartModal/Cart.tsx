@@ -35,7 +35,6 @@ export const Cart: FC<cartProps> = ({ onCloseCart }) => {
     };
   }, [onCloseCart]);
 
-  // Calcula el total correctamente usando precio_descuento si existe, sino precioVenta
   const total = usercart && usercart.length > 0
     ? usercart.reduce(
         (sum, detalle) =>

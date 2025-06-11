@@ -69,7 +69,6 @@ export const Admin = () => {
 
     const productoSeleccionado = productos.find((p) => p.id === openEditProductId);
 
-    // Busca el producto relacionado al detalle seleccionado
     const productoDelDetalle = productos.find((p) =>
       p.detalles.some((d) => d.id === openDetailsId)
     );
@@ -89,7 +88,6 @@ export const Admin = () => {
             <button
                 className={styles.buttonAdmin}
                 title="Eliminar producto"
-                // onClick={...}
             >
                 <span className="material-symbols-outlined">delete</span>
             </button>
@@ -115,7 +113,6 @@ export const Admin = () => {
             <button
                 className={styles.buttonAdmin}
                 title="Eliminar detalle"
-                // onClick={...}
             >
                 <span className="material-symbols-outlined">delete</span>
             </button>
