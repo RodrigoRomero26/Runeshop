@@ -31,9 +31,11 @@ export const CartScreenComponents = () => {
     const handlePagar = async () => {
         if (!selectedAddressId || !usercart || usercart.length === 0) return;
         try {
-            const detallesId = usercart.map(detalle => detalle.id).filter((id): id is number => typeof id === "number");
+            // Por cada detalle, agrega su id tantas veces como su cantidad
+            const detallesId = usercart.flatMap(detalle =>
+                Array(detalle.cantidad).fill(Number(detalle.id))
+            );
             const link = await getMercadoPagoLinkController(selectedAddressId, detallesId);
-            console.log("Link de pago obtenido:", link);
             if (link) {
                 window.location.href = link; 
             } else {

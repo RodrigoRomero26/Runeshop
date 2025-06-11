@@ -6,6 +6,8 @@ import { getProductosController } from "../../../controllers/ProductoController"
 import { filtersStore } from "../../../store/filtersStore";
 import type { IProductoGet } from "../../../types/IProductoGet";
 import { EditProductAdmin } from "../EditProductAdmin/EditProductAdmin";
+import { updateDetalleController } from "../../../controllers/DetalleController";
+import type { IDetalleUpdate } from "../../../types/DTOs/IDetalleUpdate";
 
 export const Admin = () => {
     const [openDetailsId, setOpenDetailsId] = useState<number | null>(null);
@@ -73,6 +75,10 @@ export const Admin = () => {
       p.detalles.some((d) => d.id === openDetailsId)
     );
 
+    const productoDelDetalleAddStock = productos.find((p) =>
+      p.detalles.some((d) => d.id === openAddStockId)
+    );
+
     const productButtons = (productoId: number) => (
         <div className={styles.adminButtons}>
             <button
@@ -85,39 +91,95 @@ export const Admin = () => {
             >
                 <span className="material-symbols-outlined">edit</span>
             </button>
-            <button
-                className={styles.buttonAdmin}
-                title="Eliminar producto"
-            >
-                <span className="material-symbols-outlined">delete</span>
-            </button>
+
         </div>
     );
 
-    const detailButtons = (detalleId: number) => (
-        <div className={styles.adminButtons}>
-            <button
-                onClick={() => setOpenDetailsId(detalleId)}
-                className={styles.buttonAdmin}
-                title="Ver detalle"
-            >
-                <span className="material-symbols-outlined">visibility</span>
-            </button>
-            <button
-                onClick={() => setOpenAddStockId(detalleId)}
-                className={styles.buttonAdmin}
-                title="Agregar stock"
-            >
-                <span className="material-symbols-outlined">add</span>
-            </button>
-            <button
-                className={styles.buttonAdmin}
-                title="Eliminar detalle"
-            >
-                <span className="material-symbols-outlined">delete</span>
-            </button>
-        </div>
-    );
+    // Handler para eliminar (desactivar) un detalle
+    const handleEliminarDetalle = async (detalle: IDetalleUpdate, producto: IProductoGet) => {
+        if (!window.confirm("¿Seguro que deseas eliminar este detalle?")) return;
+        try {
+            const { detalles, ...productoSinDetalles } = producto;
+            const apiData = {
+                id: detalle.id,
+                color: detalle.color,
+                estado: String(detalle.estado),
+                marca: detalle.marca,
+                producto: productoSinDetalles,
+                descuentos: detalle.descuentos,
+                precio_descuento: detalle.precio_descuento,
+                inicioDescuento: detalle.inicioDescuento,
+                finDescuento: detalle.finDescuento,
+                stock: detalle.stock,
+                talle: detalle.talle,
+                precio: detalle.precio,
+                imagenes: detalle.imagenes,
+            };
+            await updateDetalleController(apiData);
+            await fetchProd();
+        } catch (err) {
+            alert("Error al eliminar el detalle");
+        }
+    };
+
+    const handleToggleEstadoDetalle = async (detalle: IDetalleUpdate, producto: IProductoGet) => {
+        if (!window.confirm(`¿Seguro que deseas ${detalle.estado ? "desactivar" : "activar"} este detalle?`)) return;
+        try {
+            const { detalles, ...productoSinDetalles } = producto;
+            const apiData = {
+                ...detalle,
+                estado: (!detalle.estado).toString(),
+                producto: productoSinDetalles,
+            };
+            await updateDetalleController(apiData);
+            await fetchProd();
+        } catch (err) {
+            alert("Error al cambiar el estado del detalle");
+        }
+    };
+
+    const detailButtons = (detalleId: number) => {
+        const detalle = productos.flatMap((p) => p.detalles).find((d) => d.id === detalleId);
+        const producto = productos.find((p) => p.detalles.some((d) => d.id === detalleId));
+        if (!detalle || !producto) return null;
+
+        return (
+            <div className={styles.adminButtons}>
+                <button
+                    onClick={() => setOpenDetailsId(detalleId)}
+                    className={styles.buttonAdmin}
+                    title="Ver detalle"
+                >
+                    <span className="material-symbols-outlined">visibility</span>
+                </button>
+                <button
+                    onClick={() => setOpenAddStockId(detalleId)}
+                    className={styles.buttonAdmin}
+                    title="Agregar stock"
+                >
+                    <span className="material-symbols-outlined">add</span>
+                </button>
+                {detalle.estado ? (
+                    <button
+                        className={styles.buttonAdmin}
+                        title="Desactivar detalle"
+                        onClick={() => handleToggleEstadoDetalle(detalle, producto)}
+                    >
+                        <span className="material-symbols-outlined">delete</span>
+                    </button>
+                ) : (
+                    <button
+                        className={styles.buttonAdmin}
+                        title="Activar detalle"
+                        onClick={() => handleToggleEstadoDetalle(detalle, producto)}
+                    >
+                        <span className="material-symbols-outlined">check</span>
+                    </button>
+                )}
+                
+            </div>
+        );
+    };
 
     return (
         <div className={styles.principalContainerAdmin}>
@@ -146,7 +208,7 @@ export const Admin = () => {
                                     <ul className={styles.detailList}>
                                         {producto.detalles?.map((detalle) => (
                                             <li key={detalle.id} className={styles.detailItem}>
-                                                Talle: {detalle.talle.numero} | Color: {detalle.color} | Precio: ${detalle.precio.precioVenta} | Stock: {detalle.stock}
+                                                Talle: {detalle.talle.numero} | Color: {detalle.color} | Precio: ${detalle.precio.precioVenta} | Stock: {detalle.stock} | {detalle.estado ? "Activo" : "Inactivo"}
                                                 {detailButtons(detalle.id!)}
                                             </li>
                                         ))}
@@ -169,6 +231,8 @@ export const Admin = () => {
                 <AddStockModal
                     detalle={detalleAddStock}
                     onCloseAddStockModal={() => setOpenAddStockId(null)}
+                    onRefreshAdminData={fetchProd}
+                    productoIn={productoDelDetalleAddStock!}
                 />
             )}
             {openEditorProducts && productoSeleccionado && (

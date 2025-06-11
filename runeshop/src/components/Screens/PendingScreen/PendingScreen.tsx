@@ -2,12 +2,14 @@ import styles from "./PendingScreen.module.css";
 import { Footer } from "../../ui/Footer/Footer";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { userStore } from "../../../store/userStore";
 
 export const PendingScreen = () => {
     const navigate = useNavigate();
     const [seconds, setSeconds] = useState(5);
 
     useEffect(() => {
+        userStore.getState().clearCart();
         const interval = setInterval(() => {
             setSeconds((s) => s - 1);
         }, 1000);

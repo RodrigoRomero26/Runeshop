@@ -55,26 +55,40 @@ export class DetalleService {
     }
   }
 
-  static async agregarDetalle(
-    detalle: IDetalleCreate,
-    prodID: number,
-    imagen: File[]
-  ): Promise<IDetalle | null> {
-    try {
-      const formData = new FormData();
-      formData.append('detalle', JSON.stringify(detalle));
-      formData.append('prodID', String(prodID));
-      imagen.forEach((file, idx) => {
-        formData.append('imagen', file);
-      });
+// En DetalleService
+static async agregarDetalle(detalle: IDetalleCreate, prodId: number, imagen: File[]): Promise<IDetalle | null> {
+  try {
+    const formData = new FormData();
 
-      const res = await api.post(`/detalle/agregar`, formData, {
-        headers: { 'Content-Type': 'multipart/form-data' },
-      });
-      return res.data;
-    } catch (error) {
-      console.error(error);
-      return null;
-    }
+    formData.append(
+				"detalle",
+				new Blob([JSON.stringify(detalle)], { type: "application/json" })
+			);
+
+      formData.append(
+				"prodId",
+				new Blob([JSON.stringify(prodId)], { type: "application/json" })
+			);
+
+      imagen.forEach((img) => {
+				const correctedImage = img.type
+					? img
+					: new File([img], img.name, { type: "image/jpeg" }); // cambiar a image/png si fuera necesario
+
+				formData.append("imagen", correctedImage);
+			});
+
+    const res = await api.post("/detalle/agregar", formData, {
+				headers: {
+					"Content-Type": "multipart/form-data", // opcional, axios lo maneja bien solo
+				},
+			});
+    return res.data;
+  } catch (error) {
+    console.error('Error al agregar detalle:', error);
+    return null;
   }
+}
+
+
 }

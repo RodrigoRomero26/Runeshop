@@ -281,7 +281,7 @@ export const AddProductAdminModal: FC<AddProductAdminModalProps> = ({
 					precio: { id: detalleLimpio.precio.id as number },
 					producto: { id: productoRecibido.id },
 				};
-
+        
 				await agregarDetalleController(detalleApi, productoRecibido.id, detalle.imagenes);
 			}
 

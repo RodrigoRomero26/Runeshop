@@ -1,13 +1,17 @@
 import styles from "./SuccessScreen.module.css";
 import { Footer } from "../../ui/Footer/Footer";
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";// importa tu store de carrito
+import { useUser } from "../../../hooks/useUser";
+import { userStore } from "../../../store/userStore";
 
 export const SuccessScreen = () => {
     const navigate = useNavigate();
     const [seconds, setSeconds] = useState(4);
 
+
     useEffect(() => {
+        userStore.getState().clearCart();
         const interval = setInterval(() => {
             setSeconds((s) => s - 1);
         }, 1000);
@@ -33,7 +37,8 @@ export const SuccessScreen = () => {
                             Recibirás un correo de confirmación con los detalles de tu compra.
                         </p>
                         <p>
-                            Serás redirigido al inicio en <b>{seconds}</b> segundo{seconds !== 1 && "s"}...
+                            Serás redirigido al inicio en <b>{seconds}</b> segundo{" "}
+                            {seconds !== 1 && "s"}...
                         </p>
                     </div>
                 </div>
