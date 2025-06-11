@@ -1,106 +1,104 @@
 .overlay {
-	position: fixed;
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 100%;
-	background-color: rgba(0, 0, 0, 0.5);
-	z-index: 999;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 999;
 }
 
 .principalContainerAdminModalEdit {
-	position: fixed;
-	top: 50%;
-	left: 50%;
-	transform: translate(-50%, -50%);
-	width: 30vw;
-	min-width: 320px;
-	max-width: 95vw;
-	max-height: 70%;
-	padding: 32px 28px 24px 28px;
-	background-color: #faedd8;
-	border-radius: 16px;
-	z-index: 1000;
-	display: flex;
-	flex-direction: column;
-	align-items: stretch;
-	gap: 10px;
-	overflow: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 30vw;
+  min-width: 320px;
+  max-width: 95vw;
+  max-height: 70%;
+  padding: 32px 28px 24px 28px;
+  background-color: #faedd8;
+  border-radius: 16px;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 10px;
+  overflow: none;
 }
 
 .containerDataAdminModalEdit {
-	display: flex;
-	flex-direction: column;
-	align-items: stretch;
-	font-family: "Mali", cursive;
-	gap: 18px;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  font-family: "Mali", cursive;
+  gap: 18px;
 }
 
 .containerTitleAdminModalEdit {
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .containerTitleAdminModalEdit h1 {
-	font-size: 1.5rem;
-	color: #ff9999;
-	font-family: "Mali", cursive;
-	font-weight: 700;
-	letter-spacing: 1px;
+  font-size: 1.5rem;
+  color: #ff9999;
+  font-family: "Mali", cursive;
+  font-weight: 700;
+  letter-spacing: 1px;
 }
 
 .containerInputAdminModalEdit {
-	display: flex;
-	flex-direction: column;
-	align-items: stretch;
-	gap: 10px;
-	width: 100%;
-	max-height: 55vh;
-	overflow-y: auto;
-	overflow-x: hidden;
-	padding: 0 12px 0 0;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 10px;
+  width: 100%;
+  max-height: 55vh;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 0 12px 0 0;
 }
 
 .containerInputAdminModalEdit label {
-	display: flex;
-	flex-direction: column;
-	align-items: flex-start;
-	font-size: 1rem;
-	font-family: "Mali", cursive;
-	font-weight: 600;
-	margin-bottom: 2px;
-	gap: 4px;
-
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  font-size: 1rem;
+  font-family: "Mali", cursive;
+  font-weight: 600;
+  margin-bottom: 2px;
+  gap: 4px;
 }
 
-.sizeInput input{
-	width: 93%;
-	padding: 10px 12px;
-	margin-top: 2px;
-	background-color: #fec1c1;
-	border: 1px solid #ff9999;
-	border-radius: 8px;
-	font-size: 1rem;
-	font-family: "Mali", cursive;
-	transition: border 0.2s, box-shadow 0.2s;
-	outline: none;
+.sizeInput input {
+  width: 93%;
+  padding: 10px 12px;
+  margin-top: 2px;
+  background-color: #fec1c1;
+  border: 1px solid #ff9999;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-family: "Mali", cursive;
+  transition: border 0.2s, box-shadow 0.2s;
+  outline: none;
 }
-
 
 .containerInputAdminModalEdit input[type="text"],
 .containerInputAdminModalEdit input[type="number"] {
-	width: 85%;
-	padding: 10px 12px;
-	margin-top: 2px;
-	background-color: #fec1c1;
-	border: 1px solid #ff9999;
-	border-radius: 8px;
-	font-size: 1rem;
-	font-family: "Mali", cursive;
-	transition: border 0.2s, box-shadow 0.2s;
-	outline: none;
+  width: 85%;
+  padding: 10px 12px;
+  margin-top: 2px;
+  background-color: #fec1c1;
+  border: 1px solid #ff9999;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-family: "Mali", cursive;
+  transition: border 0.2s, box-shadow 0.2s;
+  outline: none;
 }
 
 .containerInputAdminModalEdit option {
@@ -109,12 +107,11 @@
   font-family: "Mali", cursive;
 }
 
-
-.containerInputAdminModalEdit input[type="file"]{
+.containerInputAdminModalEdit input[type="file"] {
   font-family: "Mali", cursive;
 }
 
-.containerInputAdminModalEdit ::-webkit-file-upload-button{
+.containerInputAdminModalEdit ::-webkit-file-upload-button {
   font-family: "Mali", cursive;
   color: #fff;
   background-color: #ff9999;
@@ -123,251 +120,253 @@
   border-radius: 4px;
 }
 .containerInputAdminModalEdit input:focus {
-	border-color: #ff9999;
+  border-color: #ff9999;
 }
 
 .containerInputAdminModalEdit input::placeholder {
-	background: #fec1c1;
-	font-family: "Mali", cursive;
-	color: #faeae4;
+  background: #fec1c1;
+  font-family: "Mali", cursive;
+  color: #faeae4;
 }
 
 .buttonEditImagesAdminModalEdit {
-	padding: 10px 10px;
-	background-color: #ff9999;
-	border: none;
-	border-radius: 6px;
-	color: #faeae4;
-	cursor: pointer;
-	font-family: "Mali", cursive;
-	width: 100%;
-	margin: 10px 0 0 0;
-	font-size: 1rem;
-	font-weight: 600;
-	transition: background 0.2s, color 0.2s;
+  padding: 10px 10px;
+  background-color: #ff9999;
+  border: none;
+  border-radius: 6px;
+  color: #faeae4;
+  cursor: pointer;
+  font-family: "Mali", cursive;
+  width: 100%;
+  margin: 10px 0 0 0;
+  font-size: 1rem;
+  font-weight: 600;
+  transition: background 0.2s, color 0.2s;
 }
 
 .buttonEditImagesAdminModalEdit:hover {
-	color: #fff;
+  color: #fff;
 }
 
 .containerButtonAdminModalEdit {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	width: 100%;
-	gap: 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  gap: 16px;
 }
 
 .containerButtonAdminModalEdit button {
-	padding: 10px 22px;
-	background-color: #ff9999;
-	border: none;
-	border-radius: 6px;
-	color: #faeae4;
-	cursor: pointer;
-	font-family: "Mali", cursive;
-	font-size: 1rem;
-	width: 40%;
-	min-width: 110px;
-	transition: background 0.2s, box-shadow 0.2s;
+  padding: 10px 22px;
+  background-color: #ff9999;
+  border: none;
+  border-radius: 6px;
+  color: #faeae4;
+  cursor: pointer;
+  font-family: "Mali", cursive;
+  font-size: 1rem;
+  width: 40%;
+  min-width: 110px;
+  transition: background 0.2s, box-shadow 0.2s;
 }
 
 .containerButtonAdminModalEdit button:hover {
-	color: #fff;
+  color: #fff;
 }
 
 .rowInputs label {
-	width: 90%;
+  width: 90%;
 }
 .containerInputAdminModalEdit select {
-	width: 100%;
-	padding: 10px 12px;
-	margin-top: 2px;
-	background-color: #fec1c1;
-	border: 1px solid #ff9999;
-	border-radius: 8px;
-	font-size: 1rem;
-	font-family: "Mali", cursive;
-	transition: border 0.2s, box-shadow 0.2s;
-	outline: none;
+  width: 100%;
+  padding: 10px 12px;
+  margin-top: 2px;
+  background-color: #fec1c1;
+  border: 1px solid #ff9999;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-family: "Mali", cursive;
+  transition: border 0.2s, box-shadow 0.2s;
+  outline: none;
 }
 
 .containerInputAdminModalEdit select:focus {
-	border-color: #ff9999;
+  border-color: #ff9999;
 }
 
 .containerImageAdminModal {
-	display: flex;
-	flex-direction: row;
-	gap: 10px;
-	align-items: center;
-	background-color: #fec1c1;
-	border: 1px solid #ff9999;
-	border-radius: 4px;
-	padding: 10px;
-	margin-top: 6px;
-	max-height: 100px;
-	max-width: 96%;
-	overflow-y: hidden;
-	overflow-x: auto;
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  align-items: center;
+  background-color: #fec1c1;
+  border: 1px solid #ff9999;
+  border-radius: 4px;
+  padding: 10px;
+  margin-top: 6px;
+  max-height: 100px;
+  max-width: 96%;
+  overflow-y: hidden;
+  overflow-x: auto;
 }
 
 .imageAdminModal {
-	width: 70px;
-	height: 70px;
-	border-radius: 6px;
-	object-fit: contain;
-	background: #fff;
-	border: 1px solid #ffbcbc;
-	box-shadow: 0px 0px 5px 2px rgba(0, 0, 0, 0.07);
-	margin-right: 0;
-	margin-top: 15px;
-
+  width: 70px;
+  height: 70px;
+  border-radius: 6px;
+  object-fit: contain;
+  background: #fff;
+  border: 1px solid #ffbcbc;
+  box-shadow: 0px 0px 5px 2px rgba(0, 0, 0, 0.07);
+  margin-right: 0;
+  margin-top: 15px;
 }
 
 .imageWrapper {
-	position: relative;
-	display: inline-block;
-	margin-right: 8px;
-	margin-bottom: 8px;
+  position: relative;
+  display: inline-block;
+  margin-right: 8px;
+  margin-bottom: 8px;
 }
 
 .imageWrapperColumn {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	margin-right: 12px;
-	margin-bottom: 12px;
-	width: 80px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-right: 12px;
+  margin-bottom: 12px;
+  width: 80px;
 }
 
 .deleteImageButton {
-	position: absolute;
-	top: 2px;
-	right: 2px;
-	background: #ffe5bc;
-	border: none;
-	border-radius: 50%;
-	width: 22px;
-	height: 22px;
-	cursor: pointer;
-	color: #ff9999;
-	font-weight: bold;
-	font-size: 1.1rem;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	z-index: 2;
-	transition: background 0.2s, color 0.2s;
+  position: absolute;
+  top: 2px;
+  right: 2px;
+  background: #ffe5bc;
+  border: none;
+  border-radius: 50%;
+  width: 22px;
+  height: 22px;
+  cursor: pointer;
+  color: #ff9999;
+  font-weight: bold;
+  font-size: 1.1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+  transition: background 0.2s, color 0.2s;
 }
 
 .deleteImageButton:hover {
-	background: #ff9999;
-	color: #fff;
+  background: #ff9999;
+  color: #fff;
 }
 
 .deleteImageButtonBelow {
-
-	margin-top: 6px;
-	background: #ff9999;
-	border: none;
-	border-radius: 6px;
-	color: #fff;
-	font-family: "Mali", cursive;
-	font-size: 0.95rem;
-	font-weight: 600;
-	padding: 4px 10px;
-	cursor: pointer;
-	transition: background 0.2s, color 0.2s;
+  margin-top: 6px;
+  background: #ff9999;
+  border: none;
+  border-radius: 6px;
+  color: #fff;
+  font-family: "Mali", cursive;
+  font-size: 0.95rem;
+  font-weight: 600;
+  padding: 4px 10px;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
 }
 
 .deleteImageButtonBelow:hover {
-	background: #ff9999;
-	color: #fff;
+  background: #ff9999;
+  color: #fff;
 }
 
 .rowInputs {
-	display: flex;
-	gap: 18px;
-	align-items: flex-end;
-	flex-wrap: wrap;
+  display: flex;
+  gap: 18px;
+  align-items: flex-end;
+  flex-wrap: wrap;
 }
 
 .rowInputs label {
-	flex: 1 1 0;
-	display: flex;
-	flex-direction: column;
-	min-width: 120px;
+  flex: 1 1 0;
+  display: flex;
+  flex-direction: column;
+  min-width: 120px;
 }
 
 .selectsRow {
-	display: flex;
-	flex-wrap: wrap;
-	gap: 18px;
-	margin-bottom: 8px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 18px;
+  margin-bottom: 8px;
 }
 
 .selectsRow label {
-	flex: 1 1 45%;
-	min-width: 120px;
-	display: flex;
-	flex-direction: column;
-	margin-bottom: 0;
+  flex: 1 1 45%;
+  min-width: 120px;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 0;
 }
 
-/* Responsive: apilar en columna en pantallas chicas */
-@media (max-width: 600px) {
-	.rowInputs {
-		flex-direction: column;
-		gap: 8px;
-	}
-	.rowInputs label {
-		min-width: 0;
-		width: 100%;
-	}
-
-}
-
-@media (max-width: 1000px) {
-	.principalContainerAdminModalEdit {
-		width: 75vw;
-		padding: 18px 4vw;
-	}
-	.containerInputAdminModalEdit input {
-		width: 100%;
-	}
+/* Responsive*/
+@media (max-width: 1200px) and (min-width: 600px) {
+  .principalContainerAdminModalEdit {
+    width: 75vw;
+    padding: 18px 4vw;
+  }
+  .containerInputAdminModalEdit input {
+    width: 100%;
+  }
+  .containerInputAdminModalEdit select {
+    width: 97%;
+  }
+  .containerInputAdminModalEdit input[type="text"],
+  .containerInputAdminModalEdit input[type="number"] {
+    width: 91%;
+  }
 }
 
 @media (max-width: 600px) {
-	.principalContainerAdminModalEdit {
-		width: 95vw;
-		min-width: unset;
-		padding: 12px 2vw;
-	}
-	.containerTitleAdminModalEdit h1 {
-		font-size: 1.1rem;
-	}
-	.containerButtonAdminModalEdit {
-		flex-direction: column;
-		gap: 10px;
-		margin-top: 10px;
-	}
-	.containerButtonAdminModalEdit button {
-		width: 100%;
-		padding: 10px 0;
-		min-width: unset;
-	}
-}
-
-/* Responsive: apilar en columna en pantallas chicas */
-@media (max-width: 700px) {
-	.selectsRow {
-		flex-direction: column;
-		gap: 8px;
-	}
-	.selectsRow label {
-		min-width: 0;
-		width: 100%;
-	}
+  .principalContainerAdminModalEdit {
+    width: 85vw;
+    min-width: unset;
+    padding: 12px 4vw;
+	max-height: 80%;
+  }
+  .containerTitleAdminModalEdit h1 {
+    font-size: 1.1rem;
+  }
+  .containerButtonAdminModalEdit {
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 10px;
+  }
+  .containerInputAdminModalEdit input[type="text"],
+  .containerInputAdminModalEdit input[type="number"] {
+    width: 93%;
+  }
+  .containerButtonAdminModalEdit button {
+    width: 100%;
+    padding: 10px 0;
+    min-width: unset;
+  }
+    .selectsRow {
+    flex-direction: column;
+    gap: 8px;
+  }
+  .selectsRow label {
+    min-width: 0;
+    width: 100%;
+  }
+    .rowInputs {
+    flex-direction: column;
+    gap: 8px;
+  }
+  .rowInputs label {
+    min-width: 0;
+    width: 100%;
+  }
 }
