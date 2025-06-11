@@ -1,5 +1,7 @@
 // src/services/DetalleService.ts
 import api from '../api/api';
+import type { IDetalleUpdate } from '../types/DTOs/IDetalleUpdate';
+import type { IDetalle } from '../types/IDetalle';
 
 export class DetalleService {
   static async actualizarImagenDetalle(detalleId: number, imagenId: number, imagen: File): Promise<any | null> {
@@ -38,6 +40,16 @@ export class DetalleService {
     } catch (error) {
       console.error(error);
       return [];
+    }
+  }
+
+  static async updateDetalle(detalle: IDetalleUpdate): Promise<IDetalle | null> {
+    try {
+      const res = await api.put('/detalle', detalle);
+      return res.data;
+    } catch (error) {
+      console.error(error);
+      return null;
     }
   }
 }

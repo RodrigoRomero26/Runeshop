@@ -69,6 +69,11 @@ export const Admin = () => {
 
     const productoSeleccionado = productos.find((p) => p.id === openEditProductId);
 
+    // Busca el producto relacionado al detalle seleccionado
+    const productoDelDetalle = productos.find((p) =>
+      p.detalles.some((d) => d.id === openDetailsId)
+    );
+
     const productButtons = (productoId: number) => (
         <div className={styles.adminButtons}>
             <button
@@ -158,6 +163,7 @@ export const Admin = () => {
             {openDetailsId && detalleSeleccionado && (
                 <AdminModal
                     detalle={detalleSeleccionado}
+                    producto={productoDelDetalle!}
                     onCloseAdminModal={() => setOpenDetailsId(null)}
                 />
             )}
@@ -167,7 +173,6 @@ export const Admin = () => {
                     onCloseAddStockModal={() => setOpenAddStockId(null)}
                 />
             )}
-            {/* Aquí podrías agregar un modal para editar producto si lo necesitas */}
             {openEditorProducts && productoSeleccionado && (
                     <EditProductAdmin
                       producto={productoSeleccionado}

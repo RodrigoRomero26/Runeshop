@@ -2,13 +2,15 @@ import styles from "./AdminModal.module.css";
 import { AdminModalEdit } from "../AdminModalEdit/AdminModalEdit";
 import { useState, type FC } from "react";
 import type { IDetalle } from "../../../types/IDetalle";
+import type { IProductoGet } from "../../../types/IProductoGet";
 
 interface adminModalProps {
   onCloseAdminModal: () => void;
   detalle: IDetalle;
+  producto: IProductoGet
 }
 
-export const AdminModal: FC<adminModalProps> = ({ onCloseAdminModal, detalle }) => {
+export const AdminModal: FC<adminModalProps> = ({ onCloseAdminModal, detalle, producto }) => {
   const [openEditor, setOpenEditor] = useState(false);
 
 
@@ -25,6 +27,7 @@ export const AdminModal: FC<adminModalProps> = ({ onCloseAdminModal, detalle }) 
     return (
       <AdminModalEdit
         detalle={detalle}
+        producto={producto}
         onCloseAdminModalEdit={handleCloseEditor}
       />
     );
@@ -67,9 +70,11 @@ export const AdminModal: FC<adminModalProps> = ({ onCloseAdminModal, detalle }) 
             <p>
               <strong>Talle:</strong> {detalle.talle?.numero ?? "-"}
             </p>
-
             <p>
-              <strong>Precio:</strong> ${detalle.precio?.precioVenta?.toLocaleString() ?? "-"}
+              <strong>Precio venta:</strong> ${detalle.precio?.precioVenta?.toLocaleString() ?? "-"}
+            </p>
+            <p>
+              <strong>Precio compra:</strong> ${detalle.precio?.precioCompra?.toLocaleString() ?? "-"}
             </p>
             <p>
               <strong>Color:</strong> {detalle.color ?? "-"}

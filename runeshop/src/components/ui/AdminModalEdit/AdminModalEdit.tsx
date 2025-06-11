@@ -1,20 +1,29 @@
 import { useState, type FC } from "react";
 import styles from "./AdminModalEdit.module.css";
 import type { IDetalle } from "../../../types/IDetalle";
+import { talleDisponibleController } from "../../../controllers/TalleController";
+import { precioDisponibleController } from "../../../controllers/PrecioController";
+import { createImagenController } from "../../../controllers/ImagenController";
+import type { IProductoGet } from "../../../types/IProductoGet";
+import type { IImagen } from "../../../types/IImagen";
+import { updateDetalleController } from "../../../controllers/DetalleController";
+import type { IImagenGet } from "../../../types/IImagenGet";
 
 interface adminModalEditProps {
     detalle: IDetalle;
+    producto: IProductoGet
     onCloseAdminModalEdit: () => void;
 }
 
 export const AdminModalEdit: FC<adminModalEditProps> = ({
     detalle,
+    producto,
     onCloseAdminModalEdit,
 }) => {
     const [formData, setFormData] = useState({
-        id: detalle.id,
         talle: detalle.talle?.numero ?? "",
         precio: detalle.precio?.precioVenta ?? 0,
+        precioCompra: detalle.precio?.precioCompra ?? 0, // <-- nuevo campo
         color: detalle.color ?? "",
         marca: detalle.marca ?? "",
         imagenes: detalle.imagenes ?? [],
@@ -75,6 +84,35 @@ const MARCAS = [
         e.preventDefault();
         try {
             console.log("Datos enviados:", formData);
+            const talle = await talleDisponibleController(formData.talle);
+            const precio = await precioDisponibleController(formData.precio, formData.precioCompra);
+
+            let imagenes: IImagenGet[] | null = [];
+            if (formData.nuevasImagenes.length > 0) {
+                imagenes = await createImagenController(formData.nuevasImagenes);
+            }
+
+            const {
+                detalles, 
+                ...productoSinDetalles
+            } = producto;
+
+            const updatedDetalle = {
+                id: detalle.id,
+                color: formData.color,
+                estado: detalle.estado,
+                marca: formData.marca,
+                producto: productoSinDetalles, 
+                descuentos: detalle.descuentos,
+                precio_descuento: detalle.precio_descuento,
+                inicioDescuento: detalle.inicioDescuento,
+                finDescuento: detalle.finDescuento,
+                stock: detalle.stock,
+                talle: talle,
+                precio: precio,
+                imagenes: [...formData.imagenes, ...(imagenes || [])],
+            };
+            await updateDetalleController(updatedDetalle);
             onCloseAdminModalEdit();
         } catch (err) {
             alert("Error al actualizar el detalle");
@@ -102,44 +140,54 @@ const MARCAS = [
                                 onChange={handleChange}
                             />
                         </label>
-                        <label>
-                            <strong>Precio:</strong>
-                            <input
-                                type="number"
-                                name="precio"
-                                placeholder="Precio"
-                                value={formData.precio}
-                                onChange={handleChange}
-                            />
-                        </label>
-                        <label>
+                        <div className={styles.rowInputs}>
+                            <label>
+                                <strong>Precio venta:</strong>
+                                <input
+                                    type="number"
+                                    name="precio"
+                                    placeholder="Precio venta"
+                                    value={formData.precio}
+                                    onChange={handleChange}
+                                />
+                            </label>
+                            <label>
+                                <strong>Precio compra:</strong>
+                                <input
+                                    type="number"
+                                    name="precioCompra"
+                                    placeholder="Precio compra"
+                                    value={formData.precioCompra}
+                                    onChange={handleChange}
+                                />
+                            </label>
+                        </div>
+                        <div className={styles.selectsRow}>
+                          <label>
                             <strong>Color:</strong>
                             <select
-                                name="color"
-                                value={formData.color}
-                                onChange={handleChange}
+                              name="color"
+                              value={formData.color}
+                              onChange={handleChange}
                             >
-                                {COLORES.map(color => (
-                                    <option key={color} value={color}>
-                                        {color}
-                                    </option>
-                                ))}
+                              {COLORES.map(color => (
+                                <option key={color} value={color}>{color}</option>
+                              ))}
                             </select>
-                        </label>
-                        <label>
+                          </label>
+                          <label>
                             <strong>Marca:</strong>
                             <select
-                                name="marca"
-                                value={formData.marca || ""}
-                                onChange={handleChange}
+                              name="marca"
+                              value={formData.marca || ""}
+                              onChange={handleChange}
                             >
-                                {MARCAS.map(marca => (
-                                    <option key={marca} value={marca}>
-                                        {marca}
-                                    </option>
-                                ))}
+                              {MARCAS.map(marca => (
+                                <option key={marca} value={marca}>{marca}</option>
+                              ))}
                             </select>
-                        </label>
+                          </label>
+                        </div>
                         <div>
                             <strong>Imágenes actuales:</strong>
                             <div className={styles.containerImageAdminModal}>
