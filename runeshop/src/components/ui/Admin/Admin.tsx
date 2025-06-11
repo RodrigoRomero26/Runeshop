@@ -165,6 +165,7 @@ export const Admin = () => {
                     detalle={detalleSeleccionado}
                     producto={productoDelDetalle!}
                     onCloseAdminModal={() => setOpenDetailsId(null)}
+                    onSuccess={fetchProd}
                 />
             )}
             {openAddStockId && detalleAddStock && (

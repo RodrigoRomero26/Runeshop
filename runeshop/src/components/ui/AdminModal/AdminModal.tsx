@@ -7,10 +7,11 @@ import type { IProductoGet } from "../../../types/IProductoGet";
 interface adminModalProps {
   onCloseAdminModal: () => void;
   detalle: IDetalle;
-  producto: IProductoGet
+  producto: IProductoGet;
+  onSuccess?: () => void; // <-- agrega esto
 }
 
-export const AdminModal: FC<adminModalProps> = ({ onCloseAdminModal, detalle, producto }) => {
+export const AdminModal: FC<adminModalProps> = ({ onCloseAdminModal, detalle, producto, onSuccess }) => {
   const [openEditor, setOpenEditor] = useState(false);
 
 
@@ -29,6 +30,7 @@ export const AdminModal: FC<adminModalProps> = ({ onCloseAdminModal, detalle, pr
         detalle={detalle}
         producto={producto}
         onCloseAdminModalEdit={handleCloseEditor}
+        onSuccess={onSuccess} // <-- pasa la prop
       />
     );
   }

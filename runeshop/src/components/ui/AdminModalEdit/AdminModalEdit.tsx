@@ -5,30 +5,33 @@ import { talleDisponibleController } from "../../../controllers/TalleController"
 import { precioDisponibleController } from "../../../controllers/PrecioController";
 import { createImagenController } from "../../../controllers/ImagenController";
 import type { IProductoGet } from "../../../types/IProductoGet";
-import type { IImagen } from "../../../types/IImagen";
 import { updateDetalleController } from "../../../controllers/DetalleController";
 import type { IImagenGet } from "../../../types/IImagenGet";
 
 interface adminModalEditProps {
     detalle: IDetalle;
-    producto: IProductoGet
+    producto: IProductoGet;
     onCloseAdminModalEdit: () => void;
+    onSuccess?: () => void; 
 }
 
 export const AdminModalEdit: FC<adminModalEditProps> = ({
     detalle,
     producto,
     onCloseAdminModalEdit,
+    onSuccess 
 }) => {
     const [formData, setFormData] = useState({
         talle: detalle.talle?.numero ?? "",
         precio: detalle.precio?.precioVenta ?? 0,
-        precioCompra: detalle.precio?.precioCompra ?? 0, // <-- nuevo campo
+        precioCompra: detalle.precio?.precioCompra ?? 0,
         color: detalle.color ?? "",
         marca: detalle.marca ?? "",
         imagenes: detalle.imagenes ?? [],
         nuevasImagenes: [] as File[],
     });
+
+    const [loading, setLoading] = useState(false); 
 
 const COLORES = [
   "Negro",
@@ -82,8 +85,8 @@ const MARCAS = [
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
+        setLoading(true); // <-- inicia loading
         try {
-            console.log("Datos enviados:", formData);
             const talle = await talleDisponibleController(formData.talle);
             const precio = await precioDisponibleController(formData.precio, formData.precioCompra);
 
@@ -92,17 +95,14 @@ const MARCAS = [
                 imagenes = await createImagenController(formData.nuevasImagenes);
             }
 
-            const {
-                detalles, 
-                ...productoSinDetalles
-            } = producto;
+            const { detalles, ...productoSinDetalles } = producto;
 
             const updatedDetalle = {
                 id: detalle.id,
                 color: formData.color,
                 estado: detalle.estado,
                 marca: formData.marca,
-                producto: productoSinDetalles, 
+                producto: productoSinDetalles,
                 descuentos: detalle.descuentos,
                 precio_descuento: detalle.precio_descuento,
                 inicioDescuento: detalle.inicioDescuento,
@@ -113,9 +113,12 @@ const MARCAS = [
                 imagenes: [...formData.imagenes, ...(imagenes || [])],
             };
             await updateDetalleController(updatedDetalle);
+            if (onSuccess) onSuccess();
             onCloseAdminModalEdit();
         } catch (err) {
             alert("Error al actualizar el detalle");
+        } finally {
+            setLoading(false); // <-- termina loading
         }
     };
 
@@ -255,8 +258,10 @@ const MARCAS = [
                         </div>
                     </div>
                     <div className={styles.containerButtonAdminModalEdit}>
-                        <button type="submit">Guardar</button>
-                        <button type="button" onClick={onCloseAdminModalEdit}>
+                        <button type="submit" disabled={loading}>
+                            {loading ? "Guardando..." : "Guardar"}
+                        </button>
+                        <button type="button" onClick={onCloseAdminModalEdit} disabled={loading}>
                             Cerrar
                         </button>
                     </div>
