@@ -41,7 +41,6 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-bottom: 10px;
 }
 
 .containerTitleAdminModal h1 {
@@ -57,7 +56,6 @@
   flex-direction: column;
   align-items: stretch;
   gap: 16px;
-  margin-bottom: 10px;
   width: 100%;
 }
 
@@ -106,7 +104,6 @@
   background: #fff;
   border: 1px solid #ffbcbc;
   box-shadow: 0px 0px 5px 2px rgba(0, 0, 0, 0.07);
-  margin-right: 8px;
 }
 
 .containerStatusAdminModal p {
@@ -123,7 +120,6 @@
   align-items: center;
   width: 100%;
   gap: 16px;
-  margin-top: 18px;
 }
 
 .containerButtonAdminModal button {
@@ -148,26 +144,31 @@
 }
 
 /* Responsive */
-@media (max-width: 1000px) {
+@media (max-width: 1000px) and (min-width: 600px) {
   .principalContainerAdminModal {
     width: 75vw;
     padding: 18px 4vw;
   }
   .containerInfoAdminModal p {
-    width: 100%;
+    width: 97%;
   }
   .containerImageAdminModal {
-    width: 100%;
+    width: 97%;
     min-height: 75px;
-    max-width: 100%;
+    max-width: 97%;
+  }
+  .containerImageAdminModal img {
+    width: 14%;
+    height: 15%;
   }
 }
 
 @media (max-width: 600px) {
   .principalContainerAdminModal {
-    width: 95vw;
-    min-width: unset;
-    padding: 12px 2vw;
+    width: 70vw;
+  }
+  .containerInfoAdminModal{
+    gap: 10px;
   }
   .containerTitleAdminModal h1 {
     font-size: 1.1rem;

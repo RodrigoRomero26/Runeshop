@@ -130,6 +130,7 @@ const MARCAS = [
                         <h1>Editar Detalles</h1>
                     </div>
                     <div className={styles.containerInputAdminModalEdit}>
+                        <div className={styles.sizeInput}>
                         <label>
                             <strong>Talle:</strong>
                             <input
@@ -140,6 +141,7 @@ const MARCAS = [
                                 onChange={handleChange}
                             />
                         </label>
+                        </div>
                         <div className={styles.rowInputs}>
                             <label>
                                 <strong>Precio venta:</strong>
