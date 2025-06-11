@@ -46,7 +46,7 @@
 
 .containerTitleAdminModal h1 {
   font-size: 1.5rem;
-  color: #ff7d40;
+  color: #ff9999;
   font-family: "Mali", cursive;
   font-weight: 700;
   letter-spacing: 1px;
@@ -83,7 +83,7 @@
   border: 1px solid #ff9999;
   border-radius: 4px;
   width: 95%;
-  min-height: 75px;
+  max-height: 100px;
   max-width: 100%;
   overflow: auto;
   gap: 10px;
@@ -92,9 +92,9 @@
 }
 
 .containerImageAdminModal img {
-  width: 40%;
-  height: 40%;
-  object-fit: cover;
+  width: 20%;
+  height: 20%;
+  object-fit: contain;
   border-radius: 6px;
 }
 
@@ -139,11 +139,11 @@
   width: auto;
   min-width: 110px;
   transition: background 0.2s, box-shadow 0.2s;
-  box-shadow: 0 2px 8px #ff7d4033;
+  box-shadow: 0 2px 8px #ff999933;
 }
 
 .containerButtonAdminModal button:hover {
-  background-color: #ff7d40;
+  background-color: #ff9999;
   color: #fff;
 }
 

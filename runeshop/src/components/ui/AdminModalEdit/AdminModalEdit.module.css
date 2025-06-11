@@ -16,16 +16,16 @@
   width: 30vw;
   min-width: 320px;
   max-width: 95vw;
-  height: auto;
+  max-height: 70%;
   padding: 32px 28px 24px 28px;
   background-color: #faedd8;
-  box-shadow: 0 4px 16px rgba(255, 125, 64, 0.1);
   border-radius: 16px;
   z-index: 1000;
   display: flex;
   flex-direction: column;
   align-items: stretch;
   gap: 10px;
+  overflow: none;
 }
 
 .containerDataAdminModalEdit {
@@ -41,12 +41,11 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-bottom: 10px;
 }
 
 .containerTitleAdminModalEdit h1 {
   font-size: 1.5rem;
-  color: #ff7d40;
+  color: #ff9999;
   font-family: "Mali", cursive;
   font-weight: 700;
   letter-spacing: 1px;
@@ -56,9 +55,12 @@
   display: flex;
   flex-direction: column;
   align-items: stretch;
-  gap: 16px;
-  margin-bottom: 10px;
+  gap: 10px;
   width: 100%;
+  max-height: 55vh;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 0px 12px 0 0;
 }
 
 .containerInputAdminModalEdit label {
@@ -66,7 +68,6 @@
   flex-direction: column;
   align-items: flex-start;
   font-size: 1rem;
-  color: #ff7d40;
   font-family: "Mali", cursive;
   font-weight: 600;
   margin-bottom: 2px;
@@ -75,23 +76,39 @@
 
 .containerInputAdminModalEdit input[type="text"],
 .containerInputAdminModalEdit input[type="number"] {
-  width: 100%;
+  width: 95%;
   padding: 10px 12px;
   margin-top: 2px;
   background-color: #fec1c1;
   border: 1px solid #ff9999;
   border-radius: 8px;
-  color: #3a2d1a;
   font-size: 1rem;
   font-family: "Mali", cursive;
   transition: border 0.2s, box-shadow 0.2s;
   outline: none;
-  box-shadow: 0 1px 4px #ffbcbc22;
 }
 
+.containerInputAdminModalEdit option {
+  background: #faeae4;
+  color: #ff9999;
+  font-family: "Mali", cursive;
+}
+
+
+.containerInputAdminModalEdit input[type="file"]{
+  font-family: "Mali", cursive;
+}
+
+.containerInputAdminModalEdit ::-webkit-file-upload-button{
+  font-family: "Mali", cursive;
+  color: #fff;
+  background-color: #ff9999;
+  border: 1px solid #ff9999;
+  padding: 5px;
+  border-radius: 4px;
+}
 .containerInputAdminModalEdit input:focus {
-  border-color: #ff7d40;
-  box-shadow: 0 0 0 2px #ffbcbc55;
+  border-color: #ff9999;
 }
 
 .containerInputAdminModalEdit input::placeholder {
@@ -113,7 +130,6 @@
   font-size: 1rem;
   font-weight: 600;
   transition: background 0.2s, color 0.2s;
-  box-shadow: 0 2px 8px #ffbcbc33;
 }
 
 .buttonEditImagesAdminModalEdit:hover {
@@ -123,11 +139,10 @@
 
 .containerButtonAdminModalEdit {
   display: flex;
-  justify-content: flex-end;
+  justify-content: center;
   align-items: center;
   width: 100%;
   gap: 16px;
-  margin-top: 18px;
 }
 
 .containerButtonAdminModalEdit button {
@@ -139,25 +154,14 @@
   cursor: pointer;
   font-family: "Mali", cursive;
   font-size: 1rem;
-  font-weight: 600;
-  width: auto;
+  width: 40%;
   min-width: 110px;
   transition: background 0.2s, box-shadow 0.2s;
-  box-shadow: 0 2px 8px #ff7d4033;
 }
 
 .containerButtonAdminModalEdit button:hover {
   color: #fff;
 }
-
-
-.principalContainerAdminModalEdit,
-.containerDataAdminModalEdit,
-.containerTitleAdminModalEdit h1,
-.containerInputAdminModalEdit label {
-  color: #3a2d1a;
-}
-
 
 .containerInputAdminModalEdit select {
   width: 100%;
@@ -166,37 +170,28 @@
   background-color: #fec1c1;
   border: 1px solid #ff9999;
   border-radius: 8px;
-  color: #3a2d1a;
   font-size: 1rem;
   font-family: "Mali", cursive;
   transition: border 0.2s, box-shadow 0.2s;
   outline: none;
-  box-shadow: 0 1px 4px #ffbcbc22;
 }
 
 .containerInputAdminModalEdit select:focus {
-  border-color: #ff7d40;
-  box-shadow: 0 0 0 2px #ffbcbc55;
-}
-
-.containerInputAdminModalEdit option {
-  background: #fff;
-  color: #3a2d1a;
-  font-family: "Mali", cursive;
+  border-color: #ff9999;
 }
 
 .containerImageAdminModal {
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: row;
   gap: 10px;
   align-items: center;
   background-color: #fec1c1;
   border: 1px solid #ff9999;
   border-radius: 4px;
-  width: 100%;
-  min-height: 75px;
-  max-width: 100%;
-  overflow: auto;
+  max-height: 100px;
+  max-width: 96%;
+  overflow-y: hidden;
+  overflow-x: auto;
   padding: 10px;
   margin-top: 6px;
 }
@@ -205,11 +200,12 @@
   width: 70px;
   height: 70px;
   border-radius: 6px;
-  object-fit: cover;
+  object-fit: contain;
   background: #fff;
   border: 1px solid #ffbcbc;
   box-shadow: 0px 0px 5px 2px rgba(0,0,0,0.07);
   margin-right: 0;
+  margin-top: 15px;
 }
 
 .imageWrapper {
@@ -265,11 +261,10 @@
   padding: 4px 10px;
   cursor: pointer;
   transition: background 0.2s, color 0.2s;
-  box-shadow: 0 1px 4px #ffbcbc22;
 }
 
 .deleteImageButtonBelow:hover {
-  background: #ff7d40;
+  background: #ff9999;
   color: #fff;
 }
 
