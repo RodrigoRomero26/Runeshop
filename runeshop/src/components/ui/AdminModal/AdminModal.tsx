@@ -11,6 +11,8 @@ interface adminModalProps {
 export const AdminModal: FC<adminModalProps> = ({ onCloseAdminModal, detalle }) => {
   const [openEditor, setOpenEditor] = useState(false);
 
+
+  
   const handleCloseEditor = () => {
     setOpenEditor(false);
   };
@@ -74,6 +76,9 @@ export const AdminModal: FC<adminModalProps> = ({ onCloseAdminModal, detalle }) 
             </p>
             <p>
               <strong>Stock:</strong> {detalle.stock ?? "-"}
+            </p>
+            <p>
+              <strong>Marca:</strong> {detalle.marca ?? "-"}
             </p>
             {imagensModal()}
           </div>

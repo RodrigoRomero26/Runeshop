@@ -1,6 +1,5 @@
 import { useState, type FC } from "react";
 import styles from "./AdminModalEdit.module.css";
-import { EditPhotos } from "../EditPhotos/EditPhotos";
 import type { IDetalle } from "../../../types/IDetalle";
 
 interface adminModalEditProps {
@@ -12,31 +11,48 @@ export const AdminModalEdit: FC<adminModalEditProps> = ({
     detalle,
     onCloseAdminModalEdit,
 }) => {
-    const [openEditorPhoto, setOpenEditorPhoto] = useState(false);
-
-    // Estado único para el detalle
     const [formData, setFormData] = useState({
         id: detalle.id,
         talle: detalle.talle?.numero ?? "",
         precio: detalle.precio?.precioVenta ?? 0,
         color: detalle.color ?? "",
+        marca: detalle.marca ?? "",
         imagenes: detalle.imagenes ?? [],
         nuevasImagenes: [] as File[],
     });
 
-    const handleCloseEditorPhoto = () => setOpenEditorPhoto(false);
-    const handleOpenEditorPhoto = () => setOpenEditorPhoto(true);
+const COLORES = [
+  "Negro",
+  "Blanco",
+  "Rojo",
+  "Azul",
+  "Verde",
+  "Amarillo",
+  "Gris",
+  "Rosa",
+  "Naranja",
+  "Marrón",
+];
 
-    // Inputs controlados
-    const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
-        const { name, value, type } = e.target;
+const MARCAS = [
+  "ADIDAS", "PUMA", "NIKE", "REEBOK"
+
+];
+
+    const handleDeleteImagen = (idx: number) => {
         setFormData(prev => ({
             ...prev,
-            [name]: type === "number" ? Number(value) : value,
+            imagenes: prev.imagenes.filter((_, i) => i !== idx),
         }));
     };
 
-    // Para agregar nuevas imágenes (archivos)
+    const handleDeleteNuevaImagen = (idx: number) => {
+        setFormData(prev => ({
+            ...prev,
+            nuevasImagenes: prev.nuevasImagenes.filter((_, i) => i !== idx),
+        }));
+    };
+
     const handleAddImages = (e: React.ChangeEvent<HTMLInputElement>) => {
         const files = e.target.files;
         if (files && files.length > 0) {
@@ -47,18 +63,16 @@ export const AdminModalEdit: FC<adminModalEditProps> = ({
         }
     };
 
-    // Recibe las imágenes editadas desde el modal de fotos
-    const handleSavePhotos = (imagenesEditadas: any[]) => {
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
+        const { name, value, type } = e.target;
         setFormData(prev => ({
             ...prev,
-            imagenes: imagenesEditadas,
+            [name]: type === "number" ? Number(value) : value,
         }));
-        setOpenEditorPhoto(false);
     };
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
-        // Aquí envías formData a tu controlador
         try {
             console.log("Datos enviados:", formData);
             onCloseAdminModalEdit();
@@ -66,16 +80,6 @@ export const AdminModalEdit: FC<adminModalEditProps> = ({
             alert("Error al actualizar el detalle");
         }
     };
-
-    if (openEditorPhoto) {
-        return (
-            <EditPhotos
-                onCloseEditPhotos={handleCloseEditorPhoto}
-                imagenes={formData.imagenes.map(img => ({ id: img.id, url: img.imagenUrl }))}
-                onSavePhotos={handleSavePhotos}
-            />
-        );
-    }
 
     return (
         <div className={styles.overlay}>
@@ -115,56 +119,91 @@ export const AdminModalEdit: FC<adminModalEditProps> = ({
                                 value={formData.color}
                                 onChange={handleChange}
                             >
-                                <option value="">Seleccionar color</option>
-                                <option value="Negro">Negro</option>
-                                <option value="Blanco">Blanco</option>
-                                <option value="Rojo">Rojo</option>
-                                <option value="Azul">Azul</option>
-                                <option value="Verde">Verde</option>
-                                <option value="Amarillo">Amarillo</option>
-                                <option value="Gris">Gris</option>
-                                <option value="Rosa">Rosa</option>
-                                <option value="Naranja">Naranja</option>
-                                <option value="Marrón">Marrón</option>
+                                {COLORES.map(color => (
+                                    <option key={color} value={color}>
+                                        {color}
+                                    </option>
+                                ))}
                             </select>
                         </label>
                         <label>
-                            <strong>Imágenes:</strong>
+                            <strong>Marca:</strong>
+                            <select
+                                name="marca"
+                                value={formData.marca || ""}
+                                onChange={handleChange}
+                            >
+                                {MARCAS.map(marca => (
+                                    <option key={marca} value={marca}>
+                                        {marca}
+                                    </option>
+                                ))}
+                            </select>
+                        </label>
+                        <div>
+                            <strong>Imágenes actuales:</strong>
                             <div className={styles.containerImageAdminModal}>
-                                {formData.imagenes && formData.imagenes.length > 0 ? (
+                                {formData.imagenes.length > 0 ? (
                                     formData.imagenes.map((img, idx) => (
-                                        <img
-                                            key={idx}
-                                            className={styles.imageAdminModal}
-                                            src={img.imagenUrl}
-                                            alt={`Producto imagen ${idx + 1}`}
-                                        />
+                                        <div key={idx} className={styles.imageWrapperColumn}>
+                                            <img
+                                                className={styles.imageAdminModal}
+                                                src={img.imagenUrl}
+                                                alt={`Producto imagen ${idx + 1}`}
+                                            />
+                                            <button
+                                                type="button"
+                                                className={styles.deleteImageButtonBelow}
+                                                onClick={e => {
+                                                    e.preventDefault();
+                                                    e.stopPropagation();
+                                                    handleDeleteImagen(idx);
+                                                }}
+                                                title="Eliminar imagen"
+                                            >Eliminar</button>
+                                        </div>
                                     ))
                                 ) : (
-                                    <img
-                                        className={styles.imageAdminModal}
-                                        src="https://via.placeholder.com/120"
-                                        alt="Sin imagen"
-                                    />
+                                    <span style={{ color: "#888" }}>Sin imágenes</span>
                                 )}
                             </div>
-                        </label>
-                        <label>
-                            <strong>Agregar nuevas imágenes:</strong>
+                        </div>
+
+                        <div>
+                            <strong>Nuevas imágenes:</strong>
                             <input
                                 type="file"
                                 multiple
                                 accept="image/*"
                                 onChange={handleAddImages}
                             />
-                        </label>
+                            <div className={styles.containerImageAdminModal}>
+                                {formData.nuevasImagenes.length > 0 ? (
+                                    formData.nuevasImagenes.map((file, idx) => (
+                                        <div key={idx} className={styles.imageWrapperColumn}>
+                                            <img
+                                                className={styles.imageAdminModal}
+                                                src={URL.createObjectURL(file)}
+                                                alt={`Nueva imagen ${idx + 1}`}
+                                            />
+                                            <button
+                                                type="button"
+                                                className={styles.deleteImageButtonBelow}
+                                                onClick={e => {
+                                                    e.preventDefault();
+                                                    e.stopPropagation();
+                                                    handleDeleteNuevaImagen(idx);
+                                                }}
+                                                title="Eliminar imagen"
+                                            >Eliminar</button>
+                                        </div>
+                                    ))
+                                ) : (
+                                    <span style={{ color: "#888" }}>No agregaste nuevas imágenes</span>
+                                )}
+                            </div>
+                        </div>
                     </div>
-                    <button
-                        type="button"
-                        onClick={handleOpenEditorPhoto}
-                        className={styles.buttonEditImagesAdminModalEdit}>
-                        Editar imágenes
-                    </button>
                     <div className={styles.containerButtonAdminModalEdit}>
                         <button type="submit">Guardar</button>
                         <button type="button" onClick={onCloseAdminModalEdit}>

@@ -2,182 +2,201 @@
   position: fixed;
   top: 0;
   left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.5);
   z-index: 999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .principalContainerAddProductAdminModal {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 30vw;
-  height: 78vh;
-  padding: 20px;
-  background-color: #faedd8;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  z-index: 1000;
+  background: #faedd8;
+  border-radius: 16px;
+  box-shadow: 0 4px 16px rgba(255, 125, 64, 0.1);
+  padding: 32px 28px 24px 28px;
+  min-width: 340px;
+  max-width: 95vw;
+  width: 32vw;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 10px;
 }
 
 .containerDataAddProductAdminModal {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  gap: 18px;
   font-family: "Mali", cursive;
 }
 
 .containerTitleAddProductAdminModal {
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
+  margin-bottom: 10px;
 }
 
 .containerTitleAddProductAdminModal h1 {
   font-size: 1.5rem;
+  color: #ff7d40;
+  font-family: "Mali", cursive;
+  font-weight: 700;
+  letter-spacing: 1px;
 }
 
 .containerInputAddProductAdminModal {
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px 18px;
 }
 
 .containerInputAddProductAdminModal input {
-  width: 25vw;
-  padding: 10px;
-  margin: 5px 0;
-  background-color: #fec1c1;
+  flex: 1 1 180px;
+  min-width: 140px;
+  max-width: 220px;
+  padding: 8px 10px;
   border: 1px solid #ff9999;
-  border-radius: 4px;
+  border-radius: 8px;
+  background: #fff;
+  color: #3a2d1a;
+  font-size: 1rem;
+  font-family: "Mali", cursive;
+  transition: border 0.2s, box-shadow 0.2s;
+  outline: none;
+  box-shadow: 0 1px 4px #ffbcbc22;
+  margin-bottom: 0;
 }
 
-.containerInputAddProductAdminModal input::placeholder {
-  background: #fec1c1;
+.containerInputAddProductAdminModal select {
+  flex: 1 1 180px;
+  min-width: 140px;
+  max-width: 220px;
+  padding: 8px 10px;
+  border: 1px solid #ff9999;
+  border-radius: 8px;
+  background: #fff;
+  color: #3a2d1a;
+  font-size: 1rem;
   font-family: "Mali", cursive;
-  color: #faeae4;
+  transition: border 0.2s, box-shadow 0.2s;
+  outline: none;
+  box-shadow: 0 1px 4px #ffbcbc22;
+  margin-bottom: 0;
+  appearance: none;
+  cursor: pointer;
+}
+
+.containerInputAddProductAdminModal select:focus {
+  border-color: #ff7d40;
+  box-shadow: 0 0 0 2px #ffbcbc55;
+}
+
+.containerInputAddProductAdminModal option {
+  color: #3a2d1a;
+  background: #fff8f2;
+  font-family: "Mali", cursive;
 }
 
 .containerCheckboxAddProductAdminModal {
   display: flex;
-  flex-direction: row;
   align-items: center;
+  gap: 10px;
+  margin-bottom: 8px;
 }
 
-.containerCheckboxAddProductAdminModal label {
-  width: 25vw;
-  padding: 10px;
-  margin: 5px 0;
-  background-color: #fec1c1;
-  border: 1px solid #ff9999;
-  border-radius: 4px;
+.checkboxLabel {
   font-family: "Mali", cursive;
-  color: #faeae4;
-  gap: 10px;
+  color: #3a2d1a;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  min-width: 120px;
+  margin-left: 8px;
+  margin-bottom: 0;
 }
 
 .buttonAddImagesAddProductAdminModal {
-  padding: 10px 10px;
   background-color: #ff9999;
+  color: #fff;
   border: none;
-  border-radius: 4px;
-  color: #faeae4;
-  cursor: pointer;
+  border-radius: 8px;
+  padding: 10px 18px;
   font-family: "Mali", cursive;
-  width: 90%;
-  margin: 10px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 8px;
+  margin-bottom: 8px;
+  transition: background 0.2s, color 0.2s;
+  box-shadow: 0 2px 8px #ffbcbc33;
 }
+
+.buttonAddImagesAddProductAdminModal:hover {
+  background-color: #ff7d40;
+  color: #fff;
+}
+
 .containerButtonAddProductAdminModal {
   display: flex;
-  justify-content: space-around;
+  justify-content: flex-end;
   align-items: center;
-  width: 20vw;
-  gap: 5%;
+  gap: 16px;
+  margin-top: 18px;
 }
 
 .containerButtonAddProductAdminModal button {
-  padding: 10px 10px;
+  padding: 10px 22px;
   background-color: #ff9999;
   border: none;
-  border-radius: 4px;
+  border-radius: 6px;
   color: #faeae4;
   cursor: pointer;
   font-family: "Mali", cursive;
-  width: 100%;
+  font-size: 1rem;
+  font-weight: 600;
+  width: auto;
+  min-width: 110px;
+  transition: background 0.2s, box-shadow 0.2s;
+  box-shadow: 0 2px 8px #ff7d4033;
+}
+
+.containerButtonAddProductAdminModal button:hover {
+  background-color: #ff7d40;
+  color: #fff;
 }
 
 /* Responsive */
-@media (max-width: 450px) {
+@media (max-width: 900px) {
   .principalContainerAddProductAdminModal {
-    width: 75vw;
-    height: 76%;
+    width: 98vw;
+    min-width: unset;
+    padding: 12px 2vw;
   }
 
   .containerTitleAddProductAdminModal h1 {
-    font-size: 0.9rem;
-  }
-
-  .containerInputAddProductAdminModal {
-    width: 90%;
-  }
-
-  .containerInputAddProductAdminModal input {
-    width: 95%;
-  }
-
-  .containerCheckboxAddProductAdminModal {
-    width: 95%;
-  }
-
-  .containerCheckboxAddProductAdminModal label {
-    width: 90%;
-  }
-
-  .buttonAddImagesAddProductAdminModal {
-    width: 90%;
-  }
-
-  .buttonAddImagesAddProductAdminModal button {
-    width: 95%;
+    font-size: 1.1rem;
   }
 
   .containerButtonAddProductAdminModal {
-    width: 70%;
-    gap: 12px;
-  }
-}
-
-@media (max-width: 1000px) and (min-width: 450px) {
-  .principalContainerAddProductAdminModal {
-    width: 75vw;
-  }
-  .containerInputAddProductAdminModal {
-    width: 90%;
-  }
-  .containerInputAddProductAdminModal input {
-    width: 95%;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 10px;
   }
 
-  .containerCheckboxAddProductAdminModal {
-    width: 90%;
+  .containerButtonAddProductAdminModal button {
+    width: 100%;
+    padding: 10px 0;
+    min-width: unset;
   }
 
-  .containerCheckboxAddProductAdminModal label {
-    width: 95%;
-  }
-
-  .buttonAddImagesAddProductAdminModal {
-    width: 90%;
-  }
-
-  .buttonAddImagesAddProductAdminModal button {
-    width: 95%;
-  }
-
-  .containerButtonAddProductAdminModal {
-    width: 70%;
-    gap: 12px;
+  .containerInputAddProductAdminModal input,
+  .containerInputAddProductAdminModal select {
+    min-width: 100px;
+    max-width: 100%;
+    font-size: 0.95rem;
   }
 }
