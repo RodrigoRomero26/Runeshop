@@ -14,7 +14,6 @@
 .principalContainerAddProductAdminModal {
   background: #faedd8;
   border-radius: 16px;
-  box-shadow: 0 4px 16px rgba(255, 125, 64, 0.1);
   padding: 32px 28px 24px 28px;
   min-width: 340px;
   max-width: 95vw;
@@ -23,6 +22,8 @@
   flex-direction: column;
   align-items: stretch;
   gap: 10px;
+  max-height: 80%;
+  overflow: none;
 }
 
 .containerDataAddProductAdminModal {
@@ -30,18 +31,22 @@
   flex-direction: column;
   gap: 18px;
   font-family: "Mali", cursive;
+  align-items: stretch;
+  max-height: 80vh;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding-right: 10px;
 }
 
 .containerTitleAddProductAdminModal {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-bottom: 10px;
 }
 
 .containerTitleAddProductAdminModal h1 {
   font-size: 1.5rem;
-  color: #ff7d40;
+  color: #ff9999;
   font-family: "Mali", cursive;
   font-weight: 700;
   letter-spacing: 1px;
@@ -51,52 +56,59 @@
   display: flex;
   flex-wrap: wrap;
   gap: 12px 18px;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-start;
 }
 
 .containerInputAddProductAdminModal input {
   flex: 1 1 180px;
-  min-width: 140px;
-  max-width: 220px;
+  max-width: 43%;
   padding: 8px 10px;
-  border: 1px solid #ff9999;
   border-radius: 8px;
-  background: #fff;
-  color: #3a2d1a;
+  background-color: #fec1c1;
+  border: 1px solid #ff9999;
   font-size: 1rem;
   font-family: "Mali", cursive;
   transition: border 0.2s, box-shadow 0.2s;
   outline: none;
-  box-shadow: 0 1px 4px #ffbcbc22;
   margin-bottom: 0;
+  max-height: 5vh;
 }
 
 .containerInputAddProductAdminModal select {
   flex: 1 1 180px;
-  min-width: 140px;
-  max-width: 220px;
+  max-width: 51%;
   padding: 8px 10px;
+  background-color: #fec1c1;
   border: 1px solid #ff9999;
   border-radius: 8px;
-  background: #fff;
-  color: #3a2d1a;
   font-size: 1rem;
   font-family: "Mali", cursive;
   transition: border 0.2s, box-shadow 0.2s;
   outline: none;
-  box-shadow: 0 1px 4px #ffbcbc22;
   margin-bottom: 0;
   appearance: none;
   cursor: pointer;
 }
 
+.containerInputAddProductAdminModal label {
+  font-size: 1rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 24px;
+}
+
 .containerInputAddProductAdminModal select:focus {
-  border-color: #ff7d40;
+  border-color: #ff9999;
   box-shadow: 0 0 0 2px #ffbcbc55;
 }
 
 .containerInputAddProductAdminModal option {
-  color: #3a2d1a;
-  background: #fff8f2;
+  background: #faeae4;
+  color: #ff9999;
   font-family: "Mali", cursive;
 }
 
@@ -105,6 +117,42 @@
   align-items: center;
   gap: 10px;
   margin-bottom: 8px;
+}
+
+.containerAddImageAdminModal {
+  display: flex;
+  flex-direction: column;
+}
+
+.containerAddImageAdminModal input {
+  font-family: "Mali", cursive;
+  width: 67vw;
+  height: 10vh;
+}
+
+.containerAddImageAdminModal ::-webkit-file-upload-button {
+  font-family: "Mali", cursive;
+  color: #fff;
+  background-color: #ff9999;
+  border: 1px solid #ffbcbc;
+  padding: 5px;
+  border-radius: 4px;
+}
+
+.containerImageAdminModal {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  align-items: center;
+  background-color: #fec1c1;
+  border: 1px solid #ff9999;
+  border-radius: 4px;
+  padding: 10px;
+  margin-top: 6px;
+  max-height: 100px;
+  max-width: 43%;
+  overflow-y: hidden;
+  overflow-x: auto;
 }
 
 .checkboxLabel {
@@ -136,13 +184,13 @@
 }
 
 .buttonAddImagesAddProductAdminModal:hover {
-  background-color: #ff7d40;
+  background-color: #ff9999;
   color: #fff;
 }
 
 .containerButtonAddProductAdminModal {
   display: flex;
-  justify-content: flex-end;
+  justify-content: center;
   align-items: center;
   gap: 16px;
   margin-top: 18px;
@@ -154,18 +202,18 @@
   align-items: center;
 }
 
-.imageAdminModal,
-.previewImage {
-  width: 38px;
-  height: 38px;
-  object-fit: cover;
+.imageAdminModal {
+  width: 70px;
+  height: 70px;
   border-radius: 6px;
-  border: 1.5px solid #ffbcbc;
-  box-shadow: 0 1px 4px #ffbcbc33;
-  background: #fff8f2;
-  transition: border 0.2s, box-shadow 0.2s;
+  object-fit: contain;
+  background: #fff;
+  border: 1px solid #ffbcbc;
+  box-shadow: 0px 0px 5px 2px rgba(0, 0, 0, 0.07);
   margin-right: 0;
+  margin-top: 15px;
 }
+
 
 .containerButtonAddProductAdminModal button {
   padding: 10px 22px;
@@ -180,11 +228,11 @@
   width: auto;
   min-width: 110px;
   transition: background 0.2s, box-shadow 0.2s;
-  box-shadow: 0 2px 8px #ff7d4033;
+  box-shadow: 0 2px 8px #ff999933;
 }
 
 .containerButtonAddProductAdminModal button:hover {
-  background-color: #ff7d40;
+  background-color: #ff9999;
   color: #fff;
 }
 
@@ -222,24 +270,45 @@
 }
 
 .previewImage:hover {
-  border-color: #ff7d40;
+  border-color: #ff9999;
   box-shadow: 0 0 0 2px #ffbcbc55;
 }
 
 .containerImageAdminModal {
   display: flex;
-  flex-wrap: nowrap;
-  gap: 8px;
-  margin-top: 8px;
-  margin-bottom: 8px;
+  flex-direction: row;
+  gap: 10px;
+  align-items: center;
+  background-color: #fec1c1;
+  border: 1px solid #ff9999;
+  border-radius: 4px;
+  padding: 10px;
+  margin-top: 6px;
+  max-height: 120px;
+  max-width: 43%;
+  overflow-y: hidden;
   overflow-x: auto;
-  max-width: 100%;
-  min-width: 220px;
-  width: 220px; /* Fija el ancho del contenedor */
-  padding-bottom: 4px;
-  background: #fff8f2;
-  border-radius: 8px;
-  border: 1px solid #ffbcbc;
+}
+
+.deleteImageButtonBelow {
+  margin-top: 6px;
+  background: #ff9999;
+  border: none;
+  border-radius: 6px;
+  color: #fff;
+  font-family: "Mali", cursive;
+  font-size: 0.95rem;
+  font-weight: 600;
+  padding: 4px 10px;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+}
+
+.detalleCard{
+  display: flex;
+  flex-direction: row;
+  gap: 4px;
+  align-items: center;
 }
 
 /* Responsive */
